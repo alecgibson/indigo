@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -r ts-node/register test/**/*.ts"
+    "pretest": "mkdir -p test/database && mongod --dbpath=test/database &",
+    "test": "mocha -r ts-node/register test/**/*.ts",
+    "posttest": "mongo --eval \"db.getSiblingDB('admin').shutdownServer()\" && rm -rf test/database"
   },
   "repository": {
     "type": "git",
@@ -23,9 +25,11 @@
     "@types/node": "^7.0.31",
     "chai": "^4.0.2",
     "mocha": "^3.4.2",
-    "pg": "^6.2.4",
-    "pg-hstore": "^2.3.2",
     "ts-node": "^3.0.6",
     "typescript": "^2.3.4"
+  },
+  "dependencies": {
+    "@types/mongodb": "^2.2.5",
+    "mongodb": "^2.2.28"
   }
 }
