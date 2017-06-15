@@ -58,3 +58,4 @@ typings/
 .env
 
 source/**/*.js
+test/**/*.js

@@ -16,5 +16,4 @@ export enum Type {
     Ghost,
     Dark,
     Steel,
-    Fairy
 }
