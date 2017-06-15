@@ -4,23 +4,44 @@ import {DamageCategory} from "../models/damageCategory";
 import {TypeEffectiveness} from "./typeEffectiveness";
 
 export class DamageCalculator {
-    public calculate(move: Move, attacker: Pokemon, defender: Pokemon): number {
-        let levelFactor = 0.4*attacker.level + 2;
+    public move: Move;
+    public defender: Pokemon;
 
-        let attackDefenceRatio = move.damageCategory === DamageCategory.Physical
-            ? attacker.attack / defender.defence
-            : attacker.specialAttack / defender.specialDefence;
+    public constructor(public attacker: Pokemon) {}
 
-        return (0.02 * levelFactor * move.power * attackDefenceRatio + 2)
-            * this.damageModifier(move, attacker, defender);
+    public static calculate(attacker: Pokemon): DamageCalculator {
+        return new DamageCalculator(attacker);
     }
 
-    private damageModifier(move: Move, attacker: Pokemon, defender: Pokemon): number {
+    public using(move: Move): DamageCalculator {
+        this.move = move;
+        return this;
+    }
+
+    public on(defender: Pokemon): number {
+        this.defender = defender;
+        return this.calculate();
+    }
+
+    private calculate(): number {
+        let levelFactor = 0.4*this.attacker.level + 2;
+
+        let attackDefenceRatio = this.move.damageCategory === DamageCategory.Physical
+            ? this.attacker.attack / this.defender.defence
+            : this.attacker.specialAttack / this.defender.specialDefence;
+
+        // TODO: Constant-damage attacks
+
+        return (0.02 * levelFactor * this.move.power * attackDefenceRatio + 2)
+            * this.damageModifier();
+    }
+
+    private damageModifier(): number {
         // TODO: Handle critical hits, random modifier, burn, etc.
         // https://bulbapedia.bulbagarden.net/wiki/Damage
-        let sameTypeAttackBonus = attacker.types.includes(move.type) ? 1.5 : 1;
+        let sameTypeAttackBonus = this.attacker.types.includes(this.move.type) ? 1.5 : 1;
 
-        return sameTypeAttackBonus * this.moveEffectiveness(move, defender);
+        return sameTypeAttackBonus * this.moveEffectiveness(this.move, this.defender);
     }
 
     private moveEffectiveness(move: Move, defender: Pokemon): number {

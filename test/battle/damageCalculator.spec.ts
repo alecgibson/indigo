@@ -7,17 +7,15 @@ import {Move} from "../../source/models/move";
 import {DamageCategory} from "../../source/models/damageCategory";
 
 describe('DamageCalculator', () => {
-    const damageCalculator = new DamageCalculator();
-
     it('should do more damage when the attacker is a higher level', () => {
-        const move = testMove();
-        const lowLevel = testPokemon({level: 5});
-        const highLevel = testPokemon({level: 10});
+        const tackle = testMove();
+        const caterpie = testPokemon({level: 5});
+        const metapod = testPokemon({level: 7});
 
-        let lowLevelDamage = damageCalculator.calculate(move, lowLevel, lowLevel);
-        let highLevelDamage = damageCalculator.calculate(move, highLevel, lowLevel);
+        let damageFromCaterpie = DamageCalculator.calculate(caterpie).using(tackle).on(caterpie);
+        let damageFromMetapod = DamageCalculator.calculate(metapod).using(tackle).on(caterpie);
 
-        expect(lowLevelDamage).to.be.below(highLevelDamage);
+        expect(damageFromMetapod).to.be.above(damageFromCaterpie);
     });
 
     it('should do more damage when the move is super-effective', () => {
@@ -27,8 +25,8 @@ describe('DamageCalculator', () => {
         const pikachu = testPokemon({types: [Type.Electric]});
         const spearow = testPokemon({types: [Type.Flying]});
 
-        let slamDamage = damageCalculator.calculate(slam, pikachu, spearow);
-        let thunderShockDamage = damageCalculator.calculate(thunderShock, pikachu, spearow);
+        let slamDamage = DamageCalculator.calculate(pikachu).using(slam).on(spearow);
+        let thunderShockDamage = DamageCalculator.calculate(pikachu).using(thunderShock).on(spearow);
 
         expect(thunderShockDamage).to.be.above(slamDamage);
     });
@@ -40,8 +38,8 @@ describe('DamageCalculator', () => {
         const bulbasaur = testPokemon({types: [Type.Grass]});
         const charmander = testPokemon({types: [Type.Fire]});
 
-        let tackleDamage = damageCalculator.calculate(tackle, bulbasaur, charmander);
-        let razorLeafDamage = damageCalculator.calculate(razorLeaf, bulbasaur, charmander);
+        let tackleDamage = DamageCalculator.calculate(bulbasaur).using(tackle).on(charmander);
+        let razorLeafDamage = DamageCalculator.calculate(bulbasaur).using(razorLeaf).on(charmander);
 
         expect(tackleDamage).to.be.above(razorLeafDamage);
     });
@@ -52,9 +50,45 @@ describe('DamageCalculator', () => {
         const pikachu = testPokemon({types: [Type.Electric]});
         const onix = testPokemon({types: [Type.Ground]});
 
-        let damage = damageCalculator.calculate(thunderShock, pikachu, onix);
+        let damage = DamageCalculator.calculate(pikachu).using(thunderShock).on(onix);
 
         expect(damage).to.equal(0);
+    });
+
+    it('should do more damage for higher attack stats and physical moves', () => {
+        const tackle = testMove({damageCategory: DamageCategory.Physical});
+
+        const magikarp = testPokemon({attack: 10});
+        const gyarados = testPokemon({attack: 100});
+
+        let damageFromMagikarp = DamageCalculator.calculate(magikarp).using(tackle).on(magikarp);
+        let damageFromGyarados = DamageCalculator.calculate(gyarados).using(tackle).on(magikarp);
+
+        expect(damageFromGyarados).to.be.above(damageFromMagikarp);
+    });
+
+    it('should do less damage for higher defence stats and physical moves', () => {
+        const tackle = testMove({damageCategory: DamageCategory.Physical});
+
+        const magikarp = testPokemon({defence: 10});
+        const gyarados = testPokemon({defence: 100});
+
+        let damageToMagikarp = DamageCalculator.calculate(magikarp).using(tackle).on(magikarp);
+        let damageToGyarados = DamageCalculator.calculate(magikarp).using(tackle).on(gyarados);
+
+        expect(damageToGyarados).to.be.below(damageToMagikarp);
+    });
+
+    it('should do the same damage for higher attack stats and special moves', () => {
+        const confusion = testMove({damageCategory: DamageCategory.Special});
+
+        const abra = testPokemon({attack: 10});
+        const kadabra = testPokemon({attack: 20});
+
+        let damageFromAbra = DamageCalculator.calculate(abra).using(confusion).on(abra);
+        let damageFromKadabra = DamageCalculator.calculate(kadabra).using(confusion).on(abra);
+
+        expect(damageFromAbra).to.equal(damageFromKadabra);
     });
 
     // TODO: Test usage of atk vs spc. attack with physical/special
