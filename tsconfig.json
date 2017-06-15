@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "module": "commonjs",
-    "lib": ["es2016", "dom"]
+    "module": "commonjs"
   },
   "include": [
     "source/**/*.ts"

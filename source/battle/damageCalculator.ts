@@ -5,9 +5,12 @@ import {TypeEffectiveness} from "./typeEffectiveness";
 
 export class DamageCalculator {
     public move: Move;
+    public attacker: Pokemon;
     public defender: Pokemon;
 
-    public constructor(public attacker: Pokemon) {}
+    public constructor(attacker: Pokemon) {
+        this.attacker = attacker;
+    }
 
     public static calculate(attacker: Pokemon): DamageCalculator {
         return new DamageCalculator(attacker);
@@ -39,7 +42,7 @@ export class DamageCalculator {
     private damageModifier(): number {
         // TODO: Handle critical hits, random modifier, burn, etc.
         // https://bulbapedia.bulbagarden.net/wiki/Damage
-        let sameTypeAttackBonus = this.attacker.types.includes(this.move.type) ? 1.5 : 1;
+        let sameTypeAttackBonus = this.attacker.types.indexOf(this.move.type) > -1 ? 1.5 : 1;
 
         return sameTypeAttackBonus * this.moveEffectiveness(this.move, this.defender);
     }
