@@ -147,6 +147,7 @@ export class TypeEffectiveness {
     };
 
     public static offensive(moveType: Type, defenderType: Type): number {
-        return this.offensiveTypeEffectiveness[Type[moveType]][Type[defenderType]] || 1;
+        let effectiveness = this.offensiveTypeEffectiveness[Type[moveType]][Type[defenderType]];
+        return typeof effectiveness === 'number' ? effectiveness : 1;
     }
 }
