@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "pretest": "mkdir -p test/database && mongod --dbpath=test/database &",
     "test": "mocha -r ts-node/register test/**/*.ts",
-    "posttest": "mongo --eval \"db.getSiblingDB('admin').shutdownServer()\" && rm -rf test/database"
   },
   "repository": {
     "type": "git",
