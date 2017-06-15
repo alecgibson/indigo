@@ -35,8 +35,10 @@ export class DamageCalculator {
 
         // TODO: Constant-damage attacks
 
-        return (0.02 * levelFactor * this.move.power * attackDefenceRatio + 2)
+        let damage = (0.02 * levelFactor * this.move.power * attackDefenceRatio + 2)
             * this.damageModifier();
+
+        return Math.floor(damage);
     }
 
     private damageModifier(): number {
