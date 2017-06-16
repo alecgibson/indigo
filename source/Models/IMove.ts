@@ -1,7 +1,7 @@
 import {DamageCategory} from "./damageCategory";
-import {Type} from "./type";
+import {Type} from "./Type";
 
-export interface Move {
+export interface IMove {
     power: number;
     damageCategory: DamageCategory;
     type: Type;

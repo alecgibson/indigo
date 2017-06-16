@@ -1,4 +1,4 @@
-import {Type} from "../models/type";
+import {Type} from "../Models/type";
 export class TypeEffectiveness {
     private static readonly offensiveTypeEffectiveness = {
         Normal: {

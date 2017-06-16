@@ -1,12 +1,15 @@
 import { expect } from 'chai';
 import 'mocha';
-import {DamageCalculator} from "../../source/battle/damageCalculator";
-import {Pokemon} from "../../source/models/pokemon";
-import {Type} from "../../source/models/type";
-import {Move} from "../../source/models/move";
-import {DamageCategory} from "../../source/models/damageCategory";
+import {DamageCalculator} from "../../source/Battle/DamageCalculator";
+import {Type} from "../../source/Models/Type";
+import {DamageCategory} from "../../source/Models/DamageCategory";
+import {IMove} from "../../source/Models/IMove";
+import {IPokemon} from "../../source/Models/IPokemon";
+import {Attack} from "../../source/Models/Attack";
 
 describe('DamageCalculator', () => {
+    const damageCalculator = new DamageCalculator();
+
     it('should return an integer', () => {
        const tackle = testMove();
 
@@ -14,7 +17,7 @@ describe('DamageCalculator', () => {
        const rattata = testPokemon({attack: irrationalNumber});
        const pidgey = testPokemon();
 
-       let damage = DamageCalculator.calculate(rattata).using(tackle).on(pidgey);
+       let damage = damageCalculator.calculate(Attack.by(rattata).using(tackle).on(pidgey));
 
        expect(Number.isInteger(damage)).to.be.true;
     });
@@ -25,8 +28,8 @@ describe('DamageCalculator', () => {
         const caterpie = testPokemon({level: 5});
         const butterfree = testPokemon({level: 15});
 
-        let damageFromCaterpie = DamageCalculator.calculate(caterpie).using(tackle).on(caterpie);
-        let damageFromButterfree = DamageCalculator.calculate(butterfree).using(tackle).on(caterpie);
+        let damageFromCaterpie = damageCalculator.calculate(Attack.by(caterpie).using(tackle).on(caterpie));
+        let damageFromButterfree = damageCalculator.calculate(Attack.by(butterfree).using(tackle).on(caterpie));
 
         expect(damageFromButterfree).to.be.above(damageFromCaterpie);
     });
@@ -38,8 +41,8 @@ describe('DamageCalculator', () => {
         const spearow = testPokemon({types: [Type.Flying]});
         const rattata = testPokemon({types: [Type.Normal]});
 
-        let damageToSpearow = DamageCalculator.calculate(pikachu).using(thunderShock).on(spearow);
-        let damageToRattata = DamageCalculator.calculate(pikachu).using(thunderShock).on(rattata);
+        let damageToSpearow = damageCalculator.calculate(Attack.by(pikachu).using(thunderShock).on(spearow));
+        let damageToRattata = damageCalculator.calculate(Attack.by(pikachu).using(thunderShock).on(rattata));
 
         expect(damageToSpearow).to.be.above(damageToRattata);
     });
@@ -51,8 +54,8 @@ describe('DamageCalculator', () => {
         const bulbasaur = testPokemon({types: [Type.Grass]});
         const charmander = testPokemon({types: [Type.Fire]});
 
-        let tackleDamage = DamageCalculator.calculate(bulbasaur).using(tackle).on(charmander);
-        let razorLeafDamage = DamageCalculator.calculate(bulbasaur).using(razorLeaf).on(charmander);
+        let tackleDamage = damageCalculator.calculate(Attack.by(bulbasaur).using(tackle).on(charmander));
+        let razorLeafDamage = damageCalculator.calculate(Attack.by(bulbasaur).using(razorLeaf).on(charmander));
 
         expect(tackleDamage).to.be.above(razorLeafDamage);
     });
@@ -63,7 +66,7 @@ describe('DamageCalculator', () => {
         const pikachu = testPokemon({types: [Type.Electric]});
         const onix = testPokemon({types: [Type.Ground]});
 
-        let damage = DamageCalculator.calculate(pikachu).using(thunderShock).on(onix);
+        let damage = damageCalculator.calculate(Attack.by(pikachu).using(thunderShock).on(onix));
 
         expect(damage).to.equal(0);
     });
@@ -75,15 +78,15 @@ describe('DamageCalculator', () => {
         const gyarados = testPokemon({attack: 100, defence: 100});
 
         it('should do more damage for higher attack stats and physical moves', () => {
-            let damageFromMagikarp = DamageCalculator.calculate(magikarp).using(tackle).on(magikarp);
-            let damageFromGyarados = DamageCalculator.calculate(gyarados).using(tackle).on(magikarp);
+            let damageFromMagikarp = damageCalculator.calculate(Attack.by(magikarp).using(tackle).on(magikarp));
+            let damageFromGyarados = damageCalculator.calculate(Attack.by(gyarados).using(tackle).on(magikarp));
 
             expect(damageFromGyarados).to.be.above(damageFromMagikarp);
         });
 
         it('should do less damage for higher defence stats and physical moves', () => {
-            let damageToMagikarp = DamageCalculator.calculate(magikarp).using(tackle).on(magikarp);
-            let damageToGyarados = DamageCalculator.calculate(magikarp).using(tackle).on(gyarados);
+            let damageToMagikarp = damageCalculator.calculate(Attack.by(magikarp).using(tackle).on(magikarp));
+            let damageToGyarados = damageCalculator.calculate(Attack.by(magikarp).using(tackle).on(gyarados));
 
             expect(damageToGyarados).to.be.below(damageToMagikarp);
         });
@@ -91,8 +94,8 @@ describe('DamageCalculator', () => {
         it('should do the same damage for higher attack stats and special moves', () => {
             const twister = testMove({damageCategory: DamageCategory.Special});
 
-            let damageFromMagikarp = DamageCalculator.calculate(magikarp).using(twister).on(magikarp);
-            let damageFromGyarados = DamageCalculator.calculate(gyarados).using(twister).on(magikarp);
+            let damageFromMagikarp = damageCalculator.calculate(Attack.by(magikarp).using(twister).on(magikarp));
+            let damageFromGyarados = damageCalculator.calculate(Attack.by(gyarados).using(twister).on(magikarp));
 
             expect(damageFromMagikarp).to.equal(damageFromGyarados);
         });
@@ -105,15 +108,15 @@ describe('DamageCalculator', () => {
         const kadabra = testPokemon({specialAttack: 20, specialDefence: 20});
 
         it('should do more damage for higher special attack stats and special moves', () => {
-            let damageFromAbra = DamageCalculator.calculate(abra).using(psychic).on(abra);
-            let damageFromKadabra = DamageCalculator.calculate(kadabra).using(psychic).on(abra);
+            let damageFromAbra = damageCalculator.calculate(Attack.by(abra).using(psychic).on(abra));
+            let damageFromKadabra = damageCalculator.calculate(Attack.by(kadabra).using(psychic).on(abra));
 
             expect(damageFromKadabra).to.be.above(damageFromAbra);
         });
 
         it('should do less damage for higher special defence stats and special moves', () => {
-            let damageToAbra = DamageCalculator.calculate(abra).using(psychic).on(abra);
-            let damageToKadabra = DamageCalculator.calculate(abra).using(psychic).on(kadabra);
+            let damageToAbra = damageCalculator.calculate(Attack.by(abra).using(psychic).on(abra));
+            let damageToKadabra = damageCalculator.calculate(Attack.by(abra).using(psychic).on(kadabra));
 
             expect(damageToKadabra).to.be.below(damageToAbra);
         });
@@ -121,8 +124,8 @@ describe('DamageCalculator', () => {
         it('should do the same damage for higher special attack stats and normal moves', () => {
             const slam = testMove({damageCategory: DamageCategory.Physical});
 
-            let damageToAbra = DamageCalculator.calculate(abra).using(slam).on(abra);
-            let damageToKadabra = DamageCalculator.calculate(abra).using(slam).on(kadabra);
+            let damageToAbra = damageCalculator.calculate(Attack.by(abra).using(slam).on(abra));
+            let damageToKadabra = damageCalculator.calculate(Attack.by(abra).using(slam).on(kadabra));
 
             expect(damageToAbra).to.equal(damageToKadabra);
         });
@@ -135,8 +138,8 @@ describe('DamageCalculator', () => {
        const charmander = testPokemon({types: [Type.Fire]});
        const bulbasaur = testPokemon({types: [Type.Grass]});
 
-       let damageWithTackle = DamageCalculator.calculate(charmander).using(tackle).on(bulbasaur);
-       let damageWithEmber = DamageCalculator.calculate(charmander).using(ember).on(bulbasaur);
+       let damageWithTackle = damageCalculator.calculate(Attack.by(charmander).using(tackle).on(bulbasaur));
+       let damageWithEmber = damageCalculator.calculate(Attack.by(charmander).using(ember).on(bulbasaur));
 
        expect(damageWithEmber).to.be.above(damageWithTackle);
     });
@@ -148,8 +151,8 @@ describe('DamageCalculator', () => {
         const gyarados = testPokemon({types: [Type.Water, Type.Flying]});
         const magikarp = testPokemon({types: [Type.Water]});
 
-        let damageToGyarados = DamageCalculator.calculate(pikachu).using(thunderShock).on(gyarados);
-        let damageToMagikarp = DamageCalculator.calculate(pikachu).using(thunderShock).on(magikarp);
+        let damageToGyarados = damageCalculator.calculate(Attack.by(pikachu).using(thunderShock).on(gyarados));
+        let damageToMagikarp = damageCalculator.calculate(Attack.by(pikachu).using(thunderShock).on(magikarp));
 
         expect(damageToGyarados).to.equal(2 * damageToMagikarp);
     });
@@ -161,13 +164,13 @@ describe('DamageCalculator', () => {
        const charmeleon = testPokemon({types: [Type.Fire]});
        const articuno = testPokemon({types: [Type.Flying, Type.Ice]});
 
-       let damageWithMachPunch = DamageCalculator.calculate(charmeleon).using(machPunch).on(articuno);
-       let damageWithBodySlam = DamageCalculator.calculate(charmeleon).using(bodySlam).on(articuno);
+       let damageWithMachPunch = damageCalculator.calculate(Attack.by(charmeleon).using(machPunch).on(articuno));
+       let damageWithBodySlam = damageCalculator.calculate(Attack.by(charmeleon).using(bodySlam).on(articuno));
 
        expect(damageWithMachPunch).to.equal(damageWithBodySlam);
     });
 
-    function testMove(customProperties?): Move {
+    function testMove(customProperties?): IMove {
         return Object.assign({
             power: 10,
             damageCategory: DamageCategory.Physical,
@@ -175,7 +178,7 @@ describe('DamageCalculator', () => {
         }, customProperties);
     }
 
-    function testPokemon(customProperties?): Pokemon {
+    function testPokemon(customProperties?): IPokemon {
         return Object.assign({
             level: 20,
             attack: 30,
