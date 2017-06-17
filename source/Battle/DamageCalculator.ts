@@ -1,5 +1,5 @@
-import {DamageCategory} from "../Models/damageCategory";
-import {TypeEffectiveness} from "./typeEffectiveness";
+import {DamageCategory} from "../Models/DamageCategory";
+import {TypeEffectiveness} from "./TypeEffectiveness";
 import {IMove} from "../Models/IMove";
 import {IPokemon} from "../Models/IPokemon";
 import {Attack} from "../Models/Attack";

@@ -1,4 +1,4 @@
-import {DamageCategory} from "./damageCategory";
+import {DamageCategory} from "./DamageCategory";
 import {Type} from "./Type";
 
 export interface IMove {

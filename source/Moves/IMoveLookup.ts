@@ -1,5 +1,5 @@
-import {IMove} from "./IMove";
+import {IMove} from "../Models/IMove";
 
 export interface IMoveLookup {
-    byId(id: number): IMove;
+  byId(id: number): IMove;
 }

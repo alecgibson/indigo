@@ -1,11 +1,11 @@
 import { expect } from 'chai';
 import 'mocha';
-import {DamageCalculator} from "../../source/Battle/DamageCalculator";
-import {Type} from "../../source/Models/Type";
-import {DamageCategory} from "../../source/Models/DamageCategory";
-import {IMove} from "../../source/Models/IMove";
-import {IPokemon} from "../../source/Models/IPokemon";
-import {Attack} from "../../source/Models/Attack";
+import {DamageCalculator} from "../../../source/Battle/DamageCalculator";
+import {Type} from "../../../source/Models/Type";
+import {DamageCategory} from "../../../source/Models/DamageCategory";
+import {IMove} from "../../../source/Models/IMove";
+import {IPokemon} from "../../../source/Models/IPokemon";
+import {Attack} from "../../../source/Models/Attack";
 
 describe('DamageCalculator', () => {
     const damageCalculator = new DamageCalculator();

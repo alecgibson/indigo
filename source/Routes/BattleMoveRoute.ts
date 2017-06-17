@@ -28,7 +28,7 @@ export class BattleMoveRoute implements IRoute {
         this.battles.submitAction(action);
     }
 
-    private acknowledgeReceiptOf(acton: IMoveBattleAction) {
+    private acknowledgeReceiptOf(action: IMoveBattleAction) {
         // TODO: Inform trainer of receipt
     }
 }
