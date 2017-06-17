@@ -1,5 +1,5 @@
-import {IBattle} from "../Models/IBattle";
+import {IMoveBattleAction} from "../Models/Actions/IMoveBattleAction";
 
 export interface IBattleService {
-    getBattle(id: string): IBattle
+    submitAction(action: IMoveBattleAction);
 }
