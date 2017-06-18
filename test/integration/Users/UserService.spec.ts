@@ -17,15 +17,14 @@ describe('UserService', () => {
             expect(user.id).to.not.be.null;
             done();
           });
-      })
-      .catch((error) => {
-        console.log(error);
       });
   });
 
-  function testUser(): IUser {
-    return {
+  function testUser(extraOptions?): IUser {
+    return Object.assign({
       email: UUID() + '@example.com',
-    };
+      username: UUID(),
+      password: 'password',
+    }, extraOptions);
   }
 });

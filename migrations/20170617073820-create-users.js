@@ -1,28 +1,28 @@
 'use strict';
 
 module.exports = {
-  up: function (queryInterface, DataTypes) {
+  up: function (queryInterface, Sequelize) {
     queryInterface.createTable(
       'users',
       {
         id: {
-          type: DataTypes.UUID,
-          defaultValue: DataTypes.UUIDV4,
+          type: Sequelize.UUID,
+          defaultValue: Sequelize.UUIDV4,
           primaryKey: true,
           allowNull: false
         },
         createdAt: {
-          type: DataTypes.TIME,
-          defaultValue: DataTypes.NOW,
+          type: Sequelize.TIME,
+          defaultValue: Sequelize.NOW,
           allowNull: false
         },
         updatedAt: {
-          type: DataTypes.TIME,
-          defaultValue: DataTypes.NOW,
+          type: Sequelize.TIME,
+          defaultValue: Sequelize.NOW,
           allowNull: false
         },
         email: {
-          type: DataTypes.STRING,
+          type: Sequelize.STRING,
           unique: true,
           allowNull: false
         }
