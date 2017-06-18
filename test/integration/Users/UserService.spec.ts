@@ -1,4 +1,4 @@
-import { expect } from 'chai';
+import {expect} from 'chai';
 import 'mocha';
 import * as UUID from "uuid/v4";
 import {UserService} from "../../../source/Users/UserService";
@@ -18,6 +18,47 @@ describe('UserService', () => {
             done();
           });
       });
+  });
+
+  describe("authenticating a user", () => {
+    it("can authenticate by username", (done) => {
+      let password = 'password';
+      let user = testUser({password: password});
+      userService.create(user)
+        .then((user) => {
+          userService.passwordIsValid(user.username, password)
+            .then((isValid) => {
+              expect(isValid).to.be.true;
+              done();
+            });
+        });
+    });
+
+    it("can authenticate by email", (done) => {
+      let password = 'password';
+      let user = testUser({password: password});
+      userService.create(user)
+        .then((user) => {
+          userService.passwordIsValid(user.email, password)
+            .then((isValid) => {
+              expect(isValid).to.be.true;
+              done();
+            });
+        });
+    });
+
+    it("does not authenticate the wrong password", (done) => {
+      let password = 'password';
+      let user = testUser({password: password});
+      userService.create(user)
+        .then((user) => {
+          userService.passwordIsValid(user.email, 'wrongpassword')
+            .then((isValid) => {
+              expect(isValid).to.be.false;
+              done();
+            });
+        });
+    });
   });
 
   function testUser(extraOptions?): IUser {
