@@ -6,7 +6,7 @@
   "scripts": {
     "pretest": "sequelize db:migrate --env test",
     "test": "cross-env NODE_ENV=test mocha -r ts-node/register test/**/*.ts",
-    "posttest": "sequelize db:migrate:undo --env test"
+    "posttest": "sequelize db:migrate:undo:all --env test"
   },
   "repository": {
     "type": "git",
@@ -26,7 +26,6 @@
     "@types/mocha": "^2.2.41",
     "@types/node": "^7.0.31",
     "@types/sequelize": "^4.0.61",
-    "@types/sqlite3": "^3.1.0",
     "@types/uuid": "^3.0.0",
     "@types/ws": "^3.0.0",
     "chai": "^4.0.2",
@@ -36,7 +35,6 @@
     "gulp-typescript": "^3.1.7",
     "mocha": "^3.4.2",
     "run-sequence": "^1.2.2",
-    "sqlite3": "^3.1.8",
     "ts-node": "^3.0.6",
     "typescript": "^2.3.4"
   },
@@ -45,6 +43,7 @@
     "crypto": "0.0.3",
     "express": "^4.15.3",
     "inversify": "^4.1.1",
+    "pg": "^6.2.4",
     "reflect-metadata": "^0.1.10",
     "sequelize": "^4.1.0",
     "sequelize-cli": "^2.7.0",

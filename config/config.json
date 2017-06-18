@@ -1,11 +1,17 @@
 {
   "development": {
-    "dialect": "sqlite",
-    "storage": "development.db"
+    "username": "postgres",
+    "password": "password",
+    "database": "indigo",
+    "dialect": "postgres",
+    "host": "localhost"
   },
   "test": {
-    "dialect": "sqlite",
-    "storage": "test/test.db",
+    "username": "postgres",
+    "password": "password",
+    "database": "indigotest",
+    "dialect": "postgres",
+    "host": "localhost",
     "logging": false
   },
   "production": {
