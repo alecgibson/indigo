@@ -17,6 +17,9 @@ describe('UserService', () => {
             expect(user.id).to.not.be.null;
             done();
           });
+      })
+      .catch((error) => {
+        console.log(error);
       });
   });
 

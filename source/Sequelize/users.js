@@ -1,22 +1,24 @@
-/* jshint indent: 2 */
-
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('users', {
     id: {
-      type: DataTypes.UUIDV4,
-      allowNull: false,
-      primaryKey: true
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true,
+      allowNull: false
     },
     createdAt: {
       type: DataTypes.TIME,
+      defaultValue: DataTypes.NOW,
       allowNull: false
     },
     updatedAt: {
       type: DataTypes.TIME,
+      defaultValue: DataTypes.NOW,
       allowNull: false
     },
     email: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
+      unique: true,
       allowNull: false
     }
   }, {

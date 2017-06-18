@@ -4,7 +4,8 @@
     "module": "commonjs",
     "lib": ["dom", "es6"],
     "moduleResolution": "node",
-    "types": ["reflect-metadata"],
+    "types": ["node", "reflect-metadata"],
+    "typeRoots": ["../node_modules/@types"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },

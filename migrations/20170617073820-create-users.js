@@ -1,25 +1,28 @@
 'use strict';
 
 module.exports = {
-  up: function (queryInterface, Sequelize) {
+  up: function (queryInterface, DataTypes) {
     queryInterface.createTable(
       'users',
       {
         id: {
-          type: Sequelize.UUID,
+          type: DataTypes.UUID,
+          defaultValue: DataTypes.UUIDV4,
           primaryKey: true,
           allowNull: false
         },
         createdAt: {
-          type: Sequelize.TIME,
+          type: DataTypes.TIME,
+          defaultValue: DataTypes.NOW,
           allowNull: false
         },
         updatedAt: {
-          type: Sequelize.TIME,
+          type: DataTypes.TIME,
+          defaultValue: DataTypes.NOW,
           allowNull: false
         },
         email: {
-          type: Sequelize.TEXT,
+          type: DataTypes.STRING,
           unique: true,
           allowNull: false
         }
@@ -27,7 +30,7 @@ module.exports = {
     );
   },
 
-  down: function (queryInterface, Sequelize) {
+  down: function (queryInterface, DataTypes) {
     queryInterface.dropTable('users');
   }
 };

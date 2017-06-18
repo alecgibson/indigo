@@ -5,8 +5,7 @@ const typescript = require('gulp-typescript');
 const typescriptProject = typescript.createProject('tsconfig.json');
 
 gulp.task('migrate', shell.task([
-  'sequelize db:migrate',
-  'sequelize-auto -o ./source/Sequelize -d development.db -e sqlite -h localhost',
+  'sequelize db:migrate'
 ]));
 
 gulp.task('typescript', () => {
