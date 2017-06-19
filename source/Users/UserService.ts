@@ -1,7 +1,9 @@
 import {IUser} from "../Models/IUser";
 import {PasswordHasher} from "./PasswordHasher";
+import {injectable} from "inversify";
 const User = require("../Sequelize/index").users;
 
+@injectable()
 export class UserService {
   public create(user: IUser): Promise<IUser> {
     let saltHashPair = PasswordHasher.hash(user.password);
@@ -28,11 +30,17 @@ export class UserService {
     });
   }
 
-  public passwordIsValid(emailOrUsername: string, password: string): Promise<boolean> {
+  public authenticateUser(emailOrUsername: string, password: string): Promise<boolean> {
     return this.getByEmailOrUsername(emailOrUsername)
       .then((user) => {
+        if (!user) {
+          return null;
+        }
+
         let hashedPassword = PasswordHasher.hashWithSalt(password, user.salt);
-        return hashedPassword === user.password;
+        return hashedPassword === user.password
+          ? user
+          : null;
       });
   }
 }
