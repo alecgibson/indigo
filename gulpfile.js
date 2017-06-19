@@ -70,6 +70,7 @@ gulp.task('test', shell.task([
 
 gulp.task('default', () => {
   runSequence(
+    'build',
     'run-server'
   );
 });
