@@ -16,8 +16,8 @@ gulp.task('clean', (callback) => {
   );
 });
 
-gulp.task('start-database', shell.task([
-  "pg_ctl start -D db",
+gulp.task('postgres', shell.task([
+  "pg_ctl start -D db -l db/db.log",
 ]));
 
 gulp.task('migrate', shell.task([
@@ -45,7 +45,7 @@ gulp.task('build', (callback) => {
   runSequence(
     'typescript',
     'copy',
-    'start-database',
+    'postgres',
     'migrate',
     callback
   );
@@ -59,14 +59,6 @@ gulp.task('run-server', () => {
     ext: 'js ts'
   });
 });
-
-gulp.task('test', shell.task([
-  'psql -U postgres -c "DROP TABLE IF EXISTS indigotest"',
-  'psql -U postgres -c "CREATE TABLE indigotest"',
-  'sequelize db:migrate --env test',
-  'cross-env NODE_ENV=test mocha -r ts-node/register test/**/*.ts',
-  'sequelize db:migrate:undo:all --env test'
-]));
 
 gulp.task('default', () => {
   runSequence(

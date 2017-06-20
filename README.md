@@ -8,7 +8,9 @@
 
 `npm install -g gulp`  
 
-`npm install -g sequelize-cli`  
+`npm install -g sequelize-cli` 
+
+`npm install -g cross-env`
 
 ### Postgres
 

@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import {expect} from 'chai';
 import 'mocha';
 import * as UUID from "uuid/v4";
@@ -27,8 +28,9 @@ describe('UserService', () => {
       userService.create(user)
         .then((user) => {
           userService.authenticateUser(user.username, password)
-            .then((isValid) => {
-              expect(isValid).to.be.true;
+            .then((authenticatedUser) => {
+              expect(authenticatedUser).to.not.be.null;
+              expect(authenticatedUser.id).to.equal(user.id);
               done();
             });
         });
@@ -40,8 +42,9 @@ describe('UserService', () => {
       userService.create(user)
         .then((user) => {
           userService.authenticateUser(user.email, password)
-            .then((isValid) => {
-              expect(isValid).to.be.true;
+            .then((authenticatedUser) => {
+              expect(authenticatedUser).to.not.be.null;
+              expect(authenticatedUser.id).to.equal(user.id);
               done();
             });
         });
@@ -53,8 +56,8 @@ describe('UserService', () => {
       userService.create(user)
         .then((user) => {
           userService.authenticateUser(user.email, 'wrongpassword')
-            .then((isValid) => {
-              expect(isValid).to.be.false;
+            .then((authenticatedUser) => {
+              expect(authenticatedUser).to.be.null;
               done();
             });
         });

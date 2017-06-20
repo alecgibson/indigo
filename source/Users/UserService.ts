@@ -30,7 +30,7 @@ export class UserService {
     });
   }
 
-  public authenticateUser(emailOrUsername: string, password: string): Promise<boolean> {
+  public authenticateUser(emailOrUsername: string, password: string): Promise<IUser> {
     return this.getByEmailOrUsername(emailOrUsername)
       .then((user) => {
         if (!user) {

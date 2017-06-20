@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "pretest": "sequelize db:migrate --env test",
+    "pretest": "psql -U postgres -c \"DROP DATABASE IF EXISTS indigotest\" && psql -U postgres -c \"CREATE DATABASE indigotest;\" && sequelize db:migrate --env test",
     "test": "cross-env NODE_ENV=test mocha -r ts-node/register test/**/*.ts",
     "posttest": "sequelize db:migrate:undo:all --env test"
   },
