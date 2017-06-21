@@ -6,6 +6,6 @@ export interface IUser {
   username: string;
   password: string;
   salt?: string;
-  activeSessionToken: string;
-  newSessionToken: string;
+  activeSessionToken?: string;
+  newSessionToken?: string;
 }

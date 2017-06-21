@@ -9,6 +9,7 @@ import {IWebSocketRouter} from "./Routes/IWebSocketRouter";
 import {UserService} from "./Users/UserService";
 import {IUser} from "./Models/IUser";
 import * as url from "url";
+import {SessionService} from "./Users/SessionService";
 
 class Main {
   private static PORT = 8080;
@@ -19,7 +20,8 @@ class Main {
     let webSocketServer = new WebSocket.Server({server});
 
     let webSocketRouter = container.get<IWebSocketRouter>(WebSocketRouter);
-    let userService = container.get<UserService>(UserService);
+    let users = container.get<UserService>(UserService);
+    let sessions = container.get<SessionService>(SessionService);
 
     app.use(cookieParser());
     app.use(bodyParser.json());
@@ -31,7 +33,7 @@ class Main {
     app.post('/login', (request, response) => {
         let username = request.body.username;
         let password = request.body.password;
-        userService.getNewSessionToken(username, password)
+        sessions.getNewSessionToken(username, password)
           .then((token) => {
             response.send({
               token: token
@@ -40,15 +42,17 @@ class Main {
       }
     );
 
+    // TODO: Tidy routes
     // TODO: Handle this properly
     app.post('/register', (request, response) => {
       let user = <IUser>request.body;
-      userService.create(user)
+      users.create(user)
         .then((user) => {
           response.send(user.id);
         });
     });
 
+    // TODO: Tidy routes
     app.get('/health', (request, response) => {
       response.send('OK');
     });

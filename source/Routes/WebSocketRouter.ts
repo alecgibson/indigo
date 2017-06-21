@@ -4,21 +4,21 @@ import {BattleMoveRoute} from "./BattleMoveRoute";
 import {IRoute} from "./IRoute";
 import {IWebSocketRouter} from "./IWebSocketRouter";
 import {inject, injectable} from "inversify";
-import {UserService} from "../Users/UserService";
 import {IUser} from "../Models/IUser";
+import {SessionService} from "../Users/SessionService";
 
 @injectable()
 export class WebSocketRouter implements IWebSocketRouter {
   private readonly routes: Map<string, IRoute>;
 
-  public constructor(@inject(UserService) private users: UserService,
+  public constructor(@inject(SessionService) private sessions: SessionService,
                      @inject(BattleMoveRoute) battleMove: BattleMoveRoute,) {
     this.routes = new Map();
     this.routes.set('battleMove', battleMove);
   }
 
   public connect(webSocket: WebSocket, newSessionToken: string) {
-    this.users.validateNewSessionToken(newSessionToken)
+    this.sessions.validateNewSessionToken(newSessionToken)
       .then((user) => {
         if (user) {
           this.setUpRouting(webSocket, user);
@@ -46,7 +46,7 @@ export class WebSocketRouter implements IWebSocketRouter {
 
   private setUpRouting(webSocket: WebSocket, user: IUser) {
     webSocket.on('message', (data) => {
-      this.users.validateActiveSessionToken(user)
+      this.sessions.validateActiveSessionToken(user)
         .then((isValid) => {
           if (isValid) {
             this.route(webSocket, data);
