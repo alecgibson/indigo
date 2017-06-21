@@ -5,4 +5,7 @@ export interface IUser {
   email: string;
   username: string;
   password: string;
+  salt?: string;
+  activeSessionToken: string;
+  newSessionToken: string;
 }

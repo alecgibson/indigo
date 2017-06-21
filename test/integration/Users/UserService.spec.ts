@@ -12,12 +12,12 @@ describe('UserService', () => {
     let user = testUser();
     userService.create(user)
       .then((user) => {
-        userService.get(user.id)
-          .then((user) => {
-            expect(user.email).to.equal(user.email);
-            expect(user.id).to.not.be.null;
-            done();
-          });
+        return userService.get(user.id);
+      })
+      .then((user) => {
+        expect(user.email).to.equal(user.email);
+        expect(user.id).to.be.ok;
+        done();
       });
   });
 
@@ -27,12 +27,12 @@ describe('UserService', () => {
       let user = testUser({password: password});
       userService.create(user)
         .then((user) => {
-          userService.authenticateUser(user.username, password)
-            .then((authenticatedUser) => {
-              expect(authenticatedUser).to.not.be.null;
-              expect(authenticatedUser.id).to.equal(user.id);
-              done();
-            });
+          return userService.getNewSessionToken(user.username, password);
+        })
+        .then((token) => {
+          expect(token).to.be.ok;
+          expect(token.length).to.be.above(0);
+          done();
         });
     });
 
@@ -41,12 +41,12 @@ describe('UserService', () => {
       let user = testUser({password: password});
       userService.create(user)
         .then((user) => {
-          userService.authenticateUser(user.email, password)
-            .then((authenticatedUser) => {
-              expect(authenticatedUser).to.not.be.null;
-              expect(authenticatedUser.id).to.equal(user.id);
-              done();
-            });
+          return userService.getNewSessionToken(user.email, password);
+        })
+        .then((token) => {
+          expect(token).to.be.ok;
+          expect(token.length).to.be.above(0);
+          done();
         });
     });
 
@@ -55,9 +55,71 @@ describe('UserService', () => {
       let user = testUser({password: password});
       userService.create(user)
         .then((user) => {
-          userService.authenticateUser(user.email, 'wrongpassword')
+          return userService.getNewSessionToken(user.email, 'wrongpassword');
+        })
+        .then((token) => {
+          expect(token).to.be.null;
+          done();
+        });
+    });
+
+    it("validates a user with a new session token", (done) => {
+      let user = testUser();
+      userService.create(user)
+        .then(() => {
+          return userService.getNewSessionToken(user.email, user.password);
+        })
+        .then((token) => {
+          return userService.validateNewSessionToken(token);
+        })
+        .then((authenticatedUser) => {
+          expect(authenticatedUser).to.be.ok;
+          expect(authenticatedUser.username).to.equal(user.username);
+          done();
+        });
+    });
+
+    it("only allows a new session token to be used once", (done) => {
+      let user = testUser();
+      userService.create(user)
+        .then(() => {
+          return userService.getNewSessionToken(user.email, user.password);
+        })
+        .then((token) => {
+          return userService.validateNewSessionToken(token)
+            .then((authenticatedUser) => {
+              expect(authenticatedUser).to.be.ok;
+              expect(authenticatedUser.username).to.equal(user.username);
+            })
+            .then(() => { return token });
+        })
+        .then((usedToken) => {
+          userService.validateNewSessionToken(usedToken)
             .then((authenticatedUser) => {
               expect(authenticatedUser).to.be.null;
+              done();
+            });
+        });
+    });
+
+    it("after validating a new session, the token becomes the active session", (done) => {
+      let user = testUser();
+      userService.create(user)
+        .then(() => {
+          return userService.getNewSessionToken(user.email, user.password);
+        })
+        .then((token) => {
+          return userService.validateNewSessionToken(token)
+            .then((authenticatedUser) => {
+              expect(authenticatedUser).to.be.ok;
+              expect(authenticatedUser.username).to.equal(user.username);
+              return authenticatedUser;
+            });
+        })
+        .then((authenticatedUser) => {
+          userService.validateActiveSessionToken(authenticatedUser)
+            .then((isValid) => {
+              expect(isValid).to.be.true;
               done();
             });
         });

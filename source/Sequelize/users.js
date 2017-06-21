@@ -33,6 +33,14 @@ module.exports = function(sequelize, Sequelize) {
       type: Sequelize.STRING,
       allowNull: false,
       unique: true
+    },
+    activeSessionToken: {
+      type: Sequelize.UUID,
+      allowNull: true
+    },
+    newSessionToken: {
+      type: Sequelize.UUID,
+      allowNull: true
     }
   }, {
     tableName: 'users'
