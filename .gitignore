@@ -58,7 +58,7 @@ typings/
 .env
 
 source/**/*.js
-!source/Sequelize/
+!source/sequelize/
 test/**/*.js
 release/
 

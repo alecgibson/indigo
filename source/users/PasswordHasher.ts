@@ -1,4 +1,4 @@
-import {ISaltHashPair} from "../Models/ISaltHashPair";
+import {ISaltHashPair} from "../models/ISaltHashPair";
 import * as crypto from "crypto";
 
 export class PasswordHasher {

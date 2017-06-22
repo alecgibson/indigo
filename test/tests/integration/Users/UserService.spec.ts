@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import {expect} from 'chai';
 import 'mocha';
-import {UserService} from "../../../../source/Users/UserService";
+import {UserService} from "../../../../source/users/UserService";
 import {UserFactory} from "../../../factories/UserFactory";
 
 describe('UserService', () => {

@@ -1,5 +1,5 @@
-export enum Habitats {
-  CAVE,
+export enum Habitat {
+  CAVE = 1,
   FOREST,
   GRASSLAND,
   MOUNTAIN,

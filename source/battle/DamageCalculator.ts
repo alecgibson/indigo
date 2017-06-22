@@ -1,8 +1,8 @@
-import {DamageCategory} from "../Models/DamageCategory";
+import {DamageCategory} from "../models/DamageCategory";
 import {TypeEffectiveness} from "./TypeEffectiveness";
-import {IMove} from "../Models/IMove";
-import {IPokemon} from "../Models/IPokemon";
-import {Attack} from "../Models/Attack";
+import {IMove} from "../models/IMove";
+import {IPokemon} from "../models/IPokemon";
+import {Attack} from "../models/Attack";
 
 export class DamageCalculator {
     public calculate(attack: Attack): number {

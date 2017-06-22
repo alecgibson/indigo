@@ -1,7 +1,7 @@
-import {IUser} from "../Models/IUser";
+import {IUser} from "../models/IUser";
 import {PasswordHasher} from "./PasswordHasher";
 import {injectable} from "inversify";
-const User = require("../Sequelize/index").users;
+const User = require("../sequelize/index").users;
 
 @injectable()
 export class UserService {

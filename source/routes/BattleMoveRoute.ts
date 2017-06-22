@@ -1,15 +1,14 @@
 import * as WebSocket from "ws";
 import {IRoute} from "./IRoute";
-import {IRequest} from "../Models/Requests/IRequest";
+import {IRequest} from "../models/requests/IRequest";
 import {inject, injectable} from "inversify";
-import {IBattleService} from "../Battle/IBattleService";
-import {BattleService} from "../Battle/BattleService";
-import {IMoveBattleAction} from "../Models/Actions/IMoveBattleAction";
+import {BattleService} from "../battle/BattleService";
+import {IMoveBattleAction} from "../models/actions/IMoveBattleAction";
 
 @injectable()
 export class BattleMoveRoute implements IRoute {
     public constructor(
-        @inject(BattleService) private battles: IBattleService
+        @inject(BattleService) private battles: BattleService
     ) {}
 
     public handle(webSocket: WebSocket, message: IRequest) {

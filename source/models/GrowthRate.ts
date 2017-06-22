@@ -1,5 +1,5 @@
 export enum GrowthRate {
-  SLOW,
+  SLOW = 1,
   MEDIUM,
   FAST,
   MEDIUM_SLOW,

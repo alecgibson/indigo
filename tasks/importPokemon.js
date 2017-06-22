@@ -106,6 +106,7 @@ for (let i = 0; i < NUMBER_OF_POKEMON; i++) {
     stats: baseStats,
     captureRate: specie.capture_rate,
     growthRate: specie.growth_rate_id,
+    genderRate: specie.gender_rate,
     habitat: specie.habitat_id,
     encounterRate: pokemonData.unofficial_encounter_rate,
   };

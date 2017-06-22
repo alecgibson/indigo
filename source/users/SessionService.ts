@@ -3,7 +3,7 @@ import {UserService} from "./UserService";
 import {PasswordHasher} from "./PasswordHasher";
 import {IUser} from "../models/IUser";
 import * as uuidv4 from "uuid/v4";
-const User = require("../Sequelize/index").users;
+const User = require("../sequelize/index").users;
 
 @injectable()
 export class SessionService {

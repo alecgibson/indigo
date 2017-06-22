@@ -30,6 +30,7 @@ stats:
     effortValue: 0
 captureRate: 60
 growthRate: 2
+genderRate: -1
 habitat: 6
 encounterRate: 2
 moves:

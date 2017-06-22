@@ -6,7 +6,8 @@
   "scripts": {
     "pretest": "psql -U postgres -c \"DROP DATABASE IF EXISTS indigotest\" && psql -U postgres -c \"CREATE DATABASE indigotest;\" && sequelize db:migrate --env test",
     "test": "cross-env NODE_ENV=test mocha -r ts-node/register test/tests/**/*.ts",
-    "posttest": "sequelize db:migrate:undo:all --env test"
+    "posttest": "sequelize db:migrate:undo:all --env test",
+    "test:unit": "cross-env NODE_ENV=test mocha -r ts-node/register test/tests/unit/**/*.ts"
   },
   "repository": {
     "type": "git",

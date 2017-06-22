@@ -1,11 +1,11 @@
 import * as WebSocket from "ws";
-import {IRequest} from "../Models/Requests/IRequest";
+import {IRequest} from "../models/requests/IRequest";
 import {BattleMoveRoute} from "./BattleMoveRoute";
 import {IRoute} from "./IRoute";
 import {IWebSocketRouter} from "./IWebSocketRouter";
 import {inject, injectable} from "inversify";
-import {IUser} from "../Models/IUser";
-import {SessionService} from "../Users/SessionService";
+import {IUser} from "../models/IUser";
+import {SessionService} from "../users/SessionService";
 
 @injectable()
 export class WebSocketRouter implements IWebSocketRouter {

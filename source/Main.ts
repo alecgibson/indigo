@@ -4,12 +4,12 @@ import * as bodyParser from "body-parser";
 import * as cookieParser from "cookie-parser";
 import * as http from "http";
 import * as WebSocket from "ws";
-import {WebSocketRouter} from "./Routes/WebSocketRouter";
-import {IWebSocketRouter} from "./Routes/IWebSocketRouter";
-import {UserService} from "./Users/UserService";
-import {IUser} from "./Models/IUser";
+import {WebSocketRouter} from "./routes/WebSocketRouter";
+import {IWebSocketRouter} from "./routes/IWebSocketRouter";
+import {UserService} from "./users/UserService";
+import {IUser} from "./models/IUser";
 import * as url from "url";
-import {SessionService} from "./Users/SessionService";
+import {SessionService} from "./users/SessionService";
 
 class Main {
   private static PORT = 8080;
