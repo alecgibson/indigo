@@ -1,0 +1,166 @@
+id: 95
+identifier: onix
+name: Onix
+genus: Rock Snake
+sortOrder: 118
+height: 88
+weight: 2100
+types:
+  - 6
+  - 5
+baseExperience: 77
+stats:
+  hitPoints:
+    base: 35
+    effortValue: 0
+  attack:
+    base: 45
+    effortValue: 0
+  defense:
+    base: 160
+    effortValue: 1
+  specialAttack:
+    base: 30
+    effortValue: 0
+  specialDefense:
+    base: 45
+    effortValue: 0
+  speed:
+    base: 70
+    effortValue: 0
+captureRate: 45
+growthRate: 2
+habitat: 1
+encounterRate: 4
+moves:
+  - id: 20
+    method: 1
+    level: 8
+  - id: 21
+    method: 1
+    level: 41
+  - id: 33
+    method: 1
+    level: 1
+    order: 1
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 1
+    level: 56
+  - id: 38
+    method: 3
+    level: 0
+  - id: 46
+    method: 4
+    level: 0
+  - id: 70
+    method: 4
+    level: 0
+  - id: 88
+    method: 1
+    level: 12
+  - id: 89
+    method: 4
+    level: 0
+  - id: 91
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 99
+    method: 1
+    level: 23
+  - id: 102
+    method: 3
+    level: 0
+  - id: 103
+    method: 1
+    level: 1
+    order: 2
+  - id: 104
+    method: 4
+    level: 0
+  - id: 106
+    method: 1
+    level: 19
+  - id: 153
+    method: 2
+    level: 0
+  - id: 153
+    method: 3
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 157
+    method: 2
+    level: 0
+  - id: 157
+    method: 3
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 175
+    method: 2
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 201
+    method: 1
+    level: 34
+  - id: 201
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 225
+    method: 1
+    level: 30
+  - id: 231
+    method: 1
+    level: 45
+  - id: 231
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 249
+    method: 4
+    level: 0
+  - id: 259
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 269
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 317
+    method: 4
+    level: 0
+  - id: 328
+    method: 1
+    level: 52
+  - id: 335
+    method: 2
+    level: 0

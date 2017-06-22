@@ -1,0 +1,142 @@
+id: 144
+identifier: articuno
+name: Articuno
+genus: Freeze
+sortOrder: 197
+height: 17
+weight: 554
+types:
+  - 15
+  - 3
+baseExperience: 261
+stats:
+  hitPoints:
+    base: 90
+    effortValue: 0
+  attack:
+    base: 85
+    effortValue: 0
+  defense:
+    base: 100
+    effortValue: 0
+  specialAttack:
+    base: 95
+    effortValue: 0
+  specialDefense:
+    base: 125
+    effortValue: 3
+  speed:
+    base: 85
+    effortValue: 0
+captureRate: 3
+growthRate: 1
+habitat: 5
+encounterRate: 0
+moves:
+  - id: 16
+    method: 1
+    level: 1
+    order: 1
+  - id: 19
+    method: 4
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 46
+    method: 4
+    level: 0
+  - id: 54
+    method: 1
+    level: 13
+  - id: 58
+    method: 1
+    level: 49
+  - id: 58
+    method: 4
+    level: 0
+  - id: 59
+    method: 1
+    level: 73
+  - id: 59
+    method: 4
+    level: 0
+  - id: 63
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 97
+    method: 1
+    level: 25
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 115
+    method: 1
+    level: 61
+  - id: 115
+    method: 4
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 170
+    method: 1
+    level: 37
+  - id: 181
+    method: 1
+    level: 1
+    order: 2
+  - id: 182
+    method: 4
+    level: 0
+  - id: 201
+    method: 4
+    level: 0
+  - id: 211
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 249
+    method: 4
+    level: 0
+  - id: 258
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 329
+    method: 1
+    level: 85
+  - id: 332
+    method: 4
+    level: 0
+  - id: 352
+    method: 4
+    level: 0

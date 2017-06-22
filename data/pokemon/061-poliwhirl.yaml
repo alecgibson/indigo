@@ -1,0 +1,176 @@
+id: 61
+identifier: poliwhirl
+name: Poliwhirl
+genus: Tadpole
+sortOrder: 78
+height: 10
+weight: 200
+types:
+  - 11
+baseExperience: 135
+stats:
+  hitPoints:
+    base: 65
+    effortValue: 0
+  attack:
+    base: 65
+    effortValue: 0
+  defense:
+    base: 65
+    effortValue: 0
+  specialAttack:
+    base: 50
+    effortValue: 0
+  specialDefense:
+    base: 50
+    effortValue: 0
+  speed:
+    base: 90
+    effortValue: 2
+captureRate: 120
+growthRate: 4
+habitat: 9
+encounterRate: 2
+moves:
+  - id: 3
+    method: 1
+    level: 19
+  - id: 5
+    method: 3
+    level: 0
+  - id: 25
+    method: 3
+    level: 0
+  - id: 34
+    method: 1
+    level: 35
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 55
+    method: 1
+    level: 1
+    order: 3
+  - id: 55
+    method: 1
+    level: 13
+  - id: 56
+    method: 1
+    level: 51
+  - id: 57
+    method: 4
+    level: 0
+  - id: 58
+    method: 4
+    level: 0
+  - id: 59
+    method: 4
+    level: 0
+  - id: 68
+    method: 3
+    level: 0
+  - id: 69
+    method: 3
+    level: 0
+  - id: 70
+    method: 4
+    level: 0
+  - id: 89
+    method: 4
+    level: 0
+  - id: 91
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 94
+    method: 4
+    level: 0
+  - id: 95
+    method: 1
+    level: 1
+    order: 2
+  - id: 95
+    method: 1
+    level: 7
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 118
+    method: 3
+    level: 0
+  - id: 127
+    method: 4
+    level: 0
+  - id: 145
+    method: 1
+    level: 1
+    order: 1
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 187
+    method: 1
+    level: 43
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 1
+    level: 27
+  - id: 240
+    method: 4
+    level: 0
+  - id: 249
+    method: 4
+    level: 0
+  - id: 258
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 264
+    method: 4
+    level: 0
+  - id: 280
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 291
+    method: 4
+    level: 0
+  - id: 352
+    method: 4
+    level: 0
+evolution:
+  evolvedPokemonId: 62
+  trigger: 3
+  triggerItemId: 84

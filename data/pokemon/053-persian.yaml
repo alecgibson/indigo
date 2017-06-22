@@ -1,0 +1,169 @@
+id: 53
+identifier: persian
+name: Persian
+genus: Classy Cat
+sortOrder: 70
+height: 10
+weight: 320
+types:
+  - 1
+baseExperience: 154
+stats:
+  hitPoints:
+    base: 65
+    effortValue: 0
+  attack:
+    base: 70
+    effortValue: 0
+  defense:
+    base: 60
+    effortValue: 0
+  specialAttack:
+    base: 65
+    effortValue: 0
+  specialDefense:
+    base: 65
+    effortValue: 0
+  speed:
+    base: 115
+    effortValue: 2
+captureRate: 90
+growthRate: 2
+habitat: 8
+encounterRate: 2
+moves:
+  - id: 6
+    method: 1
+    level: 18
+  - id: 10
+    method: 1
+    level: 1
+    order: 1
+  - id: 15
+    method: 4
+    level: 0
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 44
+    method: 1
+    level: 1
+    order: 3
+  - id: 44
+    method: 1
+    level: 10
+  - id: 45
+    method: 1
+    level: 1
+    order: 2
+  - id: 46
+    method: 4
+    level: 0
+  - id: 63
+    method: 4
+    level: 0
+  - id: 85
+    method: 4
+    level: 0
+  - id: 87
+    method: 4
+    level: 0
+  - id: 91
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 103
+    method: 1
+    level: 34
+  - id: 104
+    method: 4
+    level: 0
+  - id: 138
+    method: 3
+    level: 0
+  - id: 148
+    method: 4
+    level: 0
+  - id: 154
+    method: 1
+    level: 42
+  - id: 156
+    method: 4
+    level: 0
+  - id: 163
+    method: 1
+    level: 49
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 185
+    method: 1
+    level: 25
+  - id: 207
+    method: 1
+    level: 61
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 231
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 247
+    method: 4
+    level: 0
+  - id: 252
+    method: 1
+    level: 55
+  - id: 259
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 269
+    method: 4
+    level: 0
+  - id: 289
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 332
+    method: 4
+    level: 0
+  - id: 351
+    method: 4
+    level: 0
+  - id: 352
+    method: 4
+    level: 0

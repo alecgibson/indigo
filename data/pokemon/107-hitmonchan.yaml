@@ -1,0 +1,164 @@
+id: 107
+identifier: hitmonchan
+name: Hitmonchan
+genus: Punching
+sortOrder: 133
+height: 14
+weight: 502
+types:
+  - 2
+baseExperience: 159
+stats:
+  hitPoints:
+    base: 50
+    effortValue: 0
+  attack:
+    base: 105
+    effortValue: 0
+  defense:
+    base: 79
+    effortValue: 0
+  specialAttack:
+    base: 35
+    effortValue: 0
+  specialDefense:
+    base: 110
+    effortValue: 2
+  speed:
+    base: 76
+    effortValue: 0
+captureRate: 45
+growthRate: 2
+habitat: 8
+encounterRate: 1
+moves:
+  - id: 4
+    method: 1
+    level: 1
+    order: 2
+  - id: 5
+    method: 1
+    level: 38
+  - id: 5
+    method: 3
+    level: 0
+  - id: 7
+    method: 1
+    level: 26
+    order: 4
+  - id: 8
+    method: 1
+    level: 26
+    order: 3
+  - id: 9
+    method: 1
+    level: 26
+  - id: 25
+    method: 3
+    level: 0
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 68
+    method: 1
+    level: 50
+  - id: 68
+    method: 3
+    level: 0
+  - id: 69
+    method: 3
+    level: 0
+  - id: 70
+    method: 4
+    level: 0
+  - id: 89
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 97
+    method: 1
+    level: 7
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 118
+    method: 3
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 157
+    method: 3
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 183
+    method: 1
+    level: 20
+  - id: 197
+    method: 1
+    level: 44
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 228
+    method: 1
+    level: 13
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 249
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 264
+    method: 4
+    level: 0
+  - id: 279
+    method: 1
+    level: 1
+    order: 1
+  - id: 280
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 317
+    method: 4
+    level: 0
+  - id: 327
+    method: 1
+    level: 32
+  - id: 339
+    method: 4
+    level: 0

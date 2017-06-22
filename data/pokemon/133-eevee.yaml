@@ -1,0 +1,143 @@
+id: 133
+identifier: eevee
+name: Eevee
+genus: Evolution
+sortOrder: 177
+height: 3
+weight: 65
+types:
+  - 1
+baseExperience: 65
+stats:
+  hitPoints:
+    base: 55
+    effortValue: 0
+  attack:
+    base: 55
+    effortValue: 0
+  defense:
+    base: 50
+    effortValue: 0
+  specialAttack:
+    base: 45
+    effortValue: 0
+  specialDefense:
+    base: 65
+    effortValue: 1
+  speed:
+    base: 55
+    effortValue: 0
+captureRate: 45
+growthRate: 2
+habitat: 8
+encounterRate: 1
+moves:
+  - id: 28
+    method: 1
+    level: 8
+  - id: 33
+    method: 1
+    level: 1
+    order: 1
+  - id: 34
+    method: 3
+    level: 0
+  - id: 36
+    method: 1
+    level: 42
+  - id: 38
+    method: 3
+    level: 0
+  - id: 39
+    method: 1
+    level: 1
+    order: 2
+  - id: 44
+    method: 1
+    level: 30
+  - id: 45
+    method: 1
+    level: 16
+  - id: 91
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 98
+    method: 1
+    level: 23
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 174
+    method: 2
+    level: 0
+  - id: 175
+    method: 2
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 203
+    method: 2
+    level: 0
+  - id: 204
+    method: 2
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 226
+    method: 1
+    level: 36
+  - id: 231
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 247
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 270
+    method: 1
+    level: 1
+    order: 3
+  - id: 273
+    method: 2
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 321
+    method: 2
+    level: 0
+evolution:
+  evolvedPokemonId: 136
+  trigger: 3
+  triggerItemId: 82

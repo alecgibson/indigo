@@ -1,0 +1,152 @@
+id: 73
+identifier: tentacruel
+name: Tentacruel
+genus: Jellyfish
+sortOrder: 92
+height: 16
+weight: 550
+types:
+  - 11
+  - 4
+baseExperience: 180
+stats:
+  hitPoints:
+    base: 80
+    effortValue: 0
+  attack:
+    base: 70
+    effortValue: 0
+  defense:
+    base: 65
+    effortValue: 0
+  specialAttack:
+    base: 80
+    effortValue: 0
+  specialDefense:
+    base: 120
+    effortValue: 2
+  speed:
+    base: 100
+    effortValue: 0
+captureRate: 60
+growthRate: 1
+habitat: 7
+encounterRate: 3
+moves:
+  - id: 14
+    method: 3
+    level: 0
+  - id: 15
+    method: 4
+    level: 0
+  - id: 35
+    method: 1
+    level: 30
+  - id: 38
+    method: 3
+    level: 0
+  - id: 40
+    method: 1
+    level: 1
+    order: 1
+  - id: 48
+    method: 1
+    level: 1
+    order: 2
+  - id: 48
+    method: 1
+    level: 6
+  - id: 51
+    method: 1
+    level: 19
+  - id: 56
+    method: 1
+    level: 55
+  - id: 57
+    method: 4
+    level: 0
+  - id: 58
+    method: 4
+    level: 0
+  - id: 59
+    method: 4
+    level: 0
+  - id: 61
+    method: 1
+    level: 25
+  - id: 63
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 103
+    method: 1
+    level: 47
+  - id: 104
+    method: 4
+    level: 0
+  - id: 112
+    method: 1
+    level: 38
+  - id: 127
+    method: 4
+    level: 0
+  - id: 132
+    method: 1
+    level: 1
+    order: 3
+  - id: 132
+    method: 1
+    level: 12
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 188
+    method: 4
+    level: 0
+  - id: 202
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 258
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 291
+    method: 4
+    level: 0
+  - id: 352
+    method: 4
+    level: 0

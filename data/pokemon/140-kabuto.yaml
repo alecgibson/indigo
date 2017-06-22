@@ -1,0 +1,179 @@
+id: 140
+identifier: kabuto
+name: Kabuto
+genus: Shellfish
+sortOrder: 191
+height: 5
+weight: 115
+types:
+  - 6
+  - 11
+baseExperience: 71
+stats:
+  hitPoints:
+    base: 30
+    effortValue: 0
+  attack:
+    base: 80
+    effortValue: 0
+  defense:
+    base: 90
+    effortValue: 1
+  specialAttack:
+    base: 55
+    effortValue: 0
+  specialDefense:
+    base: 45
+    effortValue: 0
+  speed:
+    base: 55
+    effortValue: 0
+captureRate: 45
+growthRate: 2
+habitat: 7
+encounterRate: 1
+moves:
+  - id: 10
+    method: 1
+    level: 1
+    order: 1
+  - id: 28
+    method: 1
+    level: 31
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 43
+    method: 1
+    level: 19
+  - id: 57
+    method: 4
+    level: 0
+  - id: 58
+    method: 4
+    level: 0
+  - id: 59
+    method: 4
+    level: 0
+  - id: 61
+    method: 2
+    level: 0
+  - id: 62
+    method: 2
+    level: 0
+  - id: 71
+    method: 1
+    level: 13
+  - id: 72
+    method: 1
+    level: 49
+  - id: 91
+    method: 2
+    level: 0
+  - id: 91
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 106
+    method: 1
+    level: 1
+    order: 2
+  - id: 109
+    method: 2
+    level: 0
+  - id: 127
+    method: 4
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 157
+    method: 3
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 175
+    method: 2
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 201
+    method: 4
+    level: 0
+  - id: 202
+    method: 4
+    level: 0
+  - id: 203
+    method: 1
+    level: 37
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 229
+    method: 2
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 246
+    method: 1
+    level: 55
+  - id: 249
+    method: 4
+    level: 0
+  - id: 258
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 282
+    method: 2
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 317
+    method: 4
+    level: 0
+  - id: 319
+    method: 1
+    level: 43
+  - id: 332
+    method: 4
+    level: 0
+  - id: 341
+    method: 1
+    level: 25
+  - id: 352
+    method: 4
+    level: 0
+evolution:
+  evolvedPokemonId: 141
+  trigger: 1
+  level: 40

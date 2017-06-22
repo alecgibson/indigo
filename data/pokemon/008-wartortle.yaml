@@ -1,0 +1,176 @@
+id: 8
+identifier: wartortle
+name: Wartortle
+genus: Turtle
+sortOrder: 11
+height: 10
+weight: 225
+types:
+  - 11
+baseExperience: 142
+stats:
+  hitPoints:
+    base: 59
+    effortValue: 0
+  attack:
+    base: 63
+    effortValue: 0
+  defense:
+    base: 80
+    effortValue: 1
+  specialAttack:
+    base: 65
+    effortValue: 0
+  specialDefense:
+    base: 80
+    effortValue: 1
+  speed:
+    base: 58
+    effortValue: 0
+captureRate: 45
+growthRate: 4
+habitat: 9
+encounterRate: 1
+moves:
+  - id: 5
+    method: 3
+    level: 0
+  - id: 25
+    method: 3
+    level: 0
+  - id: 33
+    method: 1
+    level: 1
+    order: 1
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 39
+    method: 1
+    level: 1
+    order: 2
+  - id: 39
+    method: 1
+    level: 4
+  - id: 44
+    method: 1
+    level: 19
+  - id: 55
+    method: 1
+    level: 13
+  - id: 56
+    method: 1
+    level: 53
+  - id: 57
+    method: 4
+    level: 0
+  - id: 58
+    method: 4
+    level: 0
+  - id: 59
+    method: 4
+    level: 0
+  - id: 68
+    method: 3
+    level: 0
+  - id: 69
+    method: 3
+    level: 0
+  - id: 70
+    method: 4
+    level: 0
+  - id: 91
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 110
+    method: 1
+    level: 10
+  - id: 127
+    method: 4
+    level: 0
+  - id: 130
+    method: 1
+    level: 45
+  - id: 145
+    method: 1
+    level: 1
+    order: 3
+  - id: 145
+    method: 1
+    level: 7
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 182
+    method: 1
+    level: 31
+  - id: 182
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 229
+    method: 1
+    level: 25
+  - id: 231
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 1
+    level: 37
+  - id: 240
+    method: 4
+    level: 0
+  - id: 249
+    method: 4
+    level: 0
+  - id: 258
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 264
+    method: 4
+    level: 0
+  - id: 280
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 291
+    method: 4
+    level: 0
+  - id: 352
+    method: 4
+    level: 0
+evolution:
+  evolvedPokemonId: 9
+  trigger: 1
+  level: 36

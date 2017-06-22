@@ -1,0 +1,168 @@
+id: 114
+identifier: tangela
+name: Tangela
+genus: Vine
+sortOrder: 145
+height: 10
+weight: 350
+types:
+  - 12
+baseExperience: 87
+stats:
+  hitPoints:
+    base: 65
+    effortValue: 0
+  attack:
+    base: 55
+    effortValue: 0
+  defense:
+    base: 115
+    effortValue: 1
+  specialAttack:
+    base: 100
+    effortValue: 0
+  specialDefense:
+    base: 40
+    effortValue: 0
+  speed:
+    base: 60
+    effortValue: 0
+captureRate: 45
+growthRate: 2
+habitat: 3
+encounterRate: 3
+moves:
+  - id: 14
+    method: 3
+    level: 0
+  - id: 15
+    method: 4
+    level: 0
+  - id: 20
+    method: 1
+    level: 28
+  - id: 21
+    method: 1
+    level: 40
+  - id: 22
+    method: 1
+    level: 22
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 63
+    method: 4
+    level: 0
+  - id: 71
+    method: 1
+    level: 10
+  - id: 72
+    method: 1
+    level: 31
+  - id: 72
+    method: 2
+    level: 0
+  - id: 73
+    method: 2
+    level: 0
+  - id: 74
+    method: 1
+    level: 13
+  - id: 76
+    method: 4
+    level: 0
+  - id: 77
+    method: 1
+    level: 19
+  - id: 78
+    method: 1
+    level: 37
+  - id: 79
+    method: 1
+    level: 4
+  - id: 92
+    method: 4
+    level: 0
+  - id: 93
+    method: 2
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 115
+    method: 2
+    level: 0
+  - id: 132
+    method: 1
+    level: 1
+    order: 2
+  - id: 133
+    method: 2
+    level: 0
+  - id: 148
+    method: 4
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 175
+    method: 2
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 188
+    method: 4
+    level: 0
+  - id: 202
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 249
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 267
+    method: 2
+    level: 0
+  - id: 275
+    method: 1
+    level: 1
+    order: 1
+  - id: 290
+    method: 4
+    level: 0
+  - id: 321
+    method: 1
+    level: 46
+  - id: 331
+    method: 4
+    level: 0

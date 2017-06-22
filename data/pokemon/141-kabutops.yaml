@@ -1,0 +1,190 @@
+id: 141
+identifier: kabutops
+name: Kabutops
+genus: Shellfish
+sortOrder: 192
+height: 13
+weight: 405
+types:
+  - 6
+  - 11
+baseExperience: 173
+stats:
+  hitPoints:
+    base: 60
+    effortValue: 0
+  attack:
+    base: 115
+    effortValue: 2
+  defense:
+    base: 105
+    effortValue: 0
+  specialAttack:
+    base: 65
+    effortValue: 0
+  specialDefense:
+    base: 70
+    effortValue: 0
+  speed:
+    base: 80
+    effortValue: 0
+captureRate: 45
+growthRate: 2
+habitat: 7
+encounterRate: 0
+moves:
+  - id: 10
+    method: 1
+    level: 1
+    order: 2
+  - id: 14
+    method: 3
+    level: 0
+  - id: 15
+    method: 4
+    level: 0
+  - id: 25
+    method: 3
+    level: 0
+  - id: 28
+    method: 1
+    level: 31
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 43
+    method: 1
+    level: 1
+    order: 5
+  - id: 43
+    method: 1
+    level: 19
+  - id: 57
+    method: 4
+    level: 0
+  - id: 58
+    method: 4
+    level: 0
+  - id: 59
+    method: 4
+    level: 0
+  - id: 63
+    method: 4
+    level: 0
+  - id: 69
+    method: 3
+    level: 0
+  - id: 71
+    method: 1
+    level: 1
+    order: 4
+  - id: 71
+    method: 1
+    level: 13
+  - id: 72
+    method: 1
+    level: 55
+  - id: 91
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 106
+    method: 1
+    level: 1
+    order: 3
+  - id: 127
+    method: 4
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 157
+    method: 3
+    level: 0
+  - id: 163
+    method: 1
+    level: 40
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 201
+    method: 4
+    level: 0
+  - id: 202
+    method: 4
+    level: 0
+  - id: 203
+    method: 1
+    level: 37
+  - id: 210
+    method: 1
+    level: 1
+    order: 1
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 246
+    method: 1
+    level: 65
+  - id: 249
+    method: 4
+    level: 0
+  - id: 258
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 280
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 291
+    method: 4
+    level: 0
+  - id: 317
+    method: 4
+    level: 0
+  - id: 319
+    method: 1
+    level: 46
+  - id: 332
+    method: 4
+    level: 0
+  - id: 341
+    method: 1
+    level: 25
+  - id: 352
+    method: 4
+    level: 0

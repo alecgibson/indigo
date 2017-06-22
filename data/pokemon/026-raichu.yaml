@@ -1,0 +1,149 @@
+id: 26
+identifier: raichu
+name: Raichu
+genus: Mouse
+sortOrder: 39
+height: 8
+weight: 300
+types:
+  - 13
+baseExperience: 218
+stats:
+  hitPoints:
+    base: 60
+    effortValue: 0
+  attack:
+    base: 90
+    effortValue: 0
+  defense:
+    base: 55
+    effortValue: 0
+  specialAttack:
+    base: 90
+    effortValue: 0
+  specialDefense:
+    base: 80
+    effortValue: 0
+  speed:
+    base: 110
+    effortValue: 3
+captureRate: 75
+growthRate: 2
+habitat: 2
+encounterRate: 0
+moves:
+  - id: 5
+    method: 3
+    level: 0
+  - id: 25
+    method: 3
+    level: 0
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 39
+    method: 1
+    level: 1
+    order: 2
+  - id: 63
+    method: 4
+    level: 0
+  - id: 68
+    method: 3
+    level: 0
+  - id: 69
+    method: 3
+    level: 0
+  - id: 70
+    method: 4
+    level: 0
+  - id: 84
+    method: 1
+    level: 1
+    order: 1
+  - id: 85
+    method: 1
+    level: 1
+    order: 4
+  - id: 85
+    method: 4
+    level: 0
+  - id: 86
+    method: 3
+    level: 0
+  - id: 87
+    method: 4
+    level: 0
+  - id: 91
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 98
+    method: 1
+    level: 1
+    order: 3
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 113
+    method: 4
+    level: 0
+  - id: 148
+    method: 4
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 231
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 249
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 264
+    method: 4
+    level: 0
+  - id: 280
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 351
+    method: 4
+    level: 0

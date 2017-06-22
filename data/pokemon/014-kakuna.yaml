@@ -1,0 +1,45 @@
+id: 14
+identifier: kakuna
+name: Kakuna
+genus: Cocoon
+sortOrder: 18
+height: 6
+weight: 100
+types:
+  - 7
+  - 4
+baseExperience: 72
+stats:
+  hitPoints:
+    base: 45
+    effortValue: 0
+  attack:
+    base: 25
+    effortValue: 0
+  defense:
+    base: 50
+    effortValue: 2
+  specialAttack:
+    base: 25
+    effortValue: 0
+  specialDefense:
+    base: 25
+    effortValue: 0
+  speed:
+    base: 35
+    effortValue: 0
+captureRate: 120
+growthRate: 2
+habitat: 2
+encounterRate: 3
+moves:
+  - id: 106
+    method: 1
+    level: 1
+  - id: 106
+    method: 1
+    level: 7
+evolution:
+  evolvedPokemonId: 15
+  trigger: 1
+  level: 10

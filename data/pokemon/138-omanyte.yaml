@@ -1,0 +1,173 @@
+id: 138
+identifier: omanyte
+name: Omanyte
+genus: Spiral
+sortOrder: 189
+height: 4
+weight: 75
+types:
+  - 6
+  - 11
+baseExperience: 71
+stats:
+  hitPoints:
+    base: 35
+    effortValue: 0
+  attack:
+    base: 40
+    effortValue: 0
+  defense:
+    base: 100
+    effortValue: 1
+  specialAttack:
+    base: 90
+    effortValue: 0
+  specialDefense:
+    base: 55
+    effortValue: 0
+  speed:
+    base: 35
+    effortValue: 0
+captureRate: 45
+growthRate: 2
+habitat: 7
+encounterRate: 1
+moves:
+  - id: 21
+    method: 2
+    level: 0
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 43
+    method: 1
+    level: 31
+  - id: 44
+    method: 1
+    level: 13
+  - id: 48
+    method: 2
+    level: 0
+  - id: 55
+    method: 1
+    level: 19
+  - id: 56
+    method: 1
+    level: 55
+  - id: 57
+    method: 4
+    level: 0
+  - id: 58
+    method: 4
+    level: 0
+  - id: 59
+    method: 4
+    level: 0
+  - id: 61
+    method: 2
+    level: 0
+  - id: 62
+    method: 2
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 110
+    method: 1
+    level: 1
+    order: 2
+  - id: 114
+    method: 2
+    level: 0
+  - id: 127
+    method: 4
+    level: 0
+  - id: 132
+    method: 1
+    level: 1
+    order: 1
+  - id: 156
+    method: 4
+    level: 0
+  - id: 157
+    method: 2
+    level: 0
+  - id: 157
+    method: 3
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 182
+    method: 1
+    level: 37
+  - id: 182
+    method: 4
+    level: 0
+  - id: 191
+    method: 2
+    level: 0
+  - id: 201
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 246
+    method: 1
+    level: 49
+  - id: 249
+    method: 4
+    level: 0
+  - id: 258
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 291
+    method: 4
+    level: 0
+  - id: 317
+    method: 4
+    level: 0
+  - id: 321
+    method: 1
+    level: 43
+  - id: 341
+    method: 1
+    level: 25
+  - id: 352
+    method: 4
+    level: 0
+evolution:
+  evolvedPokemonId: 139
+  trigger: 1
+  level: 40

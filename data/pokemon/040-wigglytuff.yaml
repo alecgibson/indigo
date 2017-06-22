@@ -1,0 +1,180 @@
+id: 40
+identifier: wigglytuff
+name: Wigglytuff
+genus: Balloon
+sortOrder: 55
+height: 10
+weight: 120
+types:
+  - 1
+  - 18
+baseExperience: 196
+stats:
+  hitPoints:
+    base: 140
+    effortValue: 3
+  attack:
+    base: 70
+    effortValue: 0
+  defense:
+    base: 45
+    effortValue: 0
+  specialAttack:
+    base: 85
+    effortValue: 0
+  specialDefense:
+    base: 50
+    effortValue: 0
+  speed:
+    base: 45
+    effortValue: 0
+captureRate: 50
+growthRate: 3
+habitat: 3
+encounterRate: 2
+moves:
+  - id: 3
+    method: 1
+    level: 1
+    order: 4
+  - id: 5
+    method: 3
+    level: 0
+  - id: 25
+    method: 3
+    level: 0
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 47
+    method: 1
+    level: 1
+    order: 1
+  - id: 50
+    method: 1
+    level: 1
+    order: 2
+  - id: 53
+    method: 4
+    level: 0
+  - id: 58
+    method: 4
+    level: 0
+  - id: 59
+    method: 4
+    level: 0
+  - id: 63
+    method: 4
+    level: 0
+  - id: 68
+    method: 3
+    level: 0
+  - id: 69
+    method: 3
+    level: 0
+  - id: 70
+    method: 4
+    level: 0
+  - id: 76
+    method: 4
+    level: 0
+  - id: 85
+    method: 4
+    level: 0
+  - id: 86
+    method: 3
+    level: 0
+  - id: 87
+    method: 4
+    level: 0
+  - id: 91
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 94
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 111
+    method: 1
+    level: 1
+    order: 3
+  - id: 113
+    method: 4
+    level: 0
+  - id: 115
+    method: 4
+    level: 0
+  - id: 126
+    method: 4
+    level: 0
+  - id: 138
+    method: 3
+    level: 0
+  - id: 148
+    method: 4
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 219
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 247
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 264
+    method: 4
+    level: 0
+  - id: 280
+    method: 4
+    level: 0
+  - id: 289
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 351
+    method: 4
+    level: 0
+  - id: 352
+    method: 4
+    level: 0

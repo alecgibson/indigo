@@ -1,0 +1,194 @@
+id: 94
+identifier: gengar
+name: Gengar
+genus: Shadow
+sortOrder: 116
+height: 15
+weight: 405
+types:
+  - 8
+  - 4
+baseExperience: 225
+stats:
+  hitPoints:
+    base: 60
+    effortValue: 0
+  attack:
+    base: 65
+    effortValue: 0
+  defense:
+    base: 60
+    effortValue: 0
+  specialAttack:
+    base: 130
+    effortValue: 3
+  specialDefense:
+    base: 75
+    effortValue: 0
+  speed:
+    base: 110
+    effortValue: 0
+captureRate: 45
+growthRate: 4
+habitat: 1
+encounterRate: 0
+moves:
+  - id: 5
+    method: 3
+    level: 0
+  - id: 25
+    method: 3
+    level: 0
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 63
+    method: 4
+    level: 0
+  - id: 68
+    method: 3
+    level: 0
+  - id: 69
+    method: 3
+    level: 0
+  - id: 70
+    method: 4
+    level: 0
+  - id: 85
+    method: 4
+    level: 0
+  - id: 87
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 94
+    method: 4
+    level: 0
+  - id: 95
+    method: 1
+    level: 1
+    order: 1
+  - id: 101
+    method: 1
+    level: 16
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 109
+    method: 1
+    level: 21
+  - id: 118
+    method: 3
+    level: 0
+  - id: 122
+    method: 1
+    level: 1
+    order: 2
+  - id: 138
+    method: 1
+    level: 31
+  - id: 138
+    method: 3
+    level: 0
+  - id: 153
+    method: 3
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 171
+    method: 1
+    level: 53
+  - id: 174
+    method: 1
+    level: 13
+  - id: 180
+    method: 1
+    level: 1
+    order: 3
+  - id: 180
+    method: 1
+    level: 8
+  - id: 182
+    method: 4
+    level: 0
+  - id: 188
+    method: 4
+    level: 0
+  - id: 194
+    method: 1
+    level: 39
+  - id: 202
+    method: 4
+    level: 0
+  - id: 212
+    method: 1
+    level: 64
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 247
+    method: 1
+    level: 45
+  - id: 247
+    method: 4
+    level: 0
+  - id: 249
+    method: 4
+    level: 0
+  - id: 259
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 264
+    method: 4
+    level: 0
+  - id: 269
+    method: 4
+    level: 0
+  - id: 280
+    method: 4
+    level: 0
+  - id: 285
+    method: 4
+    level: 0
+  - id: 289
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 325
+    method: 1
+    level: 25

@@ -1,0 +1,46 @@
+id: 10
+identifier: caterpie
+name: Caterpie
+genus: Worm
+sortOrder: 14
+height: 3
+weight: 29
+types:
+  - 7
+baseExperience: 39
+stats:
+  hitPoints:
+    base: 45
+    effortValue: 1
+  attack:
+    base: 30
+    effortValue: 0
+  defense:
+    base: 35
+    effortValue: 0
+  specialAttack:
+    base: 20
+    effortValue: 0
+  specialDefense:
+    base: 20
+    effortValue: 0
+  speed:
+    base: 45
+    effortValue: 0
+captureRate: 255
+growthRate: 2
+habitat: 2
+encounterRate: 5
+moves:
+  - id: 33
+    method: 1
+    level: 1
+    order: 1
+  - id: 81
+    method: 1
+    level: 1
+    order: 2
+evolution:
+  evolvedPokemonId: 11
+  trigger: 1
+  level: 7

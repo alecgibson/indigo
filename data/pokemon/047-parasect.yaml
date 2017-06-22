@@ -1,0 +1,155 @@
+id: 47
+identifier: parasect
+name: Parasect
+genus: Mushroom
+sortOrder: 64
+height: 10
+weight: 295
+types:
+  - 7
+  - 12
+baseExperience: 142
+stats:
+  hitPoints:
+    base: 60
+    effortValue: 0
+  attack:
+    base: 95
+    effortValue: 2
+  defense:
+    base: 80
+    effortValue: 1
+  specialAttack:
+    base: 60
+    effortValue: 0
+  specialDefense:
+    base: 80
+    effortValue: 0
+  speed:
+    base: 30
+    effortValue: 0
+captureRate: 75
+growthRate: 2
+habitat: 2
+encounterRate: 2
+moves:
+  - id: 10
+    method: 1
+    level: 1
+    order: 1
+  - id: 14
+    method: 3
+    level: 0
+  - id: 15
+    method: 4
+    level: 0
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 63
+    method: 4
+    level: 0
+  - id: 68
+    method: 3
+    level: 0
+  - id: 74
+    method: 1
+    level: 43
+  - id: 76
+    method: 4
+    level: 0
+  - id: 77
+    method: 1
+    level: 1
+    order: 3
+  - id: 77
+    method: 1
+    level: 13
+  - id: 78
+    method: 1
+    level: 1
+    order: 2
+  - id: 78
+    method: 1
+    level: 7
+  - id: 91
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 141
+    method: 1
+    level: 19
+  - id: 147
+    method: 1
+    level: 27
+  - id: 148
+    method: 4
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 163
+    method: 1
+    level: 35
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 188
+    method: 4
+    level: 0
+  - id: 202
+    method: 1
+    level: 51
+  - id: 202
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 249
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 312
+    method: 1
+    level: 59
+  - id: 331
+    method: 4
+    level: 0
+  - id: 332
+    method: 4
+    level: 0

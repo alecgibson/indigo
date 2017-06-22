@@ -1,0 +1,160 @@
+id: 24
+identifier: arbok
+name: Arbok
+genus: Cobra
+sortOrder: 30
+height: 35
+weight: 650
+types:
+  - 4
+baseExperience: 153
+stats:
+  hitPoints:
+    base: 60
+    effortValue: 0
+  attack:
+    base: 85
+    effortValue: 2
+  defense:
+    base: 69
+    effortValue: 0
+  specialAttack:
+    base: 65
+    effortValue: 0
+  specialDefense:
+    base: 79
+    effortValue: 0
+  speed:
+    base: 80
+    effortValue: 0
+captureRate: 90
+growthRate: 2
+habitat: 3
+encounterRate: 2
+moves:
+  - id: 34
+    method: 3
+    level: 0
+  - id: 35
+    method: 1
+    level: 1
+    order: 1
+  - id: 38
+    method: 3
+    level: 0
+  - id: 40
+    method: 1
+    level: 1
+    order: 3
+  - id: 40
+    method: 1
+    level: 8
+  - id: 43
+    method: 1
+    level: 1
+    order: 2
+  - id: 44
+    method: 1
+    level: 1
+    order: 4
+  - id: 44
+    method: 1
+    level: 13
+  - id: 51
+    method: 1
+    level: 38
+  - id: 63
+    method: 4
+    level: 0
+  - id: 70
+    method: 4
+    level: 0
+  - id: 89
+    method: 4
+    level: 0
+  - id: 91
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 103
+    method: 1
+    level: 28
+  - id: 104
+    method: 4
+    level: 0
+  - id: 114
+    method: 1
+    level: 56
+  - id: 137
+    method: 1
+    level: 20
+  - id: 156
+    method: 4
+    level: 0
+  - id: 157
+    method: 3
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 188
+    method: 4
+    level: 0
+  - id: 202
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 231
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 254
+    method: 1
+    level: 46
+  - id: 255
+    method: 1
+    level: 46
+    order: 6
+  - id: 256
+    method: 1
+    level: 46
+    order: 5
+  - id: 259
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 289
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0

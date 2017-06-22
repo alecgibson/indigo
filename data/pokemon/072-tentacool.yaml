@@ -1,0 +1,162 @@
+id: 72
+identifier: tentacool
+name: Tentacool
+genus: Jellyfish
+sortOrder: 91
+height: 9
+weight: 455
+types:
+  - 11
+  - 4
+baseExperience: 67
+stats:
+  hitPoints:
+    base: 40
+    effortValue: 0
+  attack:
+    base: 40
+    effortValue: 0
+  defense:
+    base: 35
+    effortValue: 0
+  specialAttack:
+    base: 50
+    effortValue: 0
+  specialDefense:
+    base: 100
+    effortValue: 1
+  speed:
+    base: 70
+    effortValue: 0
+captureRate: 190
+growthRate: 1
+habitat: 7
+encounterRate: 5
+moves:
+  - id: 14
+    method: 3
+    level: 0
+  - id: 15
+    method: 4
+    level: 0
+  - id: 35
+    method: 1
+    level: 30
+  - id: 38
+    method: 3
+    level: 0
+  - id: 40
+    method: 1
+    level: 1
+  - id: 48
+    method: 1
+    level: 6
+  - id: 51
+    method: 1
+    level: 19
+  - id: 56
+    method: 1
+    level: 49
+  - id: 57
+    method: 4
+    level: 0
+  - id: 58
+    method: 4
+    level: 0
+  - id: 59
+    method: 4
+    level: 0
+  - id: 61
+    method: 1
+    level: 25
+  - id: 62
+    method: 2
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 103
+    method: 1
+    level: 43
+  - id: 104
+    method: 4
+    level: 0
+  - id: 109
+    method: 2
+    level: 0
+  - id: 112
+    method: 1
+    level: 36
+  - id: 114
+    method: 2
+    level: 0
+  - id: 127
+    method: 4
+    level: 0
+  - id: 132
+    method: 1
+    level: 12
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 188
+    method: 4
+    level: 0
+  - id: 202
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 219
+    method: 2
+    level: 0
+  - id: 229
+    method: 2
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 243
+    method: 2
+    level: 0
+  - id: 258
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 291
+    method: 4
+    level: 0
+  - id: 352
+    method: 4
+    level: 0
+evolution:
+  evolvedPokemonId: 73
+  trigger: 1
+  level: 30

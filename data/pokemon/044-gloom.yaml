@@ -1,0 +1,135 @@
+id: 44
+identifier: gloom
+name: Gloom
+genus: Weed
+sortOrder: 60
+height: 8
+weight: 86
+types:
+  - 12
+  - 4
+baseExperience: 138
+stats:
+  hitPoints:
+    base: 60
+    effortValue: 0
+  attack:
+    base: 65
+    effortValue: 0
+  defense:
+    base: 70
+    effortValue: 0
+  specialAttack:
+    base: 85
+    effortValue: 2
+  specialDefense:
+    base: 75
+    effortValue: 0
+  speed:
+    base: 40
+    effortValue: 0
+captureRate: 120
+growthRate: 4
+habitat: 3
+encounterRate: 2
+moves:
+  - id: 14
+    method: 3
+    level: 0
+  - id: 15
+    method: 4
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 51
+    method: 1
+    level: 24
+  - id: 71
+    method: 1
+    level: 1
+    order: 1
+  - id: 76
+    method: 4
+    level: 0
+  - id: 77
+    method: 1
+    level: 1
+    order: 3
+  - id: 77
+    method: 1
+    level: 14
+  - id: 78
+    method: 1
+    level: 16
+  - id: 79
+    method: 1
+    level: 18
+  - id: 80
+    method: 1
+    level: 44
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 148
+    method: 4
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 188
+    method: 4
+    level: 0
+  - id: 202
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 230
+    method: 1
+    level: 1
+    order: 2
+  - id: 230
+    method: 1
+    level: 7
+  - id: 236
+    method: 1
+    level: 35
+  - id: 237
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 331
+    method: 4
+    level: 0
+evolution:
+  evolvedPokemonId: 45
+  trigger: 3
+  triggerItemId: 85

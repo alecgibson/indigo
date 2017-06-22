@@ -1,0 +1,155 @@
+id: 110
+identifier: weezing
+name: Weezing
+genus: Poison Gas
+sortOrder: 138
+height: 12
+weight: 95
+types:
+  - 4
+baseExperience: 172
+stats:
+  hitPoints:
+    base: 65
+    effortValue: 0
+  attack:
+    base: 90
+    effortValue: 0
+  defense:
+    base: 120
+    effortValue: 2
+  specialAttack:
+    base: 85
+    effortValue: 0
+  specialDefense:
+    base: 70
+    effortValue: 0
+  speed:
+    base: 60
+    effortValue: 0
+captureRate: 60
+growthRate: 2
+habitat: 8
+encounterRate: 2
+moves:
+  - id: 33
+    method: 1
+    level: 1
+    order: 2
+  - id: 53
+    method: 4
+    level: 0
+  - id: 63
+    method: 4
+    level: 0
+  - id: 85
+    method: 4
+    level: 0
+  - id: 87
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 108
+    method: 1
+    level: 25
+  - id: 114
+    method: 1
+    level: 33
+  - id: 120
+    method: 1
+    level: 1
+    order: 4
+  - id: 120
+    method: 1
+    level: 17
+  - id: 123
+    method: 1
+    level: 1
+    order: 3
+  - id: 123
+    method: 1
+    level: 9
+  - id: 124
+    method: 1
+    level: 21
+  - id: 126
+    method: 4
+    level: 0
+  - id: 139
+    method: 1
+    level: 1
+    order: 1
+  - id: 148
+    method: 4
+    level: 0
+  - id: 153
+    method: 1
+    level: 44
+  - id: 153
+    method: 3
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 188
+    method: 4
+    level: 0
+  - id: 194
+    method: 1
+    level: 51
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 247
+    method: 4
+    level: 0
+  - id: 259
+    method: 4
+    level: 0
+  - id: 262
+    method: 1
+    level: 58
+  - id: 263
+    method: 4
+    level: 0
+  - id: 269
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 351
+    method: 4
+    level: 0

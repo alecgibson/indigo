@@ -1,0 +1,171 @@
+id: 148
+identifier: dragonair
+name: Dragonair
+genus: Dragon
+sortOrder: 201
+height: 40
+weight: 165
+types:
+  - 16
+baseExperience: 147
+stats:
+  hitPoints:
+    base: 61
+    effortValue: 0
+  attack:
+    base: 84
+    effortValue: 2
+  defense:
+    base: 65
+    effortValue: 0
+  specialAttack:
+    base: 70
+    effortValue: 0
+  specialDefense:
+    base: 70
+    effortValue: 0
+  speed:
+    base: 70
+    effortValue: 0
+captureRate: 45
+growthRate: 1
+habitat: 9
+encounterRate: 1
+moves:
+  - id: 21
+    method: 1
+    level: 29
+  - id: 34
+    method: 3
+    level: 0
+  - id: 35
+    method: 1
+    level: 1
+    order: 1
+  - id: 38
+    method: 3
+    level: 0
+  - id: 43
+    method: 1
+    level: 1
+    order: 2
+  - id: 53
+    method: 4
+    level: 0
+  - id: 57
+    method: 4
+    level: 0
+  - id: 58
+    method: 4
+    level: 0
+  - id: 59
+    method: 4
+    level: 0
+  - id: 63
+    method: 1
+    level: 65
+  - id: 63
+    method: 4
+    level: 0
+  - id: 82
+    method: 1
+    level: 22
+  - id: 85
+    method: 4
+    level: 0
+  - id: 86
+    method: 1
+    level: 1
+    order: 3
+  - id: 86
+    method: 1
+    level: 8
+  - id: 86
+    method: 3
+    level: 0
+  - id: 87
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 97
+    method: 1
+    level: 38
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 126
+    method: 4
+    level: 0
+  - id: 127
+    method: 4
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 200
+    method: 1
+    level: 56
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 219
+    method: 1
+    level: 47
+  - id: 219
+    method: 4
+    level: 0
+  - id: 231
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 239
+    method: 1
+    level: 1
+    order: 4
+  - id: 239
+    method: 1
+    level: 15
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 258
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 351
+    method: 4
+    level: 0
+  - id: 352
+    method: 4
+    level: 0
+evolution:
+  evolvedPokemonId: 149
+  trigger: 1
+  level: 55

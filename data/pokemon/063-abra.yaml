@@ -1,0 +1,173 @@
+id: 63
+identifier: abra
+name: Abra
+genus: Psi
+sortOrder: 81
+height: 9
+weight: 195
+types:
+  - 14
+baseExperience: 62
+stats:
+  hitPoints:
+    base: 25
+    effortValue: 0
+  attack:
+    base: 20
+    effortValue: 0
+  defense:
+    base: 15
+    effortValue: 0
+  specialAttack:
+    base: 105
+    effortValue: 1
+  specialDefense:
+    base: 55
+    effortValue: 0
+  speed:
+    base: 90
+    effortValue: 0
+captureRate: 200
+growthRate: 4
+habitat: 8
+encounterRate: 3
+moves:
+  - id: 5
+    method: 3
+    level: 0
+  - id: 7
+    method: 2
+    level: 0
+  - id: 8
+    method: 2
+    level: 0
+  - id: 9
+    method: 2
+    level: 0
+  - id: 25
+    method: 3
+    level: 0
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 68
+    method: 3
+    level: 0
+  - id: 69
+    method: 3
+    level: 0
+  - id: 86
+    method: 3
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 94
+    method: 4
+    level: 0
+  - id: 100
+    method: 1
+    level: 1
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 112
+    method: 2
+    level: 0
+  - id: 113
+    method: 4
+    level: 0
+  - id: 115
+    method: 4
+    level: 0
+  - id: 118
+    method: 3
+    level: 0
+  - id: 138
+    method: 3
+    level: 0
+  - id: 148
+    method: 4
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 219
+    method: 4
+    level: 0
+  - id: 227
+    method: 2
+    level: 0
+  - id: 231
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 247
+    method: 4
+    level: 0
+  - id: 259
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 264
+    method: 4
+    level: 0
+  - id: 269
+    method: 4
+    level: 0
+  - id: 282
+    method: 2
+    level: 0
+  - id: 285
+    method: 4
+    level: 0
+  - id: 289
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 347
+    method: 4
+    level: 0
+  - id: 351
+    method: 4
+    level: 0
+evolution:
+  evolvedPokemonId: 64
+  trigger: 1
+  level: 16

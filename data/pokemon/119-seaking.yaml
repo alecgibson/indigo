@@ -1,0 +1,140 @@
+id: 119
+identifier: seaking
+name: Seaking
+genus: Goldfish
+sortOrder: 153
+height: 13
+weight: 390
+types:
+  - 11
+baseExperience: 158
+stats:
+  hitPoints:
+    base: 80
+    effortValue: 0
+  attack:
+    base: 92
+    effortValue: 2
+  defense:
+    base: 65
+    effortValue: 0
+  specialAttack:
+    base: 65
+    effortValue: 0
+  specialDefense:
+    base: 80
+    effortValue: 0
+  speed:
+    base: 68
+    effortValue: 0
+captureRate: 60
+growthRate: 2
+habitat: 9
+encounterRate: 2
+moves:
+  - id: 30
+    method: 1
+    level: 15
+  - id: 31
+    method: 1
+    level: 29
+  - id: 32
+    method: 1
+    level: 49
+  - id: 38
+    method: 3
+    level: 0
+  - id: 39
+    method: 1
+    level: 1
+    order: 2
+  - id: 48
+    method: 1
+    level: 1
+    order: 4
+  - id: 48
+    method: 1
+    level: 10
+  - id: 57
+    method: 4
+    level: 0
+  - id: 58
+    method: 4
+    level: 0
+  - id: 59
+    method: 4
+    level: 0
+  - id: 63
+    method: 4
+    level: 0
+  - id: 64
+    method: 1
+    level: 1
+    order: 1
+  - id: 92
+    method: 4
+    level: 0
+  - id: 97
+    method: 1
+    level: 61
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 127
+    method: 1
+    level: 41
+  - id: 127
+    method: 4
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 175
+    method: 1
+    level: 24
+  - id: 182
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 224
+    method: 1
+    level: 69
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 258
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 291
+    method: 4
+    level: 0
+  - id: 346
+    method: 1
+    level: 1
+    order: 3
+  - id: 352
+    method: 4
+    level: 0

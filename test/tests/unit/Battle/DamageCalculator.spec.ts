@@ -35,11 +35,11 @@ describe('DamageCalculator', () => {
     });
 
     it('should do more damage when the move is super-effective', () => {
-        const thunderShock = testMove({type: Type.Electric});
+        const thunderShock = testMove({type: Type.ELECTRIC});
 
-        const pikachu = testPokemon({types: [Type.Electric]});
-        const spearow = testPokemon({types: [Type.Flying]});
-        const rattata = testPokemon({types: [Type.Normal]});
+        const pikachu = testPokemon({types: [Type.ELECTRIC]});
+        const spearow = testPokemon({types: [Type.FLYING]});
+        const rattata = testPokemon({types: [Type.NORMAL]});
 
         let damageToSpearow = damageCalculator.calculate(Attack.by(pikachu).using(thunderShock).on(spearow));
         let damageToRattata = damageCalculator.calculate(Attack.by(pikachu).using(thunderShock).on(rattata));
@@ -48,11 +48,11 @@ describe('DamageCalculator', () => {
     });
 
     it('should do less damage when the move is ineffective', () => {
-        const tackle = testMove({type: Type.Normal});
-        const razorLeaf = testMove({type: Type.Grass});
+        const tackle = testMove({type: Type.NORMAL});
+        const razorLeaf = testMove({type: Type.GRASS});
 
-        const bulbasaur = testPokemon({types: [Type.Grass]});
-        const charmander = testPokemon({types: [Type.Fire]});
+        const bulbasaur = testPokemon({types: [Type.GRASS]});
+        const charmander = testPokemon({types: [Type.FIRE]});
 
         let tackleDamage = damageCalculator.calculate(Attack.by(bulbasaur).using(tackle).on(charmander));
         let razorLeafDamage = damageCalculator.calculate(Attack.by(bulbasaur).using(razorLeaf).on(charmander));
@@ -61,10 +61,10 @@ describe('DamageCalculator', () => {
     });
 
     it('should do no damage when the move does not affect the defender', () => {
-        const thunderShock = testMove({type: Type.Electric});
+        const thunderShock = testMove({type: Type.ELECTRIC});
 
-        const pikachu = testPokemon({types: [Type.Electric]});
-        const onix = testPokemon({types: [Type.Ground]});
+        const pikachu = testPokemon({types: [Type.ELECTRIC]});
+        const onix = testPokemon({types: [Type.GROUND]});
 
         let damage = damageCalculator.calculate(Attack.by(pikachu).using(thunderShock).on(onix));
 
@@ -132,11 +132,11 @@ describe('DamageCalculator', () => {
     });
 
     it('should do more damage for attacks that have the same type as the attacker', () => {
-       const tackle = testMove({type: Type.Normal});
-       const ember = testMove({type: Type.Fire});
+       const tackle = testMove({type: Type.NORMAL});
+       const ember = testMove({type: Type.FIRE});
 
-       const charmander = testPokemon({types: [Type.Fire]});
-       const bulbasaur = testPokemon({types: [Type.Grass]});
+       const charmander = testPokemon({types: [Type.FIRE]});
+       const bulbasaur = testPokemon({types: [Type.GRASS]});
 
        let damageWithTackle = damageCalculator.calculate(Attack.by(charmander).using(tackle).on(bulbasaur));
        let damageWithEmber = damageCalculator.calculate(Attack.by(charmander).using(ember).on(bulbasaur));
@@ -145,11 +145,11 @@ describe('DamageCalculator', () => {
     });
 
     it('should be doubly effective on types that have two weak types', () => {
-        const thunderShock = testMove({type: Type.Electric});
+        const thunderShock = testMove({type: Type.ELECTRIC});
 
-        const pikachu = testPokemon({types: [Type.Electric]});
-        const gyarados = testPokemon({types: [Type.Water, Type.Flying]});
-        const magikarp = testPokemon({types: [Type.Water]});
+        const pikachu = testPokemon({types: [Type.ELECTRIC]});
+        const gyarados = testPokemon({types: [Type.WATER, Type.FLYING]});
+        const magikarp = testPokemon({types: [Type.WATER]});
 
         let damageToGyarados = damageCalculator.calculate(Attack.by(pikachu).using(thunderShock).on(gyarados));
         let damageToMagikarp = damageCalculator.calculate(Attack.by(pikachu).using(thunderShock).on(magikarp));
@@ -158,11 +158,11 @@ describe('DamageCalculator', () => {
     });
 
     it('should be neutrally effective where types cancel out', () => {
-       const machPunch = testMove({type: Type.Fighting});
-       const bodySlam = testMove({type: Type.Normal});
+       const machPunch = testMove({type: Type.FIGHTING});
+       const bodySlam = testMove({type: Type.NORMAL});
 
-       const charmeleon = testPokemon({types: [Type.Fire]});
-       const articuno = testPokemon({types: [Type.Flying, Type.Ice]});
+       const charmeleon = testPokemon({types: [Type.FIRE]});
+       const articuno = testPokemon({types: [Type.FLYING, Type.ICE]});
 
        let damageWithMachPunch = damageCalculator.calculate(Attack.by(charmeleon).using(machPunch).on(articuno));
        let damageWithBodySlam = damageCalculator.calculate(Attack.by(charmeleon).using(bodySlam).on(articuno));
@@ -174,7 +174,7 @@ describe('DamageCalculator', () => {
         return Object.assign({
             power: 10,
             damageCategory: DamageCategory.Physical,
-            type: Type.Normal,
+            type: Type.NORMAL,
         }, customProperties);
     }
 
@@ -186,7 +186,7 @@ describe('DamageCalculator', () => {
             defence: 30,
             specialDefence: 30,
             types: [
-                Type.Normal,
+                Type.NORMAL,
             ],
         }, customProperties);
     }

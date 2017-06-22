@@ -1,0 +1,163 @@
+id: 30
+identifier: nidorina
+name: Nidorina
+genus: Poison Pin
+sortOrder: 43
+height: 8
+weight: 200
+types:
+  - 4
+baseExperience: 128
+stats:
+  hitPoints:
+    base: 70
+    effortValue: 2
+  attack:
+    base: 62
+    effortValue: 0
+  defense:
+    base: 67
+    effortValue: 0
+  specialAttack:
+    base: 55
+    effortValue: 0
+  specialDefense:
+    base: 55
+    effortValue: 0
+  speed:
+    base: 56
+    effortValue: 0
+captureRate: 120
+growthRate: 4
+habitat: 3
+encounterRate: 2
+moves:
+  - id: 10
+    method: 1
+    level: 1
+    order: 2
+  - id: 15
+    method: 4
+    level: 0
+  - id: 24
+    method: 1
+    level: 12
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 39
+    method: 1
+    level: 8
+  - id: 40
+    method: 1
+    level: 18
+  - id: 44
+    method: 1
+    level: 22
+  - id: 45
+    method: 1
+    level: 1
+    order: 1
+  - id: 58
+    method: 4
+    level: 0
+  - id: 59
+    method: 4
+    level: 0
+  - id: 68
+    method: 3
+    level: 0
+  - id: 70
+    method: 4
+    level: 0
+  - id: 85
+    method: 4
+    level: 0
+  - id: 87
+    method: 4
+    level: 0
+  - id: 91
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 154
+    method: 1
+    level: 34
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 188
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 231
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 242
+    method: 1
+    level: 53
+  - id: 249
+    method: 4
+    level: 0
+  - id: 260
+    method: 1
+    level: 43
+  - id: 263
+    method: 4
+    level: 0
+  - id: 270
+    method: 1
+    level: 26
+  - id: 290
+    method: 4
+    level: 0
+  - id: 332
+    method: 4
+    level: 0
+  - id: 351
+    method: 4
+    level: 0
+  - id: 352
+    method: 4
+    level: 0
+evolution:
+  evolvedPokemonId: 31
+  trigger: 3
+  triggerItemId: 81

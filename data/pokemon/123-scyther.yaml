@@ -1,0 +1,163 @@
+id: 123
+identifier: scyther
+name: Scyther
+genus: Mantis
+sortOrder: 158
+height: 15
+weight: 560
+types:
+  - 7
+  - 3
+baseExperience: 100
+stats:
+  hitPoints:
+    base: 70
+    effortValue: 0
+  attack:
+    base: 110
+    effortValue: 1
+  defense:
+    base: 80
+    effortValue: 0
+  specialAttack:
+    base: 55
+    effortValue: 0
+  specialDefense:
+    base: 80
+    effortValue: 0
+  speed:
+    base: 105
+    effortValue: 0
+captureRate: 45
+growthRate: 2
+habitat: 3
+encounterRate: 1
+moves:
+  - id: 13
+    method: 2
+    level: 0
+  - id: 14
+    method: 1
+    level: 36
+  - id: 14
+    method: 3
+    level: 0
+  - id: 15
+    method: 4
+    level: 0
+  - id: 17
+    method: 1
+    level: 26
+  - id: 38
+    method: 3
+    level: 0
+  - id: 43
+    method: 1
+    level: 1
+    order: 2
+  - id: 63
+    method: 4
+    level: 0
+  - id: 68
+    method: 2
+    level: 0
+  - id: 68
+    method: 3
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 97
+    method: 1
+    level: 21
+  - id: 98
+    method: 1
+    level: 1
+    order: 1
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 1
+    level: 41
+  - id: 104
+    method: 4
+    level: 0
+  - id: 113
+    method: 2
+    level: 0
+  - id: 116
+    method: 1
+    level: 6
+  - id: 156
+    method: 4
+    level: 0
+  - id: 163
+    method: 1
+    level: 31
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 179
+    method: 2
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 203
+    method: 2
+    level: 0
+  - id: 206
+    method: 1
+    level: 16
+  - id: 210
+    method: 1
+    level: 46
+  - id: 211
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 219
+    method: 2
+    level: 0
+  - id: 226
+    method: 2
+    level: 0
+  - id: 228
+    method: 1
+    level: 11
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 249
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 318
+    method: 2
+    level: 0
+  - id: 332
+    method: 4
+    level: 0

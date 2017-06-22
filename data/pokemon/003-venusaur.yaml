@@ -1,0 +1,166 @@
+id: 3
+identifier: venusaur
+name: Venusaur
+genus: Seed
+sortOrder: 3
+height: 20
+weight: 1000
+types:
+  - 12
+  - 4
+baseExperience: 236
+stats:
+  hitPoints:
+    base: 80
+    effortValue: 0
+  attack:
+    base: 82
+    effortValue: 0
+  defense:
+    base: 83
+    effortValue: 0
+  specialAttack:
+    base: 100
+    effortValue: 2
+  specialDefense:
+    base: 100
+    effortValue: 1
+  speed:
+    base: 80
+    effortValue: 0
+captureRate: 45
+growthRate: 4
+habitat: 3
+encounterRate: 0
+moves:
+  - id: 14
+    method: 3
+    level: 0
+  - id: 15
+    method: 4
+    level: 0
+  - id: 22
+    method: 1
+    level: 1
+    order: 4
+  - id: 22
+    method: 1
+    level: 10
+  - id: 33
+    method: 1
+    level: 1
+    order: 1
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 45
+    method: 1
+    level: 1
+    order: 2
+  - id: 45
+    method: 1
+    level: 4
+  - id: 46
+    method: 4
+    level: 0
+  - id: 63
+    method: 4
+    level: 0
+  - id: 70
+    method: 4
+    level: 0
+  - id: 73
+    method: 1
+    level: 1
+    order: 3
+  - id: 73
+    method: 1
+    level: 7
+  - id: 74
+    method: 1
+    level: 41
+  - id: 75
+    method: 1
+    level: 22
+  - id: 76
+    method: 1
+    level: 65
+  - id: 76
+    method: 4
+    level: 0
+  - id: 77
+    method: 1
+    level: 15
+  - id: 79
+    method: 1
+    level: 15
+    order: 5
+  - id: 89
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 148
+    method: 4
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 188
+    method: 4
+    level: 0
+  - id: 202
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 230
+    method: 1
+    level: 29
+  - id: 235
+    method: 1
+    level: 53
+  - id: 237
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 249
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 331
+    method: 4
+    level: 0
+  - id: 338
+    method: 3
+    level: 0

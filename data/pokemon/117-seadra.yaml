@@ -1,0 +1,137 @@
+id: 117
+identifier: seadra
+name: Seadra
+genus: Dragon
+sortOrder: 150
+height: 12
+weight: 250
+types:
+  - 11
+baseExperience: 154
+stats:
+  hitPoints:
+    base: 55
+    effortValue: 0
+  attack:
+    base: 65
+    effortValue: 0
+  defense:
+    base: 95
+    effortValue: 1
+  specialAttack:
+    base: 95
+    effortValue: 1
+  specialDefense:
+    base: 45
+    effortValue: 0
+  speed:
+    base: 85
+    effortValue: 0
+captureRate: 75
+growthRate: 2
+habitat: 7
+encounterRate: 2
+moves:
+  - id: 38
+    method: 3
+    level: 0
+  - id: 43
+    method: 1
+    level: 1
+    order: 3
+  - id: 43
+    method: 1
+    level: 15
+  - id: 55
+    method: 1
+    level: 1
+    order: 4
+  - id: 55
+    method: 1
+    level: 22
+  - id: 56
+    method: 1
+    level: 51
+  - id: 57
+    method: 4
+    level: 0
+  - id: 58
+    method: 4
+    level: 0
+  - id: 59
+    method: 4
+    level: 0
+  - id: 63
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 97
+    method: 1
+    level: 40
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 108
+    method: 1
+    level: 1
+    order: 2
+  - id: 108
+    method: 1
+    level: 8
+  - id: 127
+    method: 4
+    level: 0
+  - id: 145
+    method: 1
+    level: 1
+    order: 1
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 239
+    method: 1
+    level: 29
+  - id: 240
+    method: 4
+    level: 0
+  - id: 258
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 291
+    method: 4
+    level: 0
+  - id: 349
+    method: 1
+    level: 62
+  - id: 352
+    method: 4
+    level: 0

@@ -1,0 +1,47 @@
+id: 13
+identifier: weedle
+name: Weedle
+genus: Hairy Bug
+sortOrder: 17
+height: 3
+weight: 32
+types:
+  - 7
+  - 4
+baseExperience: 39
+stats:
+  hitPoints:
+    base: 40
+    effortValue: 0
+  attack:
+    base: 35
+    effortValue: 0
+  defense:
+    base: 30
+    effortValue: 0
+  specialAttack:
+    base: 20
+    effortValue: 0
+  specialDefense:
+    base: 20
+    effortValue: 0
+  speed:
+    base: 50
+    effortValue: 1
+captureRate: 255
+growthRate: 2
+habitat: 2
+encounterRate: 5
+moves:
+  - id: 40
+    method: 1
+    level: 1
+    order: 1
+  - id: 81
+    method: 1
+    level: 1
+    order: 2
+evolution:
+  evolvedPokemonId: 14
+  trigger: 1
+  level: 7

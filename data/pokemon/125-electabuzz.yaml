@@ -1,0 +1,163 @@
+id: 125
+identifier: electabuzz
+name: Electabuzz
+genus: Electric
+sortOrder: 164
+height: 11
+weight: 300
+types:
+  - 13
+baseExperience: 172
+stats:
+  hitPoints:
+    base: 65
+    effortValue: 0
+  attack:
+    base: 83
+    effortValue: 0
+  defense:
+    base: 57
+    effortValue: 0
+  specialAttack:
+    base: 95
+    effortValue: 0
+  specialDefense:
+    base: 85
+    effortValue: 0
+  speed:
+    base: 105
+    effortValue: 2
+captureRate: 45
+growthRate: 2
+habitat: 3
+encounterRate: 1
+moves:
+  - id: 5
+    method: 3
+    level: 0
+  - id: 9
+    method: 1
+    level: 1
+    order: 3
+  - id: 9
+    method: 1
+    level: 9
+  - id: 25
+    method: 3
+    level: 0
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 43
+    method: 1
+    level: 1
+    order: 2
+  - id: 63
+    method: 4
+    level: 0
+  - id: 68
+    method: 3
+    level: 0
+  - id: 69
+    method: 3
+    level: 0
+  - id: 70
+    method: 4
+    level: 0
+  - id: 85
+    method: 1
+    level: 47
+  - id: 85
+    method: 4
+    level: 0
+  - id: 86
+    method: 3
+    level: 0
+  - id: 87
+    method: 1
+    level: 58
+  - id: 87
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 94
+    method: 4
+    level: 0
+  - id: 98
+    method: 1
+    level: 1
+    order: 1
+  - id: 102
+    method: 3
+    level: 0
+  - id: 103
+    method: 1
+    level: 36
+  - id: 104
+    method: 4
+    level: 0
+  - id: 113
+    method: 1
+    level: 17
+  - id: 113
+    method: 4
+    level: 0
+  - id: 129
+    method: 1
+    level: 25
+  - id: 148
+    method: 4
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 231
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 249
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 264
+    method: 4
+    level: 0
+  - id: 280
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 351
+    method: 4
+    level: 0

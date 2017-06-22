@@ -1,0 +1,157 @@
+id: 137
+identifier: porygon
+name: Porygon
+genus: Virtual
+sortOrder: 186
+height: 8
+weight: 365
+types:
+  - 1
+baseExperience: 79
+stats:
+  hitPoints:
+    base: 65
+    effortValue: 0
+  attack:
+    base: 60
+    effortValue: 0
+  defense:
+    base: 70
+    effortValue: 0
+  specialAttack:
+    base: 85
+    effortValue: 1
+  specialDefense:
+    base: 75
+    effortValue: 0
+  speed:
+    base: 40
+    effortValue: 0
+captureRate: 45
+growthRate: 2
+habitat: 8
+encounterRate: 1
+moves:
+  - id: 33
+    method: 1
+    level: 1
+    order: 2
+  - id: 38
+    method: 3
+    level: 0
+  - id: 58
+    method: 4
+    level: 0
+  - id: 59
+    method: 4
+    level: 0
+  - id: 60
+    method: 1
+    level: 12
+  - id: 63
+    method: 4
+    level: 0
+  - id: 76
+    method: 4
+    level: 0
+  - id: 85
+    method: 4
+    level: 0
+  - id: 86
+    method: 3
+    level: 0
+  - id: 87
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 94
+    method: 4
+    level: 0
+  - id: 97
+    method: 1
+    level: 9
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 105
+    method: 1
+    level: 20
+  - id: 138
+    method: 3
+    level: 0
+  - id: 148
+    method: 4
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 159
+    method: 1
+    level: 24
+  - id: 160
+    method: 1
+    level: 1
+    order: 3
+  - id: 161
+    method: 1
+    level: 36
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 176
+    method: 1
+    level: 1
+    order: 1
+  - id: 182
+    method: 4
+    level: 0
+  - id: 192
+    method: 1
+    level: 48
+  - id: 199
+    method: 1
+    level: 32
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 231
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 247
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 278
+    method: 1
+    level: 44
+  - id: 290
+    method: 4
+    level: 0
+  - id: 332
+    method: 4
+    level: 0
+  - id: 351
+    method: 4
+    level: 0

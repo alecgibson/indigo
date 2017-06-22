@@ -1,0 +1,129 @@
+id: 22
+identifier: fearow
+name: Fearow
+genus: Beak
+sortOrder: 28
+height: 12
+weight: 380
+types:
+  - 1
+  - 3
+baseExperience: 155
+stats:
+  hitPoints:
+    base: 65
+    effortValue: 0
+  attack:
+    base: 90
+    effortValue: 0
+  defense:
+    base: 65
+    effortValue: 0
+  specialAttack:
+    base: 61
+    effortValue: 0
+  specialDefense:
+    base: 61
+    effortValue: 0
+  speed:
+    base: 100
+    effortValue: 2
+captureRate: 90
+growthRate: 2
+habitat: 6
+encounterRate: 2
+moves:
+  - id: 19
+    method: 4
+    level: 0
+  - id: 31
+    method: 1
+    level: 1
+    order: 4
+  - id: 31
+    method: 1
+    level: 13
+  - id: 38
+    method: 3
+    level: 0
+  - id: 43
+    method: 1
+    level: 1
+    order: 3
+  - id: 43
+    method: 1
+    level: 7
+  - id: 45
+    method: 1
+    level: 1
+    order: 2
+  - id: 63
+    method: 4
+    level: 0
+  - id: 64
+    method: 1
+    level: 1
+    order: 1
+  - id: 65
+    method: 1
+    level: 40
+  - id: 92
+    method: 4
+    level: 0
+  - id: 97
+    method: 1
+    level: 47
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 119
+    method: 1
+    level: 32
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 211
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 228
+    method: 1
+    level: 26
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 332
+    method: 4
+    level: 0

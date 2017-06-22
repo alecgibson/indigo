@@ -1,0 +1,47 @@
+id: 129
+identifier: magikarp
+name: Magikarp
+genus: Fish
+sortOrder: 172
+height: 9
+weight: 100
+types:
+  - 11
+baseExperience: 40
+stats:
+  hitPoints:
+    base: 20
+    effortValue: 0
+  attack:
+    base: 10
+    effortValue: 0
+  defense:
+    base: 55
+    effortValue: 0
+  specialAttack:
+    base: 15
+    effortValue: 0
+  specialDefense:
+    base: 20
+    effortValue: 0
+  speed:
+    base: 80
+    effortValue: 1
+captureRate: 255
+growthRate: 1
+habitat: 9
+encounterRate: 5
+moves:
+  - id: 33
+    method: 1
+    level: 15
+  - id: 150
+    method: 1
+    level: 1
+  - id: 175
+    method: 1
+    level: 30
+evolution:
+  evolvedPokemonId: 130
+  trigger: 1
+  level: 20

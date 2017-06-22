@@ -1,0 +1,175 @@
+id: 88
+identifier: grimer
+name: Grimer
+genus: Sludge
+sortOrder: 110
+height: 9
+weight: 300
+types:
+  - 4
+baseExperience: 65
+stats:
+  hitPoints:
+    base: 80
+    effortValue: 1
+  attack:
+    base: 80
+    effortValue: 0
+  defense:
+    base: 50
+    effortValue: 0
+  specialAttack:
+    base: 40
+    effortValue: 0
+  specialDefense:
+    base: 50
+    effortValue: 0
+  speed:
+    base: 25
+    effortValue: 0
+captureRate: 190
+growthRate: 2
+habitat: 8
+encounterRate: 4
+moves:
+  - id: 1
+    method: 1
+    level: 1
+    order: 2
+  - id: 34
+    method: 3
+    level: 0
+  - id: 50
+    method: 1
+    level: 8
+  - id: 53
+    method: 4
+    level: 0
+  - id: 85
+    method: 4
+    level: 0
+  - id: 87
+    method: 4
+    level: 0
+  - id: 91
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 103
+    method: 1
+    level: 26
+  - id: 104
+    method: 4
+    level: 0
+  - id: 106
+    method: 1
+    level: 4
+  - id: 107
+    method: 1
+    level: 19
+  - id: 114
+    method: 2
+    level: 0
+  - id: 122
+    method: 2
+    level: 0
+  - id: 124
+    method: 1
+    level: 13
+  - id: 126
+    method: 4
+    level: 0
+  - id: 139
+    method: 1
+    level: 1
+    order: 1
+  - id: 151
+    method: 1
+    level: 34
+  - id: 153
+    method: 2
+    level: 0
+  - id: 153
+    method: 3
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 174
+    method: 2
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 188
+    method: 1
+    level: 43
+  - id: 188
+    method: 4
+    level: 0
+  - id: 202
+    method: 4
+    level: 0
+  - id: 212
+    method: 2
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 259
+    method: 4
+    level: 0
+  - id: 262
+    method: 1
+    level: 53
+  - id: 263
+    method: 4
+    level: 0
+  - id: 269
+    method: 4
+    level: 0
+  - id: 286
+    method: 2
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 317
+    method: 4
+    level: 0
+  - id: 325
+    method: 2
+    level: 0
+  - id: 351
+    method: 4
+    level: 0
+evolution:
+  evolvedPokemonId: 89
+  trigger: 1
+  level: 38

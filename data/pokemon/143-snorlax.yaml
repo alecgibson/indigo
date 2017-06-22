@@ -1,0 +1,217 @@
+id: 143
+identifier: snorlax
+name: Snorlax
+genus: Sleeping
+sortOrder: 196
+height: 21
+weight: 4600
+types:
+  - 1
+baseExperience: 189
+stats:
+  hitPoints:
+    base: 160
+    effortValue: 2
+  attack:
+    base: 110
+    effortValue: 0
+  defense:
+    base: 65
+    effortValue: 0
+  specialAttack:
+    base: 65
+    effortValue: 0
+  specialDefense:
+    base: 110
+    effortValue: 0
+  speed:
+    base: 30
+    effortValue: 0
+captureRate: 25
+growthRate: 1
+habitat: 4
+encounterRate: 1
+moves:
+  - id: 5
+    method: 3
+    level: 0
+  - id: 25
+    method: 3
+    level: 0
+  - id: 29
+    method: 1
+    level: 17
+  - id: 33
+    method: 1
+    level: 1
+  - id: 34
+    method: 1
+    level: 33
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 2
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 53
+    method: 4
+    level: 0
+  - id: 57
+    method: 4
+    level: 0
+  - id: 58
+    method: 4
+    level: 0
+  - id: 59
+    method: 4
+    level: 0
+  - id: 63
+    method: 1
+    level: 53
+  - id: 63
+    method: 4
+    level: 0
+  - id: 68
+    method: 3
+    level: 0
+  - id: 69
+    method: 3
+    level: 0
+  - id: 70
+    method: 4
+    level: 0
+  - id: 76
+    method: 4
+    level: 0
+  - id: 85
+    method: 4
+    level: 0
+  - id: 87
+    method: 4
+    level: 0
+  - id: 89
+    method: 4
+    level: 0
+  - id: 90
+    method: 2
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 94
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 111
+    method: 1
+    level: 9
+  - id: 118
+    method: 3
+    level: 0
+  - id: 122
+    method: 2
+    level: 0
+  - id: 126
+    method: 4
+    level: 0
+  - id: 133
+    method: 1
+    level: 5
+  - id: 156
+    method: 1
+    level: 25
+  - id: 156
+    method: 4
+    level: 0
+  - id: 157
+    method: 3
+    level: 0
+  - id: 164
+    method: 2
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 173
+    method: 1
+    level: 29
+  - id: 174
+    method: 2
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 187
+    method: 1
+    level: 13
+  - id: 201
+    method: 4
+    level: 0
+  - id: 204
+    method: 2
+    level: 0
+  - id: 205
+    method: 1
+    level: 49
+  - id: 213
+    method: 4
+    level: 0
+  - id: 214
+    method: 1
+    level: 37
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 247
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 264
+    method: 4
+    level: 0
+  - id: 280
+    method: 4
+    level: 0
+  - id: 281
+    method: 1
+    level: 21
+  - id: 290
+    method: 4
+    level: 0
+  - id: 317
+    method: 4
+    level: 0
+  - id: 335
+    method: 1
+    level: 41
+  - id: 343
+    method: 1
+    level: 45
+  - id: 351
+    method: 4
+    level: 0
+  - id: 352
+    method: 4
+    level: 0

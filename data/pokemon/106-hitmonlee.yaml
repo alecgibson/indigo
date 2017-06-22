@@ -1,0 +1,165 @@
+id: 106
+identifier: hitmonlee
+name: Hitmonlee
+genus: Kicking
+sortOrder: 132
+height: 15
+weight: 498
+types:
+  - 2
+baseExperience: 159
+stats:
+  hitPoints:
+    base: 50
+    effortValue: 0
+  attack:
+    base: 120
+    effortValue: 2
+  defense:
+    base: 53
+    effortValue: 0
+  specialAttack:
+    base: 35
+    effortValue: 0
+  specialDefense:
+    base: 110
+    effortValue: 0
+  speed:
+    base: 87
+    effortValue: 0
+captureRate: 45
+growthRate: 2
+habitat: 8
+encounterRate: 1
+moves:
+  - id: 5
+    method: 3
+    level: 0
+  - id: 24
+    method: 1
+    level: 1
+    order: 2
+  - id: 25
+    method: 1
+    level: 46
+  - id: 25
+    method: 3
+    level: 0
+  - id: 26
+    method: 1
+    level: 16
+  - id: 27
+    method: 1
+    level: 11
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 68
+    method: 3
+    level: 0
+  - id: 69
+    method: 3
+    level: 0
+  - id: 70
+    method: 4
+    level: 0
+  - id: 89
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 96
+    method: 1
+    level: 6
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 116
+    method: 1
+    level: 21
+  - id: 118
+    method: 3
+    level: 0
+  - id: 136
+    method: 1
+    level: 26
+  - id: 156
+    method: 4
+    level: 0
+  - id: 157
+    method: 3
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 170
+    method: 1
+    level: 31
+  - id: 179
+    method: 1
+    level: 51
+  - id: 182
+    method: 4
+    level: 0
+  - id: 193
+    method: 1
+    level: 36
+  - id: 203
+    method: 1
+    level: 41
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 249
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 264
+    method: 4
+    level: 0
+  - id: 279
+    method: 1
+    level: 1
+    order: 1
+  - id: 280
+    method: 1
+    level: 20
+  - id: 280
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 317
+    method: 4
+    level: 0
+  - id: 339
+    method: 4
+    level: 0

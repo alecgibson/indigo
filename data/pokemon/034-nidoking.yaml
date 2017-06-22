@@ -1,0 +1,198 @@
+id: 34
+identifier: nidoking
+name: Nidoking
+genus: Drill
+sortOrder: 47
+height: 14
+weight: 620
+types:
+  - 4
+  - 5
+baseExperience: 227
+stats:
+  hitPoints:
+    base: 81
+    effortValue: 0
+  attack:
+    base: 102
+    effortValue: 3
+  defense:
+    base: 77
+    effortValue: 0
+  specialAttack:
+    base: 85
+    effortValue: 0
+  specialDefense:
+    base: 75
+    effortValue: 0
+  speed:
+    base: 85
+    effortValue: 0
+captureRate: 45
+growthRate: 4
+habitat: 3
+encounterRate: 0
+moves:
+  - id: 5
+    method: 3
+    level: 0
+  - id: 15
+    method: 4
+    level: 0
+  - id: 24
+    method: 1
+    level: 1
+    order: 3
+  - id: 25
+    method: 3
+    level: 0
+  - id: 34
+    method: 3
+    level: 0
+  - id: 37
+    method: 1
+    level: 22
+  - id: 38
+    method: 3
+    level: 0
+  - id: 40
+    method: 1
+    level: 1
+    order: 4
+  - id: 46
+    method: 4
+    level: 0
+  - id: 53
+    method: 4
+    level: 0
+  - id: 57
+    method: 4
+    level: 0
+  - id: 58
+    method: 4
+    level: 0
+  - id: 59
+    method: 4
+    level: 0
+  - id: 63
+    method: 4
+    level: 0
+  - id: 64
+    method: 1
+    level: 1
+    order: 1
+  - id: 68
+    method: 3
+    level: 0
+  - id: 69
+    method: 3
+    level: 0
+  - id: 70
+    method: 4
+    level: 0
+  - id: 85
+    method: 4
+    level: 0
+  - id: 87
+    method: 4
+    level: 0
+  - id: 89
+    method: 4
+    level: 0
+  - id: 91
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 116
+    method: 1
+    level: 1
+    order: 2
+  - id: 126
+    method: 4
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 157
+    method: 3
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 188
+    method: 4
+    level: 0
+  - id: 201
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 224
+    method: 1
+    level: 43
+  - id: 231
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 247
+    method: 4
+    level: 0
+  - id: 249
+    method: 4
+    level: 0
+  - id: 259
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 264
+    method: 4
+    level: 0
+  - id: 269
+    method: 4
+    level: 0
+  - id: 280
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 317
+    method: 4
+    level: 0
+  - id: 351
+    method: 4
+    level: 0
+  - id: 352
+    method: 4
+    level: 0

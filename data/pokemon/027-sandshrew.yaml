@@ -1,0 +1,182 @@
+id: 27
+identifier: sandshrew
+name: Sandshrew
+genus: Mouse
+sortOrder: 40
+height: 6
+weight: 120
+types:
+  - 5
+baseExperience: 60
+stats:
+  hitPoints:
+    base: 50
+    effortValue: 0
+  attack:
+    base: 75
+    effortValue: 0
+  defense:
+    base: 85
+    effortValue: 1
+  specialAttack:
+    base: 20
+    effortValue: 0
+  specialDefense:
+    base: 30
+    effortValue: 0
+  speed:
+    base: 40
+    effortValue: 0
+captureRate: 255
+growthRate: 2
+habitat: 6
+encounterRate: 4
+moves:
+  - id: 10
+    method: 1
+    level: 1
+  - id: 14
+    method: 2
+    level: 0
+  - id: 14
+    method: 3
+    level: 0
+  - id: 15
+    method: 4
+    level: 0
+  - id: 28
+    method: 1
+    level: 11
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 40
+    method: 1
+    level: 17
+  - id: 68
+    method: 2
+    level: 0
+  - id: 68
+    method: 3
+    level: 0
+  - id: 69
+    method: 3
+    level: 0
+  - id: 70
+    method: 4
+    level: 0
+  - id: 89
+    method: 4
+    level: 0
+  - id: 91
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 111
+    method: 1
+    level: 6
+  - id: 129
+    method: 1
+    level: 30
+  - id: 154
+    method: 1
+    level: 37
+  - id: 156
+    method: 4
+    level: 0
+  - id: 157
+    method: 2
+    level: 0
+  - id: 157
+    method: 3
+    level: 0
+  - id: 163
+    method: 1
+    level: 23
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 175
+    method: 2
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 201
+    method: 1
+    level: 53
+  - id: 201
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 219
+    method: 2
+    level: 0
+  - id: 229
+    method: 2
+    level: 0
+  - id: 231
+    method: 4
+    level: 0
+  - id: 232
+    method: 2
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 249
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 264
+    method: 4
+    level: 0
+  - id: 280
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 306
+    method: 2
+    level: 0
+  - id: 317
+    method: 4
+    level: 0
+  - id: 328
+    method: 1
+    level: 45
+  - id: 332
+    method: 4
+    level: 0
+evolution:
+  evolvedPokemonId: 28
+  trigger: 1
+  level: 22

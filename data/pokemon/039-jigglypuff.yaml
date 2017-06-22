@@ -1,0 +1,198 @@
+id: 39
+identifier: jigglypuff
+name: Jigglypuff
+genus: Balloon
+sortOrder: 54
+height: 5
+weight: 55
+types:
+  - 1
+  - 18
+baseExperience: 95
+stats:
+  hitPoints:
+    base: 115
+    effortValue: 2
+  attack:
+    base: 45
+    effortValue: 0
+  defense:
+    base: 20
+    effortValue: 0
+  specialAttack:
+    base: 45
+    effortValue: 0
+  specialDefense:
+    base: 25
+    effortValue: 0
+  speed:
+    base: 20
+    effortValue: 0
+captureRate: 170
+growthRate: 3
+habitat: 3
+encounterRate: 4
+moves:
+  - id: 1
+    method: 1
+    level: 9
+  - id: 3
+    method: 1
+    level: 24
+  - id: 5
+    method: 3
+    level: 0
+  - id: 25
+    method: 3
+    level: 0
+  - id: 34
+    method: 1
+    level: 34
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 1
+    level: 49
+  - id: 38
+    method: 3
+    level: 0
+  - id: 47
+    method: 1
+    level: 1
+  - id: 50
+    method: 1
+    level: 14
+  - id: 53
+    method: 4
+    level: 0
+  - id: 58
+    method: 4
+    level: 0
+  - id: 59
+    method: 4
+    level: 0
+  - id: 68
+    method: 3
+    level: 0
+  - id: 69
+    method: 3
+    level: 0
+  - id: 70
+    method: 4
+    level: 0
+  - id: 76
+    method: 4
+    level: 0
+  - id: 85
+    method: 4
+    level: 0
+  - id: 86
+    method: 3
+    level: 0
+  - id: 87
+    method: 4
+    level: 0
+  - id: 91
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 94
+    method: 4
+    level: 0
+  - id: 102
+    method: 1
+    level: 39
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 111
+    method: 1
+    level: 4
+  - id: 113
+    method: 4
+    level: 0
+  - id: 115
+    method: 4
+    level: 0
+  - id: 126
+    method: 4
+    level: 0
+  - id: 138
+    method: 3
+    level: 0
+  - id: 148
+    method: 4
+    level: 0
+  - id: 156
+    method: 1
+    level: 29
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 205
+    method: 1
+    level: 19
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 219
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 247
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 264
+    method: 4
+    level: 0
+  - id: 280
+    method: 4
+    level: 0
+  - id: 289
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 304
+    method: 1
+    level: 44
+  - id: 351
+    method: 4
+    level: 0
+  - id: 352
+    method: 4
+    level: 0
+evolution:
+  evolvedPokemonId: 40
+  trigger: 3
+  triggerItemId: 81

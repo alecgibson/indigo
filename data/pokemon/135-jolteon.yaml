@@ -1,0 +1,148 @@
+id: 135
+identifier: jolteon
+name: Jolteon
+genus: Lightning
+sortOrder: 179
+height: 8
+weight: 245
+types:
+  - 13
+baseExperience: 184
+stats:
+  hitPoints:
+    base: 65
+    effortValue: 0
+  attack:
+    base: 65
+    effortValue: 0
+  defense:
+    base: 60
+    effortValue: 0
+  specialAttack:
+    base: 110
+    effortValue: 0
+  specialDefense:
+    base: 95
+    effortValue: 0
+  speed:
+    base: 130
+    effortValue: 2
+captureRate: 45
+growthRate: 2
+habitat: 8
+encounterRate: 0
+moves:
+  - id: 24
+    method: 1
+    level: 30
+  - id: 28
+    method: 1
+    level: 8
+  - id: 33
+    method: 1
+    level: 1
+    order: 1
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 39
+    method: 1
+    level: 1
+    order: 2
+  - id: 42
+    method: 1
+    level: 36
+  - id: 46
+    method: 4
+    level: 0
+  - id: 63
+    method: 4
+    level: 0
+  - id: 84
+    method: 1
+    level: 16
+  - id: 85
+    method: 4
+    level: 0
+  - id: 86
+    method: 1
+    level: 42
+  - id: 86
+    method: 3
+    level: 0
+  - id: 87
+    method: 1
+    level: 52
+  - id: 87
+    method: 4
+    level: 0
+  - id: 91
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 97
+    method: 1
+    level: 47
+  - id: 98
+    method: 1
+    level: 23
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 148
+    method: 4
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 231
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 247
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 270
+    method: 1
+    level: 1
+    order: 3
+  - id: 290
+    method: 4
+    level: 0
+  - id: 351
+    method: 4
+    level: 0

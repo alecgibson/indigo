@@ -1,0 +1,176 @@
+id: 74
+identifier: geodude
+name: Geodude
+genus: Rock
+sortOrder: 93
+height: 4
+weight: 200
+types:
+  - 6
+  - 5
+baseExperience: 60
+stats:
+  hitPoints:
+    base: 40
+    effortValue: 0
+  attack:
+    base: 80
+    effortValue: 0
+  defense:
+    base: 100
+    effortValue: 1
+  specialAttack:
+    base: 30
+    effortValue: 0
+  specialDefense:
+    base: 30
+    effortValue: 0
+  speed:
+    base: 20
+    effortValue: 0
+captureRate: 255
+growthRate: 4
+habitat: 4
+encounterRate: 4
+moves:
+  - id: 5
+    method: 2
+    level: 0
+  - id: 5
+    method: 3
+    level: 0
+  - id: 33
+    method: 1
+    level: 1
+    order: 1
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 1
+    level: 46
+  - id: 38
+    method: 3
+    level: 0
+  - id: 53
+    method: 4
+    level: 0
+  - id: 68
+    method: 3
+    level: 0
+  - id: 69
+    method: 3
+    level: 0
+  - id: 70
+    method: 4
+    level: 0
+  - id: 88
+    method: 1
+    level: 11
+  - id: 89
+    method: 1
+    level: 36
+  - id: 89
+    method: 4
+    level: 0
+  - id: 91
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 111
+    method: 1
+    level: 1
+    order: 2
+  - id: 118
+    method: 3
+    level: 0
+  - id: 120
+    method: 1
+    level: 21
+  - id: 126
+    method: 4
+    level: 0
+  - id: 153
+    method: 1
+    level: 41
+  - id: 153
+    method: 3
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 157
+    method: 2
+    level: 0
+  - id: 157
+    method: 3
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 201
+    method: 4
+    level: 0
+  - id: 205
+    method: 1
+    level: 26
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 222
+    method: 1
+    level: 16
+  - id: 237
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 249
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 264
+    method: 4
+    level: 0
+  - id: 280
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 300
+    method: 1
+    level: 6
+  - id: 317
+    method: 4
+    level: 0
+  - id: 335
+    method: 2
+    level: 0
+  - id: 350
+    method: 1
+    level: 31
+evolution:
+  evolvedPokemonId: 75
+  trigger: 1
+  level: 25

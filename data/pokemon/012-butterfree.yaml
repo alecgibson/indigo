@@ -1,0 +1,146 @@
+id: 12
+identifier: butterfree
+name: Butterfree
+genus: Butterfly
+sortOrder: 16
+height: 11
+weight: 320
+types:
+  - 7
+  - 3
+baseExperience: 178
+stats:
+  hitPoints:
+    base: 60
+    effortValue: 0
+  attack:
+    base: 45
+    effortValue: 0
+  defense:
+    base: 50
+    effortValue: 0
+  specialAttack:
+    base: 90
+    effortValue: 2
+  specialDefense:
+    base: 80
+    effortValue: 1
+  speed:
+    base: 70
+    effortValue: 0
+captureRate: 45
+growthRate: 2
+habitat: 2
+encounterRate: 0
+moves:
+  - id: 16
+    method: 1
+    level: 28
+  - id: 18
+    method: 1
+    level: 23
+  - id: 38
+    method: 3
+    level: 0
+  - id: 48
+    method: 1
+    level: 18
+  - id: 60
+    method: 1
+    level: 34
+  - id: 63
+    method: 4
+    level: 0
+  - id: 76
+    method: 4
+    level: 0
+  - id: 77
+    method: 1
+    level: 13
+  - id: 78
+    method: 1
+    level: 14
+  - id: 79
+    method: 1
+    level: 15
+  - id: 92
+    method: 4
+    level: 0
+  - id: 93
+    method: 1
+    level: 1
+  - id: 93
+    method: 1
+    level: 10
+  - id: 94
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 138
+    method: 3
+    level: 0
+  - id: 148
+    method: 4
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 202
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 219
+    method: 1
+    level: 40
+  - id: 219
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 247
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 285
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 318
+    method: 1
+    level: 47
+  - id: 332
+    method: 4
+    level: 0

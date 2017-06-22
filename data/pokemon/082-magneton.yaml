@@ -1,0 +1,141 @@
+id: 82
+identifier: magneton
+name: Magneton
+genus: Magnet
+sortOrder: 103
+height: 10
+weight: 600
+types:
+  - 13
+  - 9
+baseExperience: 163
+stats:
+  hitPoints:
+    base: 50
+    effortValue: 0
+  attack:
+    base: 60
+    effortValue: 0
+  defense:
+    base: 95
+    effortValue: 0
+  specialAttack:
+    base: 120
+    effortValue: 2
+  specialDefense:
+    base: 70
+    effortValue: 0
+  speed:
+    base: 70
+    effortValue: 0
+captureRate: 60
+growthRate: 2
+habitat: 6
+encounterRate: 2
+moves:
+  - id: 33
+    method: 1
+    level: 1
+    order: 2
+  - id: 38
+    method: 3
+    level: 0
+  - id: 48
+    method: 1
+    level: 1
+    order: 4
+  - id: 48
+    method: 1
+    level: 11
+  - id: 49
+    method: 1
+    level: 16
+  - id: 63
+    method: 4
+    level: 0
+  - id: 84
+    method: 1
+    level: 1
+    order: 3
+  - id: 84
+    method: 1
+    level: 6
+  - id: 85
+    method: 4
+    level: 0
+  - id: 86
+    method: 1
+    level: 21
+  - id: 86
+    method: 3
+    level: 0
+  - id: 87
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 103
+    method: 1
+    level: 53
+  - id: 104
+    method: 4
+    level: 0
+  - id: 115
+    method: 4
+    level: 0
+  - id: 148
+    method: 4
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 161
+    method: 1
+    level: 44
+  - id: 164
+    method: 3
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 192
+    method: 1
+    level: 62
+  - id: 199
+    method: 1
+    level: 35
+  - id: 209
+    method: 1
+    level: 26
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 319
+    method: 1
+    level: 1
+    order: 1
+  - id: 351
+    method: 4
+    level: 0

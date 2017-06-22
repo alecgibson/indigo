@@ -1,0 +1,158 @@
+id: 60
+identifier: poliwag
+name: Poliwag
+genus: Tadpole
+sortOrder: 77
+height: 6
+weight: 124
+types:
+  - 11
+baseExperience: 60
+stats:
+  hitPoints:
+    base: 40
+    effortValue: 0
+  attack:
+    base: 50
+    effortValue: 0
+  defense:
+    base: 40
+    effortValue: 0
+  specialAttack:
+    base: 40
+    effortValue: 0
+  specialDefense:
+    base: 40
+    effortValue: 0
+  speed:
+    base: 90
+    effortValue: 1
+captureRate: 255
+growthRate: 4
+habitat: 9
+encounterRate: 4
+moves:
+  - id: 3
+    method: 1
+    level: 19
+  - id: 34
+    method: 1
+    level: 31
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 54
+    method: 2
+    level: 0
+  - id: 55
+    method: 1
+    level: 13
+  - id: 56
+    method: 1
+    level: 43
+  - id: 57
+    method: 4
+    level: 0
+  - id: 58
+    method: 4
+    level: 0
+  - id: 59
+    method: 4
+    level: 0
+  - id: 61
+    method: 2
+    level: 0
+  - id: 91
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 94
+    method: 4
+    level: 0
+  - id: 95
+    method: 1
+    level: 7
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 114
+    method: 2
+    level: 0
+  - id: 127
+    method: 4
+    level: 0
+  - id: 145
+    method: 1
+    level: 1
+  - id: 150
+    method: 2
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 170
+    method: 2
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 187
+    method: 1
+    level: 37
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 1
+    level: 25
+  - id: 240
+    method: 4
+    level: 0
+  - id: 258
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 291
+    method: 4
+    level: 0
+  - id: 301
+    method: 2
+    level: 0
+  - id: 346
+    method: 2
+    level: 0
+  - id: 352
+    method: 4
+    level: 0
+evolution:
+  evolvedPokemonId: 61
+  trigger: 1
+  level: 25

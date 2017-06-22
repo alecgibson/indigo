@@ -1,0 +1,163 @@
+id: 20
+identifier: raticate
+name: Raticate
+genus: Mouse
+sortOrder: 26
+height: 7
+weight: 185
+types:
+  - 1
+baseExperience: 145
+stats:
+  hitPoints:
+    base: 55
+    effortValue: 0
+  attack:
+    base: 81
+    effortValue: 0
+  defense:
+    base: 60
+    effortValue: 0
+  specialAttack:
+    base: 50
+    effortValue: 0
+  specialDefense:
+    base: 70
+    effortValue: 0
+  speed:
+    base: 97
+    effortValue: 2
+captureRate: 127
+growthRate: 2
+habitat: 3
+encounterRate: 3
+moves:
+  - id: 15
+    method: 4
+    level: 0
+  - id: 33
+    method: 1
+    level: 1
+    order: 1
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 39
+    method: 1
+    level: 1
+    order: 2
+  - id: 46
+    method: 4
+    level: 0
+  - id: 58
+    method: 4
+    level: 0
+  - id: 59
+    method: 4
+    level: 0
+  - id: 63
+    method: 4
+    level: 0
+  - id: 68
+    method: 3
+    level: 0
+  - id: 70
+    method: 4
+    level: 0
+  - id: 85
+    method: 4
+    level: 0
+  - id: 86
+    method: 3
+    level: 0
+  - id: 87
+    method: 4
+    level: 0
+  - id: 91
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 98
+    method: 1
+    level: 1
+    order: 3
+  - id: 98
+    method: 1
+    level: 7
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 158
+    method: 1
+    level: 13
+  - id: 162
+    method: 1
+    level: 40
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 184
+    method: 1
+    level: 20
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 228
+    method: 1
+    level: 30
+  - id: 231
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 247
+    method: 4
+    level: 0
+  - id: 249
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 269
+    method: 4
+    level: 0
+  - id: 283
+    method: 1
+    level: 50
+  - id: 290
+    method: 4
+    level: 0
+  - id: 351
+    method: 4
+    level: 0

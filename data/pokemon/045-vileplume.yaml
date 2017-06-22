@@ -1,0 +1,123 @@
+id: 45
+identifier: vileplume
+name: Vileplume
+genus: Flower
+sortOrder: 61
+height: 12
+weight: 186
+types:
+  - 12
+  - 4
+baseExperience: 221
+stats:
+  hitPoints:
+    base: 75
+    effortValue: 0
+  attack:
+    base: 80
+    effortValue: 0
+  defense:
+    base: 85
+    effortValue: 0
+  specialAttack:
+    base: 110
+    effortValue: 3
+  specialDefense:
+    base: 90
+    effortValue: 0
+  speed:
+    base: 50
+    effortValue: 0
+captureRate: 45
+growthRate: 4
+habitat: 3
+encounterRate: 0
+moves:
+  - id: 14
+    method: 3
+    level: 0
+  - id: 15
+    method: 4
+    level: 0
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 63
+    method: 4
+    level: 0
+  - id: 71
+    method: 1
+    level: 1
+    order: 1
+  - id: 72
+    method: 1
+    level: 1
+    order: 4
+  - id: 76
+    method: 4
+    level: 0
+  - id: 78
+    method: 1
+    level: 1
+    order: 3
+  - id: 80
+    method: 1
+    level: 44
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 148
+    method: 4
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 188
+    method: 4
+    level: 0
+  - id: 202
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 312
+    method: 1
+    level: 1
+    order: 2
+  - id: 331
+    method: 4
+    level: 0

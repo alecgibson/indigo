@@ -1,0 +1,168 @@
+id: 23
+identifier: ekans
+name: Ekans
+genus: Snake
+sortOrder: 29
+height: 20
+weight: 69
+types:
+  - 4
+baseExperience: 58
+stats:
+  hitPoints:
+    base: 35
+    effortValue: 0
+  attack:
+    base: 60
+    effortValue: 1
+  defense:
+    base: 44
+    effortValue: 0
+  specialAttack:
+    base: 40
+    effortValue: 0
+  specialDefense:
+    base: 54
+    effortValue: 0
+  speed:
+    base: 55
+    effortValue: 0
+captureRate: 255
+growthRate: 2
+habitat: 3
+encounterRate: 4
+moves:
+  - id: 21
+    method: 2
+    level: 0
+  - id: 34
+    method: 3
+    level: 0
+  - id: 35
+    method: 1
+    level: 1
+    order: 1
+  - id: 38
+    method: 3
+    level: 0
+  - id: 40
+    method: 1
+    level: 8
+  - id: 43
+    method: 1
+    level: 1
+    order: 2
+  - id: 44
+    method: 1
+    level: 13
+  - id: 51
+    method: 1
+    level: 32
+  - id: 70
+    method: 4
+    level: 0
+  - id: 89
+    method: 4
+    level: 0
+  - id: 91
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 103
+    method: 1
+    level: 25
+  - id: 104
+    method: 4
+    level: 0
+  - id: 114
+    method: 1
+    level: 44
+  - id: 137
+    method: 1
+    level: 20
+  - id: 156
+    method: 4
+    level: 0
+  - id: 157
+    method: 3
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 180
+    method: 2
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 188
+    method: 4
+    level: 0
+  - id: 202
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 228
+    method: 2
+    level: 0
+  - id: 231
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 251
+    method: 2
+    level: 0
+  - id: 254
+    method: 1
+    level: 37
+  - id: 255
+    method: 1
+    level: 37
+    order: 4
+  - id: 256
+    method: 1
+    level: 37
+    order: 3
+  - id: 259
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 289
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 305
+    method: 2
+    level: 0
+evolution:
+  evolvedPokemonId: 24
+  trigger: 1
+  level: 22

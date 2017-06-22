@@ -1,0 +1,168 @@
+id: 99
+identifier: kingler
+name: Kingler
+genus: Pincer
+sortOrder: 124
+height: 13
+weight: 600
+types:
+  - 11
+baseExperience: 166
+stats:
+  hitPoints:
+    base: 55
+    effortValue: 0
+  attack:
+    base: 130
+    effortValue: 2
+  defense:
+    base: 115
+    effortValue: 0
+  specialAttack:
+    base: 50
+    effortValue: 0
+  specialDefense:
+    base: 50
+    effortValue: 0
+  speed:
+    base: 75
+    effortValue: 0
+captureRate: 60
+growthRate: 2
+habitat: 9
+encounterRate: 2
+moves:
+  - id: 11
+    method: 1
+    level: 1
+    order: 4
+  - id: 11
+    method: 1
+    level: 12
+  - id: 12
+    method: 1
+    level: 38
+  - id: 14
+    method: 3
+    level: 0
+  - id: 15
+    method: 4
+    level: 0
+  - id: 23
+    method: 1
+    level: 27
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 43
+    method: 1
+    level: 1
+    order: 3
+  - id: 43
+    method: 1
+    level: 5
+  - id: 57
+    method: 4
+    level: 0
+  - id: 58
+    method: 4
+    level: 0
+  - id: 59
+    method: 4
+    level: 0
+  - id: 63
+    method: 4
+    level: 0
+  - id: 70
+    method: 4
+    level: 0
+  - id: 91
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 106
+    method: 1
+    level: 1
+    order: 5
+  - id: 106
+    method: 1
+    level: 16
+  - id: 145
+    method: 1
+    level: 1
+    order: 2
+  - id: 152
+    method: 1
+    level: 57
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 175
+    method: 1
+    level: 65
+  - id: 182
+    method: 1
+    level: 42
+  - id: 182
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 232
+    method: 1
+    level: 1
+    order: 1
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 249
+    method: 4
+    level: 0
+  - id: 258
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 291
+    method: 4
+    level: 0
+  - id: 317
+    method: 4
+    level: 0
+  - id: 341
+    method: 1
+    level: 23
+  - id: 352
+    method: 4
+    level: 0

@@ -1,0 +1,44 @@
+id: 11
+identifier: metapod
+name: Metapod
+genus: Cocoon
+sortOrder: 15
+height: 7
+weight: 99
+types:
+  - 7
+baseExperience: 72
+stats:
+  hitPoints:
+    base: 50
+    effortValue: 0
+  attack:
+    base: 20
+    effortValue: 0
+  defense:
+    base: 55
+    effortValue: 2
+  specialAttack:
+    base: 25
+    effortValue: 0
+  specialDefense:
+    base: 25
+    effortValue: 0
+  speed:
+    base: 30
+    effortValue: 0
+captureRate: 120
+growthRate: 2
+habitat: 2
+encounterRate: 3
+moves:
+  - id: 106
+    method: 1
+    level: 1
+  - id: 106
+    method: 1
+    level: 7
+evolution:
+  evolvedPokemonId: 12
+  trigger: 1
+  level: 10

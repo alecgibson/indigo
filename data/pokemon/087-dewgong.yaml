@@ -1,0 +1,154 @@
+id: 87
+identifier: dewgong
+name: Dewgong
+genus: Sea Lion
+sortOrder: 109
+height: 17
+weight: 1200
+types:
+  - 11
+  - 15
+baseExperience: 166
+stats:
+  hitPoints:
+    base: 90
+    effortValue: 0
+  attack:
+    base: 70
+    effortValue: 0
+  defense:
+    base: 80
+    effortValue: 0
+  specialAttack:
+    base: 70
+    effortValue: 0
+  specialDefense:
+    base: 95
+    effortValue: 2
+  speed:
+    base: 70
+    effortValue: 0
+captureRate: 75
+growthRate: 2
+habitat: 7
+encounterRate: 2
+moves:
+  - id: 29
+    method: 1
+    level: 1
+    order: 2
+  - id: 34
+    method: 3
+    level: 0
+  - id: 36
+    method: 1
+    level: 42
+  - id: 38
+    method: 3
+    level: 0
+  - id: 45
+    method: 1
+    level: 1
+    order: 3
+  - id: 45
+    method: 1
+    level: 9
+  - id: 57
+    method: 4
+    level: 0
+  - id: 58
+    method: 1
+    level: 51
+  - id: 58
+    method: 4
+    level: 0
+  - id: 59
+    method: 4
+    level: 0
+  - id: 62
+    method: 1
+    level: 1
+    order: 5
+  - id: 62
+    method: 1
+    level: 21
+  - id: 63
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 127
+    method: 4
+    level: 0
+  - id: 156
+    method: 1
+    level: 29
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 196
+    method: 1
+    level: 1
+    order: 4
+  - id: 196
+    method: 1
+    level: 17
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 219
+    method: 1
+    level: 64
+  - id: 219
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 258
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 291
+    method: 4
+    level: 0
+  - id: 324
+    method: 1
+    level: 1
+    order: 1
+  - id: 329
+    method: 1
+    level: 34
+  - id: 352
+    method: 4
+    level: 0

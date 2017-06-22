@@ -1,0 +1,195 @@
+id: 97
+identifier: hypno
+name: Hypno
+genus: Hypnosis
+sortOrder: 122
+height: 16
+weight: 756
+types:
+  - 14
+baseExperience: 169
+stats:
+  hitPoints:
+    base: 85
+    effortValue: 0
+  attack:
+    base: 73
+    effortValue: 0
+  defense:
+    base: 70
+    effortValue: 0
+  specialAttack:
+    base: 73
+    effortValue: 0
+  specialDefense:
+    base: 115
+    effortValue: 2
+  speed:
+    base: 67
+    effortValue: 0
+captureRate: 75
+growthRate: 2
+habitat: 3
+encounterRate: 1
+moves:
+  - id: 1
+    method: 1
+    level: 1
+    order: 2
+  - id: 5
+    method: 3
+    level: 0
+  - id: 25
+    method: 3
+    level: 0
+  - id: 29
+    method: 1
+    level: 17
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 50
+    method: 1
+    level: 1
+    order: 4
+  - id: 50
+    method: 1
+    level: 7
+  - id: 63
+    method: 4
+    level: 0
+  - id: 68
+    method: 3
+    level: 0
+  - id: 69
+    method: 3
+    level: 0
+  - id: 86
+    method: 3
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 93
+    method: 1
+    level: 1
+    order: 5
+  - id: 93
+    method: 1
+    level: 11
+  - id: 94
+    method: 1
+    level: 35
+  - id: 94
+    method: 4
+    level: 0
+  - id: 95
+    method: 1
+    level: 1
+    order: 3
+  - id: 96
+    method: 1
+    level: 29
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 113
+    method: 4
+    level: 0
+  - id: 115
+    method: 4
+    level: 0
+  - id: 118
+    method: 3
+    level: 0
+  - id: 138
+    method: 3
+    level: 0
+  - id: 139
+    method: 1
+    level: 21
+  - id: 148
+    method: 4
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 171
+    method: 1
+    level: 1
+    order: 1
+  - id: 182
+    method: 4
+    level: 0
+  - id: 207
+    method: 1
+    level: 49
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 219
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 244
+    method: 1
+    level: 43
+  - id: 247
+    method: 4
+    level: 0
+  - id: 248
+    method: 1
+    level: 57
+  - id: 259
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 264
+    method: 4
+    level: 0
+  - id: 269
+    method: 4
+    level: 0
+  - id: 280
+    method: 4
+    level: 0
+  - id: 285
+    method: 4
+    level: 0
+  - id: 289
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 347
+    method: 4
+    level: 0

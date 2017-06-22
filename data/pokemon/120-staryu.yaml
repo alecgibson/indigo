@@ -1,0 +1,157 @@
+id: 120
+identifier: staryu
+name: Staryu
+genus: Star Shape
+sortOrder: 154
+height: 8
+weight: 345
+types:
+  - 11
+baseExperience: 68
+stats:
+  hitPoints:
+    base: 30
+    effortValue: 0
+  attack:
+    base: 45
+    effortValue: 0
+  defense:
+    base: 55
+    effortValue: 0
+  specialAttack:
+    base: 70
+    effortValue: 0
+  specialDefense:
+    base: 55
+    effortValue: 0
+  speed:
+    base: 85
+    effortValue: 1
+captureRate: 225
+growthRate: 1
+habitat: 7
+encounterRate: 3
+moves:
+  - id: 33
+    method: 1
+    level: 1
+    order: 1
+  - id: 38
+    method: 3
+    level: 0
+  - id: 55
+    method: 1
+    level: 6
+  - id: 56
+    method: 1
+    level: 46
+  - id: 57
+    method: 4
+    level: 0
+  - id: 58
+    method: 4
+    level: 0
+  - id: 59
+    method: 4
+    level: 0
+  - id: 61
+    method: 1
+    level: 28
+  - id: 85
+    method: 4
+    level: 0
+  - id: 86
+    method: 3
+    level: 0
+  - id: 87
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 94
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 105
+    method: 1
+    level: 15
+  - id: 106
+    method: 1
+    level: 1
+    order: 2
+  - id: 107
+    method: 1
+    level: 33
+  - id: 113
+    method: 1
+    level: 37
+  - id: 113
+    method: 4
+    level: 0
+  - id: 115
+    method: 4
+    level: 0
+  - id: 127
+    method: 4
+    level: 0
+  - id: 129
+    method: 1
+    level: 24
+  - id: 148
+    method: 4
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 229
+    method: 1
+    level: 10
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 258
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 291
+    method: 4
+    level: 0
+  - id: 293
+    method: 1
+    level: 19
+  - id: 322
+    method: 1
+    level: 42
+  - id: 352
+    method: 4
+    level: 0
+evolution:
+  evolvedPokemonId: 121
+  trigger: 3
+  triggerItemId: 84

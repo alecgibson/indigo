@@ -1,0 +1,196 @@
+id: 66
+identifier: machop
+name: Machop
+genus: Superpower
+sortOrder: 85
+height: 8
+weight: 195
+types:
+  - 2
+baseExperience: 61
+stats:
+  hitPoints:
+    base: 70
+    effortValue: 0
+  attack:
+    base: 80
+    effortValue: 1
+  defense:
+    base: 50
+    effortValue: 0
+  specialAttack:
+    base: 35
+    effortValue: 0
+  specialDefense:
+    base: 35
+    effortValue: 0
+  speed:
+    base: 35
+    effortValue: 0
+captureRate: 180
+growthRate: 4
+habitat: 4
+encounterRate: 4
+moves:
+  - id: 2
+    method: 1
+    level: 13
+  - id: 5
+    method: 3
+    level: 0
+  - id: 25
+    method: 3
+    level: 0
+  - id: 27
+    method: 2
+    level: 0
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 43
+    method: 1
+    level: 1
+    order: 2
+  - id: 53
+    method: 4
+    level: 0
+  - id: 66
+    method: 1
+    level: 37
+  - id: 67
+    method: 1
+    level: 1
+    order: 1
+  - id: 68
+    method: 2
+    level: 0
+  - id: 68
+    method: 3
+    level: 0
+  - id: 69
+    method: 1
+    level: 19
+  - id: 69
+    method: 3
+    level: 0
+  - id: 70
+    method: 4
+    level: 0
+  - id: 89
+    method: 4
+    level: 0
+  - id: 91
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 96
+    method: 2
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 113
+    method: 2
+    level: 0
+  - id: 116
+    method: 1
+    level: 7
+  - id: 118
+    method: 3
+    level: 0
+  - id: 126
+    method: 4
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 157
+    method: 2
+    level: 0
+  - id: 157
+    method: 3
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 184
+    method: 1
+    level: 43
+  - id: 193
+    method: 1
+    level: 22
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 223
+    method: 1
+    level: 49
+  - id: 227
+    method: 2
+    level: 0
+  - id: 233
+    method: 1
+    level: 31
+  - id: 237
+    method: 4
+    level: 0
+  - id: 238
+    method: 1
+    level: 40
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 249
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 264
+    method: 4
+    level: 0
+  - id: 265
+    method: 2
+    level: 0
+  - id: 279
+    method: 1
+    level: 25
+  - id: 280
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 317
+    method: 4
+    level: 0
+  - id: 339
+    method: 4
+    level: 0
+evolution:
+  evolvedPokemonId: 67
+  trigger: 1
+  level: 28

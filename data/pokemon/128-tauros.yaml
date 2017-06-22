@@ -1,0 +1,165 @@
+id: 128
+identifier: tauros
+name: Tauros
+genus: Wild Bull
+sortOrder: 171
+height: 14
+weight: 884
+types:
+  - 1
+baseExperience: 172
+stats:
+  hitPoints:
+    base: 75
+    effortValue: 0
+  attack:
+    base: 100
+    effortValue: 1
+  defense:
+    base: 95
+    effortValue: 0
+  specialAttack:
+    base: 40
+    effortValue: 0
+  specialDefense:
+    base: 70
+    effortValue: 0
+  speed:
+    base: 110
+    effortValue: 1
+captureRate: 45
+growthRate: 1
+habitat: 3
+encounterRate: 1
+moves:
+  - id: 30
+    method: 1
+    level: 8
+  - id: 33
+    method: 1
+    level: 1
+    order: 1
+  - id: 34
+    method: 3
+    level: 0
+  - id: 36
+    method: 1
+    level: 53
+  - id: 37
+    method: 1
+    level: 43
+  - id: 38
+    method: 3
+    level: 0
+  - id: 39
+    method: 1
+    level: 1
+    order: 2
+  - id: 53
+    method: 4
+    level: 0
+  - id: 57
+    method: 4
+    level: 0
+  - id: 58
+    method: 4
+    level: 0
+  - id: 59
+    method: 4
+    level: 0
+  - id: 63
+    method: 4
+    level: 0
+  - id: 70
+    method: 4
+    level: 0
+  - id: 76
+    method: 4
+    level: 0
+  - id: 85
+    method: 4
+    level: 0
+  - id: 87
+    method: 4
+    level: 0
+  - id: 89
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 99
+    method: 1
+    level: 4
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 126
+    method: 4
+    level: 0
+  - id: 156
+    method: 1
+    level: 34
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 184
+    method: 1
+    level: 13
+  - id: 201
+    method: 4
+    level: 0
+  - id: 207
+    method: 1
+    level: 26
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 228
+    method: 1
+    level: 19
+  - id: 231
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 249
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 317
+    method: 4
+    level: 0
+  - id: 351
+    method: 4
+    level: 0
+  - id: 352
+    method: 4
+    level: 0

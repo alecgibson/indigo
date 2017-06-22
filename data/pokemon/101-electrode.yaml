@@ -1,0 +1,146 @@
+id: 101
+identifier: electrode
+name: Electrode
+genus: Ball
+sortOrder: 126
+height: 12
+weight: 666
+types:
+  - 13
+baseExperience: 168
+stats:
+  hitPoints:
+    base: 60
+    effortValue: 0
+  attack:
+    base: 50
+    effortValue: 0
+  defense:
+    base: 70
+    effortValue: 0
+  specialAttack:
+    base: 80
+    effortValue: 0
+  specialDefense:
+    base: 80
+    effortValue: 0
+  speed:
+    base: 140
+    effortValue: 2
+captureRate: 60
+growthRate: 2
+habitat: 8
+encounterRate: 2
+moves:
+  - id: 33
+    method: 1
+    level: 1
+    order: 2
+  - id: 49
+    method: 1
+    level: 1
+    order: 4
+  - id: 49
+    method: 1
+    level: 15
+  - id: 63
+    method: 4
+    level: 0
+  - id: 85
+    method: 4
+    level: 0
+  - id: 86
+    method: 3
+    level: 0
+  - id: 87
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 103
+    method: 1
+    level: 1
+    order: 3
+  - id: 103
+    method: 1
+    level: 8
+  - id: 104
+    method: 4
+    level: 0
+  - id: 113
+    method: 1
+    level: 41
+  - id: 113
+    method: 4
+    level: 0
+  - id: 120
+    method: 1
+    level: 27
+  - id: 129
+    method: 1
+    level: 48
+  - id: 148
+    method: 4
+    level: 0
+  - id: 153
+    method: 1
+    level: 54
+  - id: 153
+    method: 3
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 205
+    method: 1
+    level: 34
+  - id: 209
+    method: 1
+    level: 21
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 243
+    method: 1
+    level: 59
+  - id: 259
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 268
+    method: 1
+    level: 1
+    order: 1
+  - id: 269
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 351
+    method: 4
+    level: 0

@@ -1,0 +1,166 @@
+id: 109
+identifier: koffing
+name: Koffing
+genus: Poison Gas
+sortOrder: 137
+height: 6
+weight: 10
+types:
+  - 4
+baseExperience: 68
+stats:
+  hitPoints:
+    base: 40
+    effortValue: 0
+  attack:
+    base: 65
+    effortValue: 0
+  defense:
+    base: 95
+    effortValue: 1
+  specialAttack:
+    base: 60
+    effortValue: 0
+  specialDefense:
+    base: 45
+    effortValue: 0
+  speed:
+    base: 35
+    effortValue: 0
+captureRate: 190
+growthRate: 2
+habitat: 8
+encounterRate: 4
+moves:
+  - id: 33
+    method: 1
+    level: 1
+    order: 2
+  - id: 53
+    method: 4
+    level: 0
+  - id: 60
+    method: 2
+    level: 0
+  - id: 85
+    method: 4
+    level: 0
+  - id: 87
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 103
+    method: 2
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 108
+    method: 1
+    level: 25
+  - id: 114
+    method: 1
+    level: 33
+  - id: 120
+    method: 1
+    level: 17
+  - id: 123
+    method: 1
+    level: 9
+  - id: 124
+    method: 1
+    level: 21
+  - id: 126
+    method: 4
+    level: 0
+  - id: 139
+    method: 1
+    level: 1
+    order: 1
+  - id: 148
+    method: 4
+    level: 0
+  - id: 149
+    method: 2
+    level: 0
+  - id: 153
+    method: 1
+    level: 41
+  - id: 153
+    method: 3
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 188
+    method: 4
+    level: 0
+  - id: 194
+    method: 1
+    level: 45
+  - id: 194
+    method: 2
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 220
+    method: 2
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 247
+    method: 4
+    level: 0
+  - id: 259
+    method: 4
+    level: 0
+  - id: 261
+    method: 2
+    level: 0
+  - id: 262
+    method: 1
+    level: 49
+  - id: 263
+    method: 4
+    level: 0
+  - id: 269
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 351
+    method: 4
+    level: 0
+evolution:
+  evolvedPokemonId: 110
+  trigger: 1
+  level: 35

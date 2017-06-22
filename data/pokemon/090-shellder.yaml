@@ -1,0 +1,148 @@
+id: 90
+identifier: shellder
+name: Shellder
+genus: Bivalve
+sortOrder: 112
+height: 3
+weight: 40
+types:
+  - 11
+baseExperience: 61
+stats:
+  hitPoints:
+    base: 30
+    effortValue: 0
+  attack:
+    base: 65
+    effortValue: 0
+  defense:
+    base: 100
+    effortValue: 1
+  specialAttack:
+    base: 45
+    effortValue: 0
+  specialDefense:
+    base: 25
+    effortValue: 0
+  speed:
+    base: 40
+    effortValue: 0
+captureRate: 190
+growthRate: 1
+habitat: 7
+encounterRate: 4
+moves:
+  - id: 33
+    method: 1
+    level: 1
+    order: 1
+  - id: 36
+    method: 2
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 43
+    method: 1
+    level: 36
+  - id: 48
+    method: 1
+    level: 15
+  - id: 57
+    method: 4
+    level: 0
+  - id: 58
+    method: 1
+    level: 50
+  - id: 58
+    method: 4
+    level: 0
+  - id: 59
+    method: 4
+    level: 0
+  - id: 61
+    method: 2
+    level: 0
+  - id: 62
+    method: 1
+    level: 22
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 103
+    method: 2
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 110
+    method: 1
+    level: 1
+    order: 2
+  - id: 112
+    method: 2
+    level: 0
+  - id: 128
+    method: 1
+    level: 43
+  - id: 153
+    method: 3
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 182
+    method: 1
+    level: 29
+  - id: 182
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 229
+    method: 2
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 258
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 291
+    method: 4
+    level: 0
+  - id: 333
+    method: 1
+    level: 8
+  - id: 333
+    method: 2
+    level: 0
+  - id: 352
+    method: 4
+    level: 0
+evolution:
+  evolvedPokemonId: 91
+  trigger: 3
+  triggerItemId: 84

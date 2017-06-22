@@ -1,0 +1,139 @@
+id: 146
+identifier: moltres
+name: Moltres
+genus: Flame
+sortOrder: 199
+height: 20
+weight: 600
+types:
+  - 10
+  - 3
+baseExperience: 261
+stats:
+  hitPoints:
+    base: 90
+    effortValue: 0
+  attack:
+    base: 100
+    effortValue: 0
+  defense:
+    base: 90
+    effortValue: 0
+  specialAttack:
+    base: 125
+    effortValue: 3
+  specialDefense:
+    base: 85
+    effortValue: 0
+  speed:
+    base: 90
+    effortValue: 0
+captureRate: 3
+growthRate: 1
+habitat: 5
+encounterRate: 0
+moves:
+  - id: 17
+    method: 1
+    level: 1
+    order: 1
+  - id: 19
+    method: 4
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 46
+    method: 4
+    level: 0
+  - id: 52
+    method: 1
+    level: 1
+    order: 2
+  - id: 53
+    method: 1
+    level: 49
+  - id: 53
+    method: 4
+    level: 0
+  - id: 63
+    method: 4
+    level: 0
+  - id: 83
+    method: 1
+    level: 13
+  - id: 92
+    method: 4
+    level: 0
+  - id: 97
+    method: 1
+    level: 25
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 126
+    method: 4
+    level: 0
+  - id: 143
+    method: 1
+    level: 85
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 201
+    method: 4
+    level: 0
+  - id: 203
+    method: 1
+    level: 37
+  - id: 211
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 219
+    method: 1
+    level: 61
+  - id: 219
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 249
+    method: 4
+    level: 0
+  - id: 257
+    method: 1
+    level: 73
+  - id: 263
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 315
+    method: 4
+    level: 0
+  - id: 332
+    method: 4
+    level: 0

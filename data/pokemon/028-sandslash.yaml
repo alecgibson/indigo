@@ -1,0 +1,166 @@
+id: 28
+identifier: sandslash
+name: Sandslash
+genus: Mouse
+sortOrder: 41
+height: 10
+weight: 295
+types:
+  - 5
+baseExperience: 158
+stats:
+  hitPoints:
+    base: 75
+    effortValue: 0
+  attack:
+    base: 100
+    effortValue: 0
+  defense:
+    base: 110
+    effortValue: 2
+  specialAttack:
+    base: 45
+    effortValue: 0
+  specialDefense:
+    base: 55
+    effortValue: 0
+  speed:
+    base: 65
+    effortValue: 0
+captureRate: 90
+growthRate: 2
+habitat: 6
+encounterRate: 2
+moves:
+  - id: 10
+    method: 1
+    level: 1
+    order: 1
+  - id: 14
+    method: 3
+    level: 0
+  - id: 15
+    method: 4
+    level: 0
+  - id: 28
+    method: 1
+    level: 1
+    order: 3
+  - id: 28
+    method: 1
+    level: 11
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 40
+    method: 1
+    level: 17
+  - id: 63
+    method: 4
+    level: 0
+  - id: 68
+    method: 3
+    level: 0
+  - id: 69
+    method: 3
+    level: 0
+  - id: 70
+    method: 4
+    level: 0
+  - id: 89
+    method: 4
+    level: 0
+  - id: 91
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 111
+    method: 1
+    level: 1
+    order: 2
+  - id: 111
+    method: 1
+    level: 6
+  - id: 129
+    method: 1
+    level: 33
+  - id: 154
+    method: 1
+    level: 42
+  - id: 156
+    method: 4
+    level: 0
+  - id: 157
+    method: 3
+    level: 0
+  - id: 163
+    method: 1
+    level: 24
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 201
+    method: 1
+    level: 62
+  - id: 201
+    method: 4
+    level: 0
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 231
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 249
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 264
+    method: 4
+    level: 0
+  - id: 280
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 317
+    method: 4
+    level: 0
+  - id: 328
+    method: 1
+    level: 52
+  - id: 332
+    method: 4
+    level: 0

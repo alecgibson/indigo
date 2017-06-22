@@ -1,0 +1,144 @@
+id: 121
+identifier: starmie
+name: Starmie
+genus: Mysterious
+sortOrder: 155
+height: 11
+weight: 800
+types:
+  - 11
+  - 14
+baseExperience: 182
+stats:
+  hitPoints:
+    base: 60
+    effortValue: 0
+  attack:
+    base: 75
+    effortValue: 0
+  defense:
+    base: 85
+    effortValue: 0
+  specialAttack:
+    base: 100
+    effortValue: 0
+  specialDefense:
+    base: 85
+    effortValue: 0
+  speed:
+    base: 115
+    effortValue: 2
+captureRate: 60
+growthRate: 1
+habitat: 7
+encounterRate: 1
+moves:
+  - id: 38
+    method: 3
+    level: 0
+  - id: 55
+    method: 1
+    level: 1
+    order: 1
+  - id: 57
+    method: 4
+    level: 0
+  - id: 58
+    method: 4
+    level: 0
+  - id: 59
+    method: 4
+    level: 0
+  - id: 63
+    method: 4
+    level: 0
+  - id: 85
+    method: 4
+    level: 0
+  - id: 86
+    method: 3
+    level: 0
+  - id: 87
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 94
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 105
+    method: 1
+    level: 1
+    order: 3
+  - id: 109
+    method: 1
+    level: 33
+  - id: 113
+    method: 4
+    level: 0
+  - id: 115
+    method: 4
+    level: 0
+  - id: 127
+    method: 4
+    level: 0
+  - id: 129
+    method: 1
+    level: 1
+    order: 4
+  - id: 138
+    method: 3
+    level: 0
+  - id: 148
+    method: 4
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 229
+    method: 1
+    level: 1
+    order: 2
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 258
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 285
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 291
+    method: 4
+    level: 0
+  - id: 352
+    method: 4
+    level: 0

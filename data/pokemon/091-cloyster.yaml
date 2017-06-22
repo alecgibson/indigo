@@ -1,0 +1,126 @@
+id: 91
+identifier: cloyster
+name: Cloyster
+genus: Bivalve
+sortOrder: 113
+height: 15
+weight: 1325
+types:
+  - 11
+  - 15
+baseExperience: 184
+stats:
+  hitPoints:
+    base: 50
+    effortValue: 0
+  attack:
+    base: 95
+    effortValue: 0
+  defense:
+    base: 180
+    effortValue: 2
+  specialAttack:
+    base: 85
+    effortValue: 0
+  specialDefense:
+    base: 45
+    effortValue: 0
+  speed:
+    base: 70
+    effortValue: 0
+captureRate: 60
+growthRate: 1
+habitat: 7
+encounterRate: 2
+moves:
+  - id: 38
+    method: 3
+    level: 0
+  - id: 48
+    method: 1
+    level: 1
+    order: 2
+  - id: 57
+    method: 4
+    level: 0
+  - id: 58
+    method: 4
+    level: 0
+  - id: 59
+    method: 4
+    level: 0
+  - id: 62
+    method: 1
+    level: 1
+    order: 3
+  - id: 63
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 110
+    method: 1
+    level: 1
+    order: 1
+  - id: 131
+    method: 1
+    level: 43
+  - id: 153
+    method: 3
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 182
+    method: 1
+    level: 1
+    order: 4
+  - id: 182
+    method: 4
+    level: 0
+  - id: 191
+    method: 1
+    level: 36
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 258
+    method: 4
+    level: 0
+  - id: 259
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 291
+    method: 4
+    level: 0
+  - id: 352
+    method: 4
+    level: 0

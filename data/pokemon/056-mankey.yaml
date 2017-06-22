@@ -1,0 +1,208 @@
+id: 56
+identifier: mankey
+name: Mankey
+genus: Pig Monkey
+sortOrder: 73
+height: 5
+weight: 280
+types:
+  - 2
+baseExperience: 61
+stats:
+  hitPoints:
+    base: 40
+    effortValue: 0
+  attack:
+    base: 80
+    effortValue: 1
+  defense:
+    base: 35
+    effortValue: 0
+  specialAttack:
+    base: 35
+    effortValue: 0
+  specialDefense:
+    base: 45
+    effortValue: 0
+  speed:
+    base: 70
+    effortValue: 0
+captureRate: 190
+growthRate: 2
+habitat: 4
+encounterRate: 4
+moves:
+  - id: 2
+    method: 1
+    level: 11
+  - id: 5
+    method: 3
+    level: 0
+  - id: 10
+    method: 1
+    level: 1
+    order: 1
+  - id: 25
+    method: 3
+    level: 0
+  - id: 34
+    method: 3
+    level: 0
+  - id: 37
+    method: 1
+    level: 46
+  - id: 38
+    method: 3
+    level: 0
+  - id: 43
+    method: 1
+    level: 1
+    order: 2
+  - id: 67
+    method: 1
+    level: 6
+  - id: 68
+    method: 2
+    level: 0
+  - id: 68
+    method: 3
+    level: 0
+  - id: 69
+    method: 1
+    level: 26
+  - id: 69
+    method: 3
+    level: 0
+  - id: 70
+    method: 4
+    level: 0
+  - id: 85
+    method: 4
+    level: 0
+  - id: 87
+    method: 4
+    level: 0
+  - id: 89
+    method: 4
+    level: 0
+  - id: 91
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 96
+    method: 2
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 103
+    method: 1
+    level: 41
+  - id: 104
+    method: 4
+    level: 0
+  - id: 116
+    method: 1
+    level: 21
+  - id: 118
+    method: 3
+    level: 0
+  - id: 154
+    method: 1
+    level: 16
+  - id: 156
+    method: 4
+    level: 0
+  - id: 157
+    method: 2
+    level: 0
+  - id: 157
+    method: 3
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 168
+    method: 4
+    level: 0
+  - id: 179
+    method: 2
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 193
+    method: 2
+    level: 0
+  - id: 207
+    method: 1
+    level: 36
+  - id: 213
+    method: 4
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 231
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 238
+    method: 1
+    level: 31
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 249
+    method: 4
+    level: 0
+  - id: 251
+    method: 2
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 264
+    method: 4
+    level: 0
+  - id: 265
+    method: 2
+    level: 0
+  - id: 269
+    method: 4
+    level: 0
+  - id: 279
+    method: 2
+    level: 0
+  - id: 280
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 315
+    method: 4
+    level: 0
+  - id: 317
+    method: 4
+    level: 0
+  - id: 332
+    method: 4
+    level: 0
+  - id: 339
+    method: 4
+    level: 0
+evolution:
+  evolvedPokemonId: 57
+  trigger: 1
+  level: 28

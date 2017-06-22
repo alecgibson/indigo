@@ -1,0 +1,134 @@
+id: 81
+identifier: magnemite
+name: Magnemite
+genus: Magnet
+sortOrder: 102
+height: 3
+weight: 60
+types:
+  - 13
+  - 9
+baseExperience: 65
+stats:
+  hitPoints:
+    base: 25
+    effortValue: 0
+  attack:
+    base: 35
+    effortValue: 0
+  defense:
+    base: 70
+    effortValue: 0
+  specialAttack:
+    base: 95
+    effortValue: 1
+  specialDefense:
+    base: 55
+    effortValue: 0
+  speed:
+    base: 45
+    effortValue: 0
+captureRate: 190
+growthRate: 2
+habitat: 6
+encounterRate: 4
+moves:
+  - id: 33
+    method: 1
+    level: 1
+    order: 2
+  - id: 38
+    method: 3
+    level: 0
+  - id: 48
+    method: 1
+    level: 11
+  - id: 49
+    method: 1
+    level: 16
+  - id: 84
+    method: 1
+    level: 6
+  - id: 85
+    method: 4
+    level: 0
+  - id: 86
+    method: 1
+    level: 21
+  - id: 86
+    method: 3
+    level: 0
+  - id: 87
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 103
+    method: 1
+    level: 44
+  - id: 104
+    method: 4
+    level: 0
+  - id: 115
+    method: 4
+    level: 0
+  - id: 129
+    method: 1
+    level: 38
+  - id: 148
+    method: 4
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 192
+    method: 1
+    level: 50
+  - id: 199
+    method: 1
+    level: 32
+  - id: 209
+    method: 1
+    level: 26
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 4
+    level: 0
+  - id: 241
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 319
+    method: 1
+    level: 1
+    order: 1
+  - id: 351
+    method: 4
+    level: 0
+evolution:
+  evolvedPokemonId: 82
+  trigger: 1
+  level: 30

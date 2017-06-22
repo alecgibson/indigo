@@ -1,0 +1,197 @@
+id: 131
+identifier: lapras
+name: Lapras
+genus: Transport
+sortOrder: 175
+height: 25
+weight: 2200
+types:
+  - 11
+  - 15
+baseExperience: 187
+stats:
+  hitPoints:
+    base: 130
+    effortValue: 2
+  attack:
+    base: 85
+    effortValue: 0
+  defense:
+    base: 80
+    effortValue: 0
+  specialAttack:
+    base: 85
+    effortValue: 0
+  specialDefense:
+    base: 95
+    effortValue: 0
+  speed:
+    base: 60
+    effortValue: 0
+captureRate: 45
+growthRate: 1
+habitat: 7
+encounterRate: 1
+moves:
+  - id: 32
+    method: 2
+    level: 0
+  - id: 34
+    method: 1
+    level: 13
+  - id: 34
+    method: 3
+    level: 0
+  - id: 38
+    method: 3
+    level: 0
+  - id: 45
+    method: 1
+    level: 1
+    order: 2
+  - id: 46
+    method: 4
+    level: 0
+  - id: 47
+    method: 1
+    level: 1
+    order: 3
+  - id: 54
+    method: 1
+    level: 7
+  - id: 55
+    method: 1
+    level: 1
+    order: 1
+  - id: 56
+    method: 1
+    level: 49
+  - id: 57
+    method: 4
+    level: 0
+  - id: 58
+    method: 1
+    level: 31
+  - id: 58
+    method: 4
+    level: 0
+  - id: 59
+    method: 4
+    level: 0
+  - id: 63
+    method: 4
+    level: 0
+  - id: 70
+    method: 4
+    level: 0
+  - id: 85
+    method: 4
+    level: 0
+  - id: 87
+    method: 4
+    level: 0
+  - id: 92
+    method: 4
+    level: 0
+  - id: 94
+    method: 4
+    level: 0
+  - id: 102
+    method: 3
+    level: 0
+  - id: 104
+    method: 4
+    level: 0
+  - id: 109
+    method: 1
+    level: 19
+  - id: 127
+    method: 4
+    level: 0
+  - id: 138
+    method: 3
+    level: 0
+  - id: 156
+    method: 4
+    level: 0
+  - id: 164
+    method: 2
+    level: 0
+  - id: 164
+    method: 3
+    level: 0
+  - id: 174
+    method: 2
+    level: 0
+  - id: 182
+    method: 4
+    level: 0
+  - id: 193
+    method: 2
+    level: 0
+  - id: 195
+    method: 1
+    level: 25
+  - id: 213
+    method: 4
+    level: 0
+  - id: 214
+    method: 2
+    level: 0
+  - id: 216
+    method: 4
+    level: 0
+  - id: 218
+    method: 4
+    level: 0
+  - id: 219
+    method: 1
+    level: 43
+  - id: 219
+    method: 4
+    level: 0
+  - id: 231
+    method: 4
+    level: 0
+  - id: 237
+    method: 4
+    level: 0
+  - id: 240
+    method: 1
+    level: 37
+  - id: 240
+    method: 4
+    level: 0
+  - id: 249
+    method: 4
+    level: 0
+  - id: 258
+    method: 4
+    level: 0
+  - id: 263
+    method: 4
+    level: 0
+  - id: 287
+    method: 2
+    level: 0
+  - id: 290
+    method: 4
+    level: 0
+  - id: 291
+    method: 4
+    level: 0
+  - id: 321
+    method: 2
+    level: 0
+  - id: 329
+    method: 1
+    level: 55
+  - id: 349
+    method: 2
+    level: 0
+  - id: 351
+    method: 4
+    level: 0
+  - id: 352
+    method: 4
+    level: 0
