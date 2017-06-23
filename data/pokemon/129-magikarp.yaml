@@ -36,12 +36,15 @@ moves:
   - id: 33
     method: 1
     level: 15
+    order: 1
   - id: 150
     method: 1
     level: 1
+    order: 1
   - id: 175
     method: 1
     level: 30
+    order: 1
 evolution:
   evolvedPokemonId: 130
   trigger: 1

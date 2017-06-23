@@ -1,4 +1,5 @@
 export enum StatType {
+  HIT_POINTS,
   ATTACK,
   DEFENSE,
   SPECIAL_ATTACK,

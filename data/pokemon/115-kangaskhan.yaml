@@ -40,27 +40,35 @@ moves:
   - id: 5
     method: 1
     level: 25
+    order: 1
   - id: 5
     method: 3
     level: 0
+    order: 1
   - id: 15
     method: 4
     level: 0
+    order: 1
   - id: 23
     method: 2
     level: 0
+    order: 1
   - id: 25
     method: 3
     level: 0
+    order: 1
   - id: 34
     method: 3
     level: 0
+    order: 1
   - id: 38
     method: 3
     level: 0
+    order: 1
   - id: 39
     method: 1
     level: 13
+    order: 1
   - id: 43
     method: 1
     level: 1
@@ -68,165 +76,220 @@ moves:
   - id: 44
     method: 1
     level: 7
+    order: 1
   - id: 46
     method: 4
     level: 0
+    order: 1
   - id: 50
     method: 2
     level: 0
+    order: 1
   - id: 53
     method: 4
     level: 0
+    order: 1
   - id: 57
     method: 4
     level: 0
+    order: 1
   - id: 58
     method: 4
     level: 0
+    order: 1
   - id: 59
     method: 4
     level: 0
+    order: 1
   - id: 63
     method: 4
     level: 0
+    order: 1
   - id: 68
     method: 2
     level: 0
+    order: 1
   - id: 68
     method: 3
     level: 0
+    order: 1
   - id: 69
     method: 3
     level: 0
+    order: 1
   - id: 70
     method: 4
     level: 0
+    order: 1
   - id: 76
     method: 4
     level: 0
+    order: 1
   - id: 85
     method: 4
     level: 0
+    order: 1
   - id: 87
     method: 4
     level: 0
+    order: 1
   - id: 89
     method: 4
     level: 0
+    order: 1
   - id: 91
     method: 4
     level: 0
+    order: 1
   - id: 92
     method: 4
     level: 0
+    order: 1
   - id: 99
     method: 1
     level: 31
+    order: 1
   - id: 102
     method: 3
     level: 0
+    order: 1
   - id: 104
     method: 4
     level: 0
+    order: 1
   - id: 116
     method: 2
     level: 0
+    order: 1
   - id: 126
     method: 4
     level: 0
+    order: 1
   - id: 146
     method: 1
     level: 43
+    order: 1
   - id: 156
     method: 4
     level: 0
+    order: 1
   - id: 157
     method: 3
     level: 0
+    order: 1
   - id: 164
     method: 2
     level: 0
+    order: 1
   - id: 164
     method: 3
     level: 0
+    order: 1
   - id: 168
     method: 4
     level: 0
+    order: 1
   - id: 179
     method: 1
     level: 49
+    order: 1
   - id: 182
     method: 4
     level: 0
+    order: 1
   - id: 193
     method: 2
     level: 0
+    order: 1
   - id: 201
     method: 4
     level: 0
+    order: 1
   - id: 203
     method: 1
     level: 37
+    order: 1
   - id: 213
     method: 4
     level: 0
+    order: 1
   - id: 216
     method: 4
     level: 0
+    order: 1
   - id: 218
     method: 4
     level: 0
+    order: 1
   - id: 219
     method: 2
     level: 0
+    order: 1
   - id: 231
     method: 4
     level: 0
+    order: 1
   - id: 237
     method: 4
     level: 0
+    order: 1
   - id: 240
     method: 4
     level: 0
+    order: 1
   - id: 241
     method: 4
     level: 0
+    order: 1
   - id: 247
     method: 4
     level: 0
+    order: 1
   - id: 249
     method: 4
     level: 0
+    order: 1
   - id: 252
     method: 1
     level: 19
+    order: 1
   - id: 258
     method: 4
     level: 0
+    order: 1
   - id: 263
     method: 4
     level: 0
+    order: 1
   - id: 264
     method: 4
     level: 0
+    order: 1
   - id: 280
     method: 4
     level: 0
+    order: 1
   - id: 290
     method: 4
     level: 0
+    order: 1
   - id: 306
     method: 2
     level: 0
+    order: 1
   - id: 317
     method: 4
     level: 0
+    order: 1
   - id: 332
     method: 4
     level: 0
+    order: 1
   - id: 351
     method: 4
     level: 0
+    order: 1
   - id: 352
     method: 4
     level: 0
+    order: 1

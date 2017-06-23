@@ -41,12 +41,15 @@ moves:
   - id: 34
     method: 3
     level: 0
+    order: 1
   - id: 36
     method: 1
     level: 42
+    order: 1
   - id: 38
     method: 3
     level: 0
+    order: 1
   - id: 45
     method: 1
     level: 1
@@ -54,18 +57,23 @@ moves:
   - id: 45
     method: 1
     level: 9
+    order: 1
   - id: 57
     method: 4
     level: 0
+    order: 1
   - id: 58
     method: 1
     level: 51
+    order: 1
   - id: 58
     method: 4
     level: 0
+    order: 1
   - id: 59
     method: 4
     level: 0
+    order: 1
   - id: 62
     method: 1
     level: 1
@@ -73,36 +81,47 @@ moves:
   - id: 62
     method: 1
     level: 21
+    order: 1
   - id: 63
     method: 4
     level: 0
+    order: 1
   - id: 92
     method: 4
     level: 0
+    order: 1
   - id: 102
     method: 3
     level: 0
+    order: 1
   - id: 104
     method: 4
     level: 0
+    order: 1
   - id: 127
     method: 4
     level: 0
+    order: 1
   - id: 156
     method: 1
     level: 29
+    order: 1
   - id: 156
     method: 4
     level: 0
+    order: 1
   - id: 164
     method: 3
     level: 0
+    order: 1
   - id: 168
     method: 4
     level: 0
+    order: 1
   - id: 182
     method: 4
     level: 0
+    order: 1
   - id: 196
     method: 1
     level: 1
@@ -110,39 +129,51 @@ moves:
   - id: 196
     method: 1
     level: 17
+    order: 1
   - id: 213
     method: 4
     level: 0
+    order: 1
   - id: 216
     method: 4
     level: 0
+    order: 1
   - id: 218
     method: 4
     level: 0
+    order: 1
   - id: 219
     method: 1
     level: 64
+    order: 1
   - id: 219
     method: 4
     level: 0
+    order: 1
   - id: 237
     method: 4
     level: 0
+    order: 1
   - id: 240
     method: 4
     level: 0
+    order: 1
   - id: 258
     method: 4
     level: 0
+    order: 1
   - id: 263
     method: 4
     level: 0
+    order: 1
   - id: 290
     method: 4
     level: 0
+    order: 1
   - id: 291
     method: 4
     level: 0
+    order: 1
   - id: 324
     method: 1
     level: 1
@@ -150,6 +181,8 @@ moves:
   - id: 329
     method: 1
     level: 34
+    order: 1
   - id: 352
     method: 4
     level: 0
+    order: 1

@@ -37,9 +37,11 @@ moves:
   - id: 106
     method: 1
     level: 1
+    order: 1
   - id: 106
     method: 1
     level: 7
+    order: 1
 evolution:
   evolvedPokemonId: 15
   trigger: 1

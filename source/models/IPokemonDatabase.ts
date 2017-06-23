@@ -11,8 +11,8 @@ export interface IPokemonDatabase {
   stats: {
     hitPoints: IPokemonStat,
     attack: IPokemonStat,
-    specialAttack: IPokemonStat,
     defense: IPokemonStat,
+    specialAttack: IPokemonStat,
     specialDefense: IPokemonStat,
     speed: IPokemonStat,
   };
@@ -22,6 +22,7 @@ export interface IPokemonDatabase {
 }
 
 export interface IPokemonStat {
+  value: number;
   individualValue: number;
   effortValue: number;
 }

@@ -119,9 +119,7 @@ for (let i = 0; i < NUMBER_OF_POKEMON; i++) {
       level: move.level,
     };
 
-    if (move.order) {
-      pokemonMove.order = move.order;
-    }
+    pokemonMove.order = move.order || 1;
 
     return pokemonMove;
   });

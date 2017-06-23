@@ -36,30 +36,39 @@ moves:
   - id: 15
     method: 4
     level: 0
+    order: 1
   - id: 24
     method: 1
     level: 12
+    order: 1
   - id: 30
     method: 1
     level: 20
+    order: 1
   - id: 31
     method: 1
     level: 30
+    order: 1
   - id: 32
     method: 1
     level: 47
+    order: 1
   - id: 34
     method: 3
     level: 0
+    order: 1
   - id: 36
     method: 2
     level: 0
+    order: 1
   - id: 38
     method: 3
     level: 0
+    order: 1
   - id: 40
     method: 1
     level: 17
+    order: 1
   - id: 43
     method: 1
     level: 1
@@ -67,15 +76,19 @@ moves:
   - id: 48
     method: 2
     level: 0
+    order: 1
   - id: 50
     method: 2
     level: 0
+    order: 1
   - id: 58
     method: 4
     level: 0
+    order: 1
   - id: 59
     method: 4
     level: 0
+    order: 1
   - id: 64
     method: 1
     level: 1
@@ -83,99 +96,131 @@ moves:
   - id: 68
     method: 2
     level: 0
+    order: 1
   - id: 68
     method: 3
     level: 0
+    order: 1
   - id: 70
     method: 4
     level: 0
+    order: 1
   - id: 85
     method: 4
     level: 0
+    order: 1
   - id: 87
     method: 4
     level: 0
+    order: 1
   - id: 91
     method: 4
     level: 0
+    order: 1
   - id: 92
     method: 4
     level: 0
+    order: 1
   - id: 93
     method: 2
     level: 0
+    order: 1
   - id: 102
     method: 3
     level: 0
+    order: 1
   - id: 104
     method: 4
     level: 0
+    order: 1
   - id: 116
     method: 1
     level: 8
+    order: 1
   - id: 133
     method: 2
     level: 0
+    order: 1
   - id: 156
     method: 4
     level: 0
+    order: 1
   - id: 164
     method: 3
     level: 0
+    order: 1
   - id: 168
     method: 4
     level: 0
+    order: 1
   - id: 182
     method: 4
     level: 0
+    order: 1
   - id: 188
     method: 4
     level: 0
+    order: 1
   - id: 213
     method: 4
     level: 0
+    order: 1
   - id: 216
     method: 4
     level: 0
+    order: 1
   - id: 218
     method: 4
     level: 0
+    order: 1
   - id: 231
     method: 4
     level: 0
+    order: 1
   - id: 237
     method: 4
     level: 0
+    order: 1
   - id: 240
     method: 4
     level: 0
+    order: 1
   - id: 241
     method: 4
     level: 0
+    order: 1
   - id: 249
     method: 4
     level: 0
+    order: 1
   - id: 251
     method: 2
     level: 0
+    order: 1
   - id: 260
     method: 1
     level: 38
+    order: 1
   - id: 263
     method: 4
     level: 0
+    order: 1
   - id: 270
     method: 1
     level: 23
+    order: 1
   - id: 290
     method: 4
     level: 0
+    order: 1
   - id: 351
     method: 4
     level: 0
+    order: 1
   - id: 352
     method: 4
     level: 0
+    order: 1
 evolution:
   evolvedPokemonId: 33
   trigger: 1

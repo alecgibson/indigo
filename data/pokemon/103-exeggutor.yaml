@@ -37,21 +37,27 @@ moves:
   - id: 23
     method: 1
     level: 19
+    order: 1
   - id: 38
     method: 3
     level: 0
+    order: 1
   - id: 63
     method: 4
     level: 0
+    order: 1
   - id: 70
     method: 4
     level: 0
+    order: 1
   - id: 76
     method: 4
     level: 0
+    order: 1
   - id: 92
     method: 4
     level: 0
+    order: 1
   - id: 93
     method: 1
     level: 1
@@ -59,6 +65,7 @@ moves:
   - id: 94
     method: 4
     level: 0
+    order: 1
   - id: 95
     method: 1
     level: 1
@@ -66,21 +73,27 @@ moves:
   - id: 102
     method: 3
     level: 0
+    order: 1
   - id: 104
     method: 4
     level: 0
+    order: 1
   - id: 113
     method: 4
     level: 0
+    order: 1
   - id: 115
     method: 4
     level: 0
+    order: 1
   - id: 121
     method: 1
     level: 31
+    order: 1
   - id: 138
     method: 3
     level: 0
+    order: 1
   - id: 140
     method: 1
     level: 1
@@ -88,51 +101,68 @@ moves:
   - id: 148
     method: 4
     level: 0
+    order: 1
   - id: 153
     method: 3
     level: 0
+    order: 1
   - id: 156
     method: 4
     level: 0
+    order: 1
   - id: 164
     method: 3
     level: 0
+    order: 1
   - id: 168
     method: 4
     level: 0
+    order: 1
   - id: 182
     method: 4
     level: 0
+    order: 1
   - id: 188
     method: 4
     level: 0
+    order: 1
   - id: 202
     method: 4
     level: 0
+    order: 1
   - id: 213
     method: 4
     level: 0
+    order: 1
   - id: 216
     method: 4
     level: 0
+    order: 1
   - id: 218
     method: 4
     level: 0
+    order: 1
   - id: 237
     method: 4
     level: 0
+    order: 1
   - id: 241
     method: 4
     level: 0
+    order: 1
   - id: 263
     method: 4
     level: 0
+    order: 1
   - id: 285
     method: 4
     level: 0
+    order: 1
   - id: 290
     method: 4
     level: 0
+    order: 1
   - id: 331
     method: 4
     level: 0
+    order: 1

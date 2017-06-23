@@ -37,12 +37,15 @@ moves:
   - id: 14
     method: 3
     level: 0
+    order: 1
   - id: 15
     method: 4
     level: 0
+    order: 1
   - id: 21
     method: 1
     level: 54
+    order: 1
   - id: 22
     method: 1
     level: 1
@@ -54,12 +57,15 @@ moves:
   - id: 35
     method: 1
     level: 11
+    order: 1
   - id: 38
     method: 3
     level: 0
+    order: 1
   - id: 51
     method: 1
     level: 24
+    order: 1
   - id: 74
     method: 1
     level: 1
@@ -67,78 +73,103 @@ moves:
   - id: 74
     method: 1
     level: 6
+    order: 1
   - id: 75
     method: 1
     level: 42
+    order: 1
   - id: 76
     method: 4
     level: 0
+    order: 1
   - id: 77
     method: 1
     level: 17
+    order: 1
   - id: 78
     method: 1
     level: 19
+    order: 1
   - id: 79
     method: 1
     level: 15
+    order: 1
   - id: 92
     method: 4
     level: 0
+    order: 1
   - id: 102
     method: 3
     level: 0
+    order: 1
   - id: 104
     method: 4
     level: 0
+    order: 1
   - id: 148
     method: 4
     level: 0
+    order: 1
   - id: 156
     method: 4
     level: 0
+    order: 1
   - id: 164
     method: 3
     level: 0
+    order: 1
   - id: 168
     method: 4
     level: 0
+    order: 1
   - id: 182
     method: 4
     level: 0
+    order: 1
   - id: 188
     method: 4
     level: 0
+    order: 1
   - id: 202
     method: 4
     level: 0
+    order: 1
   - id: 213
     method: 4
     level: 0
+    order: 1
   - id: 216
     method: 4
     level: 0
+    order: 1
   - id: 218
     method: 4
     level: 0
+    order: 1
   - id: 230
     method: 1
     level: 33
+    order: 1
   - id: 237
     method: 4
     level: 0
+    order: 1
   - id: 241
     method: 4
     level: 0
+    order: 1
   - id: 263
     method: 4
     level: 0
+    order: 1
   - id: 290
     method: 4
     level: 0
+    order: 1
   - id: 331
     method: 4
     level: 0
+    order: 1
 evolution:
   evolvedPokemonId: 71
   trigger: 3

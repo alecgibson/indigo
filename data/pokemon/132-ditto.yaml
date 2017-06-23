@@ -36,3 +36,4 @@ moves:
   - id: 144
     method: 1
     level: 1
+    order: 1

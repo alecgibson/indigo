@@ -42,6 +42,7 @@ export interface IPokemonMove {
   id: number;
   method: MoveLearnMethod;
   level: number;
+  order: number;
 }
 
 export interface IPokemonEvolution {

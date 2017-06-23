@@ -36,6 +36,7 @@ moves:
   - id: 28
     method: 1
     level: 8
+    order: 1
   - id: 33
     method: 1
     level: 1
@@ -43,12 +44,15 @@ moves:
   - id: 34
     method: 3
     level: 0
+    order: 1
   - id: 36
     method: 1
     level: 42
+    order: 1
   - id: 38
     method: 3
     level: 0
+    order: 1
   - id: 39
     method: 1
     level: 1
@@ -56,75 +60,99 @@ moves:
   - id: 44
     method: 1
     level: 30
+    order: 1
   - id: 45
     method: 1
     level: 16
+    order: 1
   - id: 91
     method: 4
     level: 0
+    order: 1
   - id: 92
     method: 4
     level: 0
+    order: 1
   - id: 98
     method: 1
     level: 23
+    order: 1
   - id: 102
     method: 3
     level: 0
+    order: 1
   - id: 104
     method: 4
     level: 0
+    order: 1
   - id: 156
     method: 4
     level: 0
+    order: 1
   - id: 164
     method: 3
     level: 0
+    order: 1
   - id: 174
     method: 2
     level: 0
+    order: 1
   - id: 175
     method: 2
     level: 0
+    order: 1
   - id: 182
     method: 4
     level: 0
+    order: 1
   - id: 203
     method: 2
     level: 0
+    order: 1
   - id: 204
     method: 2
     level: 0
+    order: 1
   - id: 213
     method: 4
     level: 0
+    order: 1
   - id: 216
     method: 4
     level: 0
+    order: 1
   - id: 218
     method: 4
     level: 0
+    order: 1
   - id: 226
     method: 1
     level: 36
+    order: 1
   - id: 231
     method: 4
     level: 0
+    order: 1
   - id: 237
     method: 4
     level: 0
+    order: 1
   - id: 240
     method: 4
     level: 0
+    order: 1
   - id: 241
     method: 4
     level: 0
+    order: 1
   - id: 247
     method: 4
     level: 0
+    order: 1
   - id: 263
     method: 4
     level: 0
+    order: 1
   - id: 270
     method: 1
     level: 1
@@ -132,12 +160,15 @@ moves:
   - id: 273
     method: 2
     level: 0
+    order: 1
   - id: 290
     method: 4
     level: 0
+    order: 1
   - id: 321
     method: 2
     level: 0
+    order: 1
 evolution:
   evolvedPokemonId: 136
   trigger: 3
