@@ -2,10 +2,8 @@ import {Nature} from "./Nature";
 import {Gender} from "./Gender";
 import {OwnerType} from "./OwnerType";
 
-export interface IPokemonDatabase {
+export interface IStoredPokemon {
   id?: string;
-  ownerType?: OwnerType;
-  ownerId?: string;
   speciesId: number;
   level: number;
   stats: {

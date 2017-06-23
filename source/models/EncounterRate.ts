@@ -1,8 +1,8 @@
 export enum EncounterRate {
   NEVER,
-  VERY_COMMON,
-  COMMON,
-  SEMI_RARE,
-  RARE,
   VERY_RARE,
+  RARE,
+  SEMI_RARE,
+  COMMON,
+  VERY_COMMON,
 }

@@ -1,4 +1,4 @@
-import {IPokemonDatabase, IPokemonStat} from "../models/IPokemonDatabase";
+import {IStoredPokemon, IPokemonStat} from "../models/IStoredPokemon";
 import {Random} from "../utilities/Random";
 import {StatCalculator} from "./StatCalculator";
 import {StatType} from "../models/StatType";
@@ -13,7 +13,7 @@ export class PokemonSpawner {
   public constructor(@inject(PokemonLookup) private pokemonLookup: PokemonLookup) {
   }
 
-  public spawn(speciesId: number, level: number): IPokemonDatabase {
+  public spawn(speciesId: number, level: number): IStoredPokemon {
     let species = this.pokemonLookup.byId(speciesId);
     let nature = this.randomNature();
 
@@ -64,7 +64,7 @@ export class PokemonSpawner {
   }
 
   private randomNature(): Nature {
-    return Random.integer(1, 25);
+    return Random.integerInclusive(1, 25);
   }
 
   private createStat(statType: StatType,
@@ -90,7 +90,7 @@ export class PokemonSpawner {
   }
 
   private randomIndividualValue(): number {
-    return Random.integer(0, 31);
+    return Random.integerInclusive(0, 31);
   }
 
   private generateMoveIdsForLevel(species: IPokemonSpecies, level: number): number[] {
