@@ -169,6 +169,13 @@ moves:
     method: 2
     level: 0
     order: 1
+abilities:
+  - id: 50
+    hidden: false
+  - id: 91
+    hidden: false
+  - id: 107
+    hidden: true
 evolution:
   evolvedPokemonId: 136
   trigger: 3

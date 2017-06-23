@@ -5,11 +5,12 @@ import * as cookieParser from "cookie-parser";
 import * as http from "http";
 import * as WebSocket from "ws";
 import {WebSocketRouter} from "./routes/WebSocketRouter";
-import {IWebSocketRouter} from "./routes/IWebSocketRouter";
 import {UserService} from "./users/UserService";
 import {IUser} from "./models/IUser";
 import * as url from "url";
 import {SessionService} from "./users/SessionService";
+import {CronJob} from "cron";
+import {WildEncounterGenerator} from "./encounters/WildEncounterGenerator";
 
 class Main {
   private static PORT = 8080;
@@ -19,9 +20,10 @@ class Main {
     let server = http.createServer(app);
     let webSocketServer = new WebSocket.Server({server});
 
-    let webSocketRouter = container.get<IWebSocketRouter>(WebSocketRouter);
+    let webSocketRouter = container.get<WebSocketRouter>(WebSocketRouter);
     let users = container.get<UserService>(UserService);
     let sessions = container.get<SessionService>(SessionService);
+    let wildEncounters = container.get<WildEncounterGenerator>(WildEncounterGenerator);
 
     app.use(cookieParser());
     app.use(bodyParser.json());
@@ -62,6 +64,10 @@ class Main {
       let newSessionToken = query.token;
       webSocketRouter.connect(webSocket, newSessionToken);
     });
+
+    new CronJob('0 53 * * * *', () => {
+      wildEncounters.generate();
+    }, null, true).start();
 
     server.listen(Main.PORT, function () {
       console.log(`Listening on port ${Main.PORT}`);

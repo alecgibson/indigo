@@ -242,3 +242,6 @@ moves:
     method: 1
     level: 25
     order: 1
+abilities:
+  - id: 26
+    hidden: false

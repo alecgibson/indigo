@@ -5,7 +5,6 @@ import {EncounterRate} from "./EncounterRate";
 import {MoveLearnMethod} from "./MoveLearnMethod";
 import {EvolutionTrigger} from "./EvolutionTrigger";
 
-// TODO: Abilities
 export interface IPokemonSpecies {
   id: number;
   identifier: string;
@@ -30,6 +29,7 @@ export interface IPokemonSpecies {
   habitat: Habitat;
   encounterRate: EncounterRate;
   moves: IPokemonMove[];
+  abilities: IPokemonAbility[];
   evolution?: IPokemonEvolution;
 }
 
@@ -43,6 +43,11 @@ export interface IPokemonMove {
   method: MoveLearnMethod;
   level: number;
   order: number;
+}
+
+export interface IPokemonAbility {
+  id: number;
+  hidden: boolean;
 }
 
 export interface IPokemonEvolution {

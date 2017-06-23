@@ -6,6 +6,7 @@ const User = require("../sequelize/index").users;
 @injectable()
 export class UserService {
   public create(user: IUser): Promise<IUser> {
+    // TODO: Validate
     let saltHashPair = PasswordHasher.hash(user.password);
     return User.create({
       email: user.email,

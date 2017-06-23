@@ -17,6 +17,7 @@ export interface IStoredPokemon {
   moveIds: number[];
   gender: Gender;
   nature: Nature;
+  abilityId: number;
 }
 
 export interface IPokemonStat {

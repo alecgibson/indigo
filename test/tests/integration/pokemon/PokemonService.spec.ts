@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import {expect} from 'chai';
 import 'mocha';
 import {PokemonService} from "../../../../source/pokemon/PokemonService";
@@ -17,9 +18,10 @@ describe('PokemonService', () => {
       })
       .then((fetchedPokemon) => {
         expect(fetchedPokemon.id).to.be.ok;
-        expect(fetchedPokemon.speciesId).to.equal(pokemon.speciesId);
-        expect(fetchedPokemon.stats.hitPoints.value).to.equal(pokemon.stats.hitPoints.value);
+        pokemon.id = fetchedPokemon.id;
+        expect(fetchedPokemon).to.deep.equal(pokemon);
         done();
-      });
+      })
+      .catch(console.log);
   });
 });

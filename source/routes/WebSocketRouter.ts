@@ -2,18 +2,20 @@ import * as WebSocket from "ws";
 import {IRequest} from "../models/requests/IRequest";
 import {BattleMoveRoute} from "./BattleMoveRoute";
 import {IRoute} from "./IRoute";
-import {IWebSocketRouter} from "./IWebSocketRouter";
 import {inject, injectable} from "inversify";
 import {IUser} from "../models/IUser";
 import {SessionService} from "../users/SessionService";
+import {LocationRoute} from "./LocationRoute";
 
 @injectable()
-export class WebSocketRouter implements IWebSocketRouter {
+export class WebSocketRouter {
   private readonly routes: Map<string, IRoute>;
 
   public constructor(@inject(SessionService) private sessions: SessionService,
+                     @inject(LocationRoute) private location: LocationRoute,
                      @inject(BattleMoveRoute) battleMove: BattleMoveRoute,) {
     this.routes = new Map();
+    this.routes.set('location', location);
     this.routes.set('battleMove', battleMove);
   }
 
@@ -23,8 +25,12 @@ export class WebSocketRouter implements IWebSocketRouter {
         if (user) {
           this.setUpRouting(webSocket, user);
           console.log(`User connected: ${user.username}`);
+        } else {
+          webSocket.send(JSON.stringify({
+            type: 'authentication',
+            message: 'You are not authenticated'
+          }));
         }
-        // TODO: Send connection message to client
       });
   }
 

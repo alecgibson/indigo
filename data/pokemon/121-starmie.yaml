@@ -174,3 +174,10 @@ moves:
     method: 4
     level: 0
     order: 1
+abilities:
+  - id: 35
+    hidden: false
+  - id: 30
+    hidden: false
+  - id: 148
+    hidden: true

@@ -205,6 +205,11 @@ moves:
     method: 4
     level: 0
     order: 1
+abilities:
+  - id: 61
+    hidden: false
+  - id: 63
+    hidden: true
 evolution:
   evolvedPokemonId: 149
   trigger: 1

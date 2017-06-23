@@ -1,6 +1,7 @@
 import {ICartesianCoordinates} from "./ICartesianCoordinates";
+import {IGeoCoordinates} from "./IGeoCoordinates";
 
-export class RoughCoordinates {
+export class RoughCoordinates implements IGeoCoordinates {
   public static readonly METRES_IN_A_DEGREE = 111000;
 
   public constructor(public latitude: number, public longitude: number) {}

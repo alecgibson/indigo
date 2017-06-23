@@ -25,4 +25,8 @@ export class Random {
   public static uuid(): string {
     return uuidv4();
   }
+
+  public static element<T>(array: Array<T>): T {
+    return array[Random.integerExclusive(0, array.length)];
+  }
 }

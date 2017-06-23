@@ -12,12 +12,12 @@ module.exports = {
           allowNull: false
         },
         createdAt: {
-          type: Sequelize.TIME,
+          type: Sequelize.DATE,
           defaultValue: Sequelize.NOW,
           allowNull: false
         },
         updatedAt: {
-          type: Sequelize.TIME,
+          type: Sequelize.DATE,
           defaultValue: Sequelize.NOW,
           allowNull: false
         },
@@ -26,6 +26,10 @@ module.exports = {
           unique: true,
           allowNull: false
         }
+      },
+      {
+        charset: 'utf8',
+        collate: 'utf8_unicode_ci'
       }
     );
   },

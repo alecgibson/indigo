@@ -45,6 +45,11 @@ moves:
     method: 1
     level: 30
     order: 1
+abilities:
+  - id: 33
+    hidden: false
+  - id: 155
+    hidden: true
 evolution:
   evolvedPokemonId: 130
   trigger: 1

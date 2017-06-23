@@ -3,12 +3,13 @@ import {Random} from "../utilities/Random";
 import {StatCalculator} from "./StatCalculator";
 import {StatType} from "../models/StatType";
 import {Nature} from "../models/Nature";
-import {inject} from "inversify";
+import {inject, injectable} from "inversify";
 import {PokemonLookup} from "./PokemonLookup";
 import {IPokemonSpecies} from "../models/IPokemonSpecies";
 import {MoveLearnMethod} from "../models/MoveLearnMethod";
 import {Gender} from "../models/Gender";
 
+@injectable()
 export class PokemonSpawner {
   public constructor(@inject(PokemonLookup) private pokemonLookup: PokemonLookup) {
   }
@@ -60,6 +61,7 @@ export class PokemonSpawner {
       moveIds: this.generateMoveIdsForLevel(species, level),
       gender: this.randomGender(species),
       nature: nature,
+      abilityId: this.randomAbilityId(species),
     };
   }
 
@@ -121,5 +123,10 @@ export class PokemonSpawner {
     } else {
       return Gender.MALE;
     }
+  }
+
+  private randomAbilityId(species: IPokemonSpecies): number {
+    let nonHiddenAbilities = species.abilities.filter((ability) => !ability.hidden);
+    return Random.element(nonHiddenAbilities).id;
   }
 }

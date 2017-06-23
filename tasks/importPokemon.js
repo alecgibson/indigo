@@ -11,6 +11,7 @@ let pokemonMovesCsv = fs.readFileSync('data/pokemon_moves.csv', 'utf8');
 let pokemonStatsCsv = fs.readFileSync('data/pokemon_stats.csv', 'utf8');
 let pokemonTypesCsv = fs.readFileSync('data/pokemon_types.csv', 'utf8');
 let pokemonNamesCsv = fs.readFileSync('data/pokemon_species_names.csv', 'utf8');
+let pokemonAbilitiesCsv = fs.readFileSync('data/pokemon_abilities.csv', 'utf8');
 
 let parserOptions = {
   columns: true,
@@ -24,6 +25,7 @@ let pokemonMoves = parse(pokemonMovesCsv, parserOptions);
 let stats = parse(pokemonStatsCsv, parserOptions);
 let pokemonTypes = parse(pokemonTypesCsv, parserOptions);
 let pokemonNames = parse(pokemonNamesCsv, parserOptions);
+let pokemonAbilities = parse(pokemonAbilitiesCsv, parserOptions);
 
 let evolutionsByEvolvedSpeciesId = evolutions.reduce((map, evolution) => {
   map[evolution.evolved_species_id] = evolution;
@@ -84,6 +86,12 @@ let namesByPokemonId = pokemonNames.reduce((map, name) => {
   return map;
 }, {});
 
+let abilitiesByPokemonId = pokemonAbilities.reduce((map, ability) => {
+  map[ability.pokemon_id] = map[ability.pokemon_id] || [];
+  map[ability.pokemon_id].push(ability);
+  return map;
+}, {});
+
 let pokemons = [''];
 for (let i = 0; i < NUMBER_OF_POKEMON; i++) {
   console.log(`Process Pokemon #${i+1}`);
@@ -122,6 +130,14 @@ for (let i = 0; i < NUMBER_OF_POKEMON; i++) {
     pokemonMove.order = move.order || 1;
 
     return pokemonMove;
+  });
+
+  let abilities = abilitiesByPokemonId[pokemonData.id];
+  pokemon.abilities = abilities.map((ability) => {
+    return {
+      id: ability.ability_id,
+      hidden: !!ability.is_hidden
+    };
   });
 
   if (specie.evolves_from_species_id && pokemons[specie.evolves_from_species_id]) {
