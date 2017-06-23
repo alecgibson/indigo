@@ -1,10 +1,11 @@
-import {Type} from "../models/Type";
-import {GrowthRate} from "../models/GrowthRate";
-import {Habitat} from "../models/Habitats";
-import {EncounterRate} from "../models/EncounterRate";
-import {MoveLearnMethod} from "../models/MoveLearnMethod";
-import {EvolutionTrigger} from "../models/EvolutionTrigger";
+import {Type} from "./Type";
+import {GrowthRate} from "./GrowthRate";
+import {Habitat} from "./Habitats";
+import {EncounterRate} from "./EncounterRate";
+import {MoveLearnMethod} from "./MoveLearnMethod";
+import {EvolutionTrigger} from "./EvolutionTrigger";
 
+// TODO: Abilities
 export interface IPokemonSpecies {
   id: number;
   identifier: string;
@@ -15,25 +16,24 @@ export interface IPokemonSpecies {
   weight: number;
   types: Type[];
   baseExperience: number;
-  stats: IPokemonStats;
+  stats: {
+    hitPoints: IPokemonBaseStat;
+    attack: IPokemonBaseStat;
+    defense: IPokemonBaseStat;
+    specialAttack: IPokemonBaseStat;
+    specialDefense: IPokemonBaseStat;
+    speed: IPokemonBaseStat;
+  };
   captureRate: number;
   growthRate: GrowthRate;
   genderRate: number;
   habitat: Habitat;
   encounterRate: EncounterRate;
+  moves: IPokemonMove[];
   evolution?: IPokemonEvolution;
 }
 
-export interface IPokemonStats {
-  hitPoints: IPokemonStat;
-  attack: IPokemonStat;
-  defense: IPokemonStat;
-  specialAttack: IPokemonStat;
-  specialDefense: IPokemonStat;
-  speed: IPokemonStat;
-}
-
-export interface IPokemonStat {
+export interface IPokemonBaseStat {
   base: number;
   effortValue: number;
 }

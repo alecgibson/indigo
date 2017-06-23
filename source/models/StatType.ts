@@ -1,0 +1,7 @@
+export enum StatType {
+  ATTACK,
+  DEFENSE,
+  SPECIAL_ATTACK,
+  SPECIAL_DEFENSE,
+  SPEED,
+}

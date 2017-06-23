@@ -59,7 +59,6 @@ typings/
 
 source/**/*.js
 !source/sequelize/
-test/**/*.js
 release/
 
 db/

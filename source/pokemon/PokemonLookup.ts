@@ -2,7 +2,7 @@ import "reflect-metadata";
 import * as fs from "fs";
 import * as yaml from "js-yaml";
 import {injectable} from "inversify";
-import {IPokemonSpecies} from "./IPokemonSpecies";
+import {IPokemonSpecies} from "../models/IPokemonSpecies";
 
 @injectable()
 export class PokemonLookup {
