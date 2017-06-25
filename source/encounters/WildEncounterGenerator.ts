@@ -12,12 +12,13 @@ import {IGeoCoordinates} from "../models/IGeoCoordinates";
 
 @injectable()
 export class WildEncounterGenerator {
-  public static readonly JOB_FREQUENCY_MINUTES = 10;
+  public static readonly JOB_FREQUENCY_SECONDS = 30;
+  public static readonly ENCOUNTER_LIFE_TIME_MINUTES = 20;
 
-  private readonly MAX_LATITUDE = 51.5053399;
-  private readonly MIN_LATITUDE = 51.5007419;
-  private readonly MAX_LONGITUDE = -0.114196;
-  private readonly MIN_LONGITUDE = -0.1246827;
+  private readonly MAX_LATITUDE = 51.5166929;
+  private readonly MIN_LATITUDE = 51.496623;
+  private readonly MAX_LONGITUDE = -0.1116437;
+  private readonly MIN_LONGITUDE = -0.1287656;
   private readonly POKEMON_PER_SQUARE_METRE = 1 / 200;
 
   private readonly MIN_POKEMON_LEVEL = 2;
@@ -31,6 +32,8 @@ export class WildEncounterGenerator {
     VERY_COMMON: 100,
   };
 
+  // TODO: Garbage collection?
+
   public constructor(@inject(PokemonLookup) private pokemonLookup: PokemonLookup,
                      @inject(PokemonSpawner) private pokemonSpawner: PokemonSpawner,
                      @inject(PokemonService) private pokemonService: PokemonService,
@@ -38,10 +41,7 @@ export class WildEncounterGenerator {
   }
 
   public generate() {
-    console.log("GENERATE POKEMON");
-    // TODO: Check if this needs to run in case the cron job is restarted?
     let numberOfPokemon = this.numberOfPokemonToGenerate();
-    console.log("Generating " + numberOfPokemon);
     for (let i = 0; i < numberOfPokemon; i++) {
       let pokemonPool = this.pokemonLookup.byEncounterRate(this.randomEncounterRate());
       let pokemonSpecies = pokemonPool[Random.integerExclusive(0, pokemonPool.length)];
@@ -50,9 +50,9 @@ export class WildEncounterGenerator {
 
       this.pokemonService.create(pokemon)
         .then((createdPokemon) => {
-          let startTime = this.randomStartTime();
+          let startTime = new Date();
           let endTime = new Date(startTime);
-          endTime.setMinutes(endTime.getMinutes() + 10);
+          endTime.setMinutes(endTime.getMinutes() + WildEncounterGenerator.ENCOUNTER_LIFE_TIME_MINUTES);
 
           let location = this.randomLocation();
 
@@ -77,7 +77,8 @@ export class WildEncounterGenerator {
     let y = northWestBound.y - southEastBound.y;
 
     let area = x * y;
-    return Math.floor(this.POKEMON_PER_SQUARE_METRE * area);
+    return Math.floor(this.POKEMON_PER_SQUARE_METRE * area *
+      WildEncounterGenerator.JOB_FREQUENCY_SECONDS / (WildEncounterGenerator.ENCOUNTER_LIFE_TIME_MINUTES * 60));
   }
 
   private randomLocation(): RoughCoordinates {
@@ -118,12 +119,5 @@ export class WildEncounterGenerator {
     } else {
       return EncounterRate.VERY_COMMON;
     }
-  }
-
-  private randomStartTime(): Date {
-    let nowMilliseconds = Date.now();
-    let refreshRateMillis = WildEncounterGenerator.JOB_FREQUENCY_MINUTES * 60 * 1000;
-    let randomTime = Random.integerInclusive(nowMilliseconds, nowMilliseconds + refreshRateMillis);
-    return new Date(randomTime);
   }
 }

@@ -1,17 +1,24 @@
-import * as WebSocket from "ws";
 import {IRoute} from "./IRoute";
+import {IWildEncounterRequest} from "../models/requests/IWildEncounterRequest";
+import * as WebSocket from "ws";
 import {inject, injectable} from "inversify";
-import {ILocationRequest} from "../models/requests/ILocationRequest";
-import {RoughCoordinates} from "../models/RoughCoordinates";
+import {IGeoCoordinates} from "../models/IGeoCoordinates";
 import {WildEncounterService} from "../encounters/WildEncounterService";
 
 @injectable()
-export class LocationRoute implements IRoute {
+export class WildEncounterRoute implements IRoute {
   public constructor(@inject(WildEncounterService) private wildEncounters: WildEncounterService) {
   }
 
-  handle(webSocket: WebSocket, message: ILocationRequest) {
-    let location = new RoughCoordinates(message.latitude, message.longitude);
+  public handle(webSocket: WebSocket, message: IWildEncounterRequest) {
+    switch(message.method) {
+      case 'getAll':
+        this.getAll(message.location, webSocket);
+        break;
+    }
+  }
+
+  private getAll(location: IGeoCoordinates, webSocket: WebSocket) {
     this.wildEncounters.getByLocation(location)
       .then((encounters) => {
         let strippedEncounters = encounters.map((encounter) => {

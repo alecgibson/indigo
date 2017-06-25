@@ -1,6 +1,7 @@
 import {IWildEncounter} from "../models/IWildEncounter";
 import {injectable} from "inversify";
 import {RoughCoordinates} from "../models/RoughCoordinates";
+import {IGeoCoordinates} from "../models/IGeoCoordinates";
 const WildEncounter = require("../sequelize/index").wildEncounters;
 
 @injectable()
@@ -41,7 +42,9 @@ export class WildEncounterService {
       });
   }
 
-  public getByLocation(coordinates: RoughCoordinates): Promise<IWildEncounter[]> {
+  // TODO: Filter out Encounters already seen (check if Battle exists)
+  public getByLocation(location: IGeoCoordinates): Promise<IWildEncounter[]> {
+    let coordinates = new RoughCoordinates(location.latitude, location.longitude);
     let cartesianMetres = coordinates.toCartesianMetres();
     let now = new Date();
     return WildEncounter.findAll({

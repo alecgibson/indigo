@@ -33,10 +33,13 @@ class Main {
 
     // TODO: Tidy routes
     app.post('/login', (request, response) => {
+      console.log("LOGIN");
+      console.log(request.body);
         let username = request.body.username;
         let password = request.body.password;
         sessions.getNewSessionToken(username, password)
           .then((token) => {
+            console.log("Successfully authenticated");
             response.send({
               token: token
             });
@@ -50,6 +53,7 @@ class Main {
       let user = <IUser>request.body;
       users.create(user)
         .then((user) => {
+          console.log("Successfully registered");
           response.send(user.id);
         });
     });
@@ -60,12 +64,13 @@ class Main {
     });
 
     webSocketServer.on('connection', (webSocket, request) => {
-      let query = url.parse(request.url, true).query;
-      let newSessionToken = query.token;
+      console.log("CONNECT");
+      console.log(request.url);
+      let newSessionToken = request.url.match(/\?(.+)/)[1];
       webSocketRouter.connect(webSocket, newSessionToken);
     });
 
-    new CronJob('0 53 * * * *', () => {
+    new CronJob(`*/${WildEncounterGenerator.JOB_FREQUENCY_SECONDS} * * * * *`, () => {
       wildEncounters.generate();
     }, null, true).start();
 

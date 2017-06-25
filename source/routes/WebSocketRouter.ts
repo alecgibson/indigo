@@ -5,18 +5,18 @@ import {IRoute} from "./IRoute";
 import {inject, injectable} from "inversify";
 import {IUser} from "../models/IUser";
 import {SessionService} from "../users/SessionService";
-import {LocationRoute} from "./LocationRoute";
+import {WildEncounterRoute} from "./WildEncounterRoute";
 
 @injectable()
 export class WebSocketRouter {
   private readonly routes: Map<string, IRoute>;
 
   public constructor(@inject(SessionService) private sessions: SessionService,
-                     @inject(LocationRoute) private location: LocationRoute,
-                     @inject(BattleMoveRoute) battleMove: BattleMoveRoute,) {
+                     @inject(BattleMoveRoute) battleMove: BattleMoveRoute,
+                     @inject(WildEncounterRoute) wildEncounter: WildEncounterRoute,) {
     this.routes = new Map();
-    this.routes.set('location', location);
     this.routes.set('battleMove', battleMove);
+    this.routes.set('wildEncounter', wildEncounter);
   }
 
   public connect(webSocket: WebSocket, newSessionToken: string) {
