@@ -33,27 +33,27 @@ class Main {
 
     // TODO: Tidy routes
     app.post('/login', (request, response) => {
-      console.log("LOGIN");
-      console.log(request.body);
         let username = request.body.username;
         let password = request.body.password;
         sessions.getNewSessionToken(username, password)
           .then((token) => {
-            console.log("Successfully authenticated");
-            response.send({
-              token: token
-            });
+            if (token) {
+              response.send({
+                token: token
+              });
+            } else {
+              response.status(401).end();
+            }
           });
       }
     );
 
     // TODO: Tidy routes
-    // TODO: Handle this properly
+    // TODO: Handle errors
     app.post('/register', (request, response) => {
       let user = <IUser>request.body;
       users.create(user)
         .then((user) => {
-          console.log("Successfully registered");
           response.send(user.id);
         });
     });
@@ -64,15 +64,14 @@ class Main {
     });
 
     webSocketServer.on('connection', (webSocket, request) => {
-      console.log("CONNECT");
-      console.log(request.url);
-      let newSessionToken = request.url.match(/\?(.+)/)[1];
+      let queryMatch = request.url.match(/\?(.+)/);
+      let newSessionToken = queryMatch && queryMatch[1];
       webSocketRouter.connect(webSocket, newSessionToken);
     });
 
-    new CronJob(`*/${WildEncounterGenerator.JOB_FREQUENCY_SECONDS} * * * * *`, () => {
-      wildEncounters.generate();
-    }, null, true).start();
+    // new CronJob(`*/${WildEncounterGenerator.JOB_FREQUENCY_SECONDS} * * * * *`, () => {
+    //   wildEncounters.generate();
+    // }, null, true).start();
 
     server.listen(Main.PORT, function () {
       console.log(`Listening on port ${Main.PORT}`);

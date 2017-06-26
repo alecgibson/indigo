@@ -32,6 +32,10 @@ export class SessionService {
   }
 
   public validateNewSessionToken(newSessionToken: string): Promise<IUser> {
+    if (!newSessionToken) {
+      return Promise.resolve(null);
+    }
+
     return this.getByNewSessionToken(newSessionToken)
       .then((user) => {
         if (!user) {

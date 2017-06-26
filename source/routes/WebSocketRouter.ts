@@ -24,12 +24,9 @@ export class WebSocketRouter {
       .then((user) => {
         if (user) {
           this.setUpRouting(webSocket, user);
-          console.log(`User connected: ${user.username}`);
+          this.notifyOfValidatedSession(webSocket, user.newSessionToken);
         } else {
-          webSocket.send(JSON.stringify({
-            type: 'authentication',
-            message: 'You are not authenticated'
-          }));
+          this.notifyOfInvalidatedSession(webSocket);
         }
       });
   }
@@ -57,7 +54,7 @@ export class WebSocketRouter {
           if (isValid) {
             this.route(webSocket, data);
           } else {
-            // TODO: Send message to client
+            this.notifyOfInvalidatedSession(webSocket);
           }
         });
     });
@@ -68,5 +65,20 @@ export class WebSocketRouter {
       return <IRequest>JSON.parse(<string>data);
     } catch (e) {
     }
+  }
+
+  private notifyOfValidatedSession(webSocket: WebSocket, newSessionToken: string) {
+    webSocket.send(JSON.stringify({
+      type: 'authentication',
+      message: 'SESSION_VALIDATED',
+      token: newSessionToken,
+    }));
+  }
+
+  private notifyOfInvalidatedSession(webSocket: WebSocket) {
+    webSocket.send(JSON.stringify({
+      type: 'authentication',
+      message: 'SESSION_INVALIDATED',
+    }));
   }
 }
