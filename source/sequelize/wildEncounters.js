@@ -33,6 +33,10 @@ module.exports = function(sequelize, Sequelize) {
       },
       onDelete: 'cascade'
     },
+    speciesId: {
+      type: Sequelize.INTEGER,
+      allowNull: false
+    },
     latitude: {
       type: Sequelize.FLOAT,
       allowNull: false

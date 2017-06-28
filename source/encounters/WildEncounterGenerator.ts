@@ -60,6 +60,7 @@ export class WildEncounterGenerator {
             startTime: startTime,
             endTime: endTime,
             pokemonId: createdPokemon.id,
+            speciesId: createdPokemon.speciesId,
             coordinates: location,
             cartesianMetres: location.toCartesianMetres()
           };

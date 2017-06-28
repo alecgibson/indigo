@@ -7,7 +7,6 @@ import * as WebSocket from "ws";
 import {WebSocketRouter} from "./routes/WebSocketRouter";
 import {UserService} from "./users/UserService";
 import {IUser} from "./models/IUser";
-import * as url from "url";
 import {SessionService} from "./users/SessionService";
 import {CronJob} from "cron";
 import {WildEncounterGenerator} from "./encounters/WildEncounterGenerator";
@@ -69,9 +68,9 @@ class Main {
       webSocketRouter.connect(webSocket, newSessionToken);
     });
 
-    // new CronJob(`*/${WildEncounterGenerator.JOB_FREQUENCY_SECONDS} * * * * *`, () => {
-    //   wildEncounters.generate();
-    // }, null, true).start();
+    new CronJob(`*/${WildEncounterGenerator.JOB_FREQUENCY_SECONDS} * * * * *`, () => {
+      wildEncounters.generate();
+    }, null, true).start();
 
     server.listen(Main.PORT, function () {
       console.log(`Listening on port ${Main.PORT}`);

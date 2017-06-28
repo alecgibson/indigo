@@ -13,6 +13,7 @@ export class WildEncounterService {
       startTime: encounter.startTime,
       endTime: encounter.endTime,
       pokemonId: encounter.pokemonId,
+      speciesId: encounter.speciesId,
       latitude: encounter.coordinates.latitude,
       longitude: encounter.coordinates.longitude,
       xMetres: encounter.cartesianMetres.x,
@@ -23,22 +24,7 @@ export class WildEncounterService {
   public get(id: string): Promise<IWildEncounter> {
     return WildEncounter.findById(id)
       .then((result) => {
-        let encounter: IWildEncounter = {
-          id: result.id,
-          startTime: result.startTime,
-          endTime: result.endTime,
-          pokemonId: result.pokemonId,
-          coordinates: {
-            latitude: result.latitude,
-            longitude: result.longitude,
-          },
-          cartesianMetres: {
-            x: result.xMetres,
-            y: result.yMetres,
-          },
-        };
-
-        return encounter;
+        return this.databaseResultToEncounter(result);
       });
   }
 
@@ -58,6 +44,30 @@ export class WildEncounterService {
           {endTime: {gt: now}},
         ],
       },
+    }).then((results) => {
+      return results.map((result) => {
+        return this.databaseResultToEncounter(result);
+      });
     });
+  }
+
+  databaseResultToEncounter(result) {
+    let encounter: IWildEncounter = {
+      id: result.id,
+      startTime: result.startTime,
+      endTime: result.endTime,
+      pokemonId: result.pokemonId,
+      speciesId: result.speciesId,
+      coordinates: {
+        latitude: result.latitude,
+        longitude: result.longitude,
+      },
+      cartesianMetres: {
+        x: result.xMetres,
+        y: result.yMetres,
+      },
+    };
+
+    return encounter;
   }
 }

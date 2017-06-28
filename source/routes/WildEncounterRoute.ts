@@ -25,8 +25,14 @@ export class WildEncounterRoute implements IRoute {
           return {
             id: encounter.id,
             location: encounter.coordinates,
+            speciesId: encounter.speciesId
           };
         });
+
+        console.log(JSON.stringify({
+          type: 'wildEncounters',
+          encounters: strippedEncounters,
+        }));
 
         webSocket.send(JSON.stringify({
           type: 'wildEncounters',
