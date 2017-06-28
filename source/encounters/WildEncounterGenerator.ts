@@ -19,7 +19,7 @@ export class WildEncounterGenerator {
   private readonly MIN_LATITUDE = 51.496623;
   private readonly MAX_LONGITUDE = -0.1116437;
   private readonly MIN_LONGITUDE = -0.1287656;
-  private readonly POKEMON_PER_SQUARE_METRE = 1 / 200;
+  private readonly POKEMON_PER_SQUARE_METRE = 1 / 40000;
 
   private readonly MIN_POKEMON_LEVEL = 2;
   private readonly MAX_POKEMON_LEVEL = 50;
