@@ -46,4 +46,21 @@ describe('PokemonLookup', () => {
     let kadabra = pokemonLookup.byId(64);
     expect(kadabra.evolution.trigger).to.equal(EvolutionTrigger.TRADE);
   });
+
+  describe('getting the minimum level', () => {
+    it('for a Charmander is 1', () => {
+      let minimumLevel = pokemonLookup.minimumLevel(4);
+      expect(minimumLevel).to.equal(1);
+    });
+
+    it('for a Charmeleon is 16', () => {
+      let minimumLevel = pokemonLookup.minimumLevel(5);
+      expect(minimumLevel).to.equal(16);
+    });
+
+    it('for a Charizard is 36', () => {
+      let minimumLevel = pokemonLookup.minimumLevel(6);
+      expect(minimumLevel).to.equal(36);
+    });
+  });
 });

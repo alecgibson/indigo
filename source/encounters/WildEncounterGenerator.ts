@@ -9,6 +9,7 @@ import {IWildEncounter} from "../models/IWildEncounter";
 import {WildEncounterService} from "./WildEncounterService";
 import {ICartesianCoordinates} from "../models/ICartesianCoordinates";
 import {IGeoCoordinates} from "../models/IGeoCoordinates";
+import {IPokemonSpecies} from "../models/IPokemonSpecies";
 
 @injectable()
 export class WildEncounterGenerator {
@@ -21,18 +22,15 @@ export class WildEncounterGenerator {
   private readonly MIN_LONGITUDE = -0.1287656;
   private readonly POKEMON_PER_SQUARE_METRE = 1 / 40000;
 
-  private readonly MIN_POKEMON_LEVEL = 2;
   private readonly MAX_POKEMON_LEVEL = 50;
 
   private readonly RELATIVE_ENCOUNTER_RATES = {
     VERY_RARE: 1,
     RARE: 10,
     SEMI_RARE: 20,
-    COMMON: 50,
-    VERY_COMMON: 100,
+    COMMON: 100,
+    VERY_COMMON: 500,
   };
-
-  // TODO: Garbage collection?
 
   public constructor(@inject(PokemonLookup) private pokemonLookup: PokemonLookup,
                      @inject(PokemonSpawner) private pokemonSpawner: PokemonSpawner,
@@ -47,7 +45,7 @@ export class WildEncounterGenerator {
     for (let i = 0; i < numberOfPokemon; i++) {
       let pokemonPool = this.pokemonLookup.byEncounterRate(this.randomEncounterRate());
       let pokemonSpecies = pokemonPool[Random.integerExclusive(0, pokemonPool.length)];
-      let level = Random.integerInclusive(this.MIN_POKEMON_LEVEL, this.MAX_POKEMON_LEVEL);
+      let level = Random.integerInclusive(this.pokemonLookup.minimumLevel(pokemonSpecies.id), this.MAX_POKEMON_LEVEL);
       let pokemon = this.pokemonSpawner.spawn(pokemonSpecies.id, level);
 
       this.pokemonService.create(pokemon)
