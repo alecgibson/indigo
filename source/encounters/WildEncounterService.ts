@@ -3,6 +3,7 @@ import {injectable} from "inversify";
 import {RoughCoordinates} from "../models/RoughCoordinates";
 import {IGeoCoordinates} from "../models/IGeoCoordinates";
 const WildEncounter = require("../sequelize/index").wildEncounters;
+const sequelize = require("../sequelize/index").sequelize;
 
 @injectable()
 export class WildEncounterService {
@@ -51,7 +52,21 @@ export class WildEncounterService {
     });
   }
 
+  public garbageCollect() {
+    return sequelize.query(`
+      DELETE
+      FROM "pokemon" P
+      USING "wildEncounters" W
+      WHERE P."id" = W."pokemonId"
+      AND W."endTime" < NOW();
+    `);
+  }
+
   databaseResultToEncounter(result) {
+    if (!result) {
+      return null;
+    }
+
     let encounter: IWildEncounter = {
       id: result.id,
       startTime: result.startTime,

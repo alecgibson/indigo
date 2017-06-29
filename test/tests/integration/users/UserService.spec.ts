@@ -19,16 +19,4 @@ describe('UserService', () => {
         done();
       });
   });
-
-  it('stores unicode characters', (done) => {
-    let user = UserFactory.build({username: "😃"});
-    userService.create(user)
-      .then((user) => {
-        return userService.get(user.id);
-      })
-      .then((user) => {
-        expect(user.username).to.equal("😃");
-        done();
-      });
-  });
 });

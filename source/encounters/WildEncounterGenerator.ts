@@ -41,6 +41,8 @@ export class WildEncounterGenerator {
   }
 
   public generate() {
+    this.wildEncounterService.garbageCollect();
+
     let numberOfPokemon = this.numberOfPokemonToGenerate();
     for (let i = 0; i < numberOfPokemon; i++) {
       let pokemonPool = this.pokemonLookup.byEncounterRate(this.randomEncounterRate());

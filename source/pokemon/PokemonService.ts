@@ -36,6 +36,10 @@ export class PokemonService {
   public get(id: string): Promise<IStoredPokemon> {
     return Pokemon.findById(id)
       .then((result) => {
+        if (!result) {
+          return null;
+        }
+
         let pokemon: IStoredPokemon = {
           id: result.id,
           speciesId: result.speciesId,
