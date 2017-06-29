@@ -30,59 +30,65 @@ export class PokemonService {
       gender: pokemon.gender,
       nature: pokemon.nature,
       abilityId: pokemon.abilityId,
+    }).then((result) => {
+      return this.mapDatabaseResultToPokemon(result);
     });
   }
 
   public get(id: string): Promise<IStoredPokemon> {
     return Pokemon.findById(id)
       .then((result) => {
-        if (!result) {
-          return null;
-        }
-
-        let pokemon: IStoredPokemon = {
-          id: result.id,
-          speciesId: result.speciesId,
-          level: result.level,
-          stats: {
-            hitPoints: {
-              value: result.hitPointsValue,
-              individualValue: result.hitPointsIndividualValue,
-              effortValue: result.hitPointsEffortValue,
-            },
-            attack: {
-              value: result.attackValue,
-              individualValue: result.attackIndividualValue,
-              effortValue: result.attackEffortValue,
-            },
-            defense: {
-              value: result.defenseValue,
-              individualValue: result.defenseIndividualValue,
-              effortValue: result.defenseEffortValue,
-            },
-            specialAttack: {
-              value: result.specialAttackValue,
-              individualValue: result.specialAttackIndividualValue,
-              effortValue: result.specialAttackEffortValue,
-            },
-            specialDefense: {
-              value: result.specialDefenseValue,
-              individualValue: result.specialDefenseIndividualValue,
-              effortValue: result.specialDefenseEffortValue,
-            },
-            speed: {
-              value: result.speedValue,
-              individualValue: result.speedIndividualValue,
-              effortValue: result.speedEffortValue,
-            }
-          },
-          moveIds: JSON.parse(result.moveIds),
-          gender: result.gender,
-          nature: result.nature,
-          abilityId: result.abilityId,
-        };
-
-        return pokemon;
+        return this.mapDatabaseResultToPokemon(result);
       });
+  }
+
+  public mapDatabaseResultToPokemon(result): IStoredPokemon {
+    if (!result) {
+      return null;
+    }
+
+    let pokemon: IStoredPokemon = {
+      id: result.id,
+      speciesId: result.speciesId,
+      level: result.level,
+      stats: {
+        hitPoints: {
+          value: result.hitPointsValue,
+          individualValue: result.hitPointsIndividualValue,
+          effortValue: result.hitPointsEffortValue,
+        },
+        attack: {
+          value: result.attackValue,
+          individualValue: result.attackIndividualValue,
+          effortValue: result.attackEffortValue,
+        },
+        defense: {
+          value: result.defenseValue,
+          individualValue: result.defenseIndividualValue,
+          effortValue: result.defenseEffortValue,
+        },
+        specialAttack: {
+          value: result.specialAttackValue,
+          individualValue: result.specialAttackIndividualValue,
+          effortValue: result.specialAttackEffortValue,
+        },
+        specialDefense: {
+          value: result.specialDefenseValue,
+          individualValue: result.specialDefenseIndividualValue,
+          effortValue: result.specialDefenseEffortValue,
+        },
+        speed: {
+          value: result.speedValue,
+          individualValue: result.speedIndividualValue,
+          effortValue: result.speedEffortValue,
+        }
+      },
+      moveIds: JSON.parse(result.moveIds),
+      gender: result.gender,
+      nature: result.nature,
+      abilityId: result.abilityId,
+    };
+
+    return pokemon;
   }
 }

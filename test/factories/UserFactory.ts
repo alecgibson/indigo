@@ -1,5 +1,6 @@
 import {IUser} from "../../source/models/IUser";
 import * as uuidv4 from "uuid/v4";
+import {UserService} from "../../source/users/UserService";
 
 export class UserFactory {
   public static build(overrides?): IUser {
@@ -11,5 +12,11 @@ export class UserFactory {
       username: id,
       password: 'password',
     }, overrides);
+  }
+
+  public static create(overrides?) {
+    let user = UserFactory.build(overrides);
+    let userService = new UserService();
+    return userService.create(user);
   }
 }
