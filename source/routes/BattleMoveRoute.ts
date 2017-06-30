@@ -2,7 +2,7 @@ import * as WebSocket from "ws";
 import {IRoute} from "./IRoute";
 import {IRequest} from "../models/requests/IRequest";
 import {inject, injectable} from "inversify";
-import {BattleService} from "../battle/BattleService";
+import {BattleService} from "../battles/BattleService";
 import {IMoveBattleAction} from "../models/actions/IMoveBattleAction";
 
 @injectable()

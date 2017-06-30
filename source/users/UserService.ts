@@ -1,7 +1,7 @@
 import {IUser} from "../models/IUser";
 import {PasswordHasher} from "./PasswordHasher";
 import {inject, injectable} from "inversify";
-import {TrainerService} from "../battle/TrainerService";
+import {TrainerService} from "../battles/TrainerService";
 import {TrainerType} from "../models/TrainerType";
 const User = require("../sequelize/index").users;
 

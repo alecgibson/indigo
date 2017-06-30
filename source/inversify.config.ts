@@ -5,14 +5,14 @@ import {BattleMoveRoute} from "./routes/BattleMoveRoute";
 import {UserService} from "./users/UserService";
 import {SessionService} from "./users/SessionService";
 import {PokemonLookup} from "./pokemon/PokemonLookup";
-import {BattleService} from "./battle/BattleService";
+import {BattleService} from "./battles/BattleService";
 import {PokemonSpawner} from "./pokemon/PokemonSpawner";
 import {PokemonService} from "./pokemon/PokemonService";
 import {WildEncounterService} from "./encounters/WildEncounterService";
 import {WildEncounterGenerator} from "./encounters/WildEncounterGenerator";
 import {WildEncounterRoute} from "./routes/WildEncounterRoute";
 import {OwnedPokemonService} from "./pokemon/OwnedPokemonService";
-import {TrainerService} from "./battle/TrainerService";
+import {TrainerService} from "./battles/TrainerService";
 
 const container = new Container();
 

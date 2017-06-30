@@ -1,7 +1,7 @@
 import {IUser} from "../../source/models/IUser";
 import * as uuidv4 from "uuid/v4";
 import {UserService} from "../../source/users/UserService";
-import {TrainerService} from "../../source/battle/TrainerService";
+import {TrainerService} from "../../source/battles/TrainerService";
 
 export class UserFactory {
   public static build(overrides?): IUser {

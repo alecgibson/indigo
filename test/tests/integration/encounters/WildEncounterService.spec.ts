@@ -2,10 +2,8 @@ import "reflect-metadata";
 import {expect} from 'chai';
 import 'mocha';
 import {WildEncounterService} from "../../../../source/encounters/WildEncounterService";
-import {StoredPokemonFactory} from "../../../factories/StoredPokemonFactory";
 import {WildEncounterFactory} from "../../../factories/WildEncounterFactory";
 import {RoughCoordinates} from "../../../../source/models/RoughCoordinates";
-import {PokemonService} from "../../../../source/pokemon/PokemonService";
 
 describe('WildEncounterService', () => {
   const wildEncounterService = new WildEncounterService();

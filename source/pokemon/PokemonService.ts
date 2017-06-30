@@ -52,6 +52,7 @@ export class PokemonService {
     let pokemon: IStoredPokemon = {
       id: result.id,
       trainerId: result.trainerId,
+      squadOrder: result.squadOrder,
       speciesId: result.speciesId,
       level: result.level,
       stats: {

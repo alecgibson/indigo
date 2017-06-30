@@ -1,6 +1,6 @@
 import {ITrainer} from "../../source/models/ITrainer";
 import {TrainerType} from "../../source/models/TrainerType";
-import {TrainerService} from "../../source/battle/TrainerService";
+import {TrainerService} from "../../source/battles/TrainerService";
 
 export class TrainerFactory {
   public static build(overrides?): ITrainer {

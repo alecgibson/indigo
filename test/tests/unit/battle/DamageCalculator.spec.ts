@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import 'mocha';
-import {DamageCalculator} from "../../../../source/battle/DamageCalculator";
+import {DamageCalculator} from "../../../../source/battles/DamageCalculator";
 import {Type} from "../../../../source/models/Type";
 import {DamageCategory} from "../../../../source/models/DamageCategory";
 import {IMove} from "../../../../source/models/IMove";

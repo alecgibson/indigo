@@ -4,7 +4,7 @@ import 'mocha';
 import {SessionService} from "../../../../source/users/SessionService";
 import {UserService} from "../../../../source/users/UserService";
 import {UserFactory} from "../../../factories/UserFactory";
-import {TrainerService} from "../../../../source/battle/TrainerService";
+import {TrainerService} from "../../../../source/battles/TrainerService";
 
 describe("SessionService", () => {
   const trainerService = new TrainerService();

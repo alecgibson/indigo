@@ -28,7 +28,7 @@ export class WildEncounterService {
       });
   }
 
-  // TODO: Filter out Encounters already seen (check if Battle exists)
+  // TODO: Filter out Encounters already seen
   public getByLocation(location: IGeoCoordinates): Promise<IWildEncounter[]> {
     let coordinates = new RoughCoordinates(location.latitude, location.longitude);
     let cartesianMetres = coordinates.toCartesianMetres();

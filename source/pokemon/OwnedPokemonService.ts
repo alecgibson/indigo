@@ -41,6 +41,20 @@ export class OwnedPokemonService {
     });
   }
 
+  public getActivePokemon(trainerId: string): Promise<IStoredPokemon> {
+    return Pokemon.findAll({
+      where: {
+        // TODO: Get first squad Pokemon that hasn't fainted
+        trainerId: trainerId,
+        $not: {squadOrder: null},
+      },
+      order: [['squadOrder', 'ASC']],
+      limit: 1,
+    }).then((results) => {
+      return this.mapDatabaseResultsToSquad(results)[0];
+    });
+  }
+
   private getSquadCount(trainerId: string): Promise<number> {
     return Pokemon.count({
       where: {

@@ -3,7 +3,7 @@ import {expect} from 'chai';
 import 'mocha';
 import {UserService} from "../../../../source/users/UserService";
 import {UserFactory} from "../../../factories/UserFactory";
-import {TrainerService} from "../../../../source/battle/TrainerService";
+import {TrainerService} from "../../../../source/battles/TrainerService";
 
 describe('UserService', () => {
   const trainerService = new TrainerService();
