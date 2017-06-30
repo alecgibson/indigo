@@ -1,0 +1,23 @@
+id: 143
+identifier: sky-attack
+name: Sky Attack
+type: 3
+power: 140
+pp: 5
+accuracy: 90
+priority: 0
+damageCategory: 2
+effectId: 76
+categoryId: 0
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 1
+ailmentChance: 0
+flinchChance: 30
+statChance: 0
+effectChance: 30

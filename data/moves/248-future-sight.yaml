@@ -1,0 +1,22 @@
+id: 248
+identifier: future-sight
+name: Future Sight
+type: 14
+power: 120
+pp: 10
+accuracy: 100
+priority: 0
+damageCategory: 3
+effectId: 149
+categoryId: 13
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 0

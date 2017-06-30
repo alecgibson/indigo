@@ -1,0 +1,22 @@
+id: 32
+identifier: horn-drill
+name: Horn Drill
+type: 1
+power: ''
+pp: 5
+accuracy: 30
+priority: 0
+damageCategory: 2
+effectId: 39
+categoryId: 9
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 0

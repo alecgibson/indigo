@@ -1,0 +1,22 @@
+id: 186
+identifier: sweet-kiss
+name: Sweet Kiss
+type: 18
+power: ''
+pp: 10
+accuracy: 75
+priority: 0
+damageCategory: 1
+effectId: 50
+categoryId: 1
+ailmentId: 6
+minimumHits: ''
+maximumHits: ''
+minimumTurns: 2
+maximumTurns: 5
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 0

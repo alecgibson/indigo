@@ -1,0 +1,23 @@
+id: 221
+identifier: sacred-fire
+name: Sacred Fire
+type: 10
+power: 100
+pp: 5
+accuracy: 95
+priority: 0
+damageCategory: 2
+effectId: 126
+categoryId: 4
+ailmentId: 4
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 50
+flinchChance: 0
+statChance: 0
+effectChance: 50

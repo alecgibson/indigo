@@ -1,0 +1,26 @@
+id: 231
+identifier: iron-tail
+name: Iron Tail
+type: 9
+power: 100
+pp: 15
+accuracy: 75
+priority: 0
+damageCategory: 2
+effectId: 70
+categoryId: 6
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 30
+effectChance: 30
+statChanges:
+  - statId: 3
+    change: -1

@@ -1,0 +1,28 @@
+id: 276
+identifier: superpower
+name: Superpower
+type: 2
+power: 120
+pp: 5
+accuracy: 100
+priority: 0
+damageCategory: 2
+effectId: 183
+categoryId: 7
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 100
+effectChance: 100
+statChanges:
+  - statId: 2
+    change: -1
+  - statId: 3
+    change: -1

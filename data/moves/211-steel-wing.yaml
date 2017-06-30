@@ -1,0 +1,26 @@
+id: 211
+identifier: steel-wing
+name: Steel Wing
+type: 9
+power: 70
+pp: 25
+accuracy: 90
+priority: 0
+damageCategory: 2
+effectId: 139
+categoryId: 7
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 10
+effectChance: 10
+statChanges:
+  - statId: 3
+    change: 1

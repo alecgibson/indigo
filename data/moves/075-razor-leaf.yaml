@@ -1,0 +1,22 @@
+id: 75
+identifier: razor-leaf
+name: Razor Leaf
+type: 12
+power: 55
+pp: 25
+accuracy: 95
+priority: 0
+damageCategory: 2
+effectId: 44
+categoryId: 0
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 1
+ailmentChance: 0
+flinchChance: 0
+statChance: 0

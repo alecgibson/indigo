@@ -1,0 +1,26 @@
+id: 190
+identifier: octazooka
+name: Octazooka
+type: 11
+power: 65
+pp: 10
+accuracy: 85
+priority: 0
+damageCategory: 3
+effectId: 74
+categoryId: 6
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 50
+effectChance: 50
+statChanges:
+  - statId: 7
+    change: -1

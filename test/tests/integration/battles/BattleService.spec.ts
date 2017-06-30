@@ -27,9 +27,9 @@ describe('BattleService', () => {
             expect(battleState2.activePokemonId).to.equal(pokemon2.id);
             expect(battleState1.battleId).to.equal(battleState2.battleId);
             battleService.get(battleState1.battleId)
-              .then(([fetchedState1, fetchedState2]) => {
-                expect(fetchedState1).to.deep.equal(battleState1);
-                expect(fetchedState2).to.deep.equal(battleState2);
+              .then((statesByTrainerId) => {
+                expect(statesByTrainerId[battleState1.trainerId]).to.deep.equal(battleState1);
+                expect(statesByTrainerId[battleState2.trainerId]).to.deep.equal(battleState2);
                 done();
               });
           });

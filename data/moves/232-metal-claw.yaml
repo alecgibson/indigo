@@ -1,0 +1,26 @@
+id: 232
+identifier: metal-claw
+name: Metal Claw
+type: 9
+power: 50
+pp: 35
+accuracy: 95
+priority: 0
+damageCategory: 2
+effectId: 140
+categoryId: 7
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 10
+effectChance: 10
+statChanges:
+  - statId: 2
+    change: 1

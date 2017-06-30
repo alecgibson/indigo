@@ -1,0 +1,22 @@
+id: 78
+identifier: stun-spore
+name: Stun Spore
+type: 12
+power: ''
+pp: 30
+accuracy: 75
+priority: 0
+damageCategory: 1
+effectId: 68
+categoryId: 1
+ailmentId: 1
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 0

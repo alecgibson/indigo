@@ -1,0 +1,23 @@
+id: 125
+identifier: bone-club
+name: Bone Club
+type: 5
+power: 65
+pp: 20
+accuracy: 85
+priority: 0
+damageCategory: 2
+effectId: 32
+categoryId: 0
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 10
+statChance: 0
+effectChance: 10

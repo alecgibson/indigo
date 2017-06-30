@@ -1,0 +1,26 @@
+id: 315
+identifier: overheat
+name: Overheat
+type: 10
+power: 130
+pp: 5
+accuracy: 90
+priority: 0
+damageCategory: 3
+effectId: 205
+categoryId: 7
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 100
+effectChance: 100
+statChanges:
+  - statId: 4
+    change: -2

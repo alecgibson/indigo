@@ -1,0 +1,22 @@
+id: 116
+identifier: focus-energy
+name: Focus Energy
+type: 1
+power: ''
+pp: 30
+accuracy: ''
+priority: 0
+damageCategory: 1
+effectId: 48
+categoryId: 13
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 0

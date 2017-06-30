@@ -1,0 +1,23 @@
+id: 58
+identifier: ice-beam
+name: Ice Beam
+type: 15
+power: 90
+pp: 10
+accuracy: 100
+priority: 0
+damageCategory: 3
+effectId: 6
+categoryId: 4
+ailmentId: 3
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 10
+flinchChance: 0
+statChance: 0
+effectChance: 10

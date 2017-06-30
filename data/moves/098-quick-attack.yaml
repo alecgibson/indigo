@@ -1,0 +1,22 @@
+id: 98
+identifier: quick-attack
+name: Quick Attack
+type: 1
+power: 40
+pp: 30
+accuracy: 100
+priority: 1
+damageCategory: 2
+effectId: 104
+categoryId: 0
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 0

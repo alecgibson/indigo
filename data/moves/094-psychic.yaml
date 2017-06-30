@@ -1,0 +1,26 @@
+id: 94
+identifier: psychic
+name: Psychic
+type: 14
+power: 90
+pp: 10
+accuracy: 100
+priority: 0
+damageCategory: 3
+effectId: 73
+categoryId: 6
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 10
+effectChance: 10
+statChanges:
+  - statId: 5
+    change: -1

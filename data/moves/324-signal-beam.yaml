@@ -1,0 +1,23 @@
+id: 324
+identifier: signal-beam
+name: Signal Beam
+type: 7
+power: 75
+pp: 15
+accuracy: 100
+priority: 0
+damageCategory: 3
+effectId: 77
+categoryId: 4
+ailmentId: 6
+minimumHits: ''
+maximumHits: ''
+minimumTurns: 2
+maximumTurns: 5
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 10
+flinchChance: 0
+statChance: 0
+effectChance: 10

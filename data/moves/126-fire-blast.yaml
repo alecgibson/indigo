@@ -1,0 +1,23 @@
+id: 126
+identifier: fire-blast
+name: Fire Blast
+type: 10
+power: 110
+pp: 5
+accuracy: 85
+priority: 0
+damageCategory: 3
+effectId: 5
+categoryId: 4
+ailmentId: 4
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 10
+flinchChance: 0
+statChance: 0
+effectChance: 10

@@ -1,0 +1,22 @@
+id: 237
+identifier: hidden-power
+name: Hidden Power
+type: 1
+power: 60
+pp: 15
+accuracy: 100
+priority: 0
+damageCategory: 3
+effectId: 136
+categoryId: 0
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 0

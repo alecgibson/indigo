@@ -1,0 +1,22 @@
+id: 348
+identifier: leaf-blade
+name: Leaf Blade
+type: 12
+power: 90
+pp: 15
+accuracy: 100
+priority: 0
+damageCategory: 2
+effectId: 44
+categoryId: 0
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 1
+ailmentChance: 0
+flinchChance: 0
+statChance: 0

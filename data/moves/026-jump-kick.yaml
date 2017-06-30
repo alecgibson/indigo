@@ -1,0 +1,22 @@
+id: 26
+identifier: jump-kick
+name: Jump Kick
+type: 2
+power: 100
+pp: 10
+accuracy: 95
+priority: 0
+damageCategory: 2
+effectId: 46
+categoryId: 0
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 0

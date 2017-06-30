@@ -1,0 +1,23 @@
+id: 161
+identifier: tri-attack
+name: Tri Attack
+type: 1
+power: 80
+pp: 10
+accuracy: 100
+priority: 0
+damageCategory: 3
+effectId: 37
+categoryId: 4
+ailmentId: -1
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 20
+flinchChance: 0
+statChance: 0
+effectChance: 20

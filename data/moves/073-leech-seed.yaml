@@ -1,0 +1,22 @@
+id: 73
+identifier: leech-seed
+name: Leech Seed
+type: 12
+power: ''
+pp: 10
+accuracy: 90
+priority: 0
+damageCategory: 1
+effectId: 85
+categoryId: 1
+ailmentId: 18
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 0

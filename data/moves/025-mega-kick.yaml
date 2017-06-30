@@ -1,0 +1,22 @@
+id: 25
+identifier: mega-kick
+name: Mega Kick
+type: 1
+power: 120
+pp: 5
+accuracy: 75
+priority: 0
+damageCategory: 2
+effectId: 1
+categoryId: 0
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 0

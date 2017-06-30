@@ -1,0 +1,23 @@
+id: 158
+identifier: hyper-fang
+name: Hyper Fang
+type: 1
+power: 80
+pp: 15
+accuracy: 90
+priority: 0
+damageCategory: 2
+effectId: 32
+categoryId: 0
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 10
+statChance: 0
+effectChance: 10

@@ -1,0 +1,23 @@
+id: 223
+identifier: dynamic-punch
+name: Dynamic Punch
+type: 2
+power: 100
+pp: 5
+accuracy: 50
+priority: 0
+damageCategory: 2
+effectId: 77
+categoryId: 4
+ailmentId: 6
+minimumHits: ''
+maximumHits: ''
+minimumTurns: 2
+maximumTurns: 5
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 100
+flinchChance: 0
+statChance: 0
+effectChance: 100

@@ -1,0 +1,26 @@
+id: 309
+identifier: meteor-mash
+name: Meteor Mash
+type: 9
+power: 90
+pp: 10
+accuracy: 90
+priority: 0
+damageCategory: 2
+effectId: 140
+categoryId: 7
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 20
+effectChance: 20
+statChanges:
+  - statId: 2
+    change: 1

@@ -1,0 +1,25 @@
+id: 103
+identifier: screech
+name: Screech
+type: 1
+power: ''
+pp: 40
+accuracy: 85
+priority: 0
+damageCategory: 1
+effectId: 60
+categoryId: 2
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 0
+statChanges:
+  - statId: 3
+    change: -2

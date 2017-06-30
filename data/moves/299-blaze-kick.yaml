@@ -1,0 +1,23 @@
+id: 299
+identifier: blaze-kick
+name: Blaze Kick
+type: 10
+power: 85
+pp: 10
+accuracy: 90
+priority: 0
+damageCategory: 2
+effectId: 201
+categoryId: 4
+ailmentId: 4
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 1
+ailmentChance: 10
+flinchChance: 0
+statChance: 0
+effectChance: 10

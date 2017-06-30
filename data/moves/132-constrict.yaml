@@ -1,0 +1,26 @@
+id: 132
+identifier: constrict
+name: Constrict
+type: 1
+power: 10
+pp: 35
+accuracy: 100
+priority: 0
+damageCategory: 2
+effectId: 71
+categoryId: 6
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 10
+effectChance: 10
+statChanges:
+  - statId: 6
+    change: -1

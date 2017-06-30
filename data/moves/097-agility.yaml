@@ -1,0 +1,25 @@
+id: 97
+identifier: agility
+name: Agility
+type: 14
+power: ''
+pp: 30
+accuracy: ''
+priority: 0
+damageCategory: 1
+effectId: 53
+categoryId: 2
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 0
+statChanges:
+  - statId: 6
+    change: 2

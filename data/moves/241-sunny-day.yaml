@@ -1,0 +1,22 @@
+id: 241
+identifier: sunny-day
+name: Sunny Day
+type: 10
+power: ''
+pp: 5
+accuracy: ''
+priority: 0
+damageCategory: 1
+effectId: 138
+categoryId: 10
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 0

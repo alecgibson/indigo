@@ -1,0 +1,22 @@
+id: 245
+identifier: extreme-speed
+name: Extreme Speed
+type: 1
+power: 80
+pp: 5
+accuracy: 100
+priority: 2
+damageCategory: 2
+effectId: 104
+categoryId: 0
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 0

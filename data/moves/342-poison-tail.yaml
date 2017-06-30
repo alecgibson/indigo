@@ -1,0 +1,23 @@
+id: 342
+identifier: poison-tail
+name: Poison Tail
+type: 4
+power: 50
+pp: 25
+accuracy: 100
+priority: 0
+damageCategory: 2
+effectId: 210
+categoryId: 4
+ailmentId: 5
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 1
+ailmentChance: 10
+flinchChance: 0
+statChance: 0
+effectChance: 10

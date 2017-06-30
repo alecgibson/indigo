@@ -1,0 +1,26 @@
+id: 196
+identifier: icy-wind
+name: Icy Wind
+type: 15
+power: 55
+pp: 15
+accuracy: 95
+priority: 0
+damageCategory: 3
+effectId: 71
+categoryId: 6
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 100
+effectChance: 100
+statChanges:
+  - statId: 6
+    change: -1

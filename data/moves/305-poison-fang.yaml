@@ -1,0 +1,23 @@
+id: 305
+identifier: poison-fang
+name: Poison Fang
+type: 4
+power: 50
+pp: 15
+accuracy: 100
+priority: 0
+damageCategory: 2
+effectId: 203
+categoryId: 4
+ailmentId: 5
+minimumHits: ''
+maximumHits: ''
+minimumTurns: 15
+maximumTurns: 15
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 50
+flinchChance: 0
+statChance: 0
+effectChance: 50

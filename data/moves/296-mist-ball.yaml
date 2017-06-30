@@ -1,0 +1,26 @@
+id: 296
+identifier: mist-ball
+name: Mist Ball
+type: 14
+power: 70
+pp: 5
+accuracy: 100
+priority: 0
+damageCategory: 3
+effectId: 72
+categoryId: 6
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 50
+effectChance: 50
+statChanges:
+  - statId: 4
+    change: -1

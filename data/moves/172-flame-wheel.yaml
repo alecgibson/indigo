@@ -1,0 +1,23 @@
+id: 172
+identifier: flame-wheel
+name: Flame Wheel
+type: 10
+power: 60
+pp: 25
+accuracy: 100
+priority: 0
+damageCategory: 2
+effectId: 126
+categoryId: 4
+ailmentId: 4
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 10
+flinchChance: 0
+statChance: 0
+effectChance: 10

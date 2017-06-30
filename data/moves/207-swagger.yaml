@@ -1,0 +1,25 @@
+id: 207
+identifier: swagger
+name: Swagger
+type: 1
+power: ''
+pp: 15
+accuracy: 90
+priority: 0
+damageCategory: 1
+effectId: 119
+categoryId: 5
+ailmentId: 6
+minimumHits: ''
+maximumHits: ''
+minimumTurns: 2
+maximumTurns: 5
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 0
+statChanges:
+  - statId: 2
+    change: 2

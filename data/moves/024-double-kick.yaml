@@ -1,0 +1,22 @@
+id: 24
+identifier: double-kick
+name: Double Kick
+type: 2
+power: 30
+pp: 30
+accuracy: 100
+priority: 0
+damageCategory: 2
+effectId: 45
+categoryId: 0
+ailmentId: 0
+minimumHits: 2
+maximumHits: 2
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 0

@@ -1,0 +1,23 @@
+id: 344
+identifier: volt-tackle
+name: Volt Tackle
+type: 13
+power: 120
+pp: 15
+accuracy: 100
+priority: 0
+damageCategory: 2
+effectId: 263
+categoryId: 4
+ailmentId: 1
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: -33
+healing: 0
+criticalRate: 0
+ailmentChance: 10
+flinchChance: 0
+statChance: 0
+effectChance: 10

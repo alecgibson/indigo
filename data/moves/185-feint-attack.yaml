@@ -1,0 +1,22 @@
+id: 185
+identifier: feint-attack
+name: Feint Attack
+type: 17
+power: 60
+pp: 20
+accuracy: ''
+priority: 0
+damageCategory: 2
+effectId: 18
+categoryId: 0
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 0

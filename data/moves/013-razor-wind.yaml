@@ -1,0 +1,22 @@
+id: 13
+identifier: razor-wind
+name: Razor Wind
+type: 1
+power: 80
+pp: 10
+accuracy: 100
+priority: 0
+damageCategory: 3
+effectId: 40
+categoryId: 0
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 1
+ailmentChance: 0
+flinchChance: 0
+statChance: 0

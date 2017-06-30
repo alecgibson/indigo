@@ -1,4 +1,5 @@
 export enum DamageCategory {
-    Physical,
-    Special
+  Status = 1,
+  Physical,
+  Special,
 }

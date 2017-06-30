@@ -1,0 +1,23 @@
+id: 146
+identifier: dizzy-punch
+name: Dizzy Punch
+type: 1
+power: 70
+pp: 10
+accuracy: 100
+priority: 0
+damageCategory: 2
+effectId: 77
+categoryId: 4
+ailmentId: 6
+minimumHits: ''
+maximumHits: ''
+minimumTurns: 2
+maximumTurns: 5
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 20
+flinchChance: 0
+statChance: 0
+effectChance: 20

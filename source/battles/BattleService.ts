@@ -62,10 +62,11 @@ export class BattleService {
       });
   }
 
-  private mapDatabaseResultsToBattleStates(results): IBattleState[] {
-    return results.map((result) => {
-      return this.mapDatabaseResultToBattleState(result);
-    });
+  private mapDatabaseResultsToBattleStates(results): Map<string, IBattleState> {
+    return results.reduce((map, result) => {
+      map[result.trainerId] = this.mapDatabaseResultToBattleState(result);
+      return map;
+    }, {});
   }
 
   private mapDatabaseResultToBattleState(result): IBattleState {

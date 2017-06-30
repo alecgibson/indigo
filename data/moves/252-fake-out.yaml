@@ -1,0 +1,23 @@
+id: 252
+identifier: fake-out
+name: Fake Out
+type: 1
+power: 40
+pp: 10
+accuracy: 100
+priority: 3
+damageCategory: 2
+effectId: 159
+categoryId: 0
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 100
+statChance: 0
+effectChance: 100

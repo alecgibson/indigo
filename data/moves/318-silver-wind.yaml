@@ -1,0 +1,36 @@
+id: 318
+identifier: silver-wind
+name: Silver Wind
+type: 7
+power: 60
+pp: 5
+accuracy: 100
+priority: 0
+damageCategory: 3
+effectId: 141
+categoryId: 7
+ailmentId: 0
+minimumHits: ''
+maximumHits: ''
+minimumTurns: ''
+maximumTurns: ''
+drain: 0
+healing: 0
+criticalRate: 0
+ailmentChance: 0
+flinchChance: 0
+statChance: 10
+effectChance: 10
+statChanges:
+  - statId: 1
+    change: 1
+  - statId: 2
+    change: 1
+  - statId: 3
+    change: 1
+  - statId: 4
+    change: 1
+  - statId: 5
+    change: 1
+  - statId: 6
+    change: 1
