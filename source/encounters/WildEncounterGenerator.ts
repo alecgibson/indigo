@@ -3,13 +3,8 @@ import {Random} from "../utilities/Random";
 import {EncounterRate} from "../models/EncounterRate";
 import {PokemonLookup} from "../pokemon/PokemonLookup";
 import {inject, injectable} from "inversify";
-import {PokemonSpawner} from "../pokemon/PokemonSpawner";
-import {PokemonService} from "../pokemon/PokemonService";
 import {IWildEncounter} from "../models/IWildEncounter";
 import {WildEncounterService} from "./WildEncounterService";
-import {ICartesianCoordinates} from "../models/ICartesianCoordinates";
-import {IGeoCoordinates} from "../models/IGeoCoordinates";
-import {IPokemonSpecies} from "../models/IPokemonSpecies";
 
 @injectable()
 export class WildEncounterGenerator {
@@ -33,8 +28,6 @@ export class WildEncounterGenerator {
   };
 
   public constructor(@inject(PokemonLookup) private pokemonLookup: PokemonLookup,
-                     @inject(PokemonSpawner) private pokemonSpawner: PokemonSpawner,
-                     @inject(PokemonService) private pokemonService: PokemonService,
                      @inject(WildEncounterService) private wildEncounterService: WildEncounterService) {
   }
 
@@ -46,27 +39,23 @@ export class WildEncounterGenerator {
       let pokemonPool = this.pokemonLookup.byEncounterRate(this.randomEncounterRate());
       let pokemonSpecies = pokemonPool[Random.integerExclusive(0, pokemonPool.length)];
       let level = Random.integerInclusive(this.pokemonLookup.minimumLevel(pokemonSpecies.id), this.MAX_POKEMON_LEVEL);
-      let pokemon = this.pokemonSpawner.spawn(pokemonSpecies.id, level);
 
-      this.pokemonService.create(pokemon)
-        .then((createdPokemon) => {
-          let startTime = new Date();
-          let endTime = new Date(startTime);
-          endTime.setMinutes(endTime.getMinutes() + WildEncounterGenerator.ENCOUNTER_LIFE_TIME_MINUTES);
+      let startTime = new Date();
+      let endTime = new Date(startTime);
+      endTime.setMinutes(endTime.getMinutes() + WildEncounterGenerator.ENCOUNTER_LIFE_TIME_MINUTES);
 
-          let location = this.randomLocation();
+      let location = this.randomLocation();
 
-          let encounter: IWildEncounter = {
-            startTime: startTime,
-            endTime: endTime,
-            pokemonId: createdPokemon.id,
-            speciesId: createdPokemon.speciesId,
-            coordinates: location,
-            cartesianMetres: location.toCartesianMetres()
-          };
+      let encounter: IWildEncounter = {
+        startTime: startTime,
+        endTime: endTime,
+        speciesId: pokemonSpecies.id,
+        level: level,
+        coordinates: location,
+        cartesianMetres: location.toCartesianMetres()
+      };
 
-          return this.wildEncounterService.create(encounter);
-        });
+      this.wildEncounterService.create(encounter);
     }
   }
 

@@ -1,18 +1,27 @@
 import {IUser} from "../models/IUser";
 import {PasswordHasher} from "./PasswordHasher";
-import {injectable} from "inversify";
+import {inject, injectable} from "inversify";
+import {TrainerService} from "../battle/TrainerService";
+import {TrainerType} from "../models/TrainerType";
 const User = require("../sequelize/index").users;
 
 @injectable()
 export class UserService {
+  public constructor(@inject(TrainerService) private trainers: TrainerService) {}
+
   public create(user: IUser): Promise<IUser> {
     // TODO: Validate
     let saltHashPair = PasswordHasher.hash(user.password);
-    return User.create({
-      email: user.email,
-      username: user.username,
-      salt: saltHashPair.salt,
-      password: saltHashPair.hash,
+
+    return this.trainers.create({type: TrainerType.HUMAN})
+      .then((trainer) => {
+        return User.create({
+          trainerId: trainer.id,
+          email: user.email,
+          username: user.username,
+          salt: saltHashPair.salt,
+          password: saltHashPair.hash,
+        });
     });
   }
 

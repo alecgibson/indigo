@@ -11,17 +11,19 @@ import {PokemonService} from "./pokemon/PokemonService";
 import {WildEncounterService} from "./encounters/WildEncounterService";
 import {WildEncounterGenerator} from "./encounters/WildEncounterGenerator";
 import {WildEncounterRoute} from "./routes/WildEncounterRoute";
-import {CaughtPokemonService} from "./pokemon/SquadService";
+import {OwnedPokemonService} from "./pokemon/OwnedPokemonService";
+import {TrainerService} from "./battle/TrainerService";
 
 const container = new Container();
 
 container.bind<BattleMoveRoute>(BattleMoveRoute).toSelf().inSingletonScope();
 container.bind<BattleService>(BattleService).toSelf().inSingletonScope();
+container.bind<OwnedPokemonService>(OwnedPokemonService).toSelf().inSingletonScope();
 container.bind<PokemonLookup>(PokemonLookup).toSelf().inSingletonScope();
 container.bind<PokemonService>(PokemonService).toSelf().inSingletonScope();
 container.bind<PokemonSpawner>(PokemonSpawner).toSelf().inSingletonScope();
 container.bind<SessionService>(SessionService).toSelf().inSingletonScope();
-container.bind<CaughtPokemonService>(CaughtPokemonService).toSelf().inSingletonScope();
+container.bind<TrainerService>(TrainerService).toSelf().inSingletonScope();
 container.bind<UserService>(UserService).toSelf().inSingletonScope();
 container.bind<WebSocketRouter>(WebSocketRouter).toSelf().inSingletonScope();
 container.bind<WildEncounterGenerator>(WildEncounterGenerator).toSelf().inSingletonScope();

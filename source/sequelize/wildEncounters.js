@@ -24,15 +24,6 @@ module.exports = function(sequelize, Sequelize) {
       type: Sequelize.TIME,
       allowNull: false
     },
-    pokemonId: {
-      type: Sequelize.UUID,
-      allowNull: false,
-      references: {
-        model: 'pokemon',
-        key: 'id'
-      },
-      onDelete: 'cascade'
-    },
     speciesId: {
       type: Sequelize.INTEGER,
       allowNull: false
@@ -51,6 +42,10 @@ module.exports = function(sequelize, Sequelize) {
     },
     yMetres: {
       type: Sequelize.FLOAT,
+      allowNull: false
+    },
+    level: {
+      type: Sequelize.INTEGER,
       allowNull: false
     }
   }, {

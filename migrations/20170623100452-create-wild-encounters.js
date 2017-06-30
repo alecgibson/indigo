@@ -2,7 +2,7 @@
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
-    queryInterface.createTable(
+    return queryInterface.createTable(
       'wildEncounters',
       {
         id: {

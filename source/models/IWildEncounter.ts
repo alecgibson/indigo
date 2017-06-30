@@ -5,8 +5,8 @@ export interface IWildEncounter {
   id?: string;
   startTime: Date;
   endTime: Date;
-  pokemonId: string;
   speciesId: number;
+  level: number;
   coordinates: IGeoCoordinates;
   cartesianMetres: ICartesianCoordinates;
 }

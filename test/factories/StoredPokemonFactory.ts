@@ -8,6 +8,8 @@ export class StoredPokemonFactory {
   public static build(overrides?): IStoredPokemon {
     let pokemon: IStoredPokemon = {
       id: Random.uuid(),
+      trainerId: Random.uuid(),
+      squadOrder: 1,
       speciesId: Random.integerInclusive(1, 151),
       level: Random.integerInclusive(1, 100),
       stats: {

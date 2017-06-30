@@ -41,6 +41,15 @@ module.exports = function(sequelize, Sequelize) {
     newSessionToken: {
       type: Sequelize.UUID,
       allowNull: true
+    },
+    trainerId: {
+      type: Sequelize.UUID,
+      allowNull: false,
+      references: {
+        model: 'trainers',
+        key: 'id'
+      },
+      onDelete: 'cascade'
     }
   }, {
     tableName: 'users'

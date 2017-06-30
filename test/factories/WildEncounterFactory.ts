@@ -12,14 +12,14 @@ export class WildEncounterFactory {
     endTime.setMinutes(endTime.getMinutes() + 5);
 
     let location = new RoughCoordinates(50, 0);
-    if (overrides.coordinates) {
+    if (overrides && overrides.coordinates) {
       location = new RoughCoordinates(overrides.coordinates.latitude, overrides.coordinates.longitude);
     }
 
     let encounter: IWildEncounter = {
       startTime: startTime,
       endTime: endTime,
-      pokemonId: Random.uuid(),
+      level: Random.integerInclusive(1, 50),
       speciesId: Random.integerInclusive(1, 151),
       coordinates: location,
       cartesianMetres: location.toCartesianMetres(),
@@ -29,13 +29,8 @@ export class WildEncounterFactory {
   }
 
   public static create(overrides?): Promise<IWildEncounter> {
-    return StoredPokemonFactory.create()
-      .then((pokemon) => {
-        overrides = overrides || {};
-        Object.assign(overrides, {pokemonId: pokemon.id});
-        let encounter = WildEncounterFactory.build(overrides);
-        let wildEncounterService = new WildEncounterService();
-        return wildEncounterService.create(encounter);
-      });
+    let encounter = WildEncounterFactory.build(overrides);
+    let wildEncounterService = new WildEncounterService();
+    return wildEncounterService.create(encounter);
   }
 }

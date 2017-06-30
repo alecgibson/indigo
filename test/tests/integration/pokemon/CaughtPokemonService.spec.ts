@@ -1,51 +1,48 @@
 import "reflect-metadata";
 import {expect} from 'chai';
 import 'mocha';
-import {CaughtPokemonService} from "../../../../source/pokemon/CaughtPokemonService";
-import {UserFactory} from "../../../factories/UserFactory";
 import {StoredPokemonFactory} from "../../../factories/StoredPokemonFactory";
-import {RoughCoordinates} from "../../../../source/models/RoughCoordinates";
 import {PokemonService} from "../../../../source/pokemon/PokemonService";
+import {TrainerFactory} from "../../../factories/TrainerFactory";
+import {OwnedPokemonService} from "../../../../source/pokemon/OwnedPokemonService";
+import {TrainerType} from "../../../../source/models/TrainerType";
 
-describe('CaughtPokemonService', () => {
+describe('OwnedPokemonService', () => {
   const pokemonService = new PokemonService();
-  const caughtPokemonService = new CaughtPokemonService(pokemonService);
-  const catchLocation = new RoughCoordinates(51.5033241, -0.1196115);
+  const ownedPokemonService = new OwnedPokemonService(pokemonService);
 
   describe('Adding a new Pokemon', () => {
     describe('to an empty squad', () => {
       it('adds the Pokemon as the first member', (done) => {
-        createUserAndPokemon()
-          .then(([user, pokemon]) => {
-            caughtPokemonService.addPokemon(user.id, pokemon.id, catchLocation)
+        createTrainerAndPokemon()
+          .then(([trainer, pokemon]) => {
+            ownedPokemonService.transferPokemonTo(trainer.id, pokemon.id)
               .then(() => {
-                return caughtPokemonService.getSquad(user.id);
+                return ownedPokemonService.getSquad(trainer.id);
               })
               .then((squad) => {
                 expect(squad).to.have.length(1);
-                expect(squad[0].pokemon).to.deep.equal(pokemon);
+                pokemon.trainerId = trainer.id;
+                expect(squad[0]).to.deep.equal(pokemon);
                 done();
               });
-          })
+          });
       });
     });
 
     describe('to a squad of 6', () => {
       it('does not add the Pokemon to the squad', (done) => {
-        UserFactory.create()
-          .then((user) => {
-            createFullSquad(user.id)
+        createTrainerAndPokemon()
+          .then(([trainer, pokemon]) => {
+            createFullSquad(trainer.id)
               .then(() => {
-                return StoredPokemonFactory.create();
-              })
-              .then((pokemon) => {
-                caughtPokemonService.addPokemon(user.id, pokemon.id, catchLocation)
+                ownedPokemonService.transferPokemonTo(trainer.id, pokemon.id)
                   .then(() => {
-                    return caughtPokemonService.getSquad(user.id);
+                    return ownedPokemonService.getSquad(trainer.id);
                   })
                   .then((squad) => {
                     expect(squad).to.have.length(6);
-                    let pokemonIds = squad.map((squadMember) => squadMember.pokemon.id);
+                    let pokemonIds = squad.map((squadMember) => squadMember.id);
                     expect(pokemonIds).not.to.contain(pokemon.id);
                     done();
                   });
@@ -55,20 +52,23 @@ describe('CaughtPokemonService', () => {
     });
   });
 
-  function createUserAndPokemon() {
+  function createTrainerAndPokemon() {
     return Promise.all([
-      UserFactory.create(),
-      StoredPokemonFactory.create(),
+      TrainerFactory.create(),
+      TrainerFactory.create({type: TrainerType.WILD_ENCOUNTER})
+        .then((trainer) => {
+          return StoredPokemonFactory.create({trainerId: trainer.id});
+        }),
     ]);
   }
 
-  function createFullSquad(userId: string) {
+  function createFullSquad(trainerId: string) {
     let promises = [];
-    for (let i = 0; i < 6; i++) {
-      let promise = StoredPokemonFactory.create()
-        .then((pokemon) => {
-          return caughtPokemonService.addPokemon(userId, pokemon.id, catchLocation)
-        });
+    for (let i = 1; i <= 6; i++) {
+      let promise = StoredPokemonFactory.create({
+        trainerId: trainerId,
+        squadOrder: i,
+      });
       promises.push(promise);
     }
     return Promise.all(promises);

@@ -6,6 +6,8 @@ const Pokemon = require("../sequelize/index").pokemon;
 export class PokemonService {
   public create(pokemon: IStoredPokemon): Promise<IStoredPokemon> {
     return Pokemon.create({
+      trainerId: pokemon.trainerId,
+      squadOrder: pokemon.squadOrder,
       speciesId: pokemon.speciesId,
       level: pokemon.level,
       hitPointsValue: pokemon.stats.hitPoints.value,
@@ -49,6 +51,7 @@ export class PokemonService {
 
     let pokemon: IStoredPokemon = {
       id: result.id,
+      trainerId: result.trainerId,
       speciesId: result.speciesId,
       level: result.level,
       stats: {

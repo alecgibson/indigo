@@ -4,9 +4,11 @@ import 'mocha';
 import {SessionService} from "../../../../source/users/SessionService";
 import {UserService} from "../../../../source/users/UserService";
 import {UserFactory} from "../../../factories/UserFactory";
+import {TrainerService} from "../../../../source/battle/TrainerService";
 
 describe("SessionService", () => {
-  const userService = new UserService();
+  const trainerService = new TrainerService();
+  const userService = new UserService(trainerService);
   const sessionService = new SessionService(userService);
 
   it("can authenticate by username", (done) => {

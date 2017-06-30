@@ -1,9 +1,10 @@
 import {Nature} from "./Nature";
 import {Gender} from "./Gender";
-import {OwnerType} from "./OwnerType";
 
 export interface IStoredPokemon {
   id?: string;
+  trainerId?: string;
+  squadOrder?: number;
   speciesId: number;
   level: number;
   stats: {

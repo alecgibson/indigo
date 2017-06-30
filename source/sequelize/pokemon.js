@@ -111,6 +111,19 @@ module.exports = function(sequelize, Sequelize) {
     abilityId: {
       type: Sequelize.INTEGER,
       allowNull: false
+    },
+    trainerId: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      references: {
+        model: 'trainer',
+        key: 'id'
+      },
+      onDelete: 'cascade'
+    },
+    squadOrder: {
+      type: Sequelize.INTEGER,
+      allowNull: true
     }
   }, {
     tableName: 'pokemon'

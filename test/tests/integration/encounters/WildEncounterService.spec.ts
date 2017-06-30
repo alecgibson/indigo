@@ -9,25 +9,21 @@ import {PokemonService} from "../../../../source/pokemon/PokemonService";
 
 describe('WildEncounterService', () => {
   const wildEncounterService = new WildEncounterService();
-  const pokemonService = new PokemonService();
 
   it('can store and fetch a wild encounter', (done) => {
-    StoredPokemonFactory.create()
-      .then((pokemon) => {
-        let encounter = WildEncounterFactory.build({pokemonId: pokemon.id});
-        wildEncounterService.create(encounter)
-          .then((createdEncounter) => {
-            return createdEncounter.id;
-          })
-          .then((encounterId) => {
-            return wildEncounterService.get(encounterId);
-          })
-          .then((fetchedEncounter) => {
-            expect(fetchedEncounter.id).to.be.ok;
-            encounter.id = fetchedEncounter.id;
-            expect(fetchedEncounter).to.deep.equal(encounter);
-            done();
-          });
+    let encounter = WildEncounterFactory.build();
+    wildEncounterService.create(encounter)
+      .then((createdEncounter) => {
+        return createdEncounter.id;
+      })
+      .then((encounterId) => {
+        return wildEncounterService.get(encounterId);
+      })
+      .then((fetchedEncounter) => {
+        expect(fetchedEncounter.id).to.be.ok;
+        encounter.id = fetchedEncounter.id;
+        expect(fetchedEncounter).to.deep.equal(encounter);
+        done();
       });
   });
 
@@ -36,62 +32,51 @@ describe('WildEncounterService', () => {
     let imaxLocation = new RoughCoordinates(51.5048155, -0.1136632);
 
     it('fetches it by location when I am also at the London Eye', (done) => {
-      StoredPokemonFactory.create()
-        .then((pokemon) => {
-          let encounter = WildEncounterFactory.build({
-            pokemonId: pokemon.id,
-            cartesianMetres: londonEyeLocation.toCartesianMetres(),
-          });
-          wildEncounterService.create(encounter)
-            .then(() => {
-              return wildEncounterService.getByLocation(londonEyeLocation);
-            })
+      let encounter = WildEncounterFactory.build({
+        cartesianMetres: londonEyeLocation.toCartesianMetres(),
+      });
+      wildEncounterService.create(encounter)
+        .then((createdEncounter) => {
+          return wildEncounterService.getByLocation(londonEyeLocation)
             .then((fetchedEncounters) => {
-              let pokemonIds = fetchedEncounters.map((encounter) => encounter.pokemonId);
-              expect(pokemonIds).to.contain(encounter.pokemonId);
+              let encounterIds = fetchedEncounters.map((encounter) => encounter.id);
+              createdEncounter.id;
+              expect(encounterIds).to.contain(createdEncounter.id);
               done();
             });
         });
     });
 
     it('does not fetch it by location when I am at the IMAX', (done) => {
-      StoredPokemonFactory.create()
-        .then((pokemon) => {
-          let encounter = WildEncounterFactory.build({
-            pokemonId: pokemon.id,
-            cartesianMetres: londonEyeLocation.toCartesianMetres(),
-          });
-          wildEncounterService.create(encounter)
-            .then(() => {
-              return wildEncounterService.getByLocation(imaxLocation);
-            })
+      let encounter = WildEncounterFactory.build({
+        cartesianMetres: londonEyeLocation.toCartesianMetres(),
+      });
+      wildEncounterService.create(encounter)
+        .then((createdEncounter) => {
+          return wildEncounterService.getByLocation(imaxLocation)
             .then((fetchedEncounters) => {
-              let pokemonIds = fetchedEncounters.map((encounter) => encounter.pokemonId);
-              expect(pokemonIds).to.not.contain(encounter.pokemonId);
+              let encounterIds = fetchedEncounters.map((encounter) => encounter.id);
+              expect(encounterIds).to.not.contain(createdEncounter.id);
               done();
             });
         });
     });
 
     it('does not fetch it by location after the end time when I am at the London Eye', (done) => {
-      StoredPokemonFactory.create()
-        .then((pokemon) => {
-          let endTime = new Date();
-          endTime.setMinutes(endTime.getMinutes() - 1);
+      let endTime = new Date();
+      endTime.setMinutes(endTime.getMinutes() - 1);
 
-          let encounter = WildEncounterFactory.build({
-            pokemonId: pokemon.id,
-            endTime: endTime,
-            cartesianMetres: londonEyeLocation.toCartesianMetres(),
-          });
+      let encounter = WildEncounterFactory.build({
+        endTime: endTime,
+        cartesianMetres: londonEyeLocation.toCartesianMetres(),
+      });
 
-          wildEncounterService.create(encounter)
-            .then(() => {
-              return wildEncounterService.getByLocation(londonEyeLocation);
-            })
+      wildEncounterService.create(encounter)
+        .then((createdEncounter) => {
+          return wildEncounterService.getByLocation(londonEyeLocation)
             .then((fetchedEncounters) => {
-              let pokemonIds = fetchedEncounters.map((encounter) => encounter.pokemonId);
-              expect(pokemonIds).to.not.contain(encounter.pokemonId);
+              let encounterIds = fetchedEncounters.map((encounter) => encounter.id);
+              expect(encounterIds).to.not.contain(createdEncounter.id);
               done();
             });
         });
@@ -139,24 +124,6 @@ describe('WildEncounterService', () => {
           .then((fetchedEncounter) => {
             expect(fetchedEncounter).to.be.null;
             done();
-          });
-      });
-
-      it('deletes the associated Pokemon', (done) => {
-        StoredPokemonFactory.create()
-          .then((pokemon) => {
-            let encounter = WildEncounterFactory.build({pokemonId: pokemon.id, endTime: endTime});
-            wildEncounterService.create(encounter)
-              .then(() => {
-                return wildEncounterService.garbageCollect();
-              })
-              .then(() => {
-                return pokemonService.get(pokemon.id);
-              })
-              .then((pokemon) => {
-                expect(pokemon).to.be.null;
-                done();
-              });
           });
       });
     });

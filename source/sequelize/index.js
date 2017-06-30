@@ -26,8 +26,6 @@ Object.keys(db).forEach(function(modelName) {
   }
 });
 
-db.pokemonOwners.belongsTo(db.pokemon);
-
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 

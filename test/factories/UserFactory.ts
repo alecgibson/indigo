@@ -1,6 +1,7 @@
 import {IUser} from "../../source/models/IUser";
 import * as uuidv4 from "uuid/v4";
 import {UserService} from "../../source/users/UserService";
+import {TrainerService} from "../../source/battle/TrainerService";
 
 export class UserFactory {
   public static build(overrides?): IUser {
@@ -16,7 +17,8 @@ export class UserFactory {
 
   public static create(overrides?) {
     let user = UserFactory.build(overrides);
-    let userService = new UserService();
+    let trainerService = new TrainerService();
+    let userService = new UserService(trainerService);
     return userService.create(user);
   }
 }
