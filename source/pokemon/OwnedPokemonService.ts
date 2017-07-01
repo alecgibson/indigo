@@ -1,6 +1,7 @@
 import {inject, injectable} from "inversify";
 import {PokemonService} from "./PokemonService";
 import {IStoredPokemon} from "../models/IStoredPokemon";
+import {Transaction} from "sequelize";
 const Pokemon = require("../sequelize/index").pokemon;
 
 @injectable()
@@ -41,7 +42,7 @@ export class OwnedPokemonService {
     });
   }
 
-  public getActivePokemon(trainerId: string): Promise<IStoredPokemon> {
+  public getActivePokemon(trainerId: string, transaction: Transaction): Promise<IStoredPokemon> {
     return Pokemon.findAll({
       where: {
         // TODO: Get first squad Pokemon that hasn't fainted
@@ -50,6 +51,7 @@ export class OwnedPokemonService {
       },
       order: [['squadOrder', 'ASC']],
       limit: 1,
+      transaction: transaction,
     }).then((results) => {
       return this.mapDatabaseResultsToSquad(results)[0];
     });

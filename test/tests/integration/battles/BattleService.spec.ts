@@ -6,6 +6,8 @@ import {OwnedPokemonService} from "../../../../source/pokemon/OwnedPokemonServic
 import {PokemonService} from "../../../../source/pokemon/PokemonService";
 import {TrainerFactory} from "../../../factories/TrainerFactory";
 import {StoredPokemonFactory} from "../../../factories/StoredPokemonFactory";
+import {create} from "domain";
+import {IStoredPokemon} from "../../../../source/models/IStoredPokemon";
 
 describe('BattleService', () => {
   const pokemonService = new PokemonService();
@@ -36,7 +38,33 @@ describe('BattleService', () => {
       });
   });
 
-  function createPokemon() {
+  describe('starting a battle with a trainer already in a battle', () => {
+    it ('does not start a new battle', (done) => {
+      Promise
+        .all([
+          createPokemon(),
+          createPokemon(),
+          createPokemon(),
+        ])
+        .then(([pokemon1, pokemon2, pokemon3]) => {
+          battleService.start(pokemon1.trainerId, pokemon2.trainerId)
+            .then(() => {
+              return battleService.start(pokemon2.trainerId, pokemon3.trainerId);
+            })
+            .catch((error) => {
+              expect(error.name).to.equal('SequelizeUniqueConstraintError');
+              expect(error.fields.trainerId).to.equal(pokemon2.trainerId);
+              battleService.getTrainerBattleState(pokemon3.trainerId)
+                .then((battleState) => {
+                  expect(battleState).to.be.null;
+                  done();
+                });
+            });
+        });
+    });
+  });
+
+  function createPokemon(): Promise<IStoredPokemon> {
     return TrainerFactory.create()
       .then((trainer) => {
         return StoredPokemonFactory.create({
