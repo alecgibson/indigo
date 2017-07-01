@@ -13,11 +13,13 @@ import {WildEncounterGenerator} from "./encounters/WildEncounterGenerator";
 import {WildEncounterRoute} from "./routes/WildEncounterRoute";
 import {OwnedPokemonService} from "./pokemon/OwnedPokemonService";
 import {TrainerService} from "./battles/TrainerService";
+import {BattleTurnProcessor} from "./battles/BattleTurnProcessor";
 
 const container = new Container();
 
 container.bind<BattleMoveRoute>(BattleMoveRoute).toSelf().inSingletonScope();
 container.bind<BattleService>(BattleService).toSelf().inSingletonScope();
+container.bind<BattleTurnProcessor>(BattleTurnProcessor).toSelf().inSingletonScope();
 container.bind<OwnedPokemonService>(OwnedPokemonService).toSelf().inSingletonScope();
 container.bind<PokemonLookup>(PokemonLookup).toSelf().inSingletonScope();
 container.bind<PokemonService>(PokemonService).toSelf().inSingletonScope();

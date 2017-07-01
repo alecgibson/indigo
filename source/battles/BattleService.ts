@@ -3,13 +3,16 @@ import {IBattleState} from "../models/IBattleState";
 import {OwnedPokemonService} from "../pokemon/OwnedPokemonService";
 import {IStoredPokemon} from "../models/IStoredPokemon";
 import {Transaction} from "sequelize";
+import {IBattleAction} from "../models/IBattleAction";
+import {BattleTurnProcessor} from "./BattleTurnProcessor";
 const Battle = require("../sequelize/index").battles;
 const BattleState = require("../sequelize/index").battleStates;
 const sequelize = require("../sequelize/index").sequelize;
 
 @injectable()
 export class BattleService {
-  public constructor(@inject(OwnedPokemonService) private ownedPokemon: OwnedPokemonService) {
+  public constructor(@inject(OwnedPokemonService) private ownedPokemon: OwnedPokemonService,
+                     @inject(BattleTurnProcessor) private battleTurn: BattleTurnProcessor) {
   }
 
   // TODO: Handle error where a trainer is already in a battle
@@ -44,9 +47,12 @@ export class BattleService {
     });
   }
 
-  public get(battleId: string): Promise<IBattleState[]> {
+  public get(battleId: string, transaction?: Transaction): Promise<Map<string, IBattleState>> {
     return BattleState
-      .findAll({where: {battleId}})
+      .findAll({
+        where: {battleId},
+        transaction: transaction,
+      })
       .then((results) => {
         return this.mapDatabaseResultsToBattleStates(results);
       });
@@ -57,6 +63,31 @@ export class BattleService {
       .then((result) => {
         return this.mapDatabaseResultToBattleState(result);
       });
+  }
+
+  public submitAction(action: IBattleAction) {
+    return sequelize.transaction(transaction => {
+      return this.addActionToState(action, transaction)
+        .then((updatedState) => {
+          if (!updatedState) {
+            return Promise.reject('Invalid action submitted');
+          } else {
+            return this.get(action.battleId, transaction);
+          }
+        })
+        .then((battleStatesByTrainerId) => {
+          let battleStatesWithActions = Object.keys(battleStatesByTrainerId)
+            .reduce((values, key) => {
+              values.push(battleStatesByTrainerId[key]);
+              return values;
+            }, [])
+            .filter((battleState) => !!battleState.action);
+
+          if (battleStatesWithActions.length === 2) {
+            return this.battleTurn.process(battleStatesWithActions);
+          }
+        });
+    });
   }
 
   private create(transaction: Transaction) {
@@ -77,6 +108,36 @@ export class BattleService {
       .then((result) => {
         return this.mapDatabaseResultToBattleState(result);
       });
+  }
+
+  private addActionToState(action: IBattleAction, transaction: Transaction): Promise<IBattleAction> {
+    return BattleState
+      .update(
+        {
+          action: JSON.stringify(action),
+        },
+        {
+          where: {
+            trainerId: action.trainerId,
+            battleId: action.battleId,
+            action: null,
+          },
+          transaction: transaction,
+        }
+      )
+      .then((result) => {
+        return this.mapDatabaseResultToBattleState(result);
+      });
+  }
+
+  private countSubmittedActions(battleId: string, transaction: Transaction): Promise<number> {
+    return BattleState.count({
+      where: {
+        battleId: battleId,
+        $not: {action: null},
+      },
+      transaction: transaction,
+    });
   }
 
   private mapDatabaseResultsToBattleStates(results): Map<string, IBattleState> {

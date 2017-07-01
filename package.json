@@ -30,6 +30,7 @@
     "@types/mocha": "^2.2.41",
     "@types/node": "^7.0.31",
     "@types/sequelize": "^4.0.61",
+    "@types/sinon": "^2.3.2",
     "@types/uuid": "^3.0.0",
     "@types/ws": "^3.0.0",
     "chai": "^4.0.2",
@@ -44,6 +45,7 @@
     "mocha": "^3.4.2",
     "pump": "^1.0.2",
     "run-sequence": "^1.2.2",
+    "sinon": "^2.3.6",
     "ts-node": "^3.0.6",
     "typescript": "^2.3.4"
   },
