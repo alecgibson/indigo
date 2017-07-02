@@ -1,4 +1,3 @@
-import "reflect-metadata";
 import * as fs from "fs";
 import * as yaml from "js-yaml";
 import {injectable} from "inversify";
