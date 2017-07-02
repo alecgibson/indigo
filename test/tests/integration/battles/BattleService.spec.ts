@@ -7,9 +7,9 @@ import {PokemonService} from "../../../../source/pokemon/PokemonService";
 import {TrainerFactory} from "../../../factories/TrainerFactory";
 import {StoredPokemonFactory} from "../../../factories/StoredPokemonFactory";
 import {IStoredPokemon} from "../../../../source/models/IStoredPokemon";
-import {IBattleState} from "../../../../source/models/IBattleState";
 import {BattleActionType} from "../../../../source/models/BattleActionType";
 import * as sinon from "Sinon";
+import {BattleFactory} from "../../../factories/BattleFactory";
 
 describe('BattleService', () => {
   const pokemonService = new PokemonService();
@@ -75,7 +75,7 @@ describe('BattleService', () => {
 
   describe('with a battle in progress', () => {
     it('can submit an action', (done) => {
-      startBattle()
+      BattleFactory.create()
         .then(([battleState1, battleState2]) => {
           let action = {
             trainerId: battleState1.trainerId,
@@ -98,7 +98,7 @@ describe('BattleService', () => {
     });
 
     it('processes the battle turn after the second action is submitted', (done) => {
-      startBattle()
+      BattleFactory.create()
         .then(([battleState1, battleState2]) => {
           let action1 = {
             trainerId: battleState1.trainerId,
@@ -127,7 +127,7 @@ describe('BattleService', () => {
     });
 
     it('ignores the second action submitted by the same trainer', (done) => {
-      startBattle()
+      BattleFactory.create()
         .then(([battleState1, battleState2]) => {
           let action1 = {
             trainerId: battleState1.trainerId,
@@ -164,17 +164,6 @@ describe('BattleService', () => {
           trainerId: trainer.id,
           squadOrder: 1,
         });
-      });
-  }
-
-  function startBattle(): Promise<IBattleState[]> {
-    return Promise
-      .all([
-        createPokemon(),
-        createPokemon(),
-      ])
-      .then(([pokemon1, pokemon2]) => {
-        return battleService.start(pokemon1.trainerId, pokemon2.trainerId);
       });
   }
 });

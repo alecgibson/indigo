@@ -16,13 +16,18 @@ import {TrainerService} from "./battles/TrainerService";
 import {BattleTurnProcessor} from "./battles/BattleTurnProcessor";
 import {MoveLookup} from "./moves/MoveLookup";
 import {ActionPrioritiser} from "./battles/ActionPrioritiser";
+import {BattleMoveActionProcessor} from "./battles/BattleMoveActionProcessor";
+import {IBattleTurnProcessor} from "./battles/IBattleTurnProcessor";
+import {DamageCalculator} from "./battles/DamageCalculator";
 
 const container = new Container();
 
 container.bind<ActionPrioritiser>(ActionPrioritiser).toSelf().inSingletonScope();
+container.bind<BattleMoveActionProcessor>(BattleMoveActionProcessor).toSelf().inSingletonScope();
 container.bind<BattleMoveRoute>(BattleMoveRoute).toSelf().inSingletonScope();
 container.bind<BattleService>(BattleService).toSelf().inSingletonScope();
-container.bind<BattleTurnProcessor>(BattleTurnProcessor).toSelf().inSingletonScope();
+container.bind<DamageCalculator>(DamageCalculator).toSelf().inSingletonScope();
+container.bind<IBattleTurnProcessor>(BattleTurnProcessor).to(BattleTurnProcessor).inSingletonScope();
 container.bind<MoveLookup>(MoveLookup).toSelf().inSingletonScope();
 container.bind<OwnedPokemonService>(OwnedPokemonService).toSelf().inSingletonScope();
 container.bind<PokemonLookup>(PokemonLookup).toSelf().inSingletonScope();

@@ -1,40 +1,15 @@
 import {IStoredPokemon} from "../models/IStoredPokemon";
 import {injectable} from "inversify";
 const Pokemon = require("../sequelize/index").pokemon;
+const BattleState = require("../sequelize/index").battleStates;
 
 @injectable()
 export class PokemonService {
   public create(pokemon: IStoredPokemon): Promise<IStoredPokemon> {
-    return Pokemon.create({
-      trainerId: pokemon.trainerId,
-      squadOrder: pokemon.squadOrder,
-      speciesId: pokemon.speciesId,
-      level: pokemon.level,
-      hitPointsValue: pokemon.stats.hitPoints.value,
-      hitPointsIndividualValue: pokemon.stats.hitPoints.individualValue,
-      hitPointsEffortValue: pokemon.stats.hitPoints.effortValue,
-      attackValue: pokemon.stats.attack.value,
-      attackIndividualValue: pokemon.stats.attack.individualValue,
-      attackEffortValue: pokemon.stats.attack.effortValue,
-      defenseValue: pokemon.stats.defense.value,
-      defenseIndividualValue: pokemon.stats.defense.individualValue,
-      defenseEffortValue: pokemon.stats.defense.effortValue,
-      specialAttackValue: pokemon.stats.specialAttack.value,
-      specialAttackIndividualValue: pokemon.stats.specialAttack.individualValue,
-      specialAttackEffortValue: pokemon.stats.specialAttack.effortValue,
-      specialDefenseValue: pokemon.stats.specialDefense.value,
-      specialDefenseIndividualValue: pokemon.stats.specialDefense.individualValue,
-      specialDefenseEffortValue: pokemon.stats.specialDefense.effortValue,
-      speedValue: pokemon.stats.speed.value,
-      speedIndividualValue: pokemon.stats.speed.individualValue,
-      speedEffortValue: pokemon.stats.speed.effortValue,
-      moveIds: JSON.stringify(pokemon.moveIds),
-      gender: pokemon.gender,
-      nature: pokemon.nature,
-      abilityId: pokemon.abilityId,
-    }).then((result) => {
-      return this.mapDatabaseResultToPokemon(result);
-    });
+    return Pokemon.create(this.mapPokemonToDatabase(pokemon))
+      .then((result) => {
+        return this.mapDatabaseResultToPokemon(result);
+      });
   }
 
   public get(id: string): Promise<IStoredPokemon> {
@@ -42,6 +17,41 @@ export class PokemonService {
       .then((result) => {
         return this.mapDatabaseResultToPokemon(result);
       });
+  }
+
+  public update(pokemon: IStoredPokemon): Promise<IStoredPokemon> {
+    return Pokemon.update(this.mapPokemonToDatabase(pokemon),
+      {
+        where: {id: pokemon.id}
+      });
+  }
+
+  public attackingPokemon(attackingTrainerId: string, battleId: string) {
+    return BattleState
+      .findOne({
+        where: {
+          trainerId: attackingTrainerId,
+          battleId: battleId,
+        },
+        include: ['activePokemon'],
+      })
+      .then((result) => {
+        return this.mapDatabaseResultToPokemon(result.activePokemon);
+      });
+  }
+
+  public defendingPokemon(attackingTrainerId: string, battleId: string) {
+    return BattleState
+      .findOne({
+        where: {
+          $not: {trainerId: attackingTrainerId},
+          battleId: battleId,
+        },
+        include: ['activePokemon'],
+      })
+      .then((result) => {
+        return this.mapDatabaseResultToPokemon(result.activePokemon);
+      })
   }
 
   public mapDatabaseResultToPokemon(result): IStoredPokemon {
@@ -91,8 +101,46 @@ export class PokemonService {
       gender: result.gender,
       nature: result.nature,
       abilityId: result.abilityId,
+      currentValues: {
+        hitPoints: result.currentHitPoints,
+        pp: JSON.parse(result.currentPowerPoints),
+      },
     };
 
     return pokemon;
+  }
+
+
+  private mapPokemonToDatabase(pokemon: IStoredPokemon) {
+    return {
+      trainerId: pokemon.trainerId,
+      squadOrder: pokemon.squadOrder,
+      speciesId: pokemon.speciesId,
+      level: pokemon.level,
+      hitPointsValue: pokemon.stats.hitPoints.value,
+      hitPointsIndividualValue: pokemon.stats.hitPoints.individualValue,
+      hitPointsEffortValue: pokemon.stats.hitPoints.effortValue,
+      attackValue: pokemon.stats.attack.value,
+      attackIndividualValue: pokemon.stats.attack.individualValue,
+      attackEffortValue: pokemon.stats.attack.effortValue,
+      defenseValue: pokemon.stats.defense.value,
+      defenseIndividualValue: pokemon.stats.defense.individualValue,
+      defenseEffortValue: pokemon.stats.defense.effortValue,
+      specialAttackValue: pokemon.stats.specialAttack.value,
+      specialAttackIndividualValue: pokemon.stats.specialAttack.individualValue,
+      specialAttackEffortValue: pokemon.stats.specialAttack.effortValue,
+      specialDefenseValue: pokemon.stats.specialDefense.value,
+      specialDefenseIndividualValue: pokemon.stats.specialDefense.individualValue,
+      specialDefenseEffortValue: pokemon.stats.specialDefense.effortValue,
+      speedValue: pokemon.stats.speed.value,
+      speedIndividualValue: pokemon.stats.speed.individualValue,
+      speedEffortValue: pokemon.stats.speed.effortValue,
+      moveIds: JSON.stringify(pokemon.moveIds),
+      gender: pokemon.gender,
+      nature: pokemon.nature,
+      abilityId: pokemon.abilityId,
+      currentHitPoints: pokemon.currentValues.hitPoints,
+      currentPowerPoints: JSON.stringify(pokemon.currentValues.pp),
+    }
   }
 }

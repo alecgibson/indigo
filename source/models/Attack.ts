@@ -1,16 +1,16 @@
-import {IPokemon} from "./IPokemon";
 import {IMove} from "./IMove";
+import {IStoredPokemon} from "./IStoredPokemon";
 
 export class Attack {
-    public attacker: IPokemon;
-    public defender: IPokemon;
+    public attacker: IStoredPokemon;
+    public defender: IStoredPokemon;
     public move: IMove;
 
-    private constructor(attacker: IPokemon) {
+    private constructor(attacker: IStoredPokemon) {
         this.attacker = attacker;
     }
 
-    public static by(attacker: IPokemon): Attack {
+    public static by(attacker: IStoredPokemon): Attack {
         return new Attack(attacker);
     }
 
@@ -19,7 +19,7 @@ export class Attack {
         return this;
     }
 
-    public on(defender: IPokemon): Attack {
+    public on(defender: IStoredPokemon): Attack {
         this.defender = defender;
         return this;
     }

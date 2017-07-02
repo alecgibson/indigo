@@ -4,7 +4,7 @@ import {MoveCategory} from "./MoveCategory";
 import {Ailment} from "./Ailment";
 
 export interface IMove {
-  id: string;
+  id: number;
   identifier: string;
   name: string;
   type: Type;
@@ -21,8 +21,8 @@ export interface IMove {
   maximumTurns?: number;
   drain: number;
   healing: number;
-  criticalRate: 0;
-  ailmentChance: 0;
-  flinchChance: 0;
-  statChance: 0;
+  criticalRate: number;
+  ailmentChance: number;
+  flinchChance: number;
+  statChance: number;
 }

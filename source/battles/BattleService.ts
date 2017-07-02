@@ -1,18 +1,19 @@
 import {inject, injectable} from "inversify";
 import {IBattleState} from "../models/IBattleState";
 import {OwnedPokemonService} from "../pokemon/OwnedPokemonService";
-import {IStoredPokemon} from "../models/IStoredPokemon";
 import {Transaction} from "sequelize";
 import {IBattleAction} from "../models/IBattleAction";
 import {BattleTurnProcessor} from "./BattleTurnProcessor";
+import {IBattleTurnProcessor} from "./IBattleTurnProcessor";
 const Battle = require("../sequelize/index").battles;
 const BattleState = require("../sequelize/index").battleStates;
 const sequelize = require("../sequelize/index").sequelize;
+const Sequelize = require("../sequelize/index").Sequelize;
 
 @injectable()
 export class BattleService {
   public constructor(@inject(OwnedPokemonService) private ownedPokemon: OwnedPokemonService,
-                     @inject(BattleTurnProcessor) private battleTurn: BattleTurnProcessor) {
+                     @inject(BattleTurnProcessor) private battleTurn: IBattleTurnProcessor) {
   }
 
   // TODO: Handle error where a trainer is already in a battle
@@ -66,28 +67,47 @@ export class BattleService {
   }
 
   public submitAction(action: IBattleAction) {
-    return sequelize.transaction(transaction => {
-      return this.addActionToState(action, transaction)
-        .then((updatedState) => {
-          if (!updatedState) {
-            return Promise.reject('Invalid action submitted');
-          } else {
-            return this.get(action.battleId, transaction);
-          }
-        })
-        .then((battleStatesByTrainerId) => {
-          let battleStatesWithActions = Object.keys(battleStatesByTrainerId)
-            .reduce((values, key) => {
-              values.push(battleStatesByTrainerId[key]);
-              return values;
-            }, [])
-            .filter((battleState) => !!battleState.action);
+    return this.writeActionAndGetActions(action)
+      .then((battleStatesWithActions) => {
+        if (battleStatesWithActions.length === 2) {
+          return this.battleTurn.process(battleStatesWithActions);
+        }
+      });
+  }
 
-          if (battleStatesWithActions.length === 2) {
-            return this.battleTurn.process(battleStatesWithActions);
-          }
-        });
-    });
+  private writeActionAndGetActions(action: IBattleAction) {
+    return sequelize
+      .transaction(
+        {
+          isolationLevel: Sequelize.Transaction.ISOLATION_LEVELS.SERIALIZABLE,
+          type: Sequelize.Transaction.TYPES.EXCLUSIVE,
+        },
+        (transaction) => {
+          return this.addActionToState(action, transaction)
+            .then((updatedState) => {
+              if (!updatedState) {
+                return Promise.reject('Invalid action submitted');
+              } else {
+                return this.get(action.battleId, transaction);
+              }
+            })
+            .then((battleStatesByTrainerId) => {
+              return Object.keys(battleStatesByTrainerId)
+                .reduce((values, key) => {
+                  values.push(battleStatesByTrainerId[key]);
+                  return values;
+                }, [])
+                .filter((battleState) => !!battleState.action);
+            });
+        })
+      .catch((error) => {
+        // TODO: This feels inelegant - is there a better way? Maybe have a row lock on the Battles table?
+        // Here we have to catch a serialization error from trying to write
+        // to a locked table, and then retry
+        if (error.name === 'SequelizeDatabaseError' && error.parent.code === '40001') {
+          return this.writeActionAndGetActions(action);
+        }
+      });
   }
 
   private create(transaction: Transaction) {
@@ -128,16 +148,6 @@ export class BattleService {
       .then((result) => {
         return this.mapDatabaseResultToBattleState(result);
       });
-  }
-
-  private countSubmittedActions(battleId: string, transaction: Transaction): Promise<number> {
-    return BattleState.count({
-      where: {
-        battleId: battleId,
-        $not: {action: null},
-      },
-      transaction: transaction,
-    });
   }
 
   private mapDatabaseResultsToBattleStates(results): Map<string, IBattleState> {

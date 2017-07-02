@@ -19,6 +19,10 @@ export interface IStoredPokemon {
   gender: Gender;
   nature: Nature;
   abilityId: number;
+  currentValues: {
+    hitPoints: number;
+    pp: any;
+  }
 }
 
 export interface IPokemonStat {

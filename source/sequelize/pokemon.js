@@ -124,6 +124,14 @@ module.exports = function(sequelize, Sequelize) {
     squadOrder: {
       type: Sequelize.INTEGER,
       allowNull: true
+    },
+    currentHitPoints: {
+      type: Sequelize.INTEGER,
+      allowNull: false
+    },
+    currentPowerPoints: {
+      type: Sequelize.STRING,
+      allowNull: false
     }
   }, {
     tableName: 'pokemon'

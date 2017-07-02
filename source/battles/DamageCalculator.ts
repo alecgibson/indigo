@@ -1,36 +1,49 @@
 import {DamageCategory} from "../models/DamageCategory";
 import {TypeEffectiveness} from "./TypeEffectiveness";
 import {IMove} from "../models/IMove";
-import {IPokemon} from "../models/IPokemon";
 import {Attack} from "../models/Attack";
+import {inject, injectable} from "inversify";
+import {PokemonLookup} from "../pokemon/PokemonLookup";
+import {IStoredPokemon} from "../models/IStoredPokemon";
+import {Random} from "../utilities/Random";
 
+@injectable()
 export class DamageCalculator {
-    public calculate(attack: Attack): number {
-        let levelFactor = 0.4*attack.attacker.level + 2;
+  public constructor(@inject(PokemonLookup) private pokemonLookup: PokemonLookup) {}
 
-        let attackDefenceRatio = attack.move.damageCategory === DamageCategory.Physical
-            ? attack.attacker.attack / attack.defender.defence
-            : attack.attacker.specialAttack / attack.defender.specialDefence;
-
-        // TODO: Constant-damage attacks
-
-        let damage = (0.02 * levelFactor * attack.move.power * attackDefenceRatio + 2)
-            * this.damageModifier(attack);
-
-        return Math.floor(damage);
+  public calculate(attack: Attack): number {
+    if (!attack.move.power) {
+      return 0;
     }
 
-    private damageModifier(attack: Attack): number {
-        // TODO: Handle critical hits, random modifier, burn, etc.
-        // https://bulbapedia.bulbagarden.net/wiki/Damage
-        let sameTypeAttackBonus = attack.attacker.types.indexOf(attack.move.type) > -1 ? 1.5 : 1;
+    let levelFactor = 0.4 * attack.attacker.level + 2;
 
-        return sameTypeAttackBonus * this.moveEffectiveness(attack.move, attack.defender);
-    }
+    let attackDefenseRatio = attack.move.damageCategory === DamageCategory.Physical
+      ? attack.attacker.stats.attack.value / attack.defender.stats.defense.value
+      : attack.attacker.stats.specialAttack.value / attack.defender.stats.specialDefense.value;
 
-    private moveEffectiveness(move: IMove, defender: IPokemon): number {
-        return defender.types.reduce((modifier, defenderType) => {
-            return modifier * TypeEffectiveness.offensive(move.type, defenderType);
-        }, 1);
-    }
+    // TODO: Constant-damage attacks
+
+    let damage = (0.02 * levelFactor * attack.move.power * attackDefenseRatio + 2)
+      * this.damageModifier(attack);
+
+    return Math.floor(damage);
+  }
+
+  private damageModifier(attack: Attack): number {
+    // TODO: Handle critical hits, burn, etc.
+    // https://bulbapedia.bulbagarden.net/wiki/Damage
+    let attackerSpecies = this.pokemonLookup.byId(attack.attacker.speciesId);
+    let sameTypeAttackBonus = attackerSpecies.types.indexOf(attack.move.type) > -1 ? 1.5 : 1;
+    let randomModifier = Random.float(0.85, 1);
+
+    return sameTypeAttackBonus * this.moveEffectiveness(attack.move, attack.defender) * randomModifier;
+  }
+
+  private moveEffectiveness(move: IMove, defender: IStoredPokemon): number {
+    let defenderSpecies = this.pokemonLookup.byId(defender.speciesId);
+    return defenderSpecies.types.reduce((modifier, defenderType) => {
+      return modifier * TypeEffectiveness.offensive(move.type, defenderType);
+    }, 1);
+  }
 }

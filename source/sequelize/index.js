@@ -26,6 +26,8 @@ Object.keys(db).forEach(function(modelName) {
   }
 });
 
+db.battleStates.belongsTo(db.pokemon, {as: 'activePokemon'});
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
