@@ -48,7 +48,7 @@ export class BattleTurnProcessor implements IBattleTurnProcessor {
   }
 
   private processAction(action: IBattleAction) {
-    this.actionProcessor(action).process(action);
+    return this.actionProcessor(action).process(action);
   }
 
   private actionProcessor(action: IBattleAction): IBattleActionProcessor {
