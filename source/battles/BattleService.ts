@@ -93,12 +93,11 @@ export class BattleService {
   private writeActionAndGetActions(action: IBattleAction) {
     return sequelize
       .transaction(
-        {
-          isolationLevel: Sequelize.Transaction.ISOLATION_LEVELS.SERIALIZABLE,
-          type: Sequelize.Transaction.TYPES.EXCLUSIVE,
-        },
         (transaction) => {
-          return this.addActionToState(action, transaction)
+          return this.lockBattle(action.battleId, transaction)
+            .then(() => {
+              return this.addActionToState(action, transaction);
+            })
             .then((updatedState) => {
               if (!updatedState) {
                 return Promise.reject('Invalid action submitted');
@@ -114,15 +113,7 @@ export class BattleService {
                 }, [])
                 .filter((battleState) => !!battleState.action);
             });
-        })
-      .catch((error) => {
-        // TODO: This feels inelegant - is there a better way? Maybe have a row lock on the Battles table?
-        // Here we have to catch a serialization error from trying to write
-        // to a locked table, and then retry
-        if (error.name === 'SequelizeDatabaseError' && error.parent.code === '40001') {
-          return this.writeActionAndGetActions(action);
-        }
-      });
+        });
   }
 
   private create(transaction: Transaction) {
@@ -163,6 +154,14 @@ export class BattleService {
       .then((result) => {
         return this.mapDatabaseResultToBattleState(result);
       });
+  }
+
+  private lockBattle(battleId: string, transaction: Transaction) {
+    return Battle.findOne({
+      where: {id: battleId},
+      transaction: transaction,
+      lock: transaction.LOCK.UPDATE,
+    });
   }
 
   private mapDatabaseResultsToBattleStates(results): Map<string, IBattleState> {
