@@ -8,25 +8,37 @@ import {PokemonLookup} from "./PokemonLookup";
 import {IPokemonSpecies} from "../models/IPokemonSpecies";
 import {MoveLearnMethod} from "../models/MoveLearnMethod";
 import {Gender} from "../models/Gender";
+import {MoveLookup} from "../moves/MoveLookup";
 
 @injectable()
 export class PokemonSpawner {
-  public constructor(@inject(PokemonLookup) private pokemonLookup: PokemonLookup) {
+  public constructor(@inject(PokemonLookup) private pokemonLookup: PokemonLookup,
+                     @inject(MoveLookup) private moveLookup: MoveLookup) {
   }
 
   public spawn(speciesId: number, level: number): IStoredPokemon {
     let species = this.pokemonLookup.byId(speciesId);
     let nature = this.randomNature();
 
+    let hitPoints = this.createStat(
+      StatType.HIT_POINTS,
+      species.stats.hitPoints.base,
+      level,
+      nature,
+    );
+
+    let moveIds = this.generateMoveIdsForLevel(species, level);
+    let movePp = moveIds.reduce((map, moveId) => {
+      let move = this.moveLookup.byId(moveId);
+      map[moveId] = move.pp;
+      return map;
+    }, {});
+
     return {
       speciesId: speciesId,
       level: level,
       stats: {
-        hitPoints: this.createStat(
-          StatType.HIT_POINTS,
-          species.stats.hitPoints.base,
-          level,
-          nature),
+        hitPoints: hitPoints,
         attack: this.createStat(
           StatType.ATTACK,
           species.stats.attack.base,
@@ -62,6 +74,10 @@ export class PokemonSpawner {
       gender: this.randomGender(species),
       nature: nature,
       abilityId: this.randomAbilityId(species),
+      currentValues: {
+        hitPoints: hitPoints.value,
+        pp: movePp,
+      }
     };
   }
 
@@ -99,7 +115,7 @@ export class PokemonSpawner {
     return species.moves
       .filter((move) => {
         return move.method === MoveLearnMethod.LEVEL_UP
-            && move.level <= level;
+          && move.level <= level;
       })
       .sort(function sortByDescendingLevelAndOrder(a, b) {
         let sortByLevel = b.level - a.level;
@@ -109,7 +125,9 @@ export class PokemonSpawner {
       .sort(function sortByAscendingLevel(a, b) {
         return a.level - b.level;
       })
-      .map((move) => { return move.id });
+      .map((move) => {
+        return move.id
+      });
   }
 
   private randomGender(species: IPokemonSpecies): Gender {

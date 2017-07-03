@@ -70,9 +70,23 @@ export class BattleService {
     return this.writeActionAndGetActions(action)
       .then((battleStatesWithActions) => {
         if (battleStatesWithActions.length === 2) {
-          return this.battleTurn.process(battleStatesWithActions);
+          return this.battleTurn.process(battleStatesWithActions)
+            .then(() => {
+              return this.clearActions(action.battleId);
+            });
         }
       });
+  }
+
+  public clearActions(battleId: string) {
+    return BattleState.update(
+      {
+        action: null,
+      },
+      {
+        where: {battleId},
+      }
+    );
   }
 
   private writeActionAndGetActions(action: IBattleAction) {

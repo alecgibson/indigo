@@ -4,30 +4,29 @@ import 'mocha';
 import {BattleService} from "../../../../source/battles/BattleService";
 import {OwnedPokemonService} from "../../../../source/pokemon/OwnedPokemonService";
 import {PokemonService} from "../../../../source/pokemon/PokemonService";
-import {TrainerFactory} from "../../../factories/TrainerFactory";
 import {StoredPokemonFactory} from "../../../factories/StoredPokemonFactory";
-import {IStoredPokemon} from "../../../../source/models/IStoredPokemon";
 import {BattleActionType} from "../../../../source/models/BattleActionType";
 import * as sinon from "Sinon";
-import {BattleFactory} from "../../../factories/BattleFactory";
 
 describe('BattleService', () => {
   const pokemonService = new PokemonService();
   const ownedPokemonService = new OwnedPokemonService(pokemonService);
+
   const battleTurnProcessor = {
-    process: sinon.spy(),
+    process: sinon.stub(),
   };
   const battleService = new BattleService(ownedPokemonService, battleTurnProcessor);
 
   beforeEach(() => {
     battleTurnProcessor.process.reset();
+    battleTurnProcessor.process.resolves();
   });
 
   it('can start a battle', (done) => {
     Promise
       .all([
-        createPokemon(),
-        createPokemon(),
+        StoredPokemonFactory.createWithTrainer(),
+        StoredPokemonFactory.createWithTrainer(),
       ])
       .then(([pokemon1, pokemon2]) => {
         battleService.start(pokemon1.trainerId, pokemon2.trainerId)
@@ -51,9 +50,9 @@ describe('BattleService', () => {
     it('does not start a new battle', (done) => {
       Promise
         .all([
-          createPokemon(),
-          createPokemon(),
-          createPokemon(),
+          StoredPokemonFactory.createWithTrainer(),
+          StoredPokemonFactory.createWithTrainer(),
+          StoredPokemonFactory.createWithTrainer(),
         ])
         .then(([pokemon1, pokemon2, pokemon3]) => {
           battleService.start(pokemon1.trainerId, pokemon2.trainerId)
@@ -75,7 +74,7 @@ describe('BattleService', () => {
 
   describe('with a battle in progress', () => {
     it('can submit an action', (done) => {
-      BattleFactory.create()
+      startBattle()
         .then(([battleState1, battleState2]) => {
           let action = {
             trainerId: battleState1.trainerId,
@@ -98,17 +97,19 @@ describe('BattleService', () => {
     });
 
     it('processes the battle turn after the second action is submitted', (done) => {
-      BattleFactory.create()
+      startBattle()
         .then(([battleState1, battleState2]) => {
+          let battleId = battleState1.battleId;
+
           let action1 = {
             trainerId: battleState1.trainerId,
-            battleId: battleState1.battleId,
+            battleId: battleId,
             type: BattleActionType.MOVE,
           };
 
           let action2 = {
             trainerId: battleState2.trainerId,
-            battleId: battleState2.battleId,
+            battleId: battleId,
             type: BattleActionType.MOVE,
           };
 
@@ -121,13 +122,20 @@ describe('BattleService', () => {
             })
             .then(() => {
               expect(battleTurnProcessor.process.calledOnce).to.be.true;
+            })
+            .then(() => {
+              return battleService.get(battleId);
+            })
+            .then((battleStatesByTrainerId) => {
+              expect(battleStatesByTrainerId[battleState1.trainerId].action).to.be.null;
+              expect(battleStatesByTrainerId[battleState2.trainerId].action).to.be.null;
               done();
             });
-        })
+        });
     });
 
     it('ignores the second action submitted by the same trainer', (done) => {
-      BattleFactory.create()
+      startBattle()
         .then(([battleState1, battleState2]) => {
           let action1 = {
             trainerId: battleState1.trainerId,
@@ -157,13 +165,14 @@ describe('BattleService', () => {
     });
   });
 
-  function createPokemon(): Promise<IStoredPokemon> {
-    return TrainerFactory.create()
-      .then((trainer) => {
-        return StoredPokemonFactory.create({
-          trainerId: trainer.id,
-          squadOrder: 1,
-        });
+  function startBattle() {
+    return Promise
+      .all([
+        StoredPokemonFactory.createWithTrainer(),
+        StoredPokemonFactory.createWithTrainer(),
+      ])
+      .then(([pokemon1, pokemon2]) => {
+        return battleService.start(pokemon1.trainerId, pokemon2.trainerId);
       });
   }
 });

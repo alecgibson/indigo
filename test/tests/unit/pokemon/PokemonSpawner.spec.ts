@@ -3,10 +3,12 @@ import 'mocha';
 import {PokemonLookup} from "../../../../source/pokemon/PokemonLookup";
 import {PokemonSpawner} from "../../../../source/pokemon/PokemonSpawner";
 import {Gender} from "../../../../source/models/Gender";
+import {MoveLookup} from "../../../../source/moves/MoveLookup";
 
 describe('PokemonSpawner', () => {
   const pokemonLookup = new PokemonLookup();
-  const pokemonSpawner = new PokemonSpawner(pokemonLookup);
+  const moveLookup = new MoveLookup();
+  const pokemonSpawner = new PokemonSpawner(pokemonLookup, moveLookup);
 
   const tackle = 33;
   const tailWhip = 39;

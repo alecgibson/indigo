@@ -7,6 +7,8 @@ import {IBattleActionProcessor} from "./IBattleActionProcessor";
 import {BattleActionType} from "../models/BattleActionType";
 import {BattleMoveActionProcessor} from "./BattleMoveActionProcessor";
 import {IBattleTurnProcessor} from "./IBattleTurnProcessor";
+import {IBattleActionResponse} from "../models/IBattleActionResponse";
+import {Async} from "../utilities/Async";
 
 @injectable()
 export class BattleTurnProcessor implements IBattleTurnProcessor {
@@ -16,6 +18,13 @@ export class BattleTurnProcessor implements IBattleTurnProcessor {
   }
 
   public process(battleStates: IBattleState[]) {
+    return this.prioritiseActions(battleStates)
+      .then((prioritisedActions) => {
+        return this.processActions(prioritisedActions);
+      });
+  }
+
+  private prioritiseActions(battleStates: IBattleState[]) {
     let pokemonPromises = battleStates.map((battleState) => {
       return this.pokemonService.get(battleState.activePokemonId);
     });
@@ -24,13 +33,13 @@ export class BattleTurnProcessor implements IBattleTurnProcessor {
       .all(pokemonPromises)
       .then((pokemons) => {
         let actionsAndPokemon = [];
+
         for (let i = 0; i < pokemons.length; i++) {
           actionsAndPokemon.push({action: battleStates[i].action, pokemon: pokemons[i]});
         }
-        let prioritisedActions = this.actionPrioritiser.prioritise(actionsAndPokemon)
-          .map(actionAndPokemon => actionAndPokemon.action);
 
-        return this.processActions(prioritisedActions);
+        return this.actionPrioritiser.prioritise(actionsAndPokemon)
+          .map(actionAndPokemon => actionAndPokemon.action);
       });
   }
 
@@ -43,10 +52,16 @@ export class BattleTurnProcessor implements IBattleTurnProcessor {
     let actionProcessor1 = this.actionProcessor(action1);
     let actionProcessor2 = this.actionProcessor(action2);
 
-    return actionProcessor1.process(action1)
-      .then(() => {
-        return actionProcessor2.process(action2);
-      });
+    return Async.do(function* () {
+      let action1Response = yield actionProcessor1.process(action1);
+      let action2Response = yield actionProcessor2.process(action2);
+
+      let response: IBattleActionResponse = {
+        actions: [action1, action2],
+        actionResponses: [action1Response, action2Response],
+      };
+      return response;
+    });
   }
 
   private actionProcessor(action: IBattleAction): IBattleActionProcessor {

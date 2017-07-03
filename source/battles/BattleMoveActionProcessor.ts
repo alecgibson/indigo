@@ -7,6 +7,7 @@ import {Attack} from "../models/Attack";
 import {MoveLookup} from "../moves/MoveLookup";
 import {IStoredPokemon} from "../models/IStoredPokemon";
 import {PokemonService} from "../pokemon/PokemonService";
+import {IBattleMoveActionResponse} from "../models/IBattleMoveActionResponse";
 
 @injectable()
 export class BattleMoveActionProcessor implements IBattleActionProcessor {
@@ -15,7 +16,7 @@ export class BattleMoveActionProcessor implements IBattleActionProcessor {
                      @inject(PokemonService) private pokemonService: PokemonService) {
   }
 
-  public process(action: IBattleAction) {
+  public process(action: IBattleAction): Promise<IBattleMoveActionResponse> {
     let moveAction = action as IBattleMoveAction;
     return this.attackingAndDefendingPokemon(moveAction)
       .then(([attackingPokemon, defendingPokemon]) => {
@@ -31,8 +32,16 @@ export class BattleMoveActionProcessor implements IBattleActionProcessor {
         attackingPokemon.currentValues.pp[moveAction.moveId] =
           Math.max(0, attackingPokemon.currentValues.pp[moveAction.moveId] - 1);
 
-        return this.updatePokemons([attackingPokemon, defendingPokemon]);
-      })
+        return this.updatePokemons([attackingPokemon, defendingPokemon])
+          .then(() => {
+            let response: IBattleMoveActionResponse = {
+              attackingPokemon: attackingPokemon,
+              defendingPokemon: defendingPokemon,
+            };
+
+            return response;
+          });
+      });
   }
 
   public attackingAndDefendingPokemon(action: IBattleMoveAction): Promise<IStoredPokemon[]> {
