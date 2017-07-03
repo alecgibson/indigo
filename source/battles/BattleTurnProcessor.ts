@@ -9,43 +9,21 @@ import {BattleMoveActionProcessor} from "./BattleMoveActionProcessor";
 import {IBattleTurnProcessor} from "./IBattleTurnProcessor";
 import {IBattleActionResponse} from "../models/IBattleActionResponse";
 import {Async} from "../utilities/Async";
+import {IPokemonService} from "../pokemon/IPokemonService";
 
 @injectable()
 export class BattleTurnProcessor implements IBattleTurnProcessor {
-  public constructor(@inject(PokemonService) private pokemonService: PokemonService,
-                     @inject(ActionPrioritiser) private actionPrioritiser: ActionPrioritiser,
+  public constructor(@inject(ActionPrioritiser) private actionPrioritiser: ActionPrioritiser,
                      @inject(BattleMoveActionProcessor) private moveProcessor: BattleMoveActionProcessor) {
   }
 
   public process(battleStates: IBattleState[]) {
-    return this.prioritiseActions(battleStates)
-      .then((prioritisedActions) => {
-        return this.processActions(prioritisedActions);
-      });
+    return Async.do(function* () {
+      let prioritisedActions = yield this.actionPrioritiser.prioritise(battleStates);
+      return this.processActions(prioritisedActions);
+    }.bind(this));
   }
 
-  private prioritiseActions(battleStates: IBattleState[]) {
-    let pokemonPromises = battleStates.map((battleState) => {
-      return this.pokemonService.get(battleState.activePokemonId);
-    });
-
-    return Promise
-      .all(pokemonPromises)
-      .then((pokemons) => {
-        let actionsAndPokemon = [];
-
-        for (let i = 0; i < pokemons.length; i++) {
-          actionsAndPokemon.push({action: battleStates[i].action, pokemon: pokemons[i]});
-        }
-
-        return this.actionPrioritiser.prioritise(actionsAndPokemon)
-          .map(actionAndPokemon => actionAndPokemon.action);
-      });
-  }
-
-  // Don't accept an IActionAndPokemon to avoid the temptation of using the supplied Pokemon
-  // when resolving the second action - they will almost have certainly changed state due
-  // to the first action
   private processActions(actions: IBattleAction[]) {
     let action1 = actions[0];
     let action2 = actions[1];

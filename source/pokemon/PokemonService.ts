@@ -1,10 +1,11 @@
 import {IStoredPokemon} from "../models/IStoredPokemon";
 import {injectable} from "inversify";
+import {IPokemonService} from "./IPokemonService";
 const Pokemon = require("../sequelize/index").pokemon;
 const BattleState = require("../sequelize/index").battleStates;
 
 @injectable()
-export class PokemonService {
+export class PokemonService implements IPokemonService {
   public create(pokemon: IStoredPokemon): Promise<IStoredPokemon> {
     return Pokemon.create(this.mapPokemonToDatabase(pokemon))
       .then((result) => {
@@ -26,7 +27,7 @@ export class PokemonService {
       });
   }
 
-  public attackingPokemon(attackingTrainerId: string, battleId: string) {
+  public attackingPokemon(attackingTrainerId: string, battleId: string): Promise<IStoredPokemon> {
     return BattleState
       .findOne({
         where: {
@@ -40,7 +41,7 @@ export class PokemonService {
       });
   }
 
-  public defendingPokemon(attackingTrainerId: string, battleId: string) {
+  public defendingPokemon(attackingTrainerId: string, battleId: string): Promise<IStoredPokemon> {
     return BattleState
       .findOne({
         where: {

@@ -24,8 +24,8 @@ describe('Battle', () => {
   const moveProcessor = new BattleMoveActionProcessor(moveLookup, damageCalculator, pokemonService);
 
   const ownedPokemonService = new OwnedPokemonService(pokemonService);
-  const actionPrioritiser = new ActionPrioritiser(moveLookup);
-  const battleTurnProcessor = new BattleTurnProcessor(pokemonService, actionPrioritiser, moveProcessor);
+  const actionPrioritiser = new ActionPrioritiser(moveLookup, pokemonService);
+  const battleTurnProcessor = new BattleTurnProcessor(actionPrioritiser, moveProcessor);
   const battleService = new BattleService(ownedPokemonService, battleTurnProcessor);
 
   it('a Charmander using Scratch damages Squirtle, and Squirtle using Tail Whip does not damage Charmander', (done) => {

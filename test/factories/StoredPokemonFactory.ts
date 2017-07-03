@@ -58,6 +58,37 @@ export class StoredPokemonFactory {
       });
   }
 
+  public static buildWithStats(stats): IStoredPokemon {
+    let hitPoints = StoredPokemonFactory.randomStat();
+    hitPoints.value = stats.hitPoints || hitPoints.value;
+
+    let attack = StoredPokemonFactory.randomStat();
+    attack.value = stats.attack || attack.value;
+
+    let defense = StoredPokemonFactory.randomStat();
+    defense.value = stats.defense || defense.value;
+
+    let specialAttack = StoredPokemonFactory.randomStat();
+    specialAttack.value = stats.specialAttack || specialAttack.value;
+
+    let specialDefense = StoredPokemonFactory.randomStat();
+    specialDefense.value = stats.specialDefense || specialDefense.value;
+
+    let speed = StoredPokemonFactory.randomStat();
+    speed.value = stats.speed || speed.value;
+
+    return StoredPokemonFactory.build({
+      stats: {
+        hitPoints: hitPoints,
+        attack: attack,
+        defense: defense,
+        specialAttack: specialAttack,
+        specialDefense: specialDefense,
+        speed: speed,
+      },
+    });
+  }
+
   private static randomStat(): IPokemonStat {
     return {
       value: Random.integerInclusive(11, 100),
