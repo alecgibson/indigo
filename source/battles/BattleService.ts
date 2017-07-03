@@ -5,6 +5,7 @@ import {Transaction} from "sequelize";
 import {IBattleAction} from "../models/IBattleAction";
 import {BattleTurnProcessor} from "./BattleTurnProcessor";
 import {IBattleTurnProcessor} from "./IBattleTurnProcessor";
+import {Async} from "../utilities/Async";
 const Battle = require("../sequelize/index").battles;
 const BattleState = require("../sequelize/index").battleStates;
 const sequelize = require("../sequelize/index").sequelize;
@@ -67,15 +68,15 @@ export class BattleService {
   }
 
   public submitAction(action: IBattleAction) {
-    return this.writeActionAndGetActions(action)
-      .then((battleStatesWithActions) => {
-        if (battleStatesWithActions.length === 2) {
-          return this.battleTurn.process(battleStatesWithActions)
-            .then(() => {
-              return this.clearActions(action.battleId);
-            });
-        }
-      });
+    return Async.do(function* () {
+      let battleStatesWithActions = yield this.writeActionAndGetActions(action);
+
+      if (battleStatesWithActions.length === 2) {
+        let turnResponse = yield this.battleTurn.process(battleStatesWithActions);
+        yield this.clearActions(action.battleId);
+        return turnResponse;
+      }
+    }.bind(this));
   }
 
   public clearActions(battleId: string) {
