@@ -8,6 +8,8 @@ import {MoveLookup} from "../moves/MoveLookup";
 import {IStoredPokemon} from "../models/IStoredPokemon";
 import {PokemonService} from "../pokemon/PokemonService";
 import {IBattleMoveActionResponse} from "../models/IBattleMoveActionResponse";
+import {Async} from "../utilities/Async";
+import {BattleEventTypes} from "../models/BattleEventTypes";
 
 @injectable()
 export class BattleMoveActionProcessor implements IBattleActionProcessor {
@@ -17,41 +19,46 @@ export class BattleMoveActionProcessor implements IBattleActionProcessor {
   }
 
   public process(action: IBattleAction): Promise<IBattleMoveActionResponse> {
-    let moveAction = action as IBattleMoveAction;
-    return this.attackingAndDefendingPokemon(moveAction)
-      .then(([attackingPokemon, defendingPokemon]) => {
-        let move = this.moveLookup.byId(moveAction.moveId);
+    return Async.do(function* () {
+      let moveAction = action as IBattleMoveAction;
 
-        let damage = this.damageCalculator.calculate(
-          Attack.by(attackingPokemon).using(move).on(defendingPokemon)
-        );
+      let [attackingPokemon, defendingPokemon] = yield this.attackingAndDefendingPokemon(action);
+      let move = this.moveLookup.byId(moveAction.moveId);
 
-        defendingPokemon.currentValues.hitPoints =
-          Math.max(0, defendingPokemon.currentValues.hitPoints - damage);
+      let damage = this.damageCalculator.calculate(
+        Attack.by(attackingPokemon).using(move).on(defendingPokemon)
+      );
 
-        attackingPokemon.currentValues.pp[moveAction.moveId] =
-          Math.max(0, attackingPokemon.currentValues.pp[moveAction.moveId] - 1);
+      defendingPokemon.currentValues.hitPoints =
+        Math.max(0, defendingPokemon.currentValues.hitPoints - damage);
 
-        return this.updatePokemons([attackingPokemon, defendingPokemon])
-          .then(() => {
-            let response: IBattleMoveActionResponse = {
-              attackingPokemon: attackingPokemon,
-              defendingPokemon: defendingPokemon,
-            };
+      attackingPokemon.currentValues.pp[moveAction.moveId] =
+        Math.max(0, attackingPokemon.currentValues.pp[moveAction.moveId] - 1);
 
-            return response;
-          });
-      });
+      yield this.updatePokemons([attackingPokemon, defendingPokemon]);
+
+      return [
+        {
+          type: BattleEventTypes.ATTACK,
+          attackingPokemonId: attackingPokemon.id,
+          defendingPokemonId: defendingPokemon.id,
+          attackingTrainerId: attackingPokemon.trainerId,
+          defendingTrainerId: defendingPokemon.trainerId,
+          moveId: move.id,
+        },
+      ];
+
+    }.bind(this));
   }
 
-  public attackingAndDefendingPokemon(action: IBattleMoveAction): Promise<IStoredPokemon[]> {
+  private attackingAndDefendingPokemon(action: IBattleMoveAction): Promise<IStoredPokemon[]> {
     return Promise.all([
       this.pokemonService.attackingPokemon(action.trainerId, action.battleId),
       this.pokemonService.defendingPokemon(action.trainerId, action.battleId),
     ]);
   }
 
-  public updatePokemons(pokemons: IStoredPokemon[]) {
+  private updatePokemons(pokemons: IStoredPokemon[]) {
     let promises = pokemons.map((pokemon) => {
       return this.pokemonService.update(pokemon);
     });

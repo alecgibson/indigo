@@ -25,21 +25,30 @@ export class BattleTurnProcessor implements IBattleTurnProcessor {
   }
 
   private processActions(actions: IBattleAction[]) {
-    let action1 = actions[0];
-    let action2 = actions[1];
-    let actionProcessor1 = this.actionProcessor(action1);
-    let actionProcessor2 = this.actionProcessor(action2);
+    let actionQueue = [];
+    for (let action of actions) {
+      actionQueue.push(() => {
+        return this.processAction(action);
+      });
+    }
 
     return Async.do(function* () {
-      let action1Response = yield actionProcessor1.process(action1);
-      let action2Response = yield actionProcessor2.process(action2);
-
-      let response: IBattleActionResponse = {
-        actions: [action1, action2],
-        actionResponses: [action1Response, action2Response],
+      let response = {
+        events: [],
       };
+
+      while (actionQueue.length) {
+        let action = actionQueue.shift();
+        let actionEvents = yield action();
+        response.events.concat(actionEvents);
+      }
+
       return response;
     });
+  }
+
+  private processAction(action: IBattleAction) {
+    this.actionProcessor(action).process(action);
   }
 
   private actionProcessor(action: IBattleAction): IBattleActionProcessor {
