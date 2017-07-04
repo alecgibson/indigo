@@ -27,31 +27,18 @@ export class PokemonService implements IPokemonService {
       });
   }
 
-  public attackingPokemon(attackingTrainerId: string, battleId: string): Promise<IStoredPokemon> {
+  public battlingPokemons(battleId: string): Promise<IStoredPokemon[]> {
     return BattleState
-      .findOne({
+      .findAll({
         where: {
-          trainerId: attackingTrainerId,
           battleId: battleId,
         },
         include: ['activePokemon'],
       })
-      .then((result) => {
-        return this.mapDatabaseResultToPokemon(result.activePokemon);
-      });
-  }
-
-  public defendingPokemon(attackingTrainerId: string, battleId: string): Promise<IStoredPokemon> {
-    return BattleState
-      .findOne({
-        where: {
-          $not: {trainerId: attackingTrainerId},
-          battleId: battleId,
-        },
-        include: ['activePokemon'],
-      })
-      .then((result) => {
-        return this.mapDatabaseResultToPokemon(result.activePokemon);
+      .then((results) => {
+        return results.map((battleState) => {
+          return this.mapDatabaseResultToPokemon(battleState.activePokemon);
+        })
       })
   }
 
@@ -110,7 +97,6 @@ export class PokemonService implements IPokemonService {
 
     return pokemon;
   }
-
 
   private mapPokemonToDatabase(pokemon: IStoredPokemon) {
     return {

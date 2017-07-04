@@ -15,6 +15,7 @@ import {ActionPrioritiser} from "../../../../source/battles/ActionPrioritiser";
 import {BattleActionType} from "../../../../source/models/BattleActionType";
 import {IBattleMoveAction} from "../../../../source/models/IBattleMoveAction";
 import {Async} from "../../../../source/utilities/Async";
+import {BattleFaintProcessor} from "../../../../source/battles/BattleFaintProcessor";
 
 describe('Battle', () => {
   const moveLookup = new MoveLookup();
@@ -25,7 +26,8 @@ describe('Battle', () => {
 
   const ownedPokemonService = new OwnedPokemonService(pokemonService);
   const actionPrioritiser = new ActionPrioritiser(moveLookup, pokemonService);
-  const battleTurnProcessor = new BattleTurnProcessor(actionPrioritiser, moveProcessor);
+  const faintProcessor = new BattleFaintProcessor(pokemonService);
+  const battleTurnProcessor = new BattleTurnProcessor(actionPrioritiser, faintProcessor, moveProcessor);
   const battleService = new BattleService(ownedPokemonService, battleTurnProcessor);
 
   it('a Charmander using Scratch damages Squirtle, and Squirtle using Tail Whip does not damage Charmander', (done) => {
@@ -83,6 +85,6 @@ describe('Battle', () => {
       expect(updatedCharmander.currentValues.pp[scratch]).to.equal(charmander.currentValues.pp[scratch] - 1);
       expect(updatedSquirtle.currentValues.hitPoints).to.be.below(squirtle.currentValues.hitPoints);
       done();
-    });
+    }).catch(e => console.log(e));
   });
 });

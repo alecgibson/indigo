@@ -20,10 +20,12 @@ import {BattleMoveActionProcessor} from "./battles/BattleMoveActionProcessor";
 import {IBattleTurnProcessor} from "./battles/IBattleTurnProcessor";
 import {DamageCalculator} from "./battles/DamageCalculator";
 import {IPokemonService} from "./pokemon/IPokemonService";
+import {BattleFaintProcessor} from "./battles/BattleFaintProcessor";
 
 const container = new Container();
 
 container.bind<ActionPrioritiser>(ActionPrioritiser).toSelf().inSingletonScope();
+container.bind<BattleFaintProcessor>(BattleFaintProcessor).toSelf().inSingletonScope();
 container.bind<BattleMoveActionProcessor>(BattleMoveActionProcessor).toSelf().inSingletonScope();
 container.bind<BattleMoveRoute>(BattleMoveRoute).toSelf().inSingletonScope();
 container.bind<BattleService>(BattleService).toSelf().inSingletonScope();

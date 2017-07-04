@@ -11,7 +11,7 @@ import {StoredPokemonFactory} from "../../../factories/StoredPokemonFactory";
 import {Async} from "../../../../source/utilities/Async";
 import {BattleActionFactory} from "../../../factories/BattleActionFactory";
 import {Serializable} from "../../../../source/utilities/Serializable";
-import {BattleEventTypes} from "../../../../source/models/BattleEventTypes";
+import {BattleEventType} from "../../../../source/models/BattleEventType";
 
 describe('BattleMoveActionProcessor', () => {
   const moveLookup = new MoveLookup();
@@ -24,8 +24,10 @@ describe('BattleMoveActionProcessor', () => {
     const squirtle = StoredPokemonFactory.build({speciesId: 7, moveIds: [tackle]});
 
     const pokemonService = sinon.createStubInstance(PokemonService);
-    pokemonService.attackingPokemon.returns(Serializable.deepClone(squirtle));
-    pokemonService.defendingPokemon.returns(Serializable.deepClone(bulbasaur));
+    pokemonService.battlingPokemons.returns([
+      Serializable.deepClone(squirtle),
+      Serializable.deepClone(bulbasaur),
+    ]);
 
     const processor = new BattleMoveActionProcessor(moveLookup, damageCalculator, pokemonService);
 
@@ -49,7 +51,7 @@ describe('BattleMoveActionProcessor', () => {
         expect(bulbasaurUpdate.currentValues.hitPoints).to.be.below(bulbasaur.currentValues.hitPoints);
         expect(squirtleUpdate.currentValues.pp[tackle]).to.equal(squirtle.currentValues.pp[tackle] - 1);
 
-        expect(events[0].type).to.equal(BattleEventTypes.ATTACK);
+        expect(events[0].type).to.equal(BattleEventType.ATTACK);
         expect(events[0].attackingPokemonId).to.equal(squirtle.id);
         expect(events[0].defendingPokemonId).to.equal(bulbasaur.id);
 

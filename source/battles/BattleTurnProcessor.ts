@@ -1,19 +1,18 @@
 import {inject, injectable} from "inversify";
 import {IBattleState} from "../models/IBattleState";
 import {ActionPrioritiser} from "./ActionPrioritiser";
-import {PokemonService} from "../pokemon/PokemonService";
 import {IBattleAction} from "../models/IBattleAction";
 import {IBattleActionProcessor} from "./IBattleActionProcessor";
 import {BattleActionType} from "../models/BattleActionType";
 import {BattleMoveActionProcessor} from "./BattleMoveActionProcessor";
 import {IBattleTurnProcessor} from "./IBattleTurnProcessor";
-import {IBattleActionResponse} from "../models/IBattleActionResponse";
 import {Async} from "../utilities/Async";
-import {IPokemonService} from "../pokemon/IPokemonService";
+import {BattleFaintProcessor} from "./BattleFaintProcessor";
 
 @injectable()
 export class BattleTurnProcessor implements IBattleTurnProcessor {
   public constructor(@inject(ActionPrioritiser) private actionPrioritiser: ActionPrioritiser,
+                     @inject(BattleFaintProcessor) private faintProcessor: BattleFaintProcessor,
                      @inject(BattleMoveActionProcessor) private moveProcessor: BattleMoveActionProcessor) {
   }
 
@@ -25,6 +24,8 @@ export class BattleTurnProcessor implements IBattleTurnProcessor {
   }
 
   private processActions(actions: IBattleAction[]) {
+    let battleId = actions[0].battleId;
+
     let actionQueue = [];
     for (let action of actions) {
       actionQueue.push(() => {
@@ -41,10 +42,13 @@ export class BattleTurnProcessor implements IBattleTurnProcessor {
         let action = actionQueue.shift();
         let actionEvents = yield action();
         response.events.concat(actionEvents);
+        let faintEvents = yield this.faintProcessor.processAndMutateQueue(battleId, actionQueue);
+        response.events.concat(faintEvents);
+        // TODO: Handle victory
       }
 
       return response;
-    });
+    }.bind(this));
   }
 
   private processAction(action: IBattleAction) {

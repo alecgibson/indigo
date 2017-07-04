@@ -9,7 +9,7 @@ import {IStoredPokemon} from "../models/IStoredPokemon";
 import {PokemonService} from "../pokemon/PokemonService";
 import {IBattleMoveActionResponse} from "../models/IBattleMoveActionResponse";
 import {Async} from "../utilities/Async";
-import {BattleEventTypes} from "../models/BattleEventTypes";
+import {BattleEventType} from "../models/BattleEventType";
 
 @injectable()
 export class BattleMoveActionProcessor implements IBattleActionProcessor {
@@ -21,9 +21,11 @@ export class BattleMoveActionProcessor implements IBattleActionProcessor {
   public process(action: IBattleAction): Promise<IBattleMoveActionResponse> {
     return Async.do(function* () {
       let moveAction = action as IBattleMoveAction;
-
-      let [attackingPokemon, defendingPokemon] = yield this.attackingAndDefendingPokemon(action);
       let move = this.moveLookup.byId(moveAction.moveId);
+
+      let battlingPokemons = yield this.pokemonService.battlingPokemons(action.battleId);
+      let attackingPokemon = battlingPokemons.find((pokemon) => pokemon.trainerId === action.trainerId);
+      let defendingPokemon = battlingPokemons.find((pokemon) => pokemon.trainerId !== action.trainerId);
 
       let damage = this.damageCalculator.calculate(
         Attack.by(attackingPokemon).using(move).on(defendingPokemon)
@@ -39,7 +41,7 @@ export class BattleMoveActionProcessor implements IBattleActionProcessor {
 
       return [
         {
-          type: BattleEventTypes.ATTACK,
+          type: BattleEventType.ATTACK,
           attackingPokemonId: attackingPokemon.id,
           defendingPokemonId: defendingPokemon.id,
           attackingTrainerId: attackingPokemon.trainerId,
@@ -49,13 +51,6 @@ export class BattleMoveActionProcessor implements IBattleActionProcessor {
       ];
 
     }.bind(this));
-  }
-
-  private attackingAndDefendingPokemon(action: IBattleMoveAction): Promise<IStoredPokemon[]> {
-    return Promise.all([
-      this.pokemonService.attackingPokemon(action.trainerId, action.battleId),
-      this.pokemonService.defendingPokemon(action.trainerId, action.battleId),
-    ]);
   }
 
   private updatePokemons(pokemons: IStoredPokemon[]) {
