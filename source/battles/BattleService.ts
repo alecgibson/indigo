@@ -9,7 +9,6 @@ import {Async} from "../utilities/Async";
 const Battle = require("../sequelize/index").battles;
 const BattleState = require("../sequelize/index").battleStates;
 const sequelize = require("../sequelize/index").sequelize;
-const Sequelize = require("../sequelize/index").Sequelize;
 
 @injectable()
 export class BattleService {

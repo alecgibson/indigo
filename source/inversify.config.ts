@@ -21,6 +21,7 @@ import {IBattleTurnProcessor} from "./battles/IBattleTurnProcessor";
 import {DamageCalculator} from "./battles/DamageCalculator";
 import {IPokemonService} from "./pokemon/IPokemonService";
 import {BattleFaintProcessor} from "./battles/BattleFaintProcessor";
+import {BattleVictoryProcessor} from "./battles/BattleVictoryProcessor";
 
 const container = new Container();
 
@@ -29,6 +30,7 @@ container.bind<BattleFaintProcessor>(BattleFaintProcessor).toSelf().inSingletonS
 container.bind<BattleMoveActionProcessor>(BattleMoveActionProcessor).toSelf().inSingletonScope();
 container.bind<BattleMoveRoute>(BattleMoveRoute).toSelf().inSingletonScope();
 container.bind<BattleService>(BattleService).toSelf().inSingletonScope();
+container.bind<BattleVictoryProcessor>(BattleVictoryProcessor).toSelf().inSingletonScope();
 container.bind<DamageCalculator>(DamageCalculator).toSelf().inSingletonScope();
 container.bind<IBattleTurnProcessor>(BattleTurnProcessor).to(BattleTurnProcessor).inSingletonScope();
 container.bind<MoveLookup>(MoveLookup).toSelf().inSingletonScope();
