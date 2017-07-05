@@ -9,8 +9,10 @@ import {Async} from "../utilities/Async";
 import {BattleStatus} from "../models/BattleStatus";
 import {IBattle} from "../models/IBattle";
 import {Objects} from "../utilities/Objects";
+import {TrainerType} from "../models/TrainerType";
 const Battle = require("../sequelize/index").battles;
 const BattleState = require("../sequelize/index").battleStates;
+const Trainer = require("../sequelize/index").trainers;
 const sequelize = require("../sequelize/index").sequelize;
 
 @injectable()
@@ -132,7 +134,7 @@ export class BattleService {
 
     return sequelize.transaction(
       (transaction) => {
-        return Async.do(function* () {
+        return Async.do(function*() {
           yield battleService.lockBattle(action.battleId, transaction);
           const updatedState = yield battleService.addActionToState(action, transaction);
           if (!updatedState) {
@@ -151,8 +153,27 @@ export class BattleService {
   }
 
   private destroy(id: string) {
-    return Battle.destroy({
-      where: {id}
+    return sequelize.transaction(transaction => {
+      return Async.do(function*() {
+
+        const battle = yield this.get(id, transaction);
+        const trainerIdCriteria = Object.keys(battle.statesByTrainerId).map(trainerId => {
+          return {id: trainerId};
+        });
+
+        yield Battle.destroy({
+          where: {id: id},
+          transaction: transaction,
+        });
+
+        yield Trainer.destroy({
+          where: {
+            $not: {type: TrainerType.HUMAN},
+            $or: trainerIdCriteria,
+          },
+          transaction: transaction,
+        });
+      }.bind(this));
     });
   }
 

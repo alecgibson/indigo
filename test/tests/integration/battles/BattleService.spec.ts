@@ -13,10 +13,14 @@ import {BattleStatus} from "../../../../source/models/BattleStatus";
 import {IBattle} from "../../../../source/models/IBattle";
 import {Objects} from "../../../../source/utilities/Objects";
 import isUppercase = require("validator/lib/isUppercase");
+import {TrainerService} from "../../../../source/battles/TrainerService";
+import {TrainerFactory} from "../../../factories/TrainerFactory";
+import {TrainerType} from "../../../../source/models/TrainerType";
 
 describe('BattleService', () => {
   const pokemonService = new PokemonService();
   const ownedPokemonService = new OwnedPokemonService(pokemonService);
+  const trainerService = new TrainerService();
 
   const battleTurnProcessor = {
     process: sinon.stub(),
@@ -187,6 +191,58 @@ describe('BattleService', () => {
 
         const updatedBattle = yield battleService.get(battle.id);
         expect(updatedBattle).to.be.null;
+
+        done();
+      });
+    });
+
+    it('removes Wild Encounter trainers from the database when the battle is finished', (done) => {
+      Async.test(function* () {
+        const human = yield TrainerFactory.create({type: TrainerType.HUMAN});
+        const wildEncounter = yield TrainerFactory.create({type: TrainerType.WILD_ENCOUNTER});
+
+        const trainedPokemon = yield StoredPokemonFactory.create({trainerId: human.id});
+        const wildPokemon = yield StoredPokemonFactory.create({trainerId: wildEncounter.id});
+
+        const battle = yield battleService.start(human.id, wildEncounter.id);
+
+        battleTurnProcessor.process.resolves({
+          events: [],
+          battle: {
+            id: battle.id,
+            status: BattleStatus.FINISHED,
+            statesByTrainerId: {},
+          },
+        });
+
+        const action1 = {
+          trainerId: human.id,
+          battleId: battle.id,
+          type: BattleActionType.MOVE,
+        };
+
+        const action2 = {
+          trainerId: wildEncounter.id,
+          battleId: battle.id,
+          type: BattleActionType.MOVE,
+        };
+
+        yield battleService.submitAction(action1);
+        yield battleService.submitAction(action2);
+
+        const retrievedHuman = yield trainerService.get(human.id);
+        expect(retrievedHuman).to.be.ok;
+        expect(retrievedHuman).to.deep.equal(human);
+
+        const retrievedWildEncounter = yield trainerService.get(wildEncounter.id);
+        expect(retrievedWildEncounter).to.be.null;
+
+        const retrievedTrainedPokemon = yield pokemonService.get(trainedPokemon.id);
+        expect(retrievedTrainedPokemon).to.be.ok;
+        expect(retrievedTrainedPokemon).to.deep.equal(trainedPokemon);
+
+        const retrievedWildPokemon = yield pokemonService.get(wildPokemon.id);
+        expect(retrievedWildPokemon).to.be.null;
 
         done();
       });
