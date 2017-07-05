@@ -22,4 +22,8 @@ export class Async {
         });
     }
   }
+
+  public static test(makeGenerator) {
+    return Async.do(makeGenerator).catch(e => console.log(e));
+  }
 }

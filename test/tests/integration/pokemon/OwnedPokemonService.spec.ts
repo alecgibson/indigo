@@ -6,6 +6,7 @@ import {PokemonService} from "../../../../source/pokemon/PokemonService";
 import {TrainerFactory} from "../../../factories/TrainerFactory";
 import {OwnedPokemonService} from "../../../../source/pokemon/OwnedPokemonService";
 import {TrainerType} from "../../../../source/models/TrainerType";
+import {Async} from "../../../../source/utilities/Async";
 
 describe('OwnedPokemonService', () => {
   const pokemonService = new PokemonService();
@@ -48,6 +49,29 @@ describe('OwnedPokemonService', () => {
                   });
               })
           });
+      });
+    });
+  });
+
+  describe('fetching the active Pokemon', () => {
+    it('fetches the first non-fainted squad member', (done) => {
+      Async.do(function* () {
+        const trainer = yield TrainerFactory.create();
+        const squad = yield createFullSquad(trainer.id);
+
+        let activePokemon = yield ownedPokemonService.getActivePokemon(trainer.id);
+
+        expect(activePokemon.squadOrder).to.equal(1);
+        expect(activePokemon).to.deep.equal(squad[0]);
+
+        activePokemon.currentValues.hitPoints = 0;
+        yield pokemonService.update(activePokemon);
+
+        activePokemon = yield ownedPokemonService.getActivePokemon(trainer.id);
+        expect(activePokemon.squadOrder).to.equal(2);
+        expect(activePokemon).to.deep.equal(squad[1]);
+
+        done();
       });
     });
   });

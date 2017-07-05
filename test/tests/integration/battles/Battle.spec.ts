@@ -16,6 +16,7 @@ import {BattleActionType} from "../../../../source/models/BattleActionType";
 import {IBattleMoveAction} from "../../../../source/models/IBattleMoveAction";
 import {Async} from "../../../../source/utilities/Async";
 import {BattleFaintProcessor} from "../../../../source/battles/BattleFaintProcessor";
+import {BattleVictoryProcessor} from "../../../../source/battles/BattleVictoryProcessor";
 
 describe('Battle', () => {
   const moveLookup = new MoveLookup();
@@ -27,11 +28,12 @@ describe('Battle', () => {
   const ownedPokemonService = new OwnedPokemonService(pokemonService);
   const actionPrioritiser = new ActionPrioritiser(moveLookup, pokemonService);
   const faintProcessor = new BattleFaintProcessor(pokemonService);
-  const battleTurnProcessor = new BattleTurnProcessor(actionPrioritiser, faintProcessor, moveProcessor);
+  const victoryProcessor = new BattleVictoryProcessor(ownedPokemonService);
+  const battleTurnProcessor = new BattleTurnProcessor(actionPrioritiser, faintProcessor, moveProcessor, victoryProcessor);
   const battleService = new BattleService(ownedPokemonService, battleTurnProcessor);
 
   it('a Charmander using Scratch damages Squirtle, and Squirtle using Tail Whip does not damage Charmander', (done) => {
-    Async.do(function* () {
+    Async.test(function* () {
       const scratch = 10;
       const tailWhip = 39;
 
@@ -55,19 +57,18 @@ describe('Battle', () => {
       expect(charmander.currentValues.hitPoints).to.equal(charmander.stats.hitPoints.value);
       expect(squirtle.currentValues.hitPoints).to.equal(squirtle.stats.hitPoints.value);
 
-      let battleStates = yield battleService.start(charmanderOwner.id, squirtleOwner.id);
-      let battleId = battleStates[0].battleId;
+      let battle = yield battleService.start(charmanderOwner.id, squirtleOwner.id);
 
       let scratchAction: IBattleMoveAction = {
         trainerId: charmander.trainerId,
-        battleId: battleId,
+        battleId: battle.id,
         type: BattleActionType.MOVE,
         moveId: scratch,
       };
 
       let tailWhipAction: IBattleMoveAction = {
         trainerId: squirtle.trainerId,
-        battleId: battleId,
+        battleId: battle.id,
         type: BattleActionType.MOVE,
         moveId: tailWhip,
       };
@@ -85,6 +86,6 @@ describe('Battle', () => {
       expect(updatedCharmander.currentValues.pp[scratch]).to.equal(charmander.currentValues.pp[scratch] - 1);
       expect(updatedSquirtle.currentValues.hitPoints).to.be.below(squirtle.currentValues.hitPoints);
       done();
-    }).catch(e => console.log(e));
+    });
   });
 });

@@ -6,6 +6,9 @@ import {IBattleAction} from "../models/IBattleAction";
 import {BattleTurnProcessor} from "./BattleTurnProcessor";
 import {IBattleTurnProcessor} from "./IBattleTurnProcessor";
 import {Async} from "../utilities/Async";
+import {BattleStatus} from "../models/BattleStatus";
+import {IBattle} from "../models/IBattle";
+import {Objects} from "../utilities/Objects";
 const Battle = require("../sequelize/index").battles;
 const BattleState = require("../sequelize/index").battleStates;
 const sequelize = require("../sequelize/index").sequelize;
@@ -17,45 +20,63 @@ export class BattleService {
   }
 
   // TODO: Handle error where a trainer is already in a battle
-  public start(trainer1Id: string, trainer2Id: string): Promise<IBattleState[]> {
+  public start(trainer1Id: string, trainer2Id: string): Promise<IBattle> {
     return sequelize.transaction(transaction => {
-      return Promise
-        .all([
+      return Async.do(function*() {
+        const [battle, activePokemon1, activePokemon2] = yield Promise.all([
           this.create(transaction),
           this.ownedPokemon.getActivePokemon(trainer1Id, transaction),
           this.ownedPokemon.getActivePokemon(trainer2Id, transaction),
-        ])
-        .then(([battle, activePokemon1, activePokemon2]) => {
-          return Promise.all([
-            this.createBattleState(
-              {
-                trainerId: trainer1Id,
-                battleId: battle.id,
-                activePokemonId: activePokemon1.id,
-              },
-              transaction
-            ),
-            this.createBattleState(
-              {
-                trainerId: trainer2Id,
-                battleId: battle.id,
-                activePokemonId: activePokemon2.id,
-              },
-              transaction
-            ),
-          ]);
-        });
+        ]);
+
+        const battleStates = yield Promise.all([
+          this.createBattleState(
+            {
+              trainerId: trainer1Id,
+              battleId: battle.id,
+              activePokemonId: activePokemon1.id,
+            },
+            transaction
+          ),
+          this.createBattleState(
+            {
+              trainerId: trainer2Id,
+              battleId: battle.id,
+              activePokemonId: activePokemon2.id,
+            },
+            transaction
+          ),
+        ]);
+
+        const createdBattle: IBattle = {
+          id: battle.id,
+          status: BattleStatus.IN_PROGRESS,
+          statesByTrainerId: Objects.group(battleStates, 'trainerId'),
+        };
+
+        return createdBattle;
+      }.bind(this));
     });
   }
 
-  public get(battleId: string, transaction?: Transaction): Promise<Map<string, IBattleState>> {
+  public get(battleId: string, transaction?: Transaction): Promise<IBattle> {
     return BattleState
       .findAll({
         where: {battleId},
         transaction: transaction,
       })
       .then((results) => {
-        return this.mapDatabaseResultsToBattleStates(results);
+        if (!results.length) {
+          return null;
+        }
+
+        const battle: IBattle = {
+          id: battleId,
+          status: BattleStatus.IN_PROGRESS,
+          statesByTrainerId: this.mapDatabaseResultsToBattleStates(results),
+        };
+
+        return battle;
       });
   }
 
@@ -67,12 +88,29 @@ export class BattleService {
   }
 
   public submitAction(action: IBattleAction) {
-    return Async.do(function* () {
+    return Async.do(function*() {
+      const battleId = action.battleId;
       let battleStatesWithActions = yield this.writeActionAndGetActions(action);
 
       if (battleStatesWithActions.length === 2) {
-        let turnResponse = yield this.battleTurn.process(battleStatesWithActions);
+        const battleStatesByTrainerId = battleStatesWithActions.reduce((map, state) => {
+          map[state.trainerId] = state;
+          return map;
+        }, {});
+
+        const battle: IBattle = {
+          id: battleId,
+          status: BattleStatus.IN_PROGRESS,
+          statesByTrainerId: battleStatesByTrainerId,
+        };
+        let turnResponse = yield this.battleTurn.process(battle, battleStatesWithActions);
+
         yield this.clearActions(action.battleId);
+
+        if (turnResponse.battle.status === BattleStatus.FINISHED) {
+          yield this.destroy(battleId);
+        }
+
         return turnResponse;
       }
     }.bind(this));
@@ -90,33 +128,32 @@ export class BattleService {
   }
 
   private writeActionAndGetActions(action: IBattleAction) {
-    return sequelize
-      .transaction(
-        (transaction) => {
-          return this.lockBattle(action.battleId, transaction)
-            .then(() => {
-              return this.addActionToState(action, transaction);
-            })
-            .then((updatedState) => {
-              if (!updatedState) {
-                return Promise.reject('Invalid action submitted');
-              } else {
-                return this.get(action.battleId, transaction);
-              }
-            })
-            .then((battleStatesByTrainerId) => {
-              return Object.keys(battleStatesByTrainerId)
-                .reduce((values, key) => {
-                  values.push(battleStatesByTrainerId[key]);
-                  return values;
-                }, [])
-                .filter((battleState) => !!battleState.action);
-            });
+    const battleService = this;
+
+    return sequelize.transaction(
+      (transaction) => {
+        return Async.do(function* () {
+          yield battleService.lockBattle(action.battleId, transaction);
+          const updatedState = yield battleService.addActionToState(action, transaction);
+          if (!updatedState) {
+            return Promise.reject('Invalid action submitted');
+          }
+
+          const battle = yield battleService.get(action.battleId, transaction);
+          return Objects.values(battle.statesByTrainerId)
+            .filter(battleState => !!battleState.action);
         });
+      });
   }
 
   private create(transaction: Transaction) {
     return Battle.create({}, {transaction});
+  }
+
+  private destroy(id: string) {
+    return Battle.destroy({
+      where: {id}
+    });
   }
 
   private createBattleState(battleState: IBattleState, transaction: Transaction): Promise<IBattleState> {

@@ -1,19 +1,19 @@
 import {inject, injectable} from "inversify";
 import {Async} from "../utilities/Async";
-import {BattleService} from "./BattleService";
 import {IStoredPokemon} from "../models/IStoredPokemon";
 import {OwnedPokemonService} from "../pokemon/OwnedPokemonService";
+import {BattleEventType} from "../models/BattleEventType";
+import {IBattle} from "../models/IBattle";
+import {BattleStatus} from "../models/BattleStatus";
 
 @injectable()
 export class BattleVictoryProcessor {
-  public constructor(@inject(BattleService) private battleService: BattleService,
-                     @inject(OwnedPokemonService) private ownedPokemonService: OwnedPokemonService) {
+  public constructor(@inject(OwnedPokemonService) private ownedPokemonService: OwnedPokemonService) {
   }
 
-  public process(battleId: string): Promise<any[]> {
+  public processAndMutateBattle(battle: IBattle): Promise<any[]> {
     return Async.do(function*() {
-      let battleStatesByTrainerId = yield this.battleService.get(battleId);
-      let trainerIds = Object.keys(battleStatesByTrainerId);
+      let trainerIds = Object.keys(battle.statesByTrainerId);
 
       let activePokemons = yield this.activePokemons(trainerIds);
       let trainersWithActivePokemon = activePokemons.reduce((trainerIds, activePokemon) => {
@@ -26,12 +26,20 @@ export class BattleVictoryProcessor {
       let events = [];
 
       if (trainersWithActivePokemon.length === 1) {
-        // Victory
-        // Push event
+        const winningTrainerId = trainersWithActivePokemon[0].trainerId;
+        const losingTrainerId = trainerIds.find(trainer => trainer !== winningTrainerId);
+
+        events.push({
+          type: BattleEventType.VICTORY,
+          winningTrainerId: winningTrainerId,
+          losingTrainerId: losingTrainerId,
+        });
+
+        battle.status = BattleStatus.FINISHED;
+
         // TODO: Award money
         // TODO: Increment some victory counter?
         // TODO: Trainer experience
-        // Clear battle from database
       }
 
       // TODO: Handle ties? (Eg one Pokemon each, and then using Explosion to KO both?)

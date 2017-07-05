@@ -8,24 +8,28 @@ import {BattleMoveActionProcessor} from "./BattleMoveActionProcessor";
 import {IBattleTurnProcessor} from "./IBattleTurnProcessor";
 import {Async} from "../utilities/Async";
 import {BattleFaintProcessor} from "./BattleFaintProcessor";
+import {BattleVictoryProcessor} from "./BattleVictoryProcessor";
+import {IBattle} from "../models/IBattle";
+import {IBattleTurnResponse} from "../models/IBattleTurnResponse";
+import {Objects} from "../utilities/Objects";
 
 @injectable()
 export class BattleTurnProcessor implements IBattleTurnProcessor {
   public constructor(@inject(ActionPrioritiser) private actionPrioritiser: ActionPrioritiser,
                      @inject(BattleFaintProcessor) private faintProcessor: BattleFaintProcessor,
-                     @inject(BattleMoveActionProcessor) private moveProcessor: BattleMoveActionProcessor) {
+                     @inject(BattleMoveActionProcessor) private moveProcessor: BattleMoveActionProcessor,
+                     @inject(BattleVictoryProcessor) private victoryProcessor: BattleVictoryProcessor) {
   }
 
-  public process(battleStates: IBattleState[]) {
-    return Async.do(function* () {
+  public process(battle: IBattle): Promise<IBattleTurnResponse> {
+    return Async.do(function*() {
+      const battleStates = Objects.values(battle.statesByTrainerId);
       let prioritisedActions = yield this.actionPrioritiser.prioritise(battleStates);
-      return this.processActions(prioritisedActions);
+      return this.processActions(battle, prioritisedActions);
     }.bind(this));
   }
 
-  private processActions(actions: IBattleAction[]) {
-    let battleId = actions[0].battleId;
-
+  private processActions(battle: IBattle, actions: IBattleAction[]): Promise<IBattleTurnResponse> {
     let actionQueue = [];
     for (let action of actions) {
       actionQueue.push(() => {
@@ -33,18 +37,20 @@ export class BattleTurnProcessor implements IBattleTurnProcessor {
       });
     }
 
-    return Async.do(function* () {
-      let response = {
+    return Async.do(function*() {
+      let response: IBattleTurnResponse = {
         events: [],
+        battle: battle,
       };
 
       while (actionQueue.length) {
-        let action = actionQueue.shift();
-        let actionEvents = yield action();
+        const action = actionQueue.shift();
+        const actionEvents = yield action();
         response.events.concat(actionEvents);
-        let faintEvents = yield this.faintProcessor.processAndMutateQueue(battleId, actionQueue);
+        const faintEvents = yield this.faintProcessor.processAndMutateQueue(battle.id, actionQueue);
         response.events.concat(faintEvents);
-        // TODO: Handle victory
+        const victoryEvents = yield this.victoryProcessor.processAndMutateBattle(battle);
+        response.events.concat(victoryEvents);
       }
 
       return response;
