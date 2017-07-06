@@ -4,9 +4,28 @@ import 'mocha';
 import {WildEncounterService} from "../../../../source/encounters/WildEncounterService";
 import {WildEncounterFactory} from "../../../factories/WildEncounterFactory";
 import {RoughCoordinates} from "../../../../source/models/RoughCoordinates";
+import {TrainerService} from "../../../../source/battles/TrainerService";
+import {BattleService} from "../../../../source/battles/BattleService";
+import {PokemonSpawner} from "../../../../source/pokemon/PokemonSpawner";
+import {PokemonLookup} from "../../../../source/pokemon/PokemonLookup";
+import {MoveLookup} from "../../../../source/moves/MoveLookup";
+import * as sinon from "sinon";
+import {PokemonService} from "../../../../source/pokemon/PokemonService";
+import {Async} from "../../../../source/utilities/Async";
+import {TrainerFactory} from "../../../factories/TrainerFactory";
 
 describe('WildEncounterService', () => {
-  const wildEncounterService = new WildEncounterService();
+  const trainerService = new TrainerService();
+  const battleService = sinon.createStubInstance(BattleService);
+  const pokemonLookup = new PokemonLookup();
+  const moveLookup = new MoveLookup();
+  const pokemonSpawner = new PokemonSpawner(pokemonLookup, moveLookup);
+  const pokemonService = new PokemonService();
+  const wildEncounterService = new WildEncounterService(trainerService, battleService, pokemonSpawner, pokemonService);
+
+  beforeEach(() => {
+    battleService.start.reset();
+  });
 
   it('can store and fetch a wild encounter', (done) => {
     let encounter = WildEncounterFactory.build();
@@ -123,6 +142,20 @@ describe('WildEncounterService', () => {
             expect(fetchedEncounter).to.be.null;
             done();
           });
+      });
+    });
+  });
+
+  describe('starting a battle', () => {
+    it('starts a battle', (done) => {
+      Async.test(function* () {
+        const encounter = yield WildEncounterFactory.create();
+        const trainer = yield TrainerFactory.create();
+
+        yield wildEncounterService.startBattle(trainer.id, encounter.id);
+
+        expect(battleService.start.calledOnce).to.be.true;
+        done();
       });
     });
   });

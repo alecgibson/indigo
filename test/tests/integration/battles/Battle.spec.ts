@@ -17,6 +17,12 @@ import {IBattleMoveAction} from "../../../../source/models/IBattleMoveAction";
 import {Async} from "../../../../source/utilities/Async";
 import {BattleFaintProcessor} from "../../../../source/battles/BattleFaintProcessor";
 import {BattleVictoryProcessor} from "../../../../source/battles/BattleVictoryProcessor";
+import {ArtificialIntelligence} from "../../../../source/battles/ArtificialIntelligence";
+import {WildEncounterService} from "../../../../source/encounters/WildEncounterService";
+import {TrainerService} from "../../../../source/battles/TrainerService";
+import {PokemonSpawner} from "../../../../source/pokemon/PokemonSpawner";
+import {WildEncounterFactory} from "../../../factories/WildEncounterFactory";
+import {TrainerType} from "../../../../source/models/TrainerType";
 
 describe('Battle', () => {
   const moveLookup = new MoveLookup();
@@ -30,7 +36,12 @@ describe('Battle', () => {
   const faintProcessor = new BattleFaintProcessor(pokemonService);
   const victoryProcessor = new BattleVictoryProcessor(ownedPokemonService);
   const battleTurnProcessor = new BattleTurnProcessor(actionPrioritiser, faintProcessor, moveProcessor, victoryProcessor);
-  const battleService = new BattleService(ownedPokemonService, battleTurnProcessor);
+  const artificialIntelligence = new ArtificialIntelligence(ownedPokemonService);
+  const battleService = new BattleService(ownedPokemonService, battleTurnProcessor, artificialIntelligence);
+
+  const pokemonSpawner = new PokemonSpawner(pokemonLookup, moveLookup);
+  const trainerService = new TrainerService();
+  const wildEncounterService = new WildEncounterService(trainerService, battleService, pokemonSpawner, pokemonService);
 
   it('a Charmander using Scratch damages Squirtle, and Squirtle using Tail Whip does not damage Charmander', (done) => {
     Async.test(function* () {
@@ -86,6 +97,40 @@ describe('Battle', () => {
       expect(updatedCharmander.currentValues.pp[scratch]).to.equal(charmander.currentValues.pp[scratch] - 1);
       expect(updatedSquirtle.currentValues.hitPoints).to.be.below(squirtle.currentValues.hitPoints);
       done();
+    });
+  });
+
+  describe('Bulbasaur fighting a wild Rattata', () => {
+    it('eventually faints if a trainer keeps attacking it', (done) => {
+      Async.test(function* () {
+        const trainer = yield TrainerFactory.create({type: TrainerType.HUMAN});
+        let bulbasaur = pokemonSpawner.spawn(1, 5);
+        bulbasaur.trainerId = trainer.id;
+        bulbasaur.squadOrder = 1;
+        yield pokemonService.create(bulbasaur);
+
+        const wildEncounter = yield WildEncounterFactory.create({speciesId: 19, level: 3});
+
+        let battle = yield wildEncounterService.startBattle(trainer.id, wildEncounter.id);
+        const tackleAction: IBattleMoveAction = {
+          trainerId: trainer.id,
+          battleId: battle.id,
+          type: BattleActionType.MOVE,
+          moveId: 33,
+        };
+
+        let numberOfTurns = 0;
+        while(battle) {
+          yield battleService.submitAction(tackleAction);
+          battle = yield battleService.get(battle.id);
+          numberOfTurns++;
+          if (numberOfTurns > 10) {
+            throw "It's taken more than 10 turns to beat a Rattata";
+          }
+        }
+
+        done();
+      });
     });
   });
 });

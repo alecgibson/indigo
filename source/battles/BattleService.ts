@@ -24,8 +24,10 @@ export class BattleService {
   }
 
   // TODO: Handle error where a trainer is already in a battle
-  public start(trainer1Id: string, trainer2Id: string): Promise<IBattle> {
-    return sequelize.transaction(transaction => {
+  public start(trainer1Id: string, trainer2Id: string, providedTransaction?: Transaction): Promise<IBattle> {
+    return sequelize.transaction(newTransaction => {
+      const transaction = providedTransaction || newTransaction;
+
       return Async.do(function*() {
         const [battle, activePokemon1, activePokemon2] = yield Promise.all([
           this.create(transaction),

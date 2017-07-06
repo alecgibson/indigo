@@ -1,12 +1,27 @@
 import {IWildEncounter} from "../models/IWildEncounter";
-import {injectable} from "inversify";
+import {inject, injectable} from "inversify";
 import {RoughCoordinates} from "../models/RoughCoordinates";
 import {IGeoCoordinates} from "../models/IGeoCoordinates";
+import {Async} from "../utilities/Async";
+import {TrainerService} from "../battles/TrainerService";
+import {BattleService} from "../battles/BattleService";
+import {TrainerType} from "../models/TrainerType";
+import {Transaction} from "sequelize";
+import {PokemonSpawner} from "../pokemon/PokemonSpawner";
+import {PokemonService} from "../pokemon/PokemonService";
+import {IBattle} from "../models/IBattle";
 const WildEncounter = require("../sequelize/index").wildEncounters;
+const sequelize = require("../sequelize/index").sequelize;
 
 @injectable()
 export class WildEncounterService {
   private readonly SEARCH_RADIUS_METRES = 100;
+
+  public constructor(@inject(TrainerService) private trainers: TrainerService,
+                     @inject(BattleService) private battles: BattleService,
+                     @inject(PokemonSpawner) private pokemonSpawner: PokemonSpawner,
+                     @inject(PokemonService) private pokemonService: PokemonService) {
+  }
 
   public create(encounter: IWildEncounter): Promise<IWildEncounter> {
     return WildEncounter.create({
@@ -21,8 +36,8 @@ export class WildEncounterService {
     });
   }
 
-  public get(id: string): Promise<IWildEncounter> {
-    return WildEncounter.findById(id)
+  public get(id: string, transaction?: Transaction): Promise<IWildEncounter> {
+    return WildEncounter.findById(id, {transaction})
       .then((result) => {
         return this.databaseResultToEncounter(result);
       });
@@ -48,6 +63,21 @@ export class WildEncounterService {
       return results.map((result) => {
         return this.databaseResultToEncounter(result);
       });
+    });
+  }
+
+  public startBattle(trainerId: string, encounterId: string): Promise<IBattle> {
+    return sequelize.transaction(transaction => {
+      return Async.do(function*() {
+        const wildTrainer = yield this.trainers.create({type: TrainerType.WILD_ENCOUNTER}, transaction);
+        const wildEncounter = yield this.get(encounterId, transaction);
+        const wildPokemon = this.pokemonSpawner.spawn(wildEncounter.speciesId, wildEncounter.level);
+        wildPokemon.trainerId = wildTrainer.id;
+        wildPokemon.squadOrder = 1;
+        yield this.pokemonService.create(wildPokemon, transaction);
+
+        return this.battles.start(trainerId, wildTrainer.id, transaction);
+      }.bind(this));
     });
   }
 

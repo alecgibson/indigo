@@ -1,13 +1,16 @@
 import {injectable} from "inversify";
 import {ITrainer} from "../models/ITrainer";
+import {Transaction} from "sequelize";
 const Trainers = require("../sequelize/index").trainers;
 
 @injectable()
 export class TrainerService {
-  public create(trainer: ITrainer) {
+  public create(trainer: ITrainer, transaction?: Transaction) {
     return Trainers
       .create({
         type: trainer.type,
+      }, {
+        transaction: transaction,
       })
       .then(result => {
         return this.mapDatabaseResultToTrainer(result);

@@ -1,13 +1,14 @@
 import {IStoredPokemon} from "../models/IStoredPokemon";
 import {injectable} from "inversify";
 import {IPokemonService} from "./IPokemonService";
+import {Transaction} from "sequelize";
 const Pokemon = require("../sequelize/index").pokemon;
 const BattleState = require("../sequelize/index").battleStates;
 
 @injectable()
 export class PokemonService implements IPokemonService {
-  public create(pokemon: IStoredPokemon): Promise<IStoredPokemon> {
-    return Pokemon.create(this.mapPokemonToDatabase(pokemon))
+  public create(pokemon: IStoredPokemon, transaction?: Transaction): Promise<IStoredPokemon> {
+    return Pokemon.create(this.mapPokemonToDatabase(pokemon), {transaction})
       .then((result) => {
         return this.mapDatabaseResultToPokemon(result);
       });
