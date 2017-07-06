@@ -16,16 +16,18 @@ import isUppercase = require("validator/lib/isUppercase");
 import {TrainerService} from "../../../../source/battles/TrainerService";
 import {TrainerFactory} from "../../../factories/TrainerFactory";
 import {TrainerType} from "../../../../source/models/TrainerType";
+import {ArtificialIntelligence} from "../../../../source/battles/ArtificialIntelligence";
 
 describe('BattleService', () => {
   const pokemonService = new PokemonService();
   const ownedPokemonService = new OwnedPokemonService(pokemonService);
   const trainerService = new TrainerService();
+  const artificialIntelligence = new ArtificialIntelligence(ownedPokemonService);
 
   const battleTurnProcessor = {
     process: sinon.stub(),
   };
-  const battleService = new BattleService(ownedPokemonService, battleTurnProcessor);
+  const battleService = new BattleService(ownedPokemonService, battleTurnProcessor, artificialIntelligence);
 
   beforeEach(() => {
     battleTurnProcessor.process.reset();
@@ -215,20 +217,13 @@ describe('BattleService', () => {
           },
         });
 
-        const action1 = {
+        const humanAction = {
           trainerId: human.id,
           battleId: battle.id,
           type: BattleActionType.MOVE,
         };
 
-        const action2 = {
-          trainerId: wildEncounter.id,
-          battleId: battle.id,
-          type: BattleActionType.MOVE,
-        };
-
-        yield battleService.submitAction(action1);
-        yield battleService.submitAction(action2);
+        yield battleService.submitAction(humanAction);
 
         const retrievedHuman = yield trainerService.get(human.id);
         expect(retrievedHuman).to.be.ok;

@@ -10,6 +10,7 @@ import {BattleStatus} from "../models/BattleStatus";
 import {IBattle} from "../models/IBattle";
 import {Objects} from "../utilities/Objects";
 import {TrainerType} from "../models/TrainerType";
+import {ArtificialIntelligence} from "./ArtificialIntelligence";
 const Battle = require("../sequelize/index").battles;
 const BattleState = require("../sequelize/index").battleStates;
 const Trainer = require("../sequelize/index").trainers;
@@ -18,7 +19,8 @@ const sequelize = require("../sequelize/index").sequelize;
 @injectable()
 export class BattleService {
   public constructor(@inject(OwnedPokemonService) private ownedPokemon: OwnedPokemonService,
-                     @inject(BattleTurnProcessor) private battleTurn: IBattleTurnProcessor) {
+                     @inject(BattleTurnProcessor) private battleTurn: IBattleTurnProcessor,
+                     @inject(ArtificialIntelligence) private artificialIntelligence) {
   }
 
   // TODO: Handle error where a trainer is already in a battle
@@ -92,20 +94,16 @@ export class BattleService {
   public submitAction(action: IBattleAction) {
     return Async.do(function*() {
       const battleId = action.battleId;
-      let battleStatesWithActions = yield this.writeActionAndGetActions(action);
+      const battle = yield this.writeActionAndGetBattle(action);
+
+      const battleStatesWithActions = Objects.values(battle.statesByTrainerId)
+        .filter(battle => !!battle.action);
+
+      const otherTrainerId = Object.keys(battle.statesByTrainerId).find(trainerId => trainerId !== action.trainerId);
+      const otherTrainerIsAComputer = yield this.trainerIsComputer(otherTrainerId);
 
       if (battleStatesWithActions.length === 2) {
-        const battleStatesByTrainerId = battleStatesWithActions.reduce((map, state) => {
-          map[state.trainerId] = state;
-          return map;
-        }, {});
-
-        const battle: IBattle = {
-          id: battleId,
-          status: BattleStatus.IN_PROGRESS,
-          statesByTrainerId: battleStatesByTrainerId,
-        };
-        let turnResponse = yield this.battleTurn.process(battle, battleStatesWithActions);
+        const turnResponse = yield this.battleTurn.process(battle, battleStatesWithActions);
 
         yield this.clearActions(action.battleId);
 
@@ -114,6 +112,9 @@ export class BattleService {
         }
 
         return turnResponse;
+      } else if (otherTrainerIsAComputer) {
+        const computerAction = yield this.artificialIntelligence.pickAction(otherTrainerId, battleId);
+        return this.submitAction(computerAction);
       }
     }.bind(this));
   }
@@ -129,21 +130,20 @@ export class BattleService {
     );
   }
 
-  private writeActionAndGetActions(action: IBattleAction) {
+  private writeActionAndGetBattle(action: IBattleAction): Promise<IBattle> {
     const battleService = this;
 
     return sequelize.transaction(
       (transaction) => {
         return Async.do(function*() {
           yield battleService.lockBattle(action.battleId, transaction);
+
           const updatedState = yield battleService.addActionToState(action, transaction);
           if (!updatedState) {
             return Promise.reject('Invalid action submitted');
           }
 
-          const battle = yield battleService.get(action.battleId, transaction);
-          return Objects.values(battle.statesByTrainerId)
-            .filter(battleState => !!battleState.action);
+          return battleService.get(action.battleId, transaction);
         });
       });
   }
@@ -219,6 +219,11 @@ export class BattleService {
       transaction: transaction,
       lock: transaction.LOCK.UPDATE,
     });
+  }
+
+  private trainerIsComputer(trainerId: string): Promise<boolean> {
+    return Trainer.findById(trainerId)
+      .then(result => result.type !== TrainerType.HUMAN);
   }
 
   private mapDatabaseResultsToBattleStates(results): Map<string, IBattleState> {
