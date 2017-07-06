@@ -29,8 +29,10 @@ export class WildEncounterFactory {
   }
 
   public static create(overrides?): Promise<IWildEncounter> {
-    let encounter = WildEncounterFactory.build(overrides);
-    let wildEncounterService = new WildEncounterService();
+    const encounter = WildEncounterFactory.build(overrides);
+    // The dependencies for this class are for starting a battle, so we can ignore them
+    // just for generating a wild encounter
+    const wildEncounterService = new WildEncounterService(null, null, null, null);
     return wildEncounterService.create(encounter);
   }
 }

@@ -11,6 +11,7 @@ import {PokemonSpawner} from "../pokemon/PokemonSpawner";
 import {PokemonService} from "../pokemon/PokemonService";
 import {IBattle} from "../models/IBattle";
 const WildEncounter = require("../sequelize/index").wildEncounters;
+const SeenEncounter = require("../sequelize/index").seenEncounters;
 const sequelize = require("../sequelize/index").sequelize;
 
 @injectable()
@@ -69,6 +70,12 @@ export class WildEncounterService {
   public startBattle(trainerId: string, encounterId: string): Promise<IBattle> {
     return sequelize.transaction(transaction => {
       return Async.do(function*() {
+        const trainerHasSeenEncounter = yield this.trainerHasSeen(trainerId, encounterId, transaction);
+        if (trainerHasSeenEncounter) {
+          throw "Trainer has already seen encounter";
+        }
+
+        yield this.markAsSeen(trainerId, encounterId, transaction);
         const wildTrainer = yield this.trainers.create({type: TrainerType.WILD_ENCOUNTER}, transaction);
         const wildEncounter = yield this.get(encounterId, transaction);
         const wildPokemon = this.pokemonSpawner.spawn(wildEncounter.speciesId, wildEncounter.level);
@@ -91,7 +98,21 @@ export class WildEncounterService {
     );
   }
 
-  databaseResultToEncounter(result) {
+  public markAsSeen(trainerId: string, encounterId: string, transaction?: Transaction) {
+    return SeenEncounter.create({trainerId: trainerId, wildEncounterId: encounterId}, {transaction});
+  }
+
+  public trainerHasSeen(trainerId: string, encounterId: string, transaction?: Transaction): Promise<boolean> {
+    return SeenEncounter.findOne({
+      where: {
+        trainerId: trainerId,
+        wildEncounterId: encounterId,
+      },
+      transaction: transaction,
+    }).then(result => !!result);
+  }
+
+  private databaseResultToEncounter(result) {
     if (!result) {
       return null;
     }

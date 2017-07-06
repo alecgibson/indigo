@@ -158,5 +158,21 @@ describe('WildEncounterService', () => {
         done();
       });
     });
+
+    it('does not start a battle if the encounter has been seen', (done) => {
+      Async.test(function* () {
+        const encounter = yield WildEncounterFactory.create();
+        const trainer = yield TrainerFactory.create();
+
+        let hasSeen = yield wildEncounterService.trainerHasSeen(trainer.id, encounter.id);
+        expect(hasSeen).to.be.false;
+        yield wildEncounterService.startBattle(trainer.id, encounter.id);
+        hasSeen = yield wildEncounterService.trainerHasSeen(trainer.id, encounter.id);
+        expect(hasSeen).to.be.true;
+
+        expect(wildEncounterService.startBattle(trainer.id, encounter.id)).to.throw;
+        done();
+      });
+    })
   });
 });
