@@ -22,6 +22,7 @@ import {DamageCalculator} from "./battles/DamageCalculator";
 import {IPokemonService} from "./pokemon/IPokemonService";
 import {BattleFaintProcessor} from "./battles/BattleFaintProcessor";
 import {BattleVictoryProcessor} from "./battles/BattleVictoryProcessor";
+import {WebSocketService} from "./users/WebSocketService";
 
 const container = new Container();
 
@@ -42,6 +43,7 @@ container.bind<SessionService>(SessionService).toSelf().inSingletonScope();
 container.bind<TrainerService>(TrainerService).toSelf().inSingletonScope();
 container.bind<UserService>(UserService).toSelf().inSingletonScope();
 container.bind<WebSocketRouter>(WebSocketRouter).toSelf().inSingletonScope();
+container.bind<WebSocketService>(WebSocketService).toSelf().inSingletonScope();
 container.bind<WildEncounterGenerator>(WildEncounterGenerator).toSelf().inSingletonScope();
 container.bind<WildEncounterRoute>(WildEncounterRoute).toSelf().inSingletonScope();
 container.bind<WildEncounterService>(WildEncounterService).toSelf().inSingletonScope();

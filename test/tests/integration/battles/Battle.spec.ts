@@ -23,6 +23,10 @@ import {TrainerService} from "../../../../source/battles/TrainerService";
 import {PokemonSpawner} from "../../../../source/pokemon/PokemonSpawner";
 import {WildEncounterFactory} from "../../../factories/WildEncounterFactory";
 import {TrainerType} from "../../../../source/models/TrainerType";
+import {WebSocketService} from "../../../../source/users/WebSocketService";
+import * as sinon from "Sinon";
+import {UserService} from "../../../../source/users/UserService";
+import {UserFactory} from "../../../factories/UserFactory";
 
 describe('Battle', () => {
   const moveLookup = new MoveLookup();
@@ -37,11 +41,27 @@ describe('Battle', () => {
   const victoryProcessor = new BattleVictoryProcessor(ownedPokemonService);
   const battleTurnProcessor = new BattleTurnProcessor(actionPrioritiser, faintProcessor, moveProcessor, victoryProcessor);
   const artificialIntelligence = new ArtificialIntelligence(ownedPokemonService);
-  const battleService = new BattleService(ownedPokemonService, battleTurnProcessor, artificialIntelligence);
-
+  const webSocketService = sinon.createStubInstance(WebSocketService);
   const pokemonSpawner = new PokemonSpawner(pokemonLookup, moveLookup);
   const trainerService = new TrainerService();
-  const wildEncounterService = new WildEncounterService(trainerService, battleService, pokemonSpawner, pokemonService);
+  const userService = new UserService(trainerService);
+
+  const battleService = new BattleService(
+    ownedPokemonService,
+    battleTurnProcessor,
+    artificialIntelligence,
+    webSocketService,
+    pokemonService,
+    userService,
+  );
+
+  const wildEncounterService = new WildEncounterService(
+    trainerService,
+    battleService,
+    pokemonSpawner,
+    pokemonService,
+    userService,
+  );
 
   it('a Charmander using Scratch damages Squirtle, and Squirtle using Tail Whip does not damage Charmander', (done) => {
     Async.test(function* () {
@@ -103,17 +123,17 @@ describe('Battle', () => {
   describe('Bulbasaur fighting a wild Rattata', () => {
     it('eventually faints if a trainer keeps attacking it', (done) => {
       Async.test(function* () {
-        const trainer = yield TrainerFactory.create({type: TrainerType.HUMAN});
+        const user = yield UserFactory.create();
         let bulbasaur = pokemonSpawner.spawn(1, 5);
-        bulbasaur.trainerId = trainer.id;
+        bulbasaur.trainerId = user.trainerId;
         bulbasaur.squadOrder = 1;
         yield pokemonService.create(bulbasaur);
 
         const wildEncounter = yield WildEncounterFactory.create({speciesId: 19, level: 3});
 
-        let battle = yield wildEncounterService.startBattle(trainer.id, wildEncounter.id);
+        let battle = yield wildEncounterService.startBattle(user.id, wildEncounter.id);
         const tackleAction: IBattleMoveAction = {
-          trainerId: trainer.id,
+          trainerId: user.trainerId,
           battleId: battle.id,
           type: BattleActionType.MOVE,
           moveId: 33,

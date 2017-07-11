@@ -1,4 +1,3 @@
-import * as WebSocket from "ws";
 import {IRoute} from "./IRoute";
 import {IRequest} from "../models/requests/IRequest";
 import {inject, injectable} from "inversify";
@@ -11,7 +10,7 @@ export class BattleMoveRoute implements IRoute {
         @inject(BattleService) private battles: BattleService
     ) {}
 
-    public handle(webSocket: WebSocket, message: IRequest) {
+    public handle(message: IRequest) {
         // let action = <IBattleMoveAction>message;
         //
         // this.validate(action);

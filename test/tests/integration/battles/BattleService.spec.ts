@@ -11,12 +11,13 @@ import {Async} from "../../../../source/utilities/Async";
 import {Random} from "../../../../source/utilities/Random";
 import {BattleStatus} from "../../../../source/models/BattleStatus";
 import {IBattle} from "../../../../source/models/IBattle";
-import {Objects} from "../../../../source/utilities/Objects";
 import isUppercase = require("validator/lib/isUppercase");
 import {TrainerService} from "../../../../source/battles/TrainerService";
 import {TrainerFactory} from "../../../factories/TrainerFactory";
 import {TrainerType} from "../../../../source/models/TrainerType";
 import {ArtificialIntelligence} from "../../../../source/battles/ArtificialIntelligence";
+import {WebSocketService} from "../../../../source/users/WebSocketService";
+import {UserService} from "../../../../source/users/UserService";
 
 describe('BattleService', () => {
   const pokemonService = new PokemonService();
@@ -27,7 +28,18 @@ describe('BattleService', () => {
   const battleTurnProcessor = {
     process: sinon.stub(),
   };
-  const battleService = new BattleService(ownedPokemonService, battleTurnProcessor, artificialIntelligence);
+
+  const webSocketService = sinon.createStubInstance(WebSocketService);
+  const userService = sinon.createStubInstance(UserService);
+
+  const battleService = new BattleService(
+    ownedPokemonService,
+    battleTurnProcessor,
+    artificialIntelligence,
+    webSocketService,
+    pokemonService,
+    userService,
+  );
 
   beforeEach(() => {
     battleTurnProcessor.process.reset();

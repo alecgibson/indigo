@@ -2,6 +2,8 @@ import {IStoredPokemon} from "../models/IStoredPokemon";
 import {injectable} from "inversify";
 import {IPokemonService} from "./IPokemonService";
 import {Transaction} from "sequelize";
+import {IOwnPokemon} from "../models/IOwnPokemon";
+import {IOppoentPokemon} from "../models/IOppoentPokemon";
 const Pokemon = require("../sequelize/index").pokemon;
 const BattleState = require("../sequelize/index").battleStates;
 
@@ -97,6 +99,44 @@ export class PokemonService implements IPokemonService {
     };
 
     return pokemon;
+  }
+
+  public ownPokemon(pokemon: IStoredPokemon): IOwnPokemon {
+    const ownPokemon: IOwnPokemon = {
+      id: pokemon.id,
+      trainerId: pokemon.trainerId,
+      squadOrder: pokemon.squadOrder,
+      speciesId: pokemon.speciesId,
+      level: pokemon.level,
+      stats: {
+        hitPoints: pokemon.stats.hitPoints.value,
+        attack: pokemon.stats.attack.value,
+        defense: pokemon.stats.defense.value,
+        specialAttack: pokemon.stats.specialAttack.value,
+        specialDefense: pokemon.stats.specialDefense.value,
+        speed: pokemon.stats.speed.value,
+      },
+      moveIds: pokemon.moveIds,
+      gender: pokemon.gender,
+      nature: pokemon.nature,
+      abilityId: pokemon.abilityId,
+      currentValues: pokemon.currentValues,
+    };
+
+    return ownPokemon;
+  }
+
+  public opponentPokemon(pokemon: IStoredPokemon): IOppoentPokemon {
+    const opponentPokemon: IOppoentPokemon = {
+      id: pokemon.id,
+      trainerId: pokemon.trainerId,
+      speciesId: pokemon.speciesId,
+      level: pokemon.level,
+      gender: pokemon.gender,
+      hitPointFraction: pokemon.currentValues.hitPoints / pokemon.stats.hitPoints.value,
+    };
+
+    return opponentPokemon;
   }
 
   private mapPokemonToDatabase(pokemon: IStoredPokemon) {

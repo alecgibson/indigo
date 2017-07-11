@@ -11,6 +11,9 @@ import {IBattle} from "../models/IBattle";
 import {Objects} from "../utilities/Objects";
 import {TrainerType} from "../models/TrainerType";
 import {ArtificialIntelligence} from "./ArtificialIntelligence";
+import {WebSocketService} from "../users/WebSocketService";
+import {PokemonService} from "../pokemon/PokemonService";
+import {UserService} from "../users/UserService";
 const Battle = require("../sequelize/index").battles;
 const BattleState = require("../sequelize/index").battleStates;
 const Trainer = require("../sequelize/index").trainers;
@@ -20,7 +23,10 @@ const sequelize = require("../sequelize/index").sequelize;
 export class BattleService {
   public constructor(@inject(OwnedPokemonService) private ownedPokemon: OwnedPokemonService,
                      @inject(BattleTurnProcessor) private battleTurn: IBattleTurnProcessor,
-                     @inject(ArtificialIntelligence) private artificialIntelligence) {
+                     @inject(ArtificialIntelligence) private artificialIntelligence,
+                     @inject(WebSocketService) private webSockets: WebSocketService,
+                     @inject(PokemonService) private pokemons: PokemonService,
+                     @inject(UserService) private users: UserService) {
   }
 
   // TODO: Handle error where a trainer is already in a battle
@@ -130,6 +136,31 @@ export class BattleService {
         where: {battleId},
       }
     );
+  }
+
+  public sendBattleStateToUsers(battle: IBattle) {
+    return Async.do(function*() {
+      const trainerIds = Object.keys(battle.statesByTrainerId);
+
+      const battlingPokemons = yield this.pokemons.battlingPokemons(battle.id);
+      const pokemonsByTrainerId = Objects.group(battlingPokemons, 'trainerId');
+
+      for (let trainerId of trainerIds) {
+        const user = yield this.users.getByTrainerId(trainerId);
+
+        if (user) {
+          const opponentId = trainerIds.find(id => id !== trainerId);
+          const ownPokemon = this.pokemons.ownPokemon(pokemonsByTrainerId[trainerId]);
+          const opponentPokemon = this.pokemons.opponentPokemon(pokemonsByTrainerId[opponentId]);
+
+          this.webSockets.sendMessage(user.id, {
+            type: 'battleState',
+            ownPokemon: ownPokemon,
+            opponentPokemon: opponentPokemon,
+          });
+        }
+      }
+    }.bind(this));
   }
 
   private writeActionAndGetBattle(action: IBattleAction): Promise<IBattle> {

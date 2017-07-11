@@ -17,7 +17,7 @@ export class TrainerService {
       });
   }
 
-  public get(id: string) {
+  public get(id: string): ITrainer {
     return Trainers.findById(id)
       .then(result => {
         return this.mapDatabaseResultToTrainer(result);

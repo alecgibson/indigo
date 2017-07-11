@@ -6,14 +6,16 @@ import {inject, injectable} from "inversify";
 import {IUser} from "../models/IUser";
 import {SessionService} from "../users/SessionService";
 import {WildEncounterRoute} from "./WildEncounterRoute";
+import {WebSocketService} from "../users/WebSocketService";
 
 @injectable()
 export class WebSocketRouter {
   private readonly routes: Map<string, IRoute>;
 
   public constructor(@inject(SessionService) private sessions: SessionService,
-                     @inject(BattleMoveRoute) battleMove: BattleMoveRoute,
-                     @inject(WildEncounterRoute) wildEncounter: WildEncounterRoute,) {
+                     @inject(BattleMoveRoute) private battleMove: BattleMoveRoute,
+                     @inject(WildEncounterRoute) private wildEncounter: WildEncounterRoute,
+                     @inject(WebSocketService) private webSocketService: WebSocketService) {
     this.routes = new Map();
     this.routes.set('battleMove', battleMove);
     this.routes.set('wildEncounter', wildEncounter);
@@ -23,15 +25,16 @@ export class WebSocketRouter {
     this.sessions.validateNewSessionToken(newSessionToken)
       .then((user) => {
         if (user) {
+          this.webSocketService.registerWebSocket(user.id, webSocket);
           this.setUpRouting(webSocket, user);
-          this.notifyOfValidatedSession(webSocket, user.newSessionToken);
+          this.notifyOfValidatedSession(user.id, user.newSessionToken);
         } else {
           this.notifyOfInvalidatedSession(webSocket);
         }
       });
   }
 
-  private route(webSocket: WebSocket, data: WebSocket.Data) {
+  private route(user: IUser, data: WebSocket.Data) {
     let message = WebSocketRouter.castToRequest(data);
     if (!message) {
       console.warn("Unsupported WebSocket message");
@@ -44,7 +47,12 @@ export class WebSocketRouter {
       return;
     }
 
-    route.handle(webSocket, message);
+    if (message.userId !== user.id) {
+      console.warn("User ID mismatch");
+      return;
+    }
+
+    route.handle(message);
   }
 
   private setUpRouting(webSocket: WebSocket, user: IUser) {
@@ -52,7 +60,7 @@ export class WebSocketRouter {
       this.sessions.validateActiveSessionToken(user)
         .then((isValid) => {
           if (isValid) {
-            this.route(webSocket, data);
+            this.route(user, data);
           } else {
             this.notifyOfInvalidatedSession(webSocket);
           }
@@ -67,12 +75,12 @@ export class WebSocketRouter {
     }
   }
 
-  private notifyOfValidatedSession(webSocket: WebSocket, newSessionToken: string) {
-    webSocket.send(JSON.stringify({
+  private notifyOfValidatedSession(userId: string, newSessionToken: string) {
+    this.webSocketService.sendMessage(userId, {
       type: 'authentication',
       message: 'SESSION_VALIDATED',
       token: newSessionToken,
-    }));
+    });
   }
 
   private notifyOfInvalidatedSession(webSocket: WebSocket) {

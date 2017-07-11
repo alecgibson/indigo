@@ -10,6 +10,7 @@ import {Transaction} from "sequelize";
 import {PokemonSpawner} from "../pokemon/PokemonSpawner";
 import {PokemonService} from "../pokemon/PokemonService";
 import {IBattle} from "../models/IBattle";
+import {UserService} from "../users/UserService";
 const WildEncounter = require("../sequelize/index").wildEncounters;
 const SeenEncounter = require("../sequelize/index").seenEncounters;
 const sequelize = require("../sequelize/index").sequelize;
@@ -21,7 +22,8 @@ export class WildEncounterService {
   public constructor(@inject(TrainerService) private trainers: TrainerService,
                      @inject(BattleService) private battles: BattleService,
                      @inject(PokemonSpawner) private pokemonSpawner: PokemonSpawner,
-                     @inject(PokemonService) private pokemonService: PokemonService) {
+                     @inject(PokemonService) private pokemonService: PokemonService,
+                     @inject(UserService) private users: UserService) {
   }
 
   public create(encounter: IWildEncounter): Promise<IWildEncounter> {
@@ -67,25 +69,34 @@ export class WildEncounterService {
     });
   }
 
-  public startBattle(trainerId: string, encounterId: string): Promise<IBattle> {
-    return sequelize.transaction(transaction => {
-      return Async.do(function*() {
-        const trainerHasSeenEncounter = yield this.trainerHasSeen(trainerId, encounterId, transaction);
-        if (trainerHasSeenEncounter) {
-          throw "Trainer has already seen encounter";
-        }
+  public startBattle(userId: string, encounterId: string): Promise<IBattle> {
+    return sequelize
+      .transaction(transaction => {
+        return Async.do(function*() {
+          const user = yield this.users.get(userId);
 
-        yield this.markAsSeen(trainerId, encounterId, transaction);
-        const wildTrainer = yield this.trainers.create({type: TrainerType.WILD_ENCOUNTER}, transaction);
-        const wildEncounter = yield this.get(encounterId, transaction);
-        const wildPokemon = this.pokemonSpawner.spawn(wildEncounter.speciesId, wildEncounter.level);
-        wildPokemon.trainerId = wildTrainer.id;
-        wildPokemon.squadOrder = 1;
-        yield this.pokemonService.create(wildPokemon, transaction);
+          const trainerHasSeenEncounter = yield this.trainerHasSeen(user.trainerId, encounterId, transaction);
+          if (trainerHasSeenEncounter) {
+            throw "Trainer has already seen encounter";
+          }
 
-        return this.battles.start(trainerId, wildTrainer.id, transaction);
-      }.bind(this));
-    });
+          yield this.markAsSeen(user.trainerId, encounterId, transaction);
+          const wildTrainer = yield this.trainers.create({type: TrainerType.WILD_ENCOUNTER}, transaction);
+          const wildEncounter = yield this.get(encounterId, transaction);
+          const wildPokemon = this.pokemonSpawner.spawn(wildEncounter.speciesId, wildEncounter.level);
+          wildPokemon.trainerId = wildTrainer.id;
+          wildPokemon.squadOrder = 1;
+          yield this.pokemonService.create(wildPokemon, transaction);
+
+          return this.battles.start(user.trainerId, wildTrainer.id, transaction);
+        }.bind(this));
+      })
+      .then(battle => {
+        return Async.do(function* () {
+          yield this.battles.sendBattleStateToUsers(battle);
+          return battle;
+        }.bind(this));
+      });
   }
 
   public garbageCollect() {

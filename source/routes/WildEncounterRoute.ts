@@ -1,24 +1,31 @@
 import {IRoute} from "./IRoute";
 import {IWildEncounterRequest} from "../models/requests/IWildEncounterRequest";
-import * as WebSocket from "ws";
 import {inject, injectable} from "inversify";
-import {IGeoCoordinates} from "../models/IGeoCoordinates";
 import {WildEncounterService} from "../encounters/WildEncounterService";
+import {WebSocketService} from "../users/WebSocketService";
 
 @injectable()
 export class WildEncounterRoute implements IRoute {
-  public constructor(@inject(WildEncounterService) private wildEncounters: WildEncounterService) {
+  public constructor(@inject(WildEncounterService) private wildEncounters: WildEncounterService,
+                     @inject(WebSocketService) private webSockets: WebSocketService) {
   }
 
-  public handle(webSocket: WebSocket, message: IWildEncounterRequest) {
-    switch(message.method) {
+  public handle(message: IWildEncounterRequest) {
+    switch (message.method) {
       case 'getAll':
-        this.getAll(message.location, webSocket);
+        this.getAll(message);
         break;
+      case 'startBattle':
+        this.startBattle(message);
+        break;
+      default:
+        console.warn('Unrecognised Wild Encounter request: ' + message.method);
     }
   }
 
-  private getAll(location: IGeoCoordinates, webSocket: WebSocket) {
+  private getAll(message: IWildEncounterRequest) {
+    const location = message.location;
+
     this.wildEncounters.getByLocation(location)
       .then((encounters) => {
         let strippedEncounters = encounters.map((encounter) => {
@@ -29,15 +36,14 @@ export class WildEncounterRoute implements IRoute {
           };
         });
 
-        console.log(JSON.stringify({
+        this.webSockets.sendMessage(message.userId, {
           type: 'wildEncounters',
           encounters: strippedEncounters,
-        }));
-
-        webSocket.send(JSON.stringify({
-          type: 'wildEncounters',
-          encounters: strippedEncounters,
-        }));
+        });
       });
+  }
+
+  private startBattle(message: IWildEncounterRequest) {
+    this.wildEncounters.startBattle(message.userId, message.encounterId);
   }
 }

@@ -13,6 +13,9 @@ import * as sinon from "sinon";
 import {PokemonService} from "../../../../source/pokemon/PokemonService";
 import {Async} from "../../../../source/utilities/Async";
 import {TrainerFactory} from "../../../factories/TrainerFactory";
+import {WebSocketService} from "../../../../source/users/WebSocketService";
+import {UserService} from "../../../../source/users/UserService";
+import {UserFactory} from "../../../factories/UserFactory";
 
 describe('WildEncounterService', () => {
   const trainerService = new TrainerService();
@@ -21,7 +24,14 @@ describe('WildEncounterService', () => {
   const moveLookup = new MoveLookup();
   const pokemonSpawner = new PokemonSpawner(pokemonLookup, moveLookup);
   const pokemonService = new PokemonService();
-  const wildEncounterService = new WildEncounterService(trainerService, battleService, pokemonSpawner, pokemonService);
+  const userService = new UserService(trainerService);
+  const wildEncounterService = new WildEncounterService(
+    trainerService,
+    battleService,
+    pokemonSpawner,
+    pokemonService,
+    userService,
+  );
 
   beforeEach(() => {
     battleService.start.reset();
@@ -148,11 +158,11 @@ describe('WildEncounterService', () => {
 
   describe('starting a battle', () => {
     it('starts a battle', (done) => {
-      Async.test(function* () {
+      Async.test(function*() {
         const encounter = yield WildEncounterFactory.create();
-        const trainer = yield TrainerFactory.create();
+        const user = yield UserFactory.create();
 
-        yield wildEncounterService.startBattle(trainer.id, encounter.id);
+        yield wildEncounterService.startBattle(user.id, encounter.id);
 
         expect(battleService.start.calledOnce).to.be.true;
         done();
@@ -160,17 +170,17 @@ describe('WildEncounterService', () => {
     });
 
     it('does not start a battle if the encounter has been seen', (done) => {
-      Async.test(function* () {
+      Async.test(function*() {
         const encounter = yield WildEncounterFactory.create();
-        const trainer = yield TrainerFactory.create();
+        const user = yield UserFactory.create();
 
-        let hasSeen = yield wildEncounterService.trainerHasSeen(trainer.id, encounter.id);
+        let hasSeen = yield wildEncounterService.trainerHasSeen(user.trainerId, encounter.id);
         expect(hasSeen).to.be.false;
-        yield wildEncounterService.startBattle(trainer.id, encounter.id);
-        hasSeen = yield wildEncounterService.trainerHasSeen(trainer.id, encounter.id);
+        yield wildEncounterService.startBattle(user.id, encounter.id);
+        hasSeen = yield wildEncounterService.trainerHasSeen(user.trainerId, encounter.id);
         expect(hasSeen).to.be.true;
 
-        wildEncounterService.startBattle(trainer.id, encounter.id)
+        wildEncounterService.startBattle(user.id, encounter.id)
           .catch(() => {
             // Expect this to throw
             done();

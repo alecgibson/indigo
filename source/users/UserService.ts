@@ -40,6 +40,12 @@ export class UserService {
     });
   }
 
+  public getByTrainerId(trainerId: string): Promise<IUser> {
+    return User.findOne({
+      where: {trainerId},
+    });
+  }
+
   public update(user: IUser): Promise<IUser> {
     return User.update(
       {

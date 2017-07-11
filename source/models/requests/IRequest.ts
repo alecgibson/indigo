@@ -1,3 +1,4 @@
 export interface IRequest {
-    type: string;
+  type: string;
+  userId: string;
 }
