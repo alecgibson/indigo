@@ -170,8 +170,11 @@ describe('WildEncounterService', () => {
         hasSeen = yield wildEncounterService.trainerHasSeen(trainer.id, encounter.id);
         expect(hasSeen).to.be.true;
 
-        expect(wildEncounterService.startBattle(trainer.id, encounter.id)).to.throw;
-        done();
+        wildEncounterService.startBattle(trainer.id, encounter.id)
+          .catch(() => {
+            // Expect this to throw
+            done();
+          });
       });
     })
   });
