@@ -79,6 +79,7 @@ export class WebSocketRouter {
     this.webSocketService.sendMessage(userId, {
       type: 'authentication',
       message: 'SESSION_VALIDATED',
+      userId: userId,
       token: newSessionToken,
     });
   }
