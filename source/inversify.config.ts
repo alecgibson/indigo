@@ -23,10 +23,12 @@ import {IPokemonService} from "./pokemon/IPokemonService";
 import {BattleFaintProcessor} from "./battles/BattleFaintProcessor";
 import {BattleVictoryProcessor} from "./battles/BattleVictoryProcessor";
 import {WebSocketService} from "./users/WebSocketService";
+import {ArtificialIntelligence} from "./battles/ArtificialIntelligence";
 
 const container = new Container();
 
 container.bind<ActionPrioritiser>(ActionPrioritiser).toSelf().inSingletonScope();
+container.bind<ArtificialIntelligence>(ArtificialIntelligence).toSelf().inSingletonScope();
 container.bind<BattleFaintProcessor>(BattleFaintProcessor).toSelf().inSingletonScope();
 container.bind<BattleMoveActionProcessor>(BattleMoveActionProcessor).toSelf().inSingletonScope();
 container.bind<BattleMoveRoute>(BattleMoveRoute).toSelf().inSingletonScope();
