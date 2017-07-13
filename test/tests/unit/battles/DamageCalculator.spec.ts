@@ -59,7 +59,7 @@ describe('DamageCalculator', () => {
 
     let damage = damageCalculator.calculate(Attack.by(golem).using(rockSlide).on(charizard));
 
-    expect(damage).to.be.above(194);
+    expect(damage).to.be.above(193);
     expect(damage).to.be.below(230);
   });
 });

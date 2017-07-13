@@ -32,7 +32,7 @@ describe('Battle', () => {
   const moveLookup = new MoveLookup();
   const pokemonLookup = new PokemonLookup();
   const damageCalculator = new DamageCalculator(pokemonLookup);
-  const pokemonService = new PokemonService();
+  const pokemonService = new PokemonService(moveLookup, pokemonLookup);
   const moveProcessor = new BattleMoveActionProcessor(moveLookup, damageCalculator, pokemonService);
 
   const ownedPokemonService = new OwnedPokemonService(pokemonService);

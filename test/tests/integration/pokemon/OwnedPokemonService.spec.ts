@@ -7,9 +7,13 @@ import {TrainerFactory} from "../../../factories/TrainerFactory";
 import {OwnedPokemonService} from "../../../../source/pokemon/OwnedPokemonService";
 import {TrainerType} from "../../../../source/models/TrainerType";
 import {Async} from "../../../../source/utilities/Async";
+import {MoveLookup} from "../../../../source/moves/MoveLookup";
+import {PokemonLookup} from "../../../../source/pokemon/PokemonLookup";
 
 describe('OwnedPokemonService', () => {
-  const pokemonService = new PokemonService();
+  const moveLookup = new MoveLookup();
+  const pokemonLookup = new PokemonLookup();
+  const pokemonService = new PokemonService(moveLookup, pokemonLookup);
   const ownedPokemonService = new OwnedPokemonService(pokemonService);
 
   describe('Adding a new Pokemon', () => {

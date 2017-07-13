@@ -4,9 +4,13 @@ import 'mocha';
 import {PokemonService} from "../../../../source/pokemon/PokemonService";
 import {StoredPokemonFactory} from "../../../factories/StoredPokemonFactory";
 import {TrainerFactory} from "../../../factories/TrainerFactory";
+import {MoveLookup} from "../../../../source/moves/MoveLookup";
+import {PokemonLookup} from "../../../../source/pokemon/PokemonLookup";
 
 describe('PokemonService', () => {
-  const pokemonService = new PokemonService();
+  const moveLookup = new MoveLookup();
+  const pokemonLookup = new PokemonLookup();
+  const pokemonService = new PokemonService(moveLookup, pokemonLookup);
 
   it('can create and fetch a Pokemon', (done) => {
     TrainerFactory.create()

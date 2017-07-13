@@ -18,9 +18,13 @@ import {TrainerType} from "../../../../source/models/TrainerType";
 import {ArtificialIntelligence} from "../../../../source/battles/ArtificialIntelligence";
 import {WebSocketService} from "../../../../source/users/WebSocketService";
 import {UserService} from "../../../../source/users/UserService";
+import {MoveLookup} from "../../../../source/moves/MoveLookup";
+import {PokemonLookup} from "../../../../source/pokemon/PokemonLookup";
 
 describe('BattleService', () => {
-  const pokemonService = new PokemonService();
+  const moveLookup = new MoveLookup();
+  const pokemonLookup = new PokemonLookup();
+  const pokemonService = new PokemonService(moveLookup, pokemonLookup);
   const ownedPokemonService = new OwnedPokemonService(pokemonService);
   const trainerService = new TrainerService();
   const artificialIntelligence = new ArtificialIntelligence(ownedPokemonService);

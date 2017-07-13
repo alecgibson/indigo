@@ -23,7 +23,7 @@ describe('WildEncounterService', () => {
   const pokemonLookup = new PokemonLookup();
   const moveLookup = new MoveLookup();
   const pokemonSpawner = new PokemonSpawner(pokemonLookup, moveLookup);
-  const pokemonService = new PokemonService();
+  const pokemonService = new PokemonService(moveLookup, pokemonLookup);
   const userService = new UserService(trainerService);
   const wildEncounterService = new WildEncounterService(
     trainerService,

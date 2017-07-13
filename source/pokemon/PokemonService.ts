@@ -1,14 +1,19 @@
 import {IStoredPokemon} from "../models/IStoredPokemon";
-import {injectable} from "inversify";
+import {inject, injectable} from "inversify";
 import {IPokemonService} from "./IPokemonService";
 import {Transaction} from "sequelize";
-import {IOwnPokemon} from "../models/IOwnPokemon";
+import {IOwnPokemon, IOwnPokemonMove} from "../models/IOwnPokemon";
 import {IOppoentPokemon} from "../models/IOppoentPokemon";
+import {MoveLookup} from "../moves/MoveLookup";
+import {PokemonLookup} from "./PokemonLookup";
 const Pokemon = require("../sequelize/index").pokemon;
 const BattleState = require("../sequelize/index").battleStates;
 
 @injectable()
 export class PokemonService implements IPokemonService {
+  public constructor(@inject(MoveLookup) private moveLookup: MoveLookup,
+  @inject(PokemonLookup) private pokemonLookup: PokemonLookup) {}
+
   public create(pokemon: IStoredPokemon, transaction?: Transaction): Promise<IStoredPokemon> {
     return Pokemon.create(this.mapPokemonToDatabase(pokemon), {transaction})
       .then((result) => {
@@ -104,6 +109,7 @@ export class PokemonService implements IPokemonService {
   public ownPokemon(pokemon: IStoredPokemon): IOwnPokemon {
     const ownPokemon: IOwnPokemon = {
       id: pokemon.id,
+      name: this.pokemonLookup.byId(pokemon.speciesId).name,
       trainerId: pokemon.trainerId,
       squadOrder: pokemon.squadOrder,
       speciesId: pokemon.speciesId,
@@ -116,7 +122,7 @@ export class PokemonService implements IPokemonService {
         specialDefense: pokemon.stats.specialDefense.value,
         speed: pokemon.stats.speed.value,
       },
-      moveIds: pokemon.moveIds,
+      moves: this.mapMoveIdsToMoves(pokemon.moveIds, pokemon.currentValues.pp),
       gender: pokemon.gender,
       nature: pokemon.nature,
       abilityId: pokemon.abilityId,
@@ -170,5 +176,20 @@ export class PokemonService implements IPokemonService {
       currentHitPoints: pokemon.currentValues.hitPoints,
       currentPowerPoints: JSON.stringify(pokemon.currentValues.pp),
     }
+  }
+
+  private mapMoveIdsToMoves(moveIds: number[], currentPowerPoints: any): IOwnPokemonMove[] {
+    return moveIds.map(id => {
+      const move = this.moveLookup.byId(id);
+
+      let ownPokemonMove: IOwnPokemonMove = {
+        id: id,
+        name: move.name,
+        currentPowerPoints: currentPowerPoints[id],
+        maxPowerPoints: move.pp,
+      };
+
+      return ownPokemonMove;
+    });
   }
 }

@@ -4,6 +4,8 @@ import {Nature} from "../../source/models/Nature";
 import {Random} from "../../source/utilities/Random";
 import {PokemonService} from "../../source/pokemon/PokemonService";
 import {TrainerFactory} from "./TrainerFactory";
+import {MoveLookup} from "../../source/moves/MoveLookup";
+import {PokemonLookup} from "../../source/pokemon/PokemonLookup";
 
 export class StoredPokemonFactory {
   public static build(overrides?): IStoredPokemon {
@@ -43,8 +45,10 @@ export class StoredPokemonFactory {
   }
 
   public static create(overrides?): Promise<IStoredPokemon> {
-    let pokemon = StoredPokemonFactory.build(overrides);
-    let pokemonService = new PokemonService();
+    const pokemon = StoredPokemonFactory.build(overrides);
+    const moveLookup = new MoveLookup();
+    const pokemonLookup = new PokemonLookup();
+    const pokemonService = new PokemonService(moveLookup, pokemonLookup);
     return pokemonService.create(pokemon);
   }
 

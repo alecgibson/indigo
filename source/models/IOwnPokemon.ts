@@ -2,9 +2,10 @@ import {Gender} from "./Gender";
 import {Nature} from "./Nature";
 
 export interface IOwnPokemon {
-  id?: string;
-  trainerId?: string;
-  squadOrder?: number;
+  id: string;
+  name: string;
+  trainerId: string;
+  squadOrder: number;
   speciesId: number;
   level: number;
   stats: {
@@ -15,7 +16,7 @@ export interface IOwnPokemon {
     specialDefense: number,
     speed: number,
   };
-  moveIds: number[];
+  moves: IOwnPokemonMove[];
   gender: Gender;
   nature: Nature;
   abilityId: number;
@@ -23,4 +24,11 @@ export interface IOwnPokemon {
     hitPoints: number;
     pp: any;
   }
+}
+
+export interface IOwnPokemonMove {
+  id: number;
+  name: string;
+  currentPowerPoints: number;
+  maxPowerPoints: number;
 }
