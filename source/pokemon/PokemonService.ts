@@ -3,7 +3,7 @@ import {inject, injectable} from "inversify";
 import {IPokemonService} from "./IPokemonService";
 import {Transaction} from "sequelize";
 import {IOwnPokemon, IOwnPokemonMove} from "../models/IOwnPokemon";
-import {IOppoentPokemon} from "../models/IOppoentPokemon";
+import {IOpponentPokemon} from "../models/IOpponentPokemon";
 import {MoveLookup} from "../moves/MoveLookup";
 import {PokemonLookup} from "./PokemonLookup";
 const Pokemon = require("../sequelize/index").pokemon;
@@ -132,9 +132,10 @@ export class PokemonService implements IPokemonService {
     return ownPokemon;
   }
 
-  public opponentPokemon(pokemon: IStoredPokemon): IOppoentPokemon {
-    const opponentPokemon: IOppoentPokemon = {
+  public opponentPokemon(pokemon: IStoredPokemon): IOpponentPokemon {
+    const opponentPokemon: IOpponentPokemon = {
       id: pokemon.id,
+      name: this.pokemonLookup.byId(pokemon.speciesId).name,
       trainerId: pokemon.trainerId,
       speciesId: pokemon.speciesId,
       level: pokemon.level,
@@ -179,13 +180,13 @@ export class PokemonService implements IPokemonService {
   }
 
   private mapMoveIdsToMoves(moveIds: number[], currentPowerPoints: any): IOwnPokemonMove[] {
-    return moveIds.map(id => {
+    return moveIds.map((id, index) => {
       const move = this.moveLookup.byId(id);
 
       let ownPokemonMove: IOwnPokemonMove = {
         id: id,
         name: move.name,
-        currentPowerPoints: currentPowerPoints[id],
+        currentPowerPoints: currentPowerPoints[index],
         maxPowerPoints: move.pp,
       };
 

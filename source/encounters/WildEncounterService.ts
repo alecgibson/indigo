@@ -139,8 +139,11 @@ export class WildEncounterService {
     return Async.do(function*() {
       const user = yield this.users.get(userId);
       const battleState = yield this.battles.getTrainerBattleState(user.trainerId);
-      yield this.battles.destroy(battleState.battleId);
-      const encounter = yield sequelize.query(
+      if (battleState) {
+        yield this.battles.destroy(battleState.battleId);
+      }
+
+      const encounters = yield sequelize.query(
         `SELECT * FROM "wildEncounters" AS we
         WHERE NOT EXISTS(
           SELECT * FROM "seenEncounters" AS se
@@ -155,7 +158,7 @@ export class WildEncounterService {
         }
       );
 
-      return this.startBattle(userId, encounter.id);
+      return this.startBattle(userId, encounters[0].id);
     }.bind(this));
   }
 
