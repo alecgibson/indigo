@@ -16,11 +16,11 @@ module.exports = function(sequelize, Sequelize) {
       defaultValue: Sequelize.NOW,
       allowNull: false
     },
-    trainerId: {
+    userId: {
       type: Sequelize.UUID,
       allowNull: false,
       references: {
-        model: 'trainers',
+        model: 'users',
         key: 'id'
       },
       onDelete: 'cascade'

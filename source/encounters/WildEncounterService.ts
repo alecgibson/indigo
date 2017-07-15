@@ -46,23 +46,35 @@ export class WildEncounterService {
       });
   }
 
-  // TODO: Filter out Encounters already seen
-  public getByLocation(location: IGeoCoordinates): Promise<IWildEncounter[]> {
+  public getByLocation(location: IGeoCoordinates, userId: string): Promise<IWildEncounter[]> {
     let coordinates = new RoughCoordinates(location.latitude, location.longitude);
     let cartesianMetres = coordinates.toCartesianMetres();
     let now = new Date();
-    return WildEncounter.findAll({
-      where: {
-        $and: [
-          {xMetres: {gt: cartesianMetres.x - this.SEARCH_RADIUS_METRES}},
-          {xMetres: {lt: cartesianMetres.x + this.SEARCH_RADIUS_METRES}},
-          {yMetres: {gt: cartesianMetres.y - this.SEARCH_RADIUS_METRES}},
-          {yMetres: {lt: cartesianMetres.y + this.SEARCH_RADIUS_METRES}},
-          {startTime: {lt: now}},
-          {endTime: {gt: now}},
-        ],
-      },
-    }).then((results) => {
+    return sequelize.query(
+      `SELECT * FROM "wildEncounters" AS we
+      WHERE "xMetres" > :xLowerLimit
+      AND "xMetres" < :xUpperLimit
+      AND "yMetres" > :yLowerLimit
+      AND "yMetres" < :yUpperLimit
+      AND "startTime" < :now
+      AND "endTime" > :now
+      AND NOT EXISTS(
+        SELECT * FROM "seenEncounters" AS se
+        WHERE se."userId" = :userId
+        AND se."wildEncounterId" = we.id
+      );`,
+      {
+        replacements: {
+          xLowerLimit: cartesianMetres.x - this.SEARCH_RADIUS_METRES,
+          xUpperLimit: cartesianMetres.x + this.SEARCH_RADIUS_METRES,
+          yLowerLimit: cartesianMetres.y - this.SEARCH_RADIUS_METRES,
+          yUpperLimit: cartesianMetres.y + this.SEARCH_RADIUS_METRES,
+          now: now,
+          userId: userId,
+        },
+        model: WildEncounter,
+      }
+    ).then((results) => {
       return results.map((result) => {
         return this.databaseResultToEncounter(result);
       });
@@ -75,12 +87,12 @@ export class WildEncounterService {
         return Async.do(function*() {
           const user = yield this.users.get(userId);
 
-          const trainerHasSeenEncounter = yield this.trainerHasSeen(user.trainerId, encounterId, transaction);
-          if (trainerHasSeenEncounter) {
+          const userHasSeenEncounter = yield this.userHasSeen(user.id, encounterId, transaction);
+          if (userHasSeenEncounter) {
             throw "Trainer has already seen encounter";
           }
 
-          yield this.markAsSeen(user.trainerId, encounterId, transaction);
+          yield this.markAsSeen(user.id, encounterId, transaction);
           const wildTrainer = yield this.trainers.create({type: TrainerType.WILD_ENCOUNTER}, transaction);
           const wildEncounter = yield this.get(encounterId, transaction);
           const wildPokemon = this.pokemonSpawner.spawn(wildEncounter.speciesId, wildEncounter.level);
@@ -92,7 +104,7 @@ export class WildEncounterService {
         }.bind(this));
       })
       .then(battle => {
-        return Async.do(function* () {
+        return Async.do(function*() {
           yield this.battles.sendBattleStateToUsers(battle);
           return battle;
         }.bind(this));
@@ -109,18 +121,42 @@ export class WildEncounterService {
     );
   }
 
-  public markAsSeen(trainerId: string, encounterId: string, transaction?: Transaction) {
-    return SeenEncounter.create({trainerId: trainerId, wildEncounterId: encounterId}, {transaction});
+  public markAsSeen(userId: string, encounterId: string, transaction?: Transaction) {
+    return SeenEncounter.create({userId: userId, wildEncounterId: encounterId}, {transaction});
   }
 
-  public trainerHasSeen(trainerId: string, encounterId: string, transaction?: Transaction): Promise<boolean> {
+  public userHasSeen(userId: string, encounterId: string, transaction?: Transaction): Promise<boolean> {
     return SeenEncounter.findOne({
       where: {
-        trainerId: trainerId,
+        userId: userId,
         wildEncounterId: encounterId,
       },
       transaction: transaction,
     }).then(result => !!result);
+  }
+
+  public startTestEncounterBattle(userId: string) {
+    return Async.do(function*() {
+      const user = yield this.users.get(userId);
+      const battleState = yield this.battles.getTrainerBattleState(user.trainerId);
+      yield this.battles.destroy(battleState.battleId);
+      const encounter = yield sequelize.query(
+        `SELECT * FROM "wildEncounters" AS we
+        WHERE NOT EXISTS(
+          SELECT * FROM "seenEncounters" AS se
+          WHERE se."userId" = :userId
+          AND se."wildEncounterId" = we.id
+        );`,
+        {
+          replacements: {
+            userId: userId,
+          },
+          model: WildEncounter,
+        }
+      );
+
+      return this.startBattle(userId, encounter.id);
+    }.bind(this));
   }
 
   private databaseResultToEncounter(result) {

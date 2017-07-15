@@ -10,6 +10,7 @@ export class WebSocketService {
   }
 
   public sendMessage(userId: string, message: any) {
+    console.info("Sending message: " + message);
     const webSocket = this.webSocketsByUserId[userId];
     webSocket.send(JSON.stringify(message));
   }

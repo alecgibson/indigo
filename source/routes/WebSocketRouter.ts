@@ -35,6 +35,8 @@ export class WebSocketRouter {
   }
 
   private route(user: IUser, data: WebSocket.Data) {
+    console.info("Routing message: " + data);
+
     let message = WebSocketRouter.castToRequest(data);
     if (!message) {
       console.warn("Unsupported WebSocket message");

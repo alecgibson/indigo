@@ -155,8 +155,10 @@ export class BattleService {
 
           this.webSockets.sendMessage(user.id, {
             type: 'battleState',
-            ownPokemon: ownPokemon,
-            opponentPokemon: opponentPokemon,
+            state: {
+              ownPokemon: ownPokemon,
+              opponentPokemon: opponentPokemon,
+            },
           });
         }
       }

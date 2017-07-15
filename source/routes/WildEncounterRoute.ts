@@ -18,6 +18,9 @@ export class WildEncounterRoute implements IRoute {
       case 'startBattle':
         this.startBattle(message);
         break;
+      case 'testBattle':
+        this.testBattle(message);
+        break;
       default:
         console.warn('Unrecognised Wild Encounter request: ' + message.method);
     }
@@ -26,7 +29,7 @@ export class WildEncounterRoute implements IRoute {
   private getAll(message: IWildEncounterRequest) {
     const location = message.location;
 
-    this.wildEncounters.getByLocation(location)
+    this.wildEncounters.getByLocation(location, message.userId)
       .then((encounters) => {
         let strippedEncounters = encounters.map((encounter) => {
           return {
@@ -45,5 +48,9 @@ export class WildEncounterRoute implements IRoute {
 
   private startBattle(message: IWildEncounterRequest) {
     this.wildEncounters.startBattle(message.userId, message.encounterId);
+  }
+
+  private testBattle(message: IWildEncounterRequest) {
+    this.wildEncounters.startTestEncounterBattle(message.userId);
   }
 }

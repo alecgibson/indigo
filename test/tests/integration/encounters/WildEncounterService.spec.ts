@@ -16,6 +16,7 @@ import {TrainerFactory} from "../../../factories/TrainerFactory";
 import {WebSocketService} from "../../../../source/users/WebSocketService";
 import {UserService} from "../../../../source/users/UserService";
 import {UserFactory} from "../../../factories/UserFactory";
+import {Random} from "../../../../source/utilities/Random";
 
 describe('WildEncounterService', () => {
   const trainerService = new TrainerService();
@@ -62,9 +63,10 @@ describe('WildEncounterService', () => {
       let encounter = WildEncounterFactory.build({
         cartesianMetres: londonEyeLocation.toCartesianMetres(),
       });
+      const user = UserFactory.build();
       wildEncounterService.create(encounter)
         .then((createdEncounter) => {
-          return wildEncounterService.getByLocation(londonEyeLocation)
+          return wildEncounterService.getByLocation(londonEyeLocation, user.id)
             .then((fetchedEncounters) => {
               let encounterIds = fetchedEncounters.map((encounter) => encounter.id);
               createdEncounter.id;
@@ -78,9 +80,10 @@ describe('WildEncounterService', () => {
       let encounter = WildEncounterFactory.build({
         cartesianMetres: londonEyeLocation.toCartesianMetres(),
       });
+      const user = UserFactory.build();
       wildEncounterService.create(encounter)
         .then((createdEncounter) => {
-          return wildEncounterService.getByLocation(imaxLocation)
+          return wildEncounterService.getByLocation(imaxLocation, user.id)
             .then((fetchedEncounters) => {
               let encounterIds = fetchedEncounters.map((encounter) => encounter.id);
               expect(encounterIds).to.not.contain(createdEncounter.id);
@@ -97,16 +100,33 @@ describe('WildEncounterService', () => {
         endTime: endTime,
         cartesianMetres: londonEyeLocation.toCartesianMetres(),
       });
-
+      const trainer = TrainerFactory.build();
       wildEncounterService.create(encounter)
         .then((createdEncounter) => {
-          return wildEncounterService.getByLocation(londonEyeLocation)
+          return wildEncounterService.getByLocation(londonEyeLocation, trainer.id)
             .then((fetchedEncounters) => {
               let encounterIds = fetchedEncounters.map((encounter) => encounter.id);
               expect(encounterIds).to.not.contain(createdEncounter.id);
               done();
             });
         });
+    });
+
+    it('does not fetch it if I have already seen it', (done) => {
+      Async.test(function* () {
+        const encounter = yield WildEncounterFactory.create({
+          cartesianMetres: londonEyeLocation.toCartesianMetres(),
+        });
+
+        const user = yield UserFactory.create();
+
+        yield wildEncounterService.markAsSeen(user.id, encounter.id);
+
+        const encounters = yield wildEncounterService.getByLocation(londonEyeLocation, user.id);
+        const encounterIds = encounters.map(fetchedEncounter => fetchedEncounter.id);
+        expect(encounterIds).to.not.contain(encounter.id);
+        done();
+      });
     });
   });
 
@@ -174,10 +194,10 @@ describe('WildEncounterService', () => {
         const encounter = yield WildEncounterFactory.create();
         const user = yield UserFactory.create();
 
-        let hasSeen = yield wildEncounterService.trainerHasSeen(user.trainerId, encounter.id);
+        let hasSeen = yield wildEncounterService.userHasSeen(user.id, encounter.id);
         expect(hasSeen).to.be.false;
         yield wildEncounterService.startBattle(user.id, encounter.id);
-        hasSeen = yield wildEncounterService.trainerHasSeen(user.trainerId, encounter.id);
+        hasSeen = yield wildEncounterService.userHasSeen(user.id, encounter.id);
         expect(hasSeen).to.be.true;
 
         wildEncounterService.startBattle(user.id, encounter.id)

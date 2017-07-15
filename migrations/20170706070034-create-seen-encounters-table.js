@@ -21,11 +21,11 @@ module.exports = {
           defaultValue: Sequelize.NOW,
           allowNull: false
         },
-        trainerId: {
+        userId: {
           type: Sequelize.UUID,
           allowNull: false,
           references: {
-            model: 'trainers',
+            model: 'users',
             key: 'id'
           },
           onDelete: 'cascade'
@@ -45,12 +45,12 @@ module.exports = {
         collate: 'utf8_unicode_ci'
       }
     ).then(() => {
-      return queryInterface.addIndex('seenEncounters', ['trainerId', 'wildEncounterId'], {indicesType: 'UNIQUE'});
+      return queryInterface.addIndex('seenEncounters', ['userId', 'wildEncounterId'], {indicesType: 'UNIQUE'});
     })
   },
 
   down: function (queryInterface, Sequelize) {
-    return queryInterface.removeIndex('seenEncounters', ['trainerId', 'wildEncounterId'])
+    return queryInterface.removeIndex('seenEncounters', ['userId', 'wildEncounterId'])
       .then(() => {
         return queryInterface.dropTable('seenEncounters');
       });
