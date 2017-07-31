@@ -138,7 +138,7 @@ export class BattleService {
     );
   }
 
-  public sendBattleStateToUsers(battle: IBattle) {
+  public sendStartBattleEventsToUsers(battle: IBattle) {
     return Async.do(function*() {
       const trainerIds = Object.keys(battle.statesByTrainerId);
 
@@ -153,12 +153,21 @@ export class BattleService {
           const ownPokemon = this.pokemons.ownPokemon(pokemonsByTrainerId[trainerId]);
           const opponentPokemon = this.pokemons.opponentPokemon(pokemonsByTrainerId[opponentId]);
 
+          // TODO: Add battle type (wild encounter, NPC, human) to message
           this.webSockets.sendMessage(user.id, {
-            type: 'battleState',
+            type: 'battleEvent',
+            eventType: 'battleStartOpponent',
             state: {
-              ownPokemon: ownPokemon,
               opponentPokemon: opponentPokemon,
             },
+          });
+
+          this.webSockets.sendMessage(user.id, {
+            type: 'battleEvent',
+            eventType: 'battleStartOwn',
+            state: {
+              ownPokemon: ownPokemon,              
+            }
           });
         }
       }

@@ -105,7 +105,7 @@ export class WildEncounterService {
       })
       .then(battle => {
         return Async.do(function*() {
-          yield this.battles.sendBattleStateToUsers(battle);
+          yield this.battles.sendStartBattleEventsToUsers(battle);
           return battle;
         }.bind(this));
       });
