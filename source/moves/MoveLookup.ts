@@ -1,17 +1,15 @@
-import {injectable} from "inversify";
-import * as fs from "fs";
-import * as yaml from "js-yaml";
-import {IMove} from "../models/IMove";
+import * as fs from 'fs-extra';
+import * as yaml from 'js-yaml';
+import IMove from './IMove';
 
-@injectable()
-export class MoveLookup {
+export default class MoveLookup {
   private readonly DATA_DIRECTORY = 'data/moves';
-  private readonly moves = [];
+  private readonly moves: IMove[] = [];
 
   public constructor() {
-    fs.readdirSync(this.DATA_DIRECTORY).forEach((filename) => {
-      let moveYaml = fs.readFileSync(`${this.DATA_DIRECTORY}/${filename}`, 'utf8');
-      let move = yaml.safeLoad(moveYaml);
+    fs.readdirSync(this.DATA_DIRECTORY).forEach(filename => {
+      const moveYaml = fs.readFileSync(`${this.DATA_DIRECTORY}/${filename}`, 'utf8');
+      const move = yaml.safeLoad(moveYaml);
       this.moves.push(move);
     });
   }

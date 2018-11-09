@@ -1,18 +1,7 @@
 {
-  "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
-    "lib": ["dom", "es6"],
-    "moduleResolution": "node",
-    "types": ["node", "reflect-metadata"],
-    "typeRoots": ["../node_modules/@types"],
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
-  },
-  "include": [
-    "source/**/*.ts"
-  ],
+  "extends": "./tsconfig.base.json",
   "exclude": [
-    "node_modules"
+    "./source/*.spec.ts",
+    "./source/**/*.spec.ts"
   ]
 }

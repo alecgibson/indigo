@@ -1,8 +1,8 @@
-import {Nature} from "../models/Nature";
-import {StatType} from "../models/StatType";
+import { Nature } from './Nature';
+import { StatType } from './StatType';
 
 export class NatureModifier {
-  private static readonly modifiers = {
+  private static readonly modifiers: INatureModifier = {
     HARDY: {},
     LONELY: {
       ATTACK: 1.1,
@@ -91,7 +91,13 @@ export class NatureModifier {
   };
 
   public static modifier(nature: Nature, statType: StatType): number {
-    let statModifier = this.modifiers[Nature[nature]][StatType[statType]];
+    const statModifier: number = this.modifiers[Nature[nature]][StatType[statType]];
     return typeof statModifier === 'number' ? statModifier : 1;
   }
+}
+
+interface INatureModifier {
+  [nature: string]: {
+    [statName: string]: number;
+  };
 }

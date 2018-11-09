@@ -1,38 +1,38 @@
-import * as fs from "fs";
-import * as yaml from "js-yaml";
-import {injectable} from "inversify";
-import {IPokemonSpecies} from "../models/IPokemonSpecies";
-import {EncounterRate} from "../models/EncounterRate";
-import {EvolutionTrigger} from "../models/EvolutionTrigger";
+import * as fs from 'fs-extra';
+import * as yaml from 'js-yaml';
+import { EncounterRate } from './EncounterRate';
+import IPokemonSpecies from './IPokemonSpecies';
+import { EvolutionTrigger } from './EvolutionTrigger';
 
-@injectable()
-export class PokemonLookup {
+export default class PokemonLookup {
   private readonly DATA_DIRECTORY = 'data/pokemon';
-  private readonly pokemons = [];
+  private readonly pokemons: IPokemonSpecies[] = [];
   private readonly pokemonsByEncounterRate: Map<EncounterRate, IPokemonSpecies[]>;
   private readonly pokemonsByNextEvolvedId: Map<number, IPokemonSpecies>;
 
   public constructor() {
-    fs.readdirSync(this.DATA_DIRECTORY).forEach((filename) => {
-      let pokemonYaml = fs.readFileSync(`${this.DATA_DIRECTORY}/${filename}`, 'utf8');
-      let pokemon = yaml.safeLoad(pokemonYaml);
+    fs.readdirSync(this.DATA_DIRECTORY).forEach(filename => {
+      const pokemonYaml = fs.readFileSync(`${this.DATA_DIRECTORY}/${filename}`, 'utf8');
+      const pokemon = yaml.safeLoad(pokemonYaml);
       this.pokemons.push(pokemon);
     });
 
-    this.pokemonsByEncounterRate = this.pokemons.reduce((map, pokemon) => {
-      map[pokemon.encounterRate] = map[pokemon.encounterRate] || [];
-      map[pokemon.encounterRate].push(pokemon);
-      return map;
-    }, {});
-
-    this.pokemonsByNextEvolvedId = this.pokemons.reduce((map, pokemon) => {
-      if (!pokemon.evolution) {
+    this.pokemonsByEncounterRate = this.pokemons
+      .reduce((map: Map<EncounterRate, IPokemonSpecies[]>, pokemon: IPokemonSpecies) => {
+        const pokemons = map.get(pokemon.encounterRate) || [];
+        pokemons.push(pokemon);
+        map.set(pokemon.encounterRate, pokemons);
         return map;
-      }
+      }, new Map<EncounterRate, IPokemonSpecies[]>());
 
-      map[pokemon.evolution.evolvedPokemonId] = pokemon;
-      return map;
-    }, {});
+    this.pokemonsByNextEvolvedId = this.pokemons
+      .reduce((map: Map<number, IPokemonSpecies>, pokemon: IPokemonSpecies) => {
+        if (pokemon.evolution) {
+          map.set(pokemon.evolution.evolvedPokemonId, pokemon);
+        }
+
+        return map;
+      }, new Map<number, IPokemonSpecies>());
   }
 
   public byId(id: number): IPokemonSpecies {
@@ -40,11 +40,11 @@ export class PokemonLookup {
   }
 
   public byEncounterRate(encounterRate: EncounterRate): IPokemonSpecies[] {
-    return this.pokemonsByEncounterRate[encounterRate];
+    return this.pokemonsByEncounterRate.get(encounterRate);
   }
 
   public minimumLevel(id: number): number {
-    let previousEvolution = this.pokemonsByNextEvolvedId[id];
+    const previousEvolution = this.pokemonsByNextEvolvedId.get(id);
     return previousEvolution && (previousEvolution.evolution.trigger === EvolutionTrigger.LEVEL_UP)
       ? previousEvolution.evolution.level : 1;
   }

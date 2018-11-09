@@ -57,8 +57,4 @@ typings/
 # dotenv environment variables file
 .env
 
-source/**/*.js
-!source/sequelize/**/*.js
-release/
-
-db/
+release
