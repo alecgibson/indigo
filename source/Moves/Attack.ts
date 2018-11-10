@@ -2,7 +2,7 @@ import IPokemon from '../Pokemon/IPokemon';
 import IMove from './IMove';
 import IAttack from './IAttack';
 
-export class Attack implements IAttack {
+export default class Attack implements IAttack {
   public attacker: IPokemon;
   public defender: IPokemon;
   public move: IMove;

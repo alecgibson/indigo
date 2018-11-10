@@ -5,8 +5,9 @@ import IRandom from '../Helpers/IRandom';
 import IMove from './IMove';
 import IPokemon from '../Pokemon/IPokemon';
 import TypeEffectiveness from './TypeEffectiveness';
+import IDamageCalculator from './IDamageCalculator';
 
-export default class DamageCalculator {
+export default class DamageCalculator implements IDamageCalculator {
   public constructor(
     private readonly pokemonLookup: PokemonLookup,
     private readonly random: IRandom

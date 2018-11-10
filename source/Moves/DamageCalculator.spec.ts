@@ -5,7 +5,7 @@ import DamageCalculator from './DamageCalculator';
 import IRandom from '../Helpers/IRandom';
 import RandomFactory from '../Factories/RandomFactory';
 import PokemonFactory from '../Factories/PokemonFactory';
-import { Attack } from './Attack';
+import Attack from './Attack';
 import IPokemon from '../Pokemon/IPokemon';
 
 describe('DamageCalculator', () => {
@@ -29,8 +29,9 @@ describe('DamageCalculator', () => {
     const tackle = moveLookup.byId(33);
 
     const irrationalNumber = 1 / 9;
-    const rattata = new PokemonFactory().build();
-    rattata.stats.attack.current = irrationalNumber;
+    const rattata = new PokemonFactory().build((p: IPokemon) => {
+      p.stats.attack.current = irrationalNumber;
+    });
     const pidgey = new PokemonFactory().build();
 
     const damage = damageCalculator.calculate(Attack.by(rattata).using(tackle).on(pidgey));
