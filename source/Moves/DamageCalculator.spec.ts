@@ -61,6 +61,24 @@ describe('DamageCalculator', () => {
     expect(damage).to.equal(0);
   });
 
+  it('returns the defender health when the move would knock it out', () => {
+    const thunderShock = moveLookup.byId(84);
+
+    const pikachu = new PokemonFactory().build((p: IPokemon) => {
+      p.speciesId = 25;
+      p.stats.attack.current = 100;
+    });
+
+    const pidgey = new PokemonFactory().build((p: IPokemon) => {
+      p.speciesId = 16;
+      p.stats.hitPoints.current = 1;
+    });
+
+    const damage = damageCalculator.calculate(Attack.by(pikachu).using(thunderShock).on(pidgey));
+
+    expect(damage).to.equal(1);
+  });
+
   // Based on worked example here: https://bulbapedia.bulbagarden.net/wiki/Damage#Damage_calculation
   it('should correctly calculate a level 75 Golem using Rock Slide against a Charizard', () => {
     const rockSlide = moveLookup.byId(157);
@@ -74,6 +92,7 @@ describe('DamageCalculator', () => {
     const charizard = new PokemonFactory().build((p: IPokemon) => {
       p.speciesId = 6;
       p.stats.defense.current = 163;
+      p.stats.hitPoints.current = 300;
     });
 
     const damage = damageCalculator.calculate(Attack.by(golem).using(rockSlide).on(charizard));

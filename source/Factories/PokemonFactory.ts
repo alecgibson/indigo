@@ -5,9 +5,11 @@ import { Gender } from '../Pokemon/Gender';
 import { Nature } from '../Pokemon/Nature';
 
 export default class PokemonFactory extends Factory<IPokemon> {
+  private idCounter = 1;
+
   protected base(): IPokemon {
     return {
-      id: 'pokemon-123',
+      id: `pokemon-${this.idCounter++}`,
       trainerId: 'trainer-123',
       squadOrder: 1,
       speciesId: 1,

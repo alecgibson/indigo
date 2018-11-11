@@ -8,13 +8,19 @@ import IBattleState from '../IBattleState';
 import BattleStateFactory from '../../Factories/BattleStateFactory';
 import IDamageCalculator from '../../Moves/IDamageCalculator';
 import DamageCalculatorFactory from '../../Factories/DamageCalculatorFactory';
+import IBattleEvent from '../Events/IBattleEvent';
+import { BattleEventType } from '../Events/BattleEventType';
+import IFaintHandler from '../Events/IFaintHandler';
+import FaintHandler from '../Events/FaintHandler';
 
 describe('AttackBattleAction', () => {
   const moves = new MoveLookup();
   let damageCalculator: IDamageCalculator;
+  let faintHandler: IFaintHandler;
 
   beforeEach(() => {
     damageCalculator = new DamageCalculatorFactory().build();
+    faintHandler = new FaintHandler();
   });
 
   describe('Pokemon with different speeds', () => {
@@ -31,11 +37,13 @@ describe('AttackBattleAction', () => {
 
       const fastAction = new AttackBattleAction(
         damageCalculator,
+        faintHandler,
         Attack.by(fastPokemon).using(scratch).on(slowPokemon)
       );
 
       const slowAction = new AttackBattleAction(
         damageCalculator,
+        faintHandler,
         Attack.by(slowPokemon).using(scratch).on(fastPokemon)
       );
 
@@ -48,10 +56,12 @@ describe('AttackBattleAction', () => {
 
       const fastAction = new AttackBattleAction(
         damageCalculator,
+        faintHandler,
         Attack.by(slowPokemon).using(quickAttack).on(fastPokemon)
       );
       const slowAction = new AttackBattleAction(
         damageCalculator,
+        faintHandler,
         Attack.by(fastPokemon).using(scratch).on(slowPokemon)
       );
 
@@ -77,26 +87,60 @@ describe('AttackBattleAction', () => {
         p.stats.hitPoints.current = 10;
       });
 
-      initialState = new BattleStateFactory().build((s: IBattleState) => {
-        s.pokemonsById = { charmander, bulbasaur };
+      initialState = new BattleStateFactory()
+        .withPokemons(charmander, bulbasaur)
+        .build();
+    });
+
+    describe('doing non-KO damage to each other', () => {
+      beforeEach(() => {
+        damageCalculator = new DamageCalculatorFactory().build((c: IDamageCalculator) => {
+          c.calculate = () => 5;
+        });
       });
 
-      damageCalculator = new DamageCalculatorFactory().build((c: IDamageCalculator) => {
-        c.calculate = () => 5;
+      it('reduces the health of the defending Pokemon', () => {
+        const scratch = moves.byId(10);
+        const action = new AttackBattleAction(
+          damageCalculator,
+          faintHandler,
+          Attack.by(charmander).using(scratch).on(bulbasaur)
+        );
+
+        const events = action.events(initialState);
+
+        expect(events).to.have.length(1);
+        const newState = events[0].state;
+        expect(newState.pokemonsById.bulbasaur.stats.hitPoints.current).to.equal(5);
+        expect(newState.pokemonsById.charmander.stats.hitPoints.current).to.equal(10);
       });
     });
 
-    it('reduces the health of the defending Pokemon', () => {
-      const scratch = moves.byId(10);
-      const action = new AttackBattleAction(
-        damageCalculator,
-        Attack.by(charmander).using(scratch).on(bulbasaur)
-      );
+    describe('doing KO damage', () => {
+      beforeEach(() => {
+        damageCalculator = new DamageCalculatorFactory().build((c: IDamageCalculator) => {
+          c.calculate = () => 10;
+        });
+      });
 
-      const newState = action.event(initialState).state;
+      it('knocks out the defending Pokemon, and adds a faint event', () => {
+        const scratch = moves.byId(10);
+        const action = new AttackBattleAction(
+          damageCalculator,
+          faintHandler,
+          Attack.by(charmander).using(scratch).on(bulbasaur)
+        );
 
-      expect(newState.pokemonsById.bulbasaur.stats.hitPoints.current).to.equal(5);
-      expect(newState.pokemonsById.charmander.stats.hitPoints.current).to.equal(10);
+        const events = action.events(initialState);
+        const eventTypes = events.map((event: IBattleEvent) => event.type);
+
+        expect(events).to.have.length(2);
+        expect(eventTypes).to.deep.equal([BattleEventType.Attack, BattleEventType.Faint]);
+
+        const newState = events[1].state;
+        expect(newState.pokemonsById.bulbasaur.stats.hitPoints.current).to.equal(0);
+        expect(newState.pokemonsById.charmander.stats.hitPoints.current).to.equal(10);
+      });
     });
   });
 });

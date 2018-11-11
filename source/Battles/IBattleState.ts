@@ -1,6 +1,7 @@
 import IPokemon from '../Pokemon/IPokemon';
+import BattleAction from './Actions/BattleAction';
 
 export default interface IBattleState {
-  turn: number;
   pokemonsById: {[id: string]: IPokemon};
+  actions: BattleAction[];
 }

@@ -2,27 +2,43 @@ import BattleAction from './BattleAction';
 import IAttack from '../../Moves/IAttack';
 import { BattleEventType } from '../Events/BattleEventType';
 import IBattleState from '../IBattleState';
-import IAttackBattleEvent from '../Events/IAttackBattleEvent';
 import IDamageCalculator from '../../Moves/IDamageCalculator';
+import IPokemon from '../../Pokemon/IPokemon';
+import IBattleEvent from '../Events/IBattleEvent';
+import IAttackBattleEvent from '../Events/IAttackBattleEvent';
+import IFaintHandler from '../Events/IFaintHandler';
 
 export default class AttackBattleAction extends BattleAction {
   public readonly attack: IAttack;
 
   private readonly damageCalculator: IDamageCalculator;
+  private readonly faintHandler: IFaintHandler;
 
-  public constructor(damageCalculator: IDamageCalculator, attack: IAttack) {
+  public constructor(damageCalculator: IDamageCalculator, faintHandler: IFaintHandler, attack: IAttack) {
     super();
     this.attack = attack;
     this.damageCalculator = damageCalculator;
+    this.faintHandler = faintHandler;
   }
 
   public priority(): number {
     return this.attack.move.priority * 1000 + this.attack.attacker.stats.speed.current;
   }
 
-  public event(state: IBattleState): IAttackBattleEvent {
+  // TODO: Status effects
+  // TODO: Both Pokemon fainting (eg recoil, destiny bond, etc.)
+  public events(state: IBattleState): IBattleEvent[] {
     this.applyDamage(state);
 
+    const events: any[] = [
+      this.attackEvent(state),
+      ...this.faintHandler.events(state, this.defender(state)),
+    ].filter(Boolean);
+
+    return events;
+  }
+
+  private attackEvent(state: IBattleState): IAttackBattleEvent {
     return {
       type: BattleEventType.Attack,
       state: state,
@@ -32,11 +48,10 @@ export default class AttackBattleAction extends BattleAction {
 
   private applyDamage(state: IBattleState) {
     const damage = this.damageCalculator.calculate(this.attack);
-    const defender = state.pokemonsById[this.attack.defender.id];
-    defender.stats.hitPoints.current -= damage;
+    this.defender(state).stats.hitPoints.current -= damage;
+  }
 
-    if (defender.stats.hitPoints.current < 0) {
-      defender.stats.hitPoints.current = 0;
-    }
+  private defender(state: IBattleState): IPokemon {
+    return state.pokemonsById[this.attack.defender.id];
   }
 }

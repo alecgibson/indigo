@@ -26,10 +26,12 @@ export default class DamageCalculator implements IDamageCalculator {
 
     // TODO: Constant-damage attacks
 
-    const damage = (0.02 * levelFactor * attack.move.power * attackDefenseRatio + 2)
+    let damage = (0.02 * levelFactor * attack.move.power * attackDefenseRatio + 2)
       * this.damageModifier(attack);
 
-    return Math.floor(damage);
+    damage = Math.floor(damage);
+
+    return Math.min(damage, attack.defender.stats.hitPoints.current);
   }
 
   private damageModifier(attack: IAttack): number {

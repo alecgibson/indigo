@@ -1,23 +1,31 @@
 import IBattleState from './IBattleState';
-import BattleAction from './Actions/BattleAction';
 import IBattleEvent from './Events/IBattleEvent';
+import * as clone from 'clone';
 
 export default class BattleTurn {
-  private readonly state: IBattleState;
-  private readonly actions: BattleAction[];
+  private state: IBattleState;
 
-  public constructor(state: IBattleState, ...actions: BattleAction[]) {
-    this.state = state;
-    this.actions = actions.sort((a, b) => b.priority() - a.priority());
+  public constructor(state: IBattleState) {
+    this.state = clone(state);
+    this.state.actions.sort((a, b) => b.priority() - a.priority());
   }
 
   public events(): IBattleEvent[] {
-    let state = this.state;
+    const events: IBattleEvent[] = [];
 
-    return this.actions.map((action: BattleAction) => {
-      const event = action.event(state);
-      state = event.state;
-      return event;
-    });
+    while (this.shouldProgressTurn()) {
+      const action = this.state.actions.shift();
+      events.push(...action.events(this.state));
+
+      const lastEvent = events[events.length - 1];
+      this.state = clone(lastEvent.state);
+    }
+
+    return events;
+  }
+
+  private shouldProgressTurn() {
+    // TODO: Handle case where first Pokemon faints before second Pokemon can attack (eg poison, wrap, recoil, etc.)
+    return this.state.actions.length;
   }
 }
