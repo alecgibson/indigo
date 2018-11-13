@@ -22,11 +22,13 @@ export default class AttackBattleAction extends BattleAction {
   }
 
   public priority(): number {
-    return this.attack.move.priority * 1000 + this.attack.attacker.stats.speed.current;
+    // Use multiplier to allow for very large Speed stats
+    return this.attack.move.priority * 100000 + this.attack.attacker.stats.speed.current;
   }
 
   // TODO: Status effects
   // TODO: Both Pokemon fainting (eg recoil, destiny bond, etc.)
+  // TODO: Apply accuracy
   public events(state: IBattleState): IBattleEvent[] {
     this.applyDamage(state);
 

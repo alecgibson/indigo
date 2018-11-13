@@ -5,4 +5,6 @@ export enum StatType {
   SPECIAL_ATTACK,
   SPECIAL_DEFENSE,
   SPEED,
+  ACCURACY, // Battle-only
+  EVASION, // Battle-only
 }

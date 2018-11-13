@@ -3,6 +3,8 @@ import Factory from './factory';
 import PokemonStatFactory from './PokemonStatFactory';
 import { Gender } from '../Pokemon/Gender';
 import { Nature } from '../Pokemon/Nature';
+import IPokemonStat from '../Pokemon/IPokemonStat';
+import { StatType } from '../Pokemon/StatType';
 
 export default class PokemonFactory extends Factory<IPokemon> {
   private idCounter = 1;
@@ -15,12 +17,14 @@ export default class PokemonFactory extends Factory<IPokemon> {
       speciesId: 1,
       level: 5,
       stats: {
-        hitPoints: new PokemonStatFactory().build(),
-        attack: new PokemonStatFactory().build(),
-        defense: new PokemonStatFactory().build(),
-        specialAttack: new PokemonStatFactory().build(),
-        specialDefense: new PokemonStatFactory().build(),
-        speed: new PokemonStatFactory().build(),
+        hitPoints: new PokemonStatFactory().build((s: IPokemonStat) => s.type = StatType.HIT_POINTS),
+        attack: new PokemonStatFactory().build((s: IPokemonStat) => s.type = StatType.ATTACK),
+        defense: new PokemonStatFactory().build((s: IPokemonStat) => s.type = StatType.DEFENSE),
+        specialAttack: new PokemonStatFactory().build((s: IPokemonStat) => s.type = StatType.SPECIAL_ATTACK),
+        specialDefense: new PokemonStatFactory().build((s: IPokemonStat) => s.type = StatType.SPECIAL_DEFENSE),
+        speed: new PokemonStatFactory().build((s: IPokemonStat) => s.type = StatType.SPEED),
+        accuracy: new PokemonStatFactory().build((s: IPokemonStat) => s.type = StatType.ACCURACY),
+        evasion: new PokemonStatFactory().build((s: IPokemonStat) => s.type = StatType.EVASION),
       },
       moveIds: [],
       gender: Gender.NONE,

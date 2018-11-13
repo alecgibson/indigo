@@ -1,6 +1,10 @@
+import { StatType } from './StatType';
+
 export default interface IPokemonStat {
-  total: number;
-  current: number;
-  individualValue: number;
-  effortValue: number;
+  type: StatType;
+  current?: number;
+  total?: number;
+  individualValue?: number;
+  effortValue?: number;
+  stage?: number;
 }

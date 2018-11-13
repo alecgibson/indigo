@@ -9,12 +9,14 @@ export default interface IPokemon {
   speciesId: number;
   level: number;
   stats: {
-    hitPoints: IPokemonStat,
-    attack: IPokemonStat,
-    defense: IPokemonStat,
-    specialAttack: IPokemonStat,
-    specialDefense: IPokemonStat,
-    speed: IPokemonStat,
+    hitPoints: IPokemonStat;
+    attack: IPokemonStat;
+    defense: IPokemonStat;
+    specialAttack: IPokemonStat;
+    specialDefense: IPokemonStat;
+    speed: IPokemonStat;
+    accuracy: IPokemonStat;
+    evasion: IPokemonStat;
   };
   moveIds: number[];
   gender: Gender;
