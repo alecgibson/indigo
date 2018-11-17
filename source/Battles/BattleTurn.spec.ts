@@ -15,11 +15,18 @@ import MoveFactory from '../Factories/MoveFactory';
 import IAttack from '../Moves/IAttack';
 import IFaintHandler from './Events/IFaintHandler';
 import FaintHandler from './Events/FaintHandler';
+import IStatCalculator from '../Moves/IStatCalculator';
+import StatCalculatorFactory from '../Factories/StatCalculatorFactory';
+import IRandom from '../Helpers/IRandom';
+import RandomFactory from '../Factories/RandomFactory';
 
 describe('BattleTurn', () => {
   describe('a fast Charmander using tackle and a slow Magikarp using tackle', () => {
     let damageCalculator: IDamageCalculator;
+    let statCalculator: IStatCalculator;
     let faintHandler: IFaintHandler;
+    let random: IRandom;
+
     let charmander: IPokemon;
     let magikarp: IPokemon;
     let startingState: IBattleState;
@@ -30,6 +37,8 @@ describe('BattleTurn', () => {
 
     beforeEach(() => {
       faintHandler = new FaintHandler();
+      statCalculator = new StatCalculatorFactory().build();
+      random = new RandomFactory().build();
 
       charmander = new PokemonFactory().build((p: IPokemon) => {
         p.id = 'charmander';
@@ -56,8 +65,21 @@ describe('BattleTurn', () => {
           c.calculate = () => 5;
         });
 
-        const charmanderAction = new AttackBattleAction(damageCalculator, faintHandler, charmanderAttack);
-        const magikarpAction = new AttackBattleAction(damageCalculator, faintHandler, magikarpAttack);
+        const charmanderAction = new AttackBattleAction(
+          damageCalculator,
+          statCalculator,
+          faintHandler,
+          random,
+          charmanderAttack
+        );
+
+        const magikarpAction = new AttackBattleAction(
+          damageCalculator,
+          statCalculator,
+          faintHandler,
+          random,
+          magikarpAttack
+        );
 
         startingState = new BattleStateFactory()
           .withPokemons(charmander, magikarp)
@@ -109,8 +131,21 @@ describe('BattleTurn', () => {
           c.calculate = () => 10;
         });
 
-        const charmanderAction = new AttackBattleAction(damageCalculator, faintHandler, charmanderAttack);
-        const magikarpAction = new AttackBattleAction(damageCalculator, faintHandler, magikarpAttack);
+        const charmanderAction = new AttackBattleAction(
+          damageCalculator,
+          statCalculator,
+          faintHandler,
+          random,
+          charmanderAttack
+        );
+
+        const magikarpAction = new AttackBattleAction(
+          damageCalculator,
+          statCalculator,
+          faintHandler,
+          random,
+          magikarpAttack
+        );
 
         startingState = new BattleStateFactory()
           .withPokemons(charmander, magikarp)

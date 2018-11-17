@@ -10,15 +10,23 @@ import IDamageCalculator from '../../Moves/IDamageCalculator';
 import DamageCalculatorFactory from '../../Factories/DamageCalculatorFactory';
 import MoveFactory from '../../Factories/MoveFactory';
 import Attack from '../../Moves/Attack';
+import IStatCalculator from '../../Moves/IStatCalculator';
+import StatCalculatorFactory from '../../Factories/StatCalculatorFactory';
+import IRandom from '../../Helpers/IRandom';
+import RandomFactory from '../../Factories/RandomFactory';
 
 describe('FaintHandler', () => {
   let handler: FaintHandler;
   let damageCalculator: IDamageCalculator;
+  let statCalculator: IStatCalculator;
+  let random: IRandom;
   let pokemonFactory: PokemonFactory;
 
   beforeEach(() => {
     handler = new FaintHandler();
     damageCalculator = new DamageCalculatorFactory().build();
+    statCalculator = new StatCalculatorFactory().build();
+    random = new RandomFactory().build();
     pokemonFactory = new PokemonFactory();
   });
 
@@ -64,13 +72,17 @@ describe('FaintHandler', () => {
 
     const faintedPokemonAttack = new AttackBattleAction(
       damageCalculator,
+      statCalculator,
       handler,
+      random,
       Attack.by(faintedPokemon).using(move).on(consciousPokemon)
     );
 
     const consciousPokemonAttack = new AttackBattleAction(
       damageCalculator,
+      statCalculator,
       handler,
+      random,
       Attack.by(consciousPokemon).using(move).on(faintedPokemon)
     );
 

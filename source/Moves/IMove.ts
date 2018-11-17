@@ -2,6 +2,7 @@ import { Ailment } from './../Pokemon/Ailment';
 import { DamageCategory } from './DamageCategory';
 import { Type } from '../Pokemon/Type';
 import { MoveCategory } from './MoveCategory';
+import IStatChange from './IStatChange';
 
 export default interface IMove {
   id: number;
@@ -25,4 +26,5 @@ export default interface IMove {
   ailmentChance: number;
   flinchChance: number;
   statChance: number;
+  statChanges?: IStatChange[];
 }
